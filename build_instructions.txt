@@ -1,0 +1,17 @@
+# check for pip and version (make sure it is python3!)
+python -V
+python -m pip --version
+
+# install necessary tools
+sudo python -m pip install --upgrade pip setuptools wheel
+sudo python -m pip install tqdm
+sudo python -m pip install --user --upgrade twine
+
+# create main file (no extension) and make executable
+# create "setup.py" and update contents
+# create "README.md" (empty is fine here)
+# create "LICENCE" file (MIT is fine)
+# generate ".gitignore"
+
+# generate the package's structure
+python setup.py bdist_wheel
