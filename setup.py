@@ -8,12 +8,12 @@ setuptools.setup(
        long_description=long_description,
        long_description_content_type="text/markdown",
        url="http://vienna-ptm.univie.ac.at",
-       author="Christian Margreitter, Sophie Margreitter, Bojan Zagrovic",
+       author="Christian Margreitter, Drazen Petrov, Sophie Margreitter, Bojan Zagrovic",
        author_email="christian.margreitter@gmail.com",
        packages=setuptools.find_packages(),
            classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
-    ],
+    ]
 )

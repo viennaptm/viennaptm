@@ -1,10 +1,10 @@
 <!-- Description
-     This XML file contains the database that holds the necessary steps to change
-     one (native) amino acid into a post-translationally modified one, including
-     addition and deletion of atoms and other tasks. The database is structured by
-     the "residue" tags, which hold "modification" blocks for each possible
-     modification. Internally, a relative coordinate system is used which is defined
-     by the "anchor" atom and two axes (the third is computed). The order of
+     This XML file contains a modificatin library that holds the necessary steps
+     to change one (native) amino acid into a post-translationally modified
+     one, including addition and deletion of atoms and other tasks. The database is
+     structured by the "residue" tags, which hold "modification" blocks for each
+     possible modification. Internally, a relative coordinate system is used which is
+     defined by the "anchor" atom and two axes (the third is computed). The order of
      execution is: addition -> renaming -> deletion. Additions hold the coordinates,
      the atom name, the element type and a temperature factor. The "modification"
      blocks hold the new residue's name ("target_abbreviation"), the full name of
@@ -14,7 +14,7 @@
      a fully specified relative coordinate system).
 
      For any enquiries, please contact christian.margreitter@gmail.com
-     (c) C. Margreitter, S. Margreitter, D. Petrov, B. Zagrovic
+     (c) C. Margreitter, D. Petrov, S. Margreitter and B. Zagrovic
          2019, Gothenburg (Sweden)
 -->
 
