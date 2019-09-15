@@ -1,38 +1,51 @@
-class atom_addition:
-    def __init__(self, inp):
-        self.name = ""
-        self.eletype = ""
-        self.xcoorr = ""
-        self.ycoorr = ""
-        self.zcoorr = ""
-        self.tempfactor = ""
+class AtomAddition:
+    def __init__(self, name, eletype, xcoorr,
+                       ycoorr, zcoorr, tempfactor):
+        self._name = name
+        self._eletype = eletype
+        self._xcoorr = xcoorr
+        self._ycoorr = ycoorr
+        self._zcoorr = zcoorr
+        self._tempfactor = tempfactor
 
 
-class atom_deletion:
-    def __init__(self, inp):
-        self.name = ""
+class AtomDeletion:
+    def __init__(self, name):
+        self._name = name
 
 
-class atom_replacement:
-    def __init__(self, inp):
-        self.name = ""
-        self.by = ""
+class AtomReplacement:
+    def __init__(self, name, by, new_eletype):
+        self._name = name
+        self._by = by
+        self._new_eletype = new_eletype
 
 
-class modification:
-    def __init__(self, xml_entry):
+class Axis:
+    def __init__(self, number, p1, p2):
+        self._number = number
+        self._p1 = p1
+        self._p2 = p2
+
+
+class Modification:
+    def __init__(self, initial_abbreviation, initial_name, modification_name,
+                       target_abbreviation, target_name, anchor,
+                       axis1, axis2, atom_additions,
+                       atom_deletions, atom_replacements):
         # initialize data structures: names
-        self._initial_abbreviation = ""
-        self._initial_name = ""
-        self._modification_name = ""
-        self._target_abbreviation = ""
-        self._target_name = ""
+        self._initial_abbreviation = initial_abbreviation
+        self._initial_name = initial_name
+        self._modification_name = modification_name
+        self._target_abbreviation = target_abbreviation
+        self._target_name = target_name
 
-        # initialize data structures: axes
-        self._axis1 = {}
-        self._axis2 = {}
+        # initialize data structures: anchor and axes
+        self._anchor = anchor
+        self._axis1 = axis1
+        self._axis2 = axis2
 
         # initialize data structures: atom manipulations
-        self._atom_additions = []
-        self._atom_deletions = []
-        self._atom_replacements = []
+        self._atom_additions = atom_additions
+        self._atom_deletions = atom_deletions
+        self._atom_replacements = atom_replacements
