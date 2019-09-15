@@ -15,10 +15,10 @@
 
      For any enquiries, please contact christian.margreitter@gmail.com
      (c) C. Margreitter, S. Margreitter, D. Petrov, B. Zagrovic
-         2019, Gothenburg, Sweden
+         2019, Gothenburg (Sweden)
 -->
 
-<database>
+<database version="1.0.0" last_update="2019-08-12">
   <residue abbreviation="ARG" name="arginine">
     <modification name="CITR" target_abbreviation="RCI" target_name="citrulline">
       <anchor>CZ</anchor>
