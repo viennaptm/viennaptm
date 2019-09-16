@@ -29,48 +29,69 @@ class IO_library:
         # iterate over the modifications and residues and fill the library
         residues = xml_lib.getElementsByTagName("residue")
         for residue in residues:
-            initial_abbreviation = residue["abbreviation"].value.upper()
-            initial_name = residue["name"].value.lower()
+            initial_abbreviation = residue.getAttribute("abbreviation").upper()
+            initial_name = residue.getAttribute("name").lower()
             modifications = residue.getElementsByTagName("modification")
             for modi in modifications:
-                modification_name = modi["name"].value.upper()
-                target_abbreviation = modi["target_abbreviation"].upper()
-                target_name = modi["target_name"].lower()
-                anchor = modi.getElementsByName("anchor")[0].value.upper()
+                modification_name = modi.getAttribute("name").upper()
+                target_abbreviation = modi.getAttribute("target_abbreviation").upper()
+                target_name = modi.getAttribute("target_name").lower()
+
+                # get the anchor atom
+                anchor = None
+                try:
+                    anchor = modi.getElementsByTagName("anchor")[0].firstChild.nodeValue.upper()
+                except IndexError:
+                    pass
 
                 # get the relative coordinate axes
-                axes = modi.getElementsByName("axes")[0]
                 axesDict = {}
-                for axis in axes:
-                    key = "".join(["axis", axis["number"].value])
-                    axesDict = {key: Axis(number=axis["number"].value,
-                                          p1 = axis["p1"].value.upper(),
-                                          p2 = axis["p2"].value.upper())}
+                try:
+                    axes = modi.getElementsByTagName("axes")[0].getElementsByTagName("axis")
+                    for axis in axes:
+                        key = "".join(["axis", axis.getAttribute("number")])
+                        axesDict[key] = Axis(number=axis.getAttribute("number"),
+                                             p1 = axis.getAttribute("p1").upper(),
+                                             p2 = axis.getAttribute("p2").upper())
+                except IndexError:
+                    pass
 
                 # get the atom additions
-                additions = modi.getElementsByName("additions")[0].getElementsByName("add")
                 atom_additions = []
-                for addition in additions:
-                    atom_additions.append(AtomAddition(name=addition["name"].value.upper(),
-                                                       eletype=addition["eletype"].value.upper(),
-                                                       xcoorr=addition["xcoorr"].value,
-                                                       ycoorr=addition["ycoorr"].value,
-                                                       zcoorr=addition["zcoorr"].value,
-                                                       tempfactor=addition["tempfactor"]))
+                try:
+                    additions = modi.getElementsByTagName("additions")[0].getElementsByTagName("add")
+                    for addition in additions:
+                        atom_additions.append(AtomAddition(name=addition.getAttribute("name").upper(),
+                                                           eletype=addition.getAttribute("eletype").upper(),
+                                                           xcoorr=addition.getAttribute("xcoorr"),
+                                                           ycoorr=addition.getAttribute("ycoorr"),
+                                                           zcoorr=addition.getAttribute("zcoorr"),
+                                                           tempfactor=addition.getAttribute("tempfactor")))
+                except IndexError:
+                    pass
 
                 # get the atom deletions
-                deletions = modi.getElementsByName("deletions")[0].getElementsByName("del")
                 atom_deletions = []
-                for deletion in deletions:
-                    atom_deletions.append(AtomDeletion(name=deletion["name"].value.upper()))
+                try:
+                    deletions = modi.getElementsByTagName("deletions")[0].getElementsByTagName("del")
+                    for deletion in deletions:
+                        atom_deletions.append(AtomDeletion(name=deletion.getAttribute("name").upper()))
+                except IndexError:
+                    pass
 
                 # get the atom replacements
-                replacements = modi.getElementsByName("")[0]
                 atom_replacements = []
-                for replacement in replacements:
-                    # TODO: new eletype?
+                try:
+                    replacements = modi.getElementsByTagName("")[0]
+                    for replacement in replacements:
+                        new_eletype = None
+                        if "new_eletype" in replacement.attrib:
+                            new_eletype = replacement.getAttribute("new_eletype").upper()
+                        atom_replacements.append(AtomReplacement(name=replacement.getAttribute("name").upper(),
+                                                                 by=replacement.getAttribute("by").upper(),
+                                                                 new_eletype=new_eletype))
+                except IndexError:
                     pass
-                    #atom_replacements.append(AtomReplacement(
 
                 new_modification = Modification(initial_abbreviation=initial_abbreviation,
                                                 initial_name=initial_name,

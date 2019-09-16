@@ -737,8 +737,8 @@
     <modification name="PH31" target_abbreviation="H31" target_name="3-phosphohistidine (-1)">
       <anchor>ND1</anchor>
       <axes>
-        <axis p1="CG" p2="ND1"/>
-        <axis p1="CG" p2="CB"/>
+        <axis number="1" p1="CG" p2="ND1"/>
+        <axis number="2" p1="CG" p2="CB"/>
       </axes>
       <additions>
         <add name="PE3" eletype="P" xcoorr="0.945461" ycoorr="1.07261" zcoorr="0.426862" tempfactor="0"/>

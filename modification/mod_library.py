@@ -1,4 +1,4 @@
-import modification.modification as Mod
+from modification.modification import Modification
 
 
 class ModLibrary:
@@ -7,10 +7,10 @@ class ModLibrary:
         self._last_update_date = last_update_date
         self._version = version
 
-    def add_modification(self, modification):
-        if not isinstance(modification, Mod.modification):
+    def add_modification(self, new_modification):
+        if not isinstance(new_modification, Modification):
             raise TypeError("A library may only contain modification entries.")
-        self._library.append(modification)
+        self._library.append(new_modification)
 
     def get_modification(self, initial_abbreviation, target_abbreviation=None, modification_name=None):
         # get the input
