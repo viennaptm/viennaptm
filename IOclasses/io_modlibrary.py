@@ -8,7 +8,7 @@ from modification.mod_library import ModLibrary
 from utils.move_directory_up import move_directory_up
 
 
-class IO_library:
+class IO_ModLibrary:
     def __init__(self):
         pass
 
