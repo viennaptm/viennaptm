@@ -1,6 +1,4 @@
 from IOclasses.io_modlibrary import IO_ModLibrary
-from modification.mod_library import ModLibrary
-from modification.modification import Modification
 from Bio.PDB.Structure import Structure
 
 class Modifier:
