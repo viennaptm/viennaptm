@@ -17,15 +17,16 @@ class ModLibrary:
         if target_abbreviation is None and modification_name is None:
             raise AttributeError("Function needs the initial residue abbreviation and either the target abbreviation or the modification specifier.")
         if target_abbreviation is not None and modification_name is not None:
-            print( "Both target abbreviation and modification name specified - the latter will be ignored.")
-            modification_name = None
+            print("Both target abbreviation and modification name specified - the former will be ignored.")
+            target_abbreviation = None
 
-        # TODO: actually get modification required
+        for modi in self._library:
+            if initial_abbreviation == modi.initial_abbreviation:
+                if target_abbreviation is None and modification_name == modi.modification_name:
+                    return modi
+                elif modification_name is None and target_abbreviation == modi.target_abbreviation:
+                    return modi
+        raise Exception("Could not find requested modification in library.")
 
-    @property
-    def length(self):
+    def __len__(self):
         return len(self._library)
-
-    @length.setter
-    def length(self, inp):
-        raise Exception("Method \"length()\" is read-only.")

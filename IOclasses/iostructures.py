@@ -2,7 +2,8 @@ import os
 import shutil
 from Bio.PDB import PDBParser, PDBList
 
-class IO_Structure:
+
+class IOStructure:
     """Class to handle structure input files"""
     def __init__(self, inp):
         if not isinstance(inp, str):

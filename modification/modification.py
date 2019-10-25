@@ -49,3 +49,47 @@ class Modification:
         self._atom_additions = atom_additions
         self._atom_deletions = atom_deletions
         self._atom_replacements = atom_replacements
+
+    @property
+    def initial_abbreviation(self):
+        return self._initial_abbreviation
+
+    @property
+    def initial_name(self):
+        return self._initial_name
+
+    @property
+    def modification_name(self):
+        return self._modification_name
+
+    @property
+    def target_abbreviation(self):
+        return self._target_abbreviation
+
+    @property
+    def target_name(self):
+        return self._target_name
+
+    @property
+    def anchor(self):
+        return self._anchor
+
+    @property
+    def axis1(self):
+        return self._axis1
+
+    @property
+    def axis2(self):
+        return self._axis2\
+
+    @property
+    def atom_additions(self):
+        return self._atom_additions
+
+    @property
+    def atom_deletions(self):
+        return self._atom_deletions\
+
+    @property
+    def atom_replacements(self):
+        return self._atom_replacements

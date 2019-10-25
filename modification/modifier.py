@@ -1,4 +1,4 @@
-from IOclasses.io_modlibrary import IO_ModLibrary
+from IOclasses.iomodlibrary import IOModLibrary
 from Bio.PDB.Structure import Structure
 
 class Modifier:
@@ -7,7 +7,7 @@ class Modifier:
     def __init__(self, structure: Structure, library = None):
         # if no library is specified, load the internal default
         if library is None:
-            io_lib = IO_ModLibrary()
+            io_lib = IOModLibrary()
             library = io_lib.load_database(path=None)
 
         self._library = library
