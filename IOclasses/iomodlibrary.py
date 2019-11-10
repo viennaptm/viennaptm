@@ -1,8 +1,7 @@
-# standard
-from xml.dom import minidom
 import os
+from xml.dom import minidom
 
-# custom
+
 from modification.modification import *
 from modification.mod_library import ModLibrary
 from utils.move_directory_up import move_directory_up
@@ -13,7 +12,8 @@ class IOModLibrary:
     def __init__(self):
         pass
 
-    def load_database(self, path=None):
+    @staticmethod
+    def load_database(path=None):
         """Function loads an input XML file and creates and returns modification entries in a library collection."""
         # load the latest internal library, if none has been specified explicitly
         if path is None:
