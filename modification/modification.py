@@ -30,9 +30,10 @@ class Axis:
 
 class Modification:
     def __init__(self, initial_abbreviation, initial_name, modification_name,
-                       target_abbreviation, target_name, anchor,
-                       axis1, axis2, atom_additions,
-                       atom_deletions, atom_replacements):
+                 target_abbreviation, target_name, anchor,
+                 axis1, axis2, atom_additions,
+                 atom_deletions, atom_replacements):
+
         # initialize data structures: names
         self._initial_abbreviation = initial_abbreviation
         self._initial_name = initial_name
@@ -93,3 +94,8 @@ class Modification:
     @property
     def atom_replacements(self):
         return self._atom_replacements
+
+    def __str__(self):
+        return "{} ---{}---> {}".format(self._initial_abbreviation,
+                                        self._modification_name,
+                                        self._target_abbreviation)
