@@ -19,8 +19,7 @@ class IOStructure:
         parser = PDBParser()
         return parser.get_structure(id=os.path.basename(path), file=path)
 
-    @staticmethod
-    def from_pdb_db(identifier):
+    def from_pdb_db(self, identifier):
         if not isinstance(identifier, str) or len(identifier) != 4:
             raise AttributeError("Parameter identifier required to be a string of length four.")
 
@@ -35,6 +34,6 @@ class IOStructure:
             raise Exception("Could not retrieve PDB file with identifier specified.")
 
         # load the file, clean it up and return structure
-        structure = parser.get_structure(id=os.path.basename(path), file=path)
+        structure = self.from_pdb_file(path=path)
         shutil.rmtree(os.path.dirname(path))
         return structure

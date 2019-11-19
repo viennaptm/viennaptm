@@ -4,7 +4,7 @@ from xml.dom import minidom
 
 from modification.modification import *
 from modification.mod_library import ModLibrary
-from utils.move_directory_up import move_directory_up
+from utils.paths import move_directory_up
 
 
 class IOModLibrary:
