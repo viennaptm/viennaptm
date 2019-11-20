@@ -1,31 +1,32 @@
+
 class AtomAddition:
     def __init__(self, name, eletype, xcoorr,
-                       ycoorr, zcoorr, tempfactor):
-        self._name = name
-        self._eletype = eletype
-        self._xcoorr = xcoorr
-        self._ycoorr = ycoorr
-        self._zcoorr = zcoorr
-        self._tempfactor = tempfactor
+                 ycoorr, zcoorr, tempfactor):
+        self.name = name
+        self.eletype = eletype
+        self.xcoorr = xcoorr
+        self.ycoorr = ycoorr
+        self.zcoorr = zcoorr
+        self.tempfactor = tempfactor
 
 
 class AtomDeletion:
     def __init__(self, name):
-        self._name = name
+        self.name = name
 
 
 class AtomReplacement:
     def __init__(self, name, by, new_eletype):
-        self._name = name
-        self._by = by
-        self._new_eletype = new_eletype
+        self.name = name
+        self.by = by
+        self.new_eletype = new_eletype
 
 
 class Axis:
     def __init__(self, number, p1, p2):
-        self._number = number
-        self._p1 = p1
-        self._p2 = p2
+        self.number = number
+        self.p1 = p1
+        self.p2 = p2
 
 
 class Modification:
@@ -81,7 +82,7 @@ class Modification:
 
     @property
     def axis2(self):
-        return self._axis2\
+        return self._axis2
 
     @property
     def atom_additions(self):
@@ -89,7 +90,7 @@ class Modification:
 
     @property
     def atom_deletions(self):
-        return self._atom_deletions\
+        return self._atom_deletions
 
     @property
     def atom_replacements(self):

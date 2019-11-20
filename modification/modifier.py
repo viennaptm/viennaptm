@@ -2,9 +2,11 @@ from copy import deepcopy
 
 from IOclasses.iomodlibrary import IOModLibrary
 from Bio.PDB.Residue import Residue
+from Bio.PDB.Atom import Atom
 from Bio.PDB.Structure import Structure
 from modification.modification import Modification
 from modification.modification_report import ModificationReport
+
 
 class Modifier:
     """Class that actually applies any number of modifications in a modification library to a structure"""
@@ -20,7 +22,39 @@ class Modifier:
         self._structure = deepcopy(structure)
 
     def _execute_modification(self, residue: Residue, modification: Modification) -> ModificationReport:
-        pass
+        report = ModificationReport()
+
+        # change name of target (three-letter abbreviation only!)
+        residue.resname = modification.target_abbreviation
+
+        # delete atoms, if specified
+        if len(modification.atom_deletions) > 0:
+            for deletion in modification.atom_deletions:
+                if deletion.name in residue:
+                    residue.detach_child(deletion.name)
+                    report.atoms_deleted += 1
+
+        # rename atoms, if specified
+        # note: do not forget to update the element-type in case this is required
+        if len(modification.atom_replacements) > 0:
+            for replacement in modification.atom_replacements:
+                if replacement.name in residue:
+                    # create a new atom to properly update parent dictionary
+                    oldAtom = residue[replacement.name]
+                    repAtom = Atom(name=replacement.by,
+                                   coord=oldAtom.coord,
+                                   bfactor=oldAtom.bfactor,
+                                   occupancy=oldAtom.occupancy,
+                                   altloc=oldAtom.altloc,
+                                   fullname=replacement.by.center(4, ' '),
+                                   serial_number=oldAtom.serial_number,
+                                   element=oldAtom.element if replacement.new_eletype is None else replacement.new_eletype)
+                    residue.detach_child(replacement.name)
+                    residue.add(repAtom)
+                    report.atoms_renamed += 1
+
+        # if specified, obtain an internal, relative coordinate system
+        # TODO: add atom additions
 
     def apply_modification(self, chain_identifier: str, residue_number: int,
                            target_abbreviation=None, modification_name=None) -> ModificationReport:
