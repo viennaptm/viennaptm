@@ -4,8 +4,10 @@ from IOclasses.iomodlibrary import IOModLibrary
 from Bio.PDB.Residue import Residue
 from Bio.PDB.Atom import Atom
 from Bio.PDB.Structure import Structure
+from Bio.PDB.vectors import Vector
 from modification.modification import Modification
 from modification.modification_report import ModificationReport
+from modification.calculate_atom_positions import AtomPositionCalculator
 
 
 class Modifier:
@@ -53,8 +55,17 @@ class Modifier:
                     residue.add(repAtom)
                     report.atoms_renamed += 1
 
-        # if specified, obtain an internal, relative coordinate system
-        # TODO: add atom additions
+        # if specified, start by obtain an internal, relative coordinate system
+        if len(modification.atom_additions) > 0:
+            AtomPosCalc = AtomPositionCalculator(anchor_coordinates=Vector(*residue[modification.anchor].coord),
+                                                 vector_1=Vector(*(residue[modification.axis1.p2].coord -
+                                                                   residue[modification.axis1.p1].coord)),
+                                                 vector_2=Vector(*(residue[modification.axis2.p2].coord -
+                                                                   residue[modification.axis2.p1].coord)))
+            for addition in modification.atom_additions:
+                if addition.name not in residue:
+                    # TODO: add atom
+                    report.atoms_added += 1
 
     def apply_modification(self, chain_identifier: str, residue_number: int,
                            target_abbreviation=None, modification_name=None) -> ModificationReport:
