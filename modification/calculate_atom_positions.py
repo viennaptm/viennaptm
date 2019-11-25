@@ -60,8 +60,8 @@ class AtomPositionCalculator:
         # initialize output coordinates to be at the anchor location, then move the point along the three relative
         # axes to the final, new position
         updated_coord_arr = deepcopy(self._anchor).get_array()
-        updated_coord_arr = updated_coord_arr + self._axis_1.get_array() * coordinates[0]
-        updated_coord_arr = updated_coord_arr + self._axis_2.get_array() * coordinates[1]
-        updated_coord_arr = updated_coord_arr + self._axis_3.get_array() * coordinates[2]
+        updated_coord_arr = updated_coord_arr + self._axis_1.get_array() * float(coordinates[0])
+        updated_coord_arr = updated_coord_arr + self._axis_2.get_array() * float(coordinates[1])
+        updated_coord_arr = updated_coord_arr + self._axis_3.get_array() * float(coordinates[2])
 
         return updated_coord_arr

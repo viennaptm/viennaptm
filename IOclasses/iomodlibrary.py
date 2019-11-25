@@ -83,10 +83,12 @@ class IOModLibrary:
                 # get the atom replacements
                 atom_replacements = []
                 try:
-                    replacements = modi.getElementsByTagName("")[0]
+                    replacements = modi.getElementsByTagName("replacements")[0].getElementsByTagName("rep")
                     for replacement in replacements:
                         new_eletype = None
-                        if "new_eletype" in replacement.attrib:
+
+                        # accessing attributes that are not present returns an empty string
+                        if replacement.getAttribute("new_eletype") != "":
                             new_eletype = replacement.getAttribute("new_eletype").upper()
                         atom_replacements.append(AtomReplacement(name=replacement.getAttribute("name").upper(),
                                                                  by=replacement.getAttribute("by").upper(),

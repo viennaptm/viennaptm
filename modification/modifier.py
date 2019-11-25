@@ -1,3 +1,4 @@
+import numpy as np
 from copy import deepcopy
 
 from IOclasses.iomodlibrary import IOModLibrary
@@ -22,7 +23,8 @@ class Modifier:
         self._original_structure = structure
         self._structure = deepcopy(structure)
 
-    def _execute_modification(self, residue: Residue, modification: Modification) -> ModificationReport:
+    @staticmethod
+    def _execute_modification(residue: Residue, modification: Modification) -> ModificationReport:
         report = ModificationReport()
 
         # change name of target (three-letter abbreviation only!)
@@ -63,8 +65,19 @@ class Modifier:
                                                           residue[modification.axis2.p1].coord)
             for addition in modification.atom_additions:
                 if addition.name not in residue:
-                    # TODO: add atom
+                    residue.add(Atom(name=addition.name,
+                                     coord=AtomPosCalc.project_coordinates(coordinates=np.array([addition.xcoorr,
+                                                                                                 addition.ycoorr,
+                                                                                                 addition.zcoorr])),
+                                     bfactor=0,
+                                     occupancy=1.0,
+                                     altloc=' ',
+                                     fullname=addition.name.center(4, ' '),
+                                     serial_number=None,
+                                     element=addition.eletype))
                     report.atoms_added += 1
+
+        return report
 
     def apply_modification(self, chain_identifier: str, residue_number: int,
                            target_abbreviation=None, modification_name=None) -> ModificationReport:
@@ -94,18 +107,8 @@ class Modifier:
     def reset_structure(self):
         self._structure = deepcopy(self._original_structure)
 
-    @property
     def get_library(self):
         return self._library
 
-    @get_library.setter
-    def get_library(self, value):
-        raise ValueError("Libraries cannot be changed explicitly after initialization.")
-
-    @property
     def get_structure(self):
         return self._structure
-
-    @get_structure.setter
-    def get_structure(self, value):
-        raise ValueError("Structures cannot be changed explicitly after initialization.")

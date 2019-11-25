@@ -1,7 +1,8 @@
 import os
 import tempfile
 import shutil
-from Bio.PDB import PDBParser, PDBList
+from Bio.PDB.Structure import Structure
+from Bio.PDB import PDBParser, PDBList, PDBIO
 
 
 class IOStructure:
@@ -11,7 +12,7 @@ class IOStructure:
         pass
 
     @staticmethod
-    def from_pdb_file(path):
+    def from_pdb_file(path: str) -> Structure:
         if not isinstance(path, str):
             raise AttributeError("Parameter path required to be a path (as string) to a local PDB file.")
 
@@ -19,7 +20,7 @@ class IOStructure:
         parser = PDBParser()
         return parser.get_structure(id=os.path.basename(path), file=path)
 
-    def from_pdb_db(self, identifier):
+    def from_pdb_db(self, identifier: str) -> Structure:
         if not isinstance(identifier, str) or len(identifier) != 4:
             raise AttributeError("Parameter identifier required to be a string of length four.")
 
@@ -37,3 +38,9 @@ class IOStructure:
         structure = self.from_pdb_file(path=path)
         shutil.rmtree(os.path.dirname(path))
         return structure
+
+    @staticmethod
+    def to_pdb_file(structure: Structure, path: str) -> None:
+        io = PDBIO()
+        io.set_structure(structure)
+        io.save(file=path)

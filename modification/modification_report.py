@@ -11,6 +11,6 @@ class ModificationReport:
                                   atoms_renamed=self.atoms_renamed+other.atoms_renamed)
 
     def __str__(self):
-        return "Atoms added: \t{}\nAtoms deleted: \t{}}\nAtoms renamed: \t{}}".format(self.atoms_added,
-                                                                                      self.atoms_deleted,
-                                                                                      self.atoms_deleted)
+        return "Atoms added: \t{}\nAtoms deleted: \t{}\nAtoms renamed: \t{}".format(self.atoms_added,
+                                                                                    self.atoms_deleted,
+                                                                                    self.atoms_renamed)

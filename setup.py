@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
 setuptools.setup(
        name="viennaptm",
        version="0.0.1",
-       description="Python package to add post-translational modifications to protein structures",
+       description="Python package to add post-translational modifications to protein structures.",
        long_description=long_description,
        long_description_content_type="text/markdown",
        url="http://vienna-ptm.univie.ac.at",
