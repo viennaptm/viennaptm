@@ -1,8 +1,8 @@
 <!-- Description
      This XML file contains a modificatin library that holds the necessary steps
-     to change one (native) amino acid into a post-translationally modified
-     one, including addition and deletion of atoms and other tasks. The database is
-     structured by the "residue" tags, which hold "modification" blocks for each
+     to change one (native) amino acid into a post-translationally modified one,
+     including addition, deletion and renaming of atoms and other tasks. The database
+     is structured by the "residue" tags, which hold "modification" blocks for each
      possible modification. Internally, a relative coordinate system is used which is
      defined by the "anchor" atom and two axes (the third is computed). The order of
      execution is: addition -> renaming -> deletion. Additions hold the coordinates,
@@ -10,12 +10,14 @@
      blocks hold the new residue's name ("target_abbreviation"), the full name of
      the new residue ("target_name", if available) and, for legacy reasons,
      the modification's name ("name", a four letter code). For a "modification" to
-     be valid, at least a "add" or "del" tag is required (the former also requires
+     be valid, at least an "add" or "del" tag is required (the former also requires
      a fully specified relative coordinate system).
 
+     License for this library file: CC BY-NC 4.0 (International)
+
      For any enquiries, please contact christian.margreitter@gmail.com
-     (c) C. Margreitter, D. Petrov, S. Margreitter and B. Zagrovic
-         2019-09-15, Gothenburg (Sweden)
+     (c) C. Margreitter, S. Margreitter and B. Zagrovic
+         2019-11-01, Gothenburg (Sweden)
 -->
 
 <library version="1.0.0" last_update="2019-09-15">
