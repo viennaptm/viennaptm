@@ -3,7 +3,7 @@ import numpy as np
 
 from Bio.PDB.vectors import Vector
 
-from modification.calculate_atom_positions import AtomPositionCalculator
+from viennaptm.modification.calculate_atom_positions import AtomPositionCalculator
 
 
 class Test_AtomPositionCalculator(unittest.TestCase):

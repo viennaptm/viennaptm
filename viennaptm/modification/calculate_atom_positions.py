@@ -1,9 +1,6 @@
 import numpy as np
 from copy import deepcopy
-from Bio.PDB.Residue import Residue
-from Bio.PDB.Atom import Atom
 from Bio.PDB.vectors import Vector
-from modification.modification import Modification
 
 
 class AtomPositionCalculator:

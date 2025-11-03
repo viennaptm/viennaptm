@@ -1,11 +1,11 @@
 import os
 from xml.dom import minidom
 
-from modification.modification import *
-from modification.mod_library import ModLibrary
-from utils.paths import move_directory_up
+from viennaptm.modification.modification import *
+from viennaptm.modification.mod_library import ModLibrary
+from viennaptm.utils.paths import move_directory_up
 
-from utils.enums.io_enums import IOModificationEnum
+from viennaptm.utils.enums.io_enums import IOModificationEnum
 
 
 class IOModLibrary:
