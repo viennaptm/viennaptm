@@ -6,8 +6,8 @@ from Bio.PDB.Residue import Residue
 from Bio.PDB.Atom import Atom
 from Bio.PDB.Structure import Structure
 from viennaptm.modification.modification import Modification
-from viennaptm.modification.modification import ModificationReport
-from viennaptm.modification.modification import AtomPositionCalculator
+from viennaptm.modification.modification_report import ModificationReport
+from viennaptm.modification.calculate_atom_positions import AtomPositionCalculator
 
 
 class Modifier:
