@@ -1,13 +1,13 @@
 import numpy as np
 from copy import deepcopy
 
-from viennaptm.IOclasses.iomodlibrary import IOModLibrary
+from viennaptm.io.modlibrary import IOModLibrary
 from Bio.PDB.Residue import Residue
 from Bio.PDB.Atom import Atom
 from Bio.PDB.Structure import Structure
-from viennaptm.modification.modification import Modification
-from viennaptm.modification.modification_report import ModificationReport
-from viennaptm.modification.calculate_atom_positions import AtomPositionCalculator
+from viennaptm.modification.modification.modification import Modification
+from viennaptm.modification.modification.modification_report import ModificationReport
+from viennaptm.modification.calculation.calculate_atom_positions import AtomPositionCalculator
 
 
 class Modifier:

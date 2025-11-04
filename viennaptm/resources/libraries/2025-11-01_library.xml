@@ -1,5 +1,5 @@
 <!-- Description
-     This XML file contains a modificatin library that holds the necessary steps
+     This XML file contains a modification library that holds the necessary steps
      to change one (native) amino acid into a post-translationally modified one,
      including addition, deletion and renaming of atoms and other tasks. The database
      is structured by the "residue" tags, which hold "modification" blocks for each
@@ -9,7 +9,7 @@
      the atom name, the element type and a temperature factor. The "modification"
      blocks hold the new residue's name ("target_abbreviation"), the full name of
      the new residue ("target_name", if available) and, for legacy reasons,
-     the modification's name ("name", a four letter code). For a "modification" to
+     the modification's name ("name", a four-letter code). For a "modification" to
      be valid, at least an "add" or "del" tag is required (the former also requires
      a fully specified relative coordinate system).
 

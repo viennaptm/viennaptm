@@ -1,9 +1,9 @@
 import unittest
 
-from viennaptm.modification.modifier import Modifier
+from viennaptm.modification.modification.modifier import Modifier
 from tests.file_paths import UNITTEST_PATH_1VII_PDB
 from viennaptm.utils.paths import attach_root_path
-from viennaptm.IOclasses.iostructures import IOStructure
+from viennaptm.io.structures import IOStructure
 
 
 class Test_Modification(unittest.TestCase):

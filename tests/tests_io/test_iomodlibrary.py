@@ -1,6 +1,6 @@
 import unittest
 
-from viennaptm.IOclasses.iomodlibrary import IOModLibrary
+from viennaptm.io.modlibrary import IOModLibrary
 
 
 class Test_IOModLibrary(unittest.TestCase):

@@ -1,4 +1,4 @@
-from viennaptm.modification.modification import Modification
+from viennaptm.modification.modification.modification import Modification
 
 
 class ModLibrary:

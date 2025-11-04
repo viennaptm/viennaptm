@@ -4,7 +4,7 @@ class IOModificationEnum:
 
     # library file attributes
     # ---------
-    INTERNAL_LIBRARY_PATH = "libraries"
+    INTERNAL_LIBRARY_PATH = "resources/libraries"
     INTERNAL_LIBRARY_SUFFIX = "_library.xml"
 
     # library XML format

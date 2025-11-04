@@ -2,7 +2,7 @@ import unittest
 
 from tests.file_paths import UNITTEST_PATH_1VII_PDB
 from viennaptm.utils.paths import attach_root_path
-from viennaptm.IOclasses.iostructures import IOStructure
+from viennaptm.io.structures import IOStructure
 
 
 class Test_IOStructure(unittest.TestCase):

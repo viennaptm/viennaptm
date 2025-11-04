@@ -1,8 +1,8 @@
 import os
 from xml.dom import minidom
 
-from viennaptm.modification.modification import *
-from viennaptm.modification.mod_library import ModLibrary
+from viennaptm.modification.modification.modification import *
+from viennaptm.modification.modification.mod_library import ModLibrary
 from viennaptm.utils.paths import move_directory_up
 
 from viennaptm.utils.enums.io_enums import IOModificationEnum
