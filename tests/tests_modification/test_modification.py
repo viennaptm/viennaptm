@@ -37,12 +37,13 @@ class Test_Modification(unittest.TestCase):
         report = modifier.apply_modification(chain_identifier='A',
                                              residue_number=60,
                                              modification_name="HYDR")
-
         self.assertListEqual([report.atoms_added, report.atoms_deleted, report.atoms_renamed],
                              [2, 0, 1])
         atoms = list(list(modifier.get_structure().get_residues())[19].get_atoms())
         atom_names = [atom.get_name() for atom in atoms]
+
         self.assertListEqual(['N', "CA", 'C', 'O', "CB", "OD1", "ND2", 'H', "HA",
                               "HB2", "HB3", "HD21", "HD22", "CG2", "OG1", "HG1"],
                              atom_names)
         self.assertListEqual(list(atoms[14].get_coord()), [-5.165642997088467, 10.039277956283929, -1.0099377162671168])
+
