@@ -4,7 +4,7 @@ from copy import deepcopy
 from viennaptm.io.modlibrary import IOModLibrary
 from Bio.PDB.Residue import Residue
 from Bio.PDB.Atom import Atom
-from Bio.PDB.Structure import Structure
+from viennaptm.dataclasses.annotatedstructure import AnnotatedStructure
 from viennaptm.modification.modification.modification import Modification
 from viennaptm.modification.modification.modification_report import ModificationReport
 from viennaptm.modification.calculation.calculate_atom_positions import AtomPositionCalculator
@@ -13,7 +13,7 @@ from viennaptm.modification.calculation.calculate_atom_positions import AtomPosi
 class Modifier:
     """Class that actually applies any number of modifications in a modification library to a structure"""
 
-    def __init__(self, structure: Structure, library=None):
+    def __init__(self, structure: AnnotatedStructure, library=None):
         # if no library is specified, load the internal default
         if library is None:
             io_lib = IOModLibrary()
