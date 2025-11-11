@@ -1,3 +1,5 @@
+from dataclasses import dataclass
+
 
 class AtomAddition:
     def __init__(self, name, eletype, xcoorr,
@@ -29,6 +31,7 @@ class Axis:
         self.p2 = p2
 
 
+@dataclass
 class Modification:
     def __init__(self, initial_abbreviation, initial_name, modification_name,
                  target_abbreviation, target_name, anchor,

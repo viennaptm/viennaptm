@@ -1,6 +1,7 @@
 import os
 import shutil
 import tempfile
+import pandas as pd
 
 from Bio.PDB import PDBIO, PDBParser, PDBList
 from Bio.PDB.Structure import Structure
@@ -9,13 +10,19 @@ from viennaptm.modification.modification.modification_report import Modification
 
 class AnnotatedStructure(Structure):
     """The AnnotatedStructure class extends the original structure."""
-    ##TODO modification_history
-    ##TODO more to come
-
 
     def __init__(self, id):
         """Initialize the class."""
         Structure.__init__(self, id)
+        self.modification_log = pd.DataFrame(columns=["residue_number", "chain_identifier",
+                                            "target_abbreviation", "modification_name"])
+        ###TODO add "atoms_added", "atoms_deleted" and "atoms_renamed"
+
+    def add_to_modification_log(self, residue_number: int, chain_identifier: str,
+                                target_abbreviation: str, modification_name: str):
+        self.modification_log.loc[len(self.modification_log)] = [residue_number, chain_identifier,
+                                                                 target_abbreviation, modification_name]
+        ###TODO set modification input to user input
 
     @classmethod
     def from_pdb_db(cls, identifier: str):
@@ -50,6 +57,10 @@ class AnnotatedStructure(Structure):
         io.set_structure(self)
         io.save(file=path)
 
+    @classmethod
     def generate_report(self):   ###TODO?
         report = ModificationReport()
-        return report.__add__(self)
+        df_report = pd.DataFrame(columns=["residue_number", "chain_identifier",
+                                          "target_abbreviation", "modification_name",
+                                          "atoms_added", "atoms_deleted", "atoms_renamed"])
+        return df_report
