@@ -76,11 +76,13 @@ class Modifier:
                                      serial_number=None,
                                      element=addition.eletype))
                     report.atoms_added += 1
-
         return report
 
     def apply_modification(self, chain_identifier: str, residue_number: int,
-                           target_abbreviation=None, modification_name=None) -> ModificationReport:
+                           target_abbreviation=None, modification_name=None,
+                           atoms_added=None,
+                           atoms_deleted=None,
+                           atoms_renamed=None) -> ModificationReport:
 
         # get residue from structure
         # note: this assumes that chain IDs are unique over all models
@@ -102,7 +104,15 @@ class Modifier:
                                                       modification_name=modification_name)
 
         # apply the modification
-        return self._execute_modification(residue=residue, modification=modification)
+        report = self._execute_modification(residue=residue, modification=modification)
+        self._structure.add_to_modification_log(residue_number=residue_number,
+                                                chain_identifier=chain_identifier,
+                                                modification_name=modification_name,
+                                                target_abbreviation=target_abbreviation,
+                                                atoms_added=atoms_added,
+                                                atoms_deleted=atoms_deleted,
+                                                atoms_renamed=atoms_renamed)
+        return report
 
     def reset_structure(self):
         self._structure = deepcopy(self._original_structure)

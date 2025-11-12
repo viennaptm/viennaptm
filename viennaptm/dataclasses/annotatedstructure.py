@@ -14,15 +14,32 @@ class AnnotatedStructure(Structure):
     def __init__(self, id):
         """Initialize the class."""
         Structure.__init__(self, id)
-        self.modification_log = pd.DataFrame(columns=["residue_number", "chain_identifier",
-                                            "target_abbreviation", "modification_name"])
+        self._init_calls()
         ###TODO add "atoms_added", "atoms_deleted" and "atoms_renamed"
 
+    def _init_calls(self):
+        self.modification_log = pd.DataFrame(columns=["residue_number", "chain_identifier",
+                                                      "target_abbreviation", "modification_name",
+                                                      "atoms_added", "atoms_deleted", "atoms_renamed"])
+
     def add_to_modification_log(self, residue_number: int, chain_identifier: str,
-                                target_abbreviation: str, modification_name: str):
+                                target_abbreviation: str, modification_name: str,
+                                atoms_added: int, atoms_deleted: int, atoms_renamed: int):
         self.modification_log.loc[len(self.modification_log)] = [residue_number, chain_identifier,
-                                                                 target_abbreviation, modification_name]
+                                                                 target_abbreviation, modification_name,
+                                                                 atoms_added, atoms_deleted, atoms_renamed]
         ###TODO set modification input to user input
+
+    def get_log(self) -> pd.DataFrame:
+        return self.modification_log
+
+    def print_log(self):
+        print(self.modification_log)
+
+    def delete_log_entry(self, residue_number: int, chain_identifier: str,):
+        self.modification_log.drop(self.modification_log[(self.modification_log["residue_number"] == residue_number)&
+                                                         (self.modification_log["chain_identifier"] == chain_identifier)].index,
+                                    inplace=True)
 
     @classmethod
     def from_pdb_db(cls, identifier: str):
@@ -56,11 +73,3 @@ class AnnotatedStructure(Structure):
         io = PDBIO()
         io.set_structure(self)
         io.save(file=path)
-
-    @classmethod
-    def generate_report(self):   ###TODO?
-        report = ModificationReport()
-        df_report = pd.DataFrame(columns=["residue_number", "chain_identifier",
-                                          "target_abbreviation", "modification_name",
-                                          "atoms_added", "atoms_deleted", "atoms_renamed"])
-        return df_report

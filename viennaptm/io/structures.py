@@ -18,7 +18,12 @@ class IOStructure:
 
         # load the file and return structure
         parser = PDBParser()
-        return parser.get_structure(id=os.path.basename(path), file=path)
+        structure = parser.get_structure(id=os.path.basename(path), file=path)
+
+        # Caution: __init__() of AnnotatedStructure is not executed! Manually add attributes!
+        structure.__class__ = AnnotatedStructure
+        structure._init_calls()
+        return structure
 
     def from_pdb_db(self, identifier: str) -> AnnotatedStructure:
         if not isinstance(identifier, str) or len(identifier) != 4:
