@@ -1,7 +1,6 @@
 import unittest
-from unittest.mock import inplace
-
-import pandas as pd
+from io import StringIO
+import sys
 from viennaptm.dataclasses.annotatedstructure import AnnotatedStructure
 
 
@@ -46,3 +45,18 @@ class TestModificationLog(unittest.TestCase):
                                                                     (self.annotated_structure.modification_log['chain_identifier'] == "A")]
         self.assertTrue(deleted_row.empty)
         self.assertFalse(not_deleted_row.empty)
+
+    def test_printing(self):
+        # Make StringIO
+        temp_out = StringIO()
+
+        # Redirect stdout
+        sys.stdout = temp_out
+
+        # Call function
+        self.annotated_structure.print_log()
+
+        # Reset redirect
+        sys.stdout = sys.__stdout__
+
+        self.assertIn("residue_number", temp_out.getvalue())

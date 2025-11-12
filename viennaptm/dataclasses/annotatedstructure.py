@@ -34,6 +34,16 @@ class AnnotatedStructure(Structure):
         return self.modification_log
 
     def print_log(self):
+        # settings allow printing of long and wide dataframes
+        pd.set_option('display.width', 1000)
+        pd.set_option('display.max_columns', 1000)
+
+        # removes index
+        blankIndex = [''] * len(self.modification_log)
+        self.modification_log.index = blankIndex
+
+        # adds a line for better visibility
+        print('\n')
         print(self.modification_log)
 
     def delete_log_entry(self, residue_number: int, chain_identifier: str,):
