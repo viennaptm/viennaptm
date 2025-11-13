@@ -5,7 +5,6 @@ import pandas as pd
 
 from Bio.PDB import PDBIO, PDBParser, PDBList
 from Bio.PDB.Structure import Structure
-from viennaptm.modification.modification.modification_report import ModificationReport
 
 
 class AnnotatedStructure(Structure):
@@ -77,9 +76,17 @@ class AnnotatedStructure(Structure):
 
         # load the file and return structure
         parser = PDBParser()
-        return parser.get_structure(id=os.path.basename(path), file=path)
+        structure = parser.get_structure(id=os.path.basename(path), file=path)
+
+        # caution: __init__() of AnnotatedStructure is not executed! Manually add attributes!
+        structure.__class__ = AnnotatedStructure
+        structure._init_calls()
+        return structure
 
     def to_pdb(self, path: str) -> None:
         io = PDBIO()
         io.set_structure(self)
         io.save(file=path)
+
+
+

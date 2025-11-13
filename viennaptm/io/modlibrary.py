@@ -74,7 +74,8 @@ class IOModLibrary:
                                                 atom_deletions=atom_deletions,
                                                 atom_replacements=atom_replacements)
                 libObj.add_modification(new_modification)
-
+                
+        print(type(libObj))
         return libObj
 
     def _get_atom_additions(self, modification: minidom.Element) -> list:

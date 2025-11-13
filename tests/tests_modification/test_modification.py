@@ -1,20 +1,20 @@
 import unittest
 
+from viennaptm.dataclasses.annotatedstructure import AnnotatedStructure
 from viennaptm.modification.modification.modifier import Modifier
 from tests.file_paths import UNITTEST_PATH_1VII_PDB
 from viennaptm.utils.paths import attach_root_path
-from viennaptm.io.structures import IOStructure
 
 
 class Test_Modification(unittest.TestCase):
 
     def setUp(self):
-        self._struc_io = IOStructure()
+        self._struc_io = AnnotatedStructure("dd")
         self._1vii_PDB_path = attach_root_path(UNITTEST_PATH_1VII_PDB)
 
     def test_apply_modifications(self):
         # load internal PDB file
-        structure = self._struc_io.from_pdb_file(path=self._1vii_PDB_path)
+        structure = self._struc_io.from_pdb(path=self._1vii_PDB_path)
 
         # initialize modifier with most recent internal modification database
         modifier = Modifier(structure=structure)
