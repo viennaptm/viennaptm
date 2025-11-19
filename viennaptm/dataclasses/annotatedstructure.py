@@ -1,11 +1,19 @@
+import logging
 import os
 import shutil
 import tempfile
+from pathlib import Path
+from typing import Union
+
 import pandas as pd
 
 from Bio.PDB import PDBIO, PDBParser, PDBList
 from Bio.PDB.Structure import Structure
 
+from viennaptm.utils.error_handling import raise_with_logging_error
+from viennaptm.utils.files import log_writeout
+
+logger = logging.getLogger(__name__)
 
 class AnnotatedStructure(Structure):
     """The AnnotatedStructure class extends the original structure."""
@@ -41,6 +49,7 @@ class AnnotatedStructure(Structure):
         blankIndex = [''] * len(self.modification_log)
         self.modification_log.index = blankIndex
 
+        ### TODO
         # adds a line for better visibility
         print('\n')
         print(self.modification_log)
@@ -53,16 +62,22 @@ class AnnotatedStructure(Structure):
     @classmethod
     def from_pdb_db(cls, identifier: str):
         if not isinstance(identifier, str) or len(identifier) != 4:
-            raise AttributeError("Parameter identifier required to be a string of length four.")
+            raise_with_logging_error("Parameter identifier required to be a string of length four.",
+                                    logger=logger,
+                                    exception_type=AttributeError)
 
         # download the file; store it in a local copy (to provide identical results to "from_pdb_file()"
         downloader = PDBList()
         tmp_folder = tempfile.mkdtemp()
         path = downloader.retrieve_pdb_file(pdb_code=identifier, pdir=tmp_folder, file_format="pdb")
+        logger.debug(f"Wrote temporary PDB file: {path}")
 
         # check whether file exists (success) or not
         if not os.path.isfile(path):
-            raise Exception("Could not retrieve PDB file with identifier specified.")
+            raise_with_logging_error(f"Structure with identifier {identifier} (attempted path: {path}) "
+                                     f"could not be retrieved.",
+                                     logger=logger,
+                                     exception_type=FileExistsError)
 
         # load the file, clean it up and return structure
         annotated_structure = cls.from_pdb(path=path)
@@ -70,9 +85,12 @@ class AnnotatedStructure(Structure):
         return annotated_structure
 
     @classmethod
-    def from_pdb(cls, path: str):
-        if not isinstance(path, str):
-            raise AttributeError("Parameter path required to be a path (as string) to a local PDB file.")
+    def from_pdb(cls, path: Union[str, Path]):
+        if not isinstance(path, str) and not isinstance(path, Path):
+            raise_with_logging_error(f"Parameter path (attempted path: {path}) required to be a path "
+                                     f"(as string or Path object) to a local PDB file.",
+                                     logger=logger,
+                                     exception_type=TypeError)
 
         # load the file and return structure
         parser = PDBParser()
@@ -87,6 +105,4 @@ class AnnotatedStructure(Structure):
         io = PDBIO()
         io.set_structure(self)
         io.save(file=path)
-
-
-
+        log_writeout(logger=logger, path=path)

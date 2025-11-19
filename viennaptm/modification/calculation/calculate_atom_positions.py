@@ -1,7 +1,11 @@
 import numpy as np
+import logging
 from copy import deepcopy
 from Bio.PDB.vectors import Vector
 
+from viennaptm.utils.error_handling import raise_with_logging_error
+
+logger = logging.getLogger(__name__)
 
 class AtomPositionCalculator:
     """Class to obtain a relative coordinate system and map new atoms to this system accoding to specifications.
@@ -10,7 +14,9 @@ class AtomPositionCalculator:
     def __init__(self, anchor_coordinates: np.array, vector_1: np.array, vector_2: np.array):
         # check input consistency
         if len(anchor_coordinates) != 3 or len(vector_1) != 3 or len(vector_2) != 3:
-            raise ValueError("This class requires three 3-element numpy arrays as input for the constructor.")
+            raise_with_logging_error("This class requires three 3-element numpy arrays as input for the constructor.",
+                                     logger=logger,
+                                     exception_type=ValueError)
 
         # extract anchor point which will lie at the origin (0, 0, 0) of the relative coordinate system
         self._anchor = Vector(*anchor_coordinates)
@@ -45,6 +51,9 @@ class AtomPositionCalculator:
         # calculate the third vector, defining the axis orthogonal to the plane
         axis_3 = self._get_orthogonal_vector_to_plane(axis_1=axis_1,
                                                       axis_2=axis_2).normalized()
+        logger.debug(f"Axis 1: {axis_1.get_array()}")
+        logger.debug(f"Axis 2: {axis_2.get_array()}")
+        logger.debug(f"Axis 3: {axis_3.get_array()}")
         return axis_1, axis_2, axis_3
 
     def get_anchor_coordinates(self) -> np.array:

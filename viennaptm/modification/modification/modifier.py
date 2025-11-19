@@ -1,4 +1,5 @@
 import numpy as np
+import logging
 from copy import deepcopy
 
 from viennaptm.io.modlibrary import IOModLibrary
@@ -8,7 +9,9 @@ from viennaptm.dataclasses.annotatedstructure import AnnotatedStructure
 from viennaptm.modification.modification.modification import Modification
 from viennaptm.modification.modification.modification_report import ModificationReport
 from viennaptm.modification.calculation.calculate_atom_positions import AtomPositionCalculator
+from viennaptm.utils.error_handling import raise_with_logging_error
 
+logger = logging.getLogger(__name__)
 
 class Modifier:
     """Class that actually applies any number of modifications in a modification library to a structure"""
@@ -79,7 +82,8 @@ class Modifier:
         return report
 
     def apply_modification(self, chain_identifier: str, residue_number: int,
-                           target_abbreviation=None, modification_name=None,
+                           target_abbreviation=None,
+                           modification_name=None,
                            atoms_added=None,
                            atoms_deleted=None,
                            atoms_renamed=None) -> ModificationReport:
@@ -96,7 +100,9 @@ class Modifier:
                 residue = cur_residue
                 break
         if residue is None:
-            raise Exception("Could not find specified residue in specified chain.")
+            raise_with_logging_error("Could not find specified residue in specified chain.",
+                                    logger=logger,
+                                    exception_type=ValueError)
 
         # try to get modification from library
         modification = self._library.get_modification(initial_abbreviation=residue.get_resname(),

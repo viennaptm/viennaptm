@@ -1,3 +1,8 @@
+import logging
+
+from viennaptm.utils.error_handling import raise_with_logging_error, raise_with_logging_warning
+
+logger = logging.getLogger(__name__)
 
 class IOModificationEnum:
     """Class to store all modification library strings."""
@@ -53,7 +58,11 @@ class IOModificationEnum:
     def __getattr__(self, name):
         if name in self:
             return name
-        raise AttributeError("This attribute is unknown..")
+        raise_with_logging_error(f"Attribute {name} is unknown.",
+                                 logger=logger,
+                                 exception_type=AttributeError)
 
     def __setattr__(self, name, value):
-        raise Exception("Do not attempt to set attributes for this class.")
+        raise_with_logging_warning("Do not attempt to set attributes for this class.",
+                                   logger=logger,
+                                   exception_type=Exception)

@@ -1,26 +1,42 @@
 import os
+import logging
 from xml.dom import minidom
 
 from viennaptm.modification.modification.modification import *
 from viennaptm.modification.modification.mod_library import ModLibrary
+from viennaptm.utils.error_handling import raise_with_logging_error
 from viennaptm.utils.paths import move_directory_up
 
 from viennaptm.utils.enums.io_enums import IOModificationEnum
 
+logger = logging.getLogger(__name__)
 
 class IOModLibrary:
     """Input / output class for modification XML libraries"""
+
+    # Note: Not all modifications have all actions (add, remove, rename, ...), so attempted retrieval
+    #       will result in IndexErrors, which can be safely ignored.
+
     def __init__(self):
         self._IM = IOModificationEnum()
 
     def load_database(self, path=None):
         """Function loads an input XML file and creates and returns modification entries in a library collection."""
-        # load the latest internal library, if none has been specified explicitly
+
+        # Fallback mechanic: Load the latest internal library, if none has been specified explicitly
         if path is None:
             path = os.path.join(move_directory_up(__file__), self._IM.INTERNAL_LIBRARY_PATH)
             files = os.listdir(path)
             files = {x for x in files if x.endswith(self._IM.INTERNAL_LIBRARY_SUFFIX)}
             path = os.path.join(path, sorted(files, reverse=True)[0])
+
+            # check whether internal library exists (success) or not
+            if not os.path.isfile(path):
+                raise_with_logging_error(f"As no library has been specified by user "
+                                         f"the latest internal library (from path: {path}) was attempted to be loaded "
+                                         f"but failed.",
+                                         logger=logger,
+                                         exception_type=FileNotFoundError)
 
         # load the XML and initialize the modification library
         xml_lib = minidom.parse(path).getElementsByTagName(self._IM.LIBRARY)[0]
@@ -74,8 +90,7 @@ class IOModLibrary:
                                                 atom_deletions=atom_deletions,
                                                 atom_replacements=atom_replacements)
                 libObj.add_modification(new_modification)
-                
-        print(type(libObj))
+
         return libObj
 
     def _get_atom_additions(self, modification: minidom.Element) -> list:
