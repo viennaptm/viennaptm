@@ -10,8 +10,13 @@ setuptools.setup(
        url="http://vienna-ptm.univie.ac.at",
        author="Christian Margreitter, Sophie Margreitter and Bojan Zagrovic",
        author_email="christian.margreitter@gmail.com",
+       entry_points={
+           "console_scripts": [
+               "viennaptm = viennaptm.entrypoints.modifier:main"
+                ]
+       },
        packages=setuptools.find_packages(),
-           classifiers=[
+       classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: Apache-2.0",
         "Operating System :: OS Independent"
