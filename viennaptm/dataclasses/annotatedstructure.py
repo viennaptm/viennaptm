@@ -15,6 +15,7 @@ from viennaptm.utils.files import log_writeout
 
 logger = logging.getLogger(__name__)
 
+
 class AnnotatedStructure(Structure):
     """The AnnotatedStructure class extends the original structure."""
 

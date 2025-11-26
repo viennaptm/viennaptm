@@ -1,9 +1,14 @@
+import logging
 import unittest
+import os
 
 from viennaptm.dataclasses.annotatedstructure import AnnotatedStructure
 from viennaptm.modification.modification.modifier import Modifier
-from tests.file_paths import UNITTEST_PATH_1VII_PDB
+from tests.file_paths import UNITTEST_PATH_1VII_PDB, UNITTEST_JUNK_FOLDER
 from viennaptm.utils.paths import attach_root_path
+from pathlib import Path
+
+logger = logging.getLogger(__name__)
 
 
 class Test_Modification(unittest.TestCase):
@@ -11,6 +16,7 @@ class Test_Modification(unittest.TestCase):
     def setUp(self):
         self._struc_io = AnnotatedStructure("dd")
         self._1vii_PDB_path = attach_root_path(UNITTEST_PATH_1VII_PDB)
+        Path(attach_root_path(UNITTEST_JUNK_FOLDER)).mkdir(parents=True, exist_ok=True)
 
     def test_apply_modifications(self):
         # load internal PDB file
@@ -46,4 +52,21 @@ class Test_Modification(unittest.TestCase):
                               "HB2", "HB3", "HD21", "HD22", "CG2", "OG1", "HG1"],
                              atom_names)
         self.assertListEqual(list(atoms[14].get_coord()), [-5.165642997088467, 10.039277956283929, -1.0099377162671168])
+
+    def test_to_pdb(self):
+        # Creates temporary path
+        temp_pdb_path = os.path.join(attach_root_path(UNITTEST_JUNK_FOLDER), "to_pdb_unittest.pdb")
+
+        # Check if file exists, if so, delete it
+        if os.path.exists(temp_pdb_path):
+            os.remove(temp_pdb_path)
+
+        # Generates a structure of class AnnotatedStructure
+        structure = self._struc_io.from_pdb(path=self._1vii_PDB_path)
+
+        # Write structure to temporary path
+        structure.to_pdb(path=temp_pdb_path)
+
+        self.assertTrue(os.path.exists(temp_pdb_path))
+        self.assertGreater(os.path.getsize(temp_pdb_path), 30000)
 
