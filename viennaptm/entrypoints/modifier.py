@@ -34,7 +34,7 @@ logger = logging.getLogger(__name__)
 
 # pydantic model
 class ModifierParameters(BaseModel):
-    input_pdb: Union[Path, str]
+    input: Union[Path, str]
     modification: Union[list[str], str]
     output_pdb: Optional[Union[Path, str]] = "output.pdb"
 
@@ -59,6 +59,19 @@ class ModifierParameters(BaseModel):
             input_modification = [input_modification]
         return input_modification
 
+    @field_validator("input", mode="after")
+    @classmethod
+    def validate_file_input(cls, inp: Union[Path, str]):
+        if isinstance(inp, str):
+            if inp.lower()[-4:] == ".pdb":
+                # If input ends with ".pdb" assume it is a path
+                inp = Path(inp)
+            else:
+                # Assume that string is database identifier
+                if len(inp) != 4:
+                    raise ValueError(f"Database identifier are exactly 4 characters long. Input {inp} does not conform.")
+        return inp
+
 
 def main():
     raw_kwargs = collect_kwargs(sys.argv)
@@ -72,34 +85,42 @@ def main():
         setup_console_logging()
 
     # load internal PDB file
-    # TODO: Support loading PDB from database
-    # TODO: Add proper AnnotatedStructure ID if loaded from file (not "dd")
-    structure = AnnotatedStructure("dd").from_pdb(path=cfg.input_pdb)
+    if isinstance(cfg.input, Path):
+        structure = AnnotatedStructure.from_pdb(path=cfg.input)
+    else:
+        structure = AnnotatedStructure.from_pdb_db(identifier=cfg.input)
 
     # initialize modifier with most recent internal modification database
     modifier = Modifier(structure=structure)
 
+
     modlist = cfg.modification
-    for x in modlist:
-        # TODO: Add comments
-        modification = (re.split(":|=", x))
-        # TODO: Error handling
-        # TODO: Improve error message if modification cannot be found in library
+    for mod_input in modlist:
+        modification = (re.split(":|=", mod_input))
+        if not len(modification[0]) == 1:
+            raise ValueError(f"Modification input needs to be a string of format 'A:50=V3H' "
+                             f"with the chain identifier being a string of length 1.")
+
+        # check, whether the second string element (residue number) can be cast to an integer
+        _ = int(modification[1])
+
+        if not len(modification[2]) == 3:
+            raise ValueError(f"Modification input needs to be a string of format 'A:50=V3H' "
+                             f"with the target residue abbreviation being a string of length 3.")
 
         # apply a modification
-        report = modifier.apply_modification(chain_identifier=modification[0],
-                                             residue_number=int(modification[1]),
-                                             target_abbreviation=modification[2])
-        # TODO: logging of modification
+        modifier.apply_modification(chain_identifier=modification[0],
+                                    residue_number=int(modification[1]),
+                                    target_abbreviation=modification[2])
+
+        logger.debug(f"Modification with parameters: "
+                     f"chain identifier {modification[0]}, "
+                     f"residue number {modification[1]} and"
+                     f"target abbreviation {modification[2]} has been successfully applied.")
 
     # write modified pdb
-    # TODO: logging
     modifier.get_structure().to_pdb(str(cfg.output_pdb))
-    # TODO: Add unit tests for PDB writing
-
-### TODO delete me:
-    print(cfg.output_pdb)
-    logger.info("testmessage")
+    logger.debug(f"Wrote structure to temporary PDB file: {cfg.output_pdb}")
 
 if __name__ == "__main__":
     main()
