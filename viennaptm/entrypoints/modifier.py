@@ -32,7 +32,7 @@ def setup_console_logging() -> None:
 
 logger = logging.getLogger(__name__)
 
-# pydantic model
+
 class ModifierParameters(BaseModel):
     input: Union[Path, str]
     modification: Union[list[str], str]

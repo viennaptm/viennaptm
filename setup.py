@@ -19,11 +19,12 @@ setuptools.setup(
        install_requires = [
            "pip>=25",
            "setuptools>=60",
-           "pydantic>=2"
+           "pydantic>=2",
+           "pandas",
+           "biopython>=1.8"
        ],
        classifiers=[
            "Programming Language :: Python :: 3",
-           "License :: OSI Approved :: Apache-2.0",
            "Operating System :: OS Independent"
     ]
 )
