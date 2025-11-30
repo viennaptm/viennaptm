@@ -7,8 +7,8 @@ setuptools.setup(
        description="Python package to apply post-translational modifications to protein structures.",
        long_description=long_description,
        long_description_content_type="text/markdown",
-       url="http://vienna-ptm.univie.ac.at",
-       author="Christian Margreitter, Sophie Margreitter and Bojan Zagrovic",
+       url="https://vienna-ptm.univie.ac.at",
+       author="Sophie Margreitter, Drazen Petrov, Christian Margreitter and Bojan Zagrovic",
        author_email="christian.margreitter@gmail.com",
        entry_points={
            "console_scripts": [
@@ -18,7 +18,8 @@ setuptools.setup(
        packages=setuptools.find_packages(),
        install_requires = [
            "pip>=25",
-           "setuptools>=60"
+           "setuptools>=60",
+           "pydantic>=2"
        ],
        classifiers=[
            "Programming Language :: Python :: 3",
