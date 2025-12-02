@@ -14,16 +14,19 @@ logger = logging.getLogger(__name__)
 
 
 class AddBranch(BaseModel):
+    ### TODO create alignment class for anchor and weights
     # atoms that define the overlay, i.e. the orientation
     anchor_atoms: List[str] = Field(default_factory=list)
-
-    # atoms to be added (removal happens via the mapping in atom pairs)
-    add_atoms: List[str] = Field(default_factory=list)
 
     # not all atoms are equally important, hence they may contribute
     # do a varying extent (this needs to be optimized manually for
     # new modifications)
     weights: List[float] = Field(default_factory=list)
+
+    # atoms to be added (removal happens via the mapping in atom pairs)
+    add_atoms: List[str] = Field(default_factory=list)
+
+    model_config = ConfigDict(extra="forbid")
 
     @model_validator(mode="after")
     def check_branch(self):
@@ -41,8 +44,6 @@ class AddBranch(BaseModel):
             logger.warning(f"No weights provided for {len(self.anchor_atoms)} atoms, assuming they are equally important.")
 
         return self
-
-    model_config = ConfigDict(extra="forbid")
 
 
 class Modification(BaseModel):
@@ -64,7 +65,7 @@ class Modification(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
 
-class Modifications(BaseModel):
+class ModificationLibrary(BaseModel):
     modifications: List[Modification] = Field(default_factory=list)
     library_version: str = None
     model_config = ConfigDict(extra="forbid")
