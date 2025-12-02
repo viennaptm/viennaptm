@@ -53,7 +53,7 @@ class Modification(BaseModel):
     # contains a list of the form [('N', 'N'), ...] which maps the original residue's atom names
     # to the modified residue's; if an atom does not exist in one of the end-states, it is set to None
     # for example, atoms that need to be deleted during modification, are marked as None
-    atom_pairs: List[Tuple[Union[str, None], Union[str, None]]] = Field(default_factory=list)
+    atom_mapping: List[Tuple[Union[str, None], Union[str, None]]] = Field(default_factory=list)
 
     # each AddBranch contains information on how to modify _one_ part (or branch) of the original
     # residue into the target, modified PTM; for most modifications, only one branch is needed, but

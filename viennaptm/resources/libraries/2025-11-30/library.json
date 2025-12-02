@@ -1,6 +1,6 @@
 {
     "ARG_GSA": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -98,7 +98,7 @@
         ]
     },
     "ARG_R0P": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -215,7 +215,7 @@
         ]
     },
     "ARG_R1P": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -327,7 +327,7 @@
         ]
     },
     "ARG_RAM": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -427,7 +427,7 @@
         ]
     },
     "ARG_RCI": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -542,7 +542,7 @@
         ]
     },
     "ARG_RMA": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -642,7 +642,7 @@
         ]
     },
     "ARG_RMC": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -739,7 +739,7 @@
         ]
     },
     "ARG_RMN": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -834,7 +834,7 @@
         ]
     },
     "ARG_RMS": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -954,7 +954,7 @@
         ]
     },
     "ARG_RSM": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -1072,7 +1072,7 @@
         ]
     },
     "ASN_ASP": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -1146,7 +1146,7 @@
         ]
     },
     "ASN_ASPH": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -1220,7 +1220,7 @@
         ]
     },
     "ASN_N3H": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -1302,7 +1302,7 @@
         ]
     },
     "ASN_NH3": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -1384,7 +1384,7 @@
         ]
     },
     "ASN_NME": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -1457,7 +1457,7 @@
         ]
     },
     "ASN_NNG": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -1615,7 +1615,7 @@
         ]
     },
     "ASP_D1P": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -1706,7 +1706,7 @@
         ]
     },
     "ASP_D2P": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -1792,7 +1792,7 @@
         ]
     },
     "ASP_D3H": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -1866,7 +1866,7 @@
         ]
     },
     "ASP_D3N": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -1965,7 +1965,7 @@
         ]
     },
     "ASP_DH3": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -2039,7 +2039,7 @@
         ]
     },
     "ASP_DMA": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -2110,7 +2110,7 @@
         ]
     },
     "ASP_DN3": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -2209,7 +2209,7 @@
         ]
     },
     "CYS_CAM": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -2286,7 +2286,7 @@
         ]
     },
     "CYS_CSA": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -2348,7 +2348,7 @@
         ]
     },
     "CYS_CSE": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -2415,7 +2415,7 @@
         ]
     },
     "CYS_CSN": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -2477,7 +2477,7 @@
         ]
     },
     "CYS_CYH": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -2539,7 +2539,7 @@
         ]
     },
     "CYS_CYM": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -2596,7 +2596,7 @@
         ]
     },
     "GLN_GLU": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -2674,7 +2674,7 @@
         ]
     },
     "GLN_GLUH": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -2752,7 +2752,7 @@
         ]
     },
     "GLN_Q4H": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -2836,7 +2836,7 @@
         ]
     },
     "GLN_QH4": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -2920,7 +2920,7 @@
         ]
     },
     "GLN_QME": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -2997,7 +2997,7 @@
         ]
     },
     "GLU_ECA": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -3078,7 +3078,7 @@
         ]
     },
     "GLU_ECN": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -3164,7 +3164,7 @@
         ]
     },
     "GLU_EME": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -3239,7 +3239,7 @@
         ]
     },
     "HIS_ASN": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -3335,7 +3335,7 @@
         ]
     },
     "HIS_ASP": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -3421,7 +3421,7 @@
         ]
     },
     "HIS_ASPH": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -3507,7 +3507,7 @@
         ]
     },
     "HIS_H11": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -3616,7 +3616,7 @@
         ]
     },
     "HIS_H12": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -3720,7 +3720,7 @@
         ]
     },
     "HIS_H1C": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -3836,7 +3836,7 @@
         ]
     },
     "HIS_H1M": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -3925,7 +3925,7 @@
         ]
     },
     "HIS_H2X": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -4037,7 +4037,7 @@
         ]
     },
     "HIS_H31": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -4146,7 +4146,7 @@
         ]
     },
     "HIS_H32": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -4250,7 +4250,7 @@
         ]
     },
     "HIS_H3C": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -4339,7 +4339,7 @@
         ]
     },
     "HIS_H3M": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -4428,7 +4428,7 @@
         ]
     },
     "LEU_L3H": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -4502,7 +4502,7 @@
         ]
     },
     "LEU_L4H": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -4575,7 +4575,7 @@
         ]
     },
     "LEU_L5H": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -4643,7 +4643,7 @@
         ]
     },
     "LEU_LH3": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -4717,7 +4717,7 @@
         ]
     },
     "LEU_LH5": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -4785,7 +4785,7 @@
         ]
     },
     "LEU_LNO": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -4846,7 +4846,7 @@
         ]
     },
     "LYS_K1P": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -4945,7 +4945,7 @@
         ]
     },
     "LYS_K2C": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -5029,7 +5029,7 @@
         ]
     },
     "LYS_K2M": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -5111,7 +5111,7 @@
         ]
     },
     "LYS_K2P": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -5205,7 +5205,7 @@
         ]
     },
     "LYS_K3C": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -5292,7 +5292,7 @@
         ]
     },
     "LYS_K5H": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -5378,7 +5378,7 @@
         ]
     },
     "LYS_KAC": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -5467,7 +5467,7 @@
         ]
     },
     "LYS_KAL": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -5549,7 +5549,7 @@
         ]
     },
     "LYS_KAM": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -5648,7 +5648,7 @@
         ]
     },
     "LYS_KCA": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -5737,7 +5737,7 @@
         ]
     },
     "LYS_KCN": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -5831,7 +5831,7 @@
         ]
     },
     "LYS_KH5": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -5917,7 +5917,7 @@
         ]
     },
     "LYS_KHP": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -6003,7 +6003,7 @@
         ]
     },
     "LYS_KHR": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -6129,7 +6129,7 @@
         ]
     },
     "LYS_KHS": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -6255,7 +6255,7 @@
         ]
     },
     "LYS_KLA": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -6404,7 +6404,7 @@
         ]
     },
     "LYS_KLB": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -6553,7 +6553,7 @@
         ]
     },
     "LYS_KMC": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -6634,7 +6634,7 @@
         ]
     },
     "LYS_KMN": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -6713,7 +6713,7 @@
         ]
     },
     "LYS_KPH": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -6799,7 +6799,7 @@
         ]
     },
     "LYS_LNO": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -6856,7 +6856,7 @@
         "add_branches": []
     },
     "MET_LNO": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -6922,7 +6922,7 @@
         ]
     },
     "MET_MES": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -6990,7 +6990,7 @@
         ]
     },
     "MET_MSX": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -7056,7 +7056,7 @@
         ]
     },
     "MET_MXS": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -7122,7 +7122,7 @@
         ]
     },
     "PHE_F23": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -7256,7 +7256,7 @@
         ]
     },
     "PHE_F2H": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -7362,7 +7362,7 @@
         ]
     },
     "PHE_F3H": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -7468,7 +7468,7 @@
         ]
     },
     "PHE_TYR": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -7574,7 +7574,7 @@
         ]
     },
     "PRO_GSA": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "C",
                 "C"
@@ -7678,7 +7678,7 @@
         ]
     },
     "PRO_HY2": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -7740,7 +7740,7 @@
         ]
     },
     "PRO_HYP": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -7802,7 +7802,7 @@
         ]
     },
     "PRO_P3H": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -7866,7 +7866,7 @@
         ]
     },
     "PRO_P5H": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -7930,7 +7930,7 @@
         ]
     },
     "PRO_PGA": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -8023,7 +8023,7 @@
         ]
     },
     "PRO_PH3": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -8087,7 +8087,7 @@
         ]
     },
     "PRO_PH5": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -8151,7 +8151,7 @@
         ]
     },
     "PRO_PHH": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -8243,7 +8243,7 @@
         ]
     },
     "SER_S1P": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -8320,7 +8320,7 @@
         ]
     },
     "SER_S2P": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -8392,7 +8392,7 @@
         ]
     },
     "SER_SDH": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -8457,7 +8457,7 @@
         ]
     },
     "SER_SOG": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -8599,7 +8599,7 @@
         ]
     },
     "THR_T1P": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -8682,7 +8682,7 @@
         ]
     },
     "THR_T2P": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -8760,7 +8760,7 @@
         ]
     },
     "THR_TDH": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -8834,7 +8834,7 @@
         ]
     },
     "THR_TOG": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -8982,7 +8982,7 @@
         ]
     },
     "THR_TOX": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -9047,7 +9047,7 @@
         ]
     },
     "TRP_W2H": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -9169,7 +9169,7 @@
         ]
     },
     "TRP_W4H": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -9291,7 +9291,7 @@
         ]
     },
     "TRP_W5H": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -9413,7 +9413,7 @@
         ]
     },
     "TRP_W6H": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -9535,7 +9535,7 @@
         ]
     },
     "TRP_W7H": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -9657,7 +9657,7 @@
         ]
     },
     "TRP_WBR": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -9774,7 +9774,7 @@
         ]
     },
     "TRP_WKF": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -9958,7 +9958,7 @@
         ]
     },
     "TRP_WKH": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -10137,7 +10137,7 @@
         ]
     },
     "TRP_WKY": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -10311,7 +10311,7 @@
         ]
     },
     "TRP_WNI": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -10438,7 +10438,7 @@
         ]
     },
     "TYR_HTY": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -10548,7 +10548,7 @@
         ]
     },
     "TYR_Y1P": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -10667,7 +10667,7 @@
         ]
     },
     "TYR_Y2P": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -10781,7 +10781,7 @@
         ]
     },
     "TYR_YCH": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -10886,7 +10886,7 @@
         ]
     },
     "TYR_YNB": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -11001,7 +11001,7 @@
         ]
     },
     "TYR_YNI": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -11116,7 +11116,7 @@
         ]
     },
     "TYR_YNN": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -11231,7 +11231,7 @@
         ]
     },
     "TYR_YSU": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"
@@ -11345,7 +11345,7 @@
         ]
     },
     "VAL_V3H": {
-        "atom_pairs": [
+        "atom_mapping": [
             [
                 "N",
                 "N"

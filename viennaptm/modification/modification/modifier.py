@@ -2,7 +2,6 @@ import numpy as np
 import logging
 from copy import deepcopy
 
-from viennaptm.io.modlibrary import IOModLibrary
 from Bio.PDB.Residue import Residue
 from Bio.PDB.Atom import Atom
 from viennaptm.dataclasses.annotatedstructure import AnnotatedStructure
@@ -114,10 +113,7 @@ class Modifier:
         self._structure.add_to_modification_log(residue_number=residue_number,
                                                 chain_identifier=chain_identifier,
                                                 modification_name=modification_name,
-                                                target_abbreviation=target_abbreviation,
-                                                atoms_added=atoms_added,
-                                                atoms_deleted=atoms_deleted,
-                                                atoms_renamed=atoms_renamed)
+                                                target_abbreviation=target_abbreviation)
         return report
 
     def reset_structure(self):

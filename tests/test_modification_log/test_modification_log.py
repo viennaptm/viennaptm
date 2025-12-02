@@ -8,10 +8,9 @@ class TestModificationLog(unittest.TestCase):
 
     def setUp(self):
         self.annotated_structure = AnnotatedStructure("jj")
-        self.modification = [60, "A", "V3H", "mod_name", 0, 0, 0]
+        self.modification = [60, "A", "V3H", "mod_name"]
         self.columns = ["residue_number", "chain_identifier",
-                        "target_abbreviation", "modification_name",
-                        "atoms_added", "atoms_deleted", "atoms_renamed"]
+                        "target_abbreviation", "modification_name"]
 
         # adds modifications, df has now 1 row
         self.annotated_structure.add_to_modification_log(*self.modification)
@@ -26,8 +25,8 @@ class TestModificationLog(unittest.TestCase):
         self.assertTrue(set(self.annotated_structure.modification_log.values[-1].tolist()) == set(self.modification))
 
     def test_if_row_is_deleted(self):
-        modification2 = [50, "A", "V3H", "mod_name", 0, 0, 0]
-        modification3 = [50, "B", "V3H", "mod_name", 0, 0, 0]
+        modification2 = [50, "A", "V3H", "mod_name"]
+        modification3 = [50, "B", "V3H", "mod_name"]
 
         # adds more modifications, df has now 3 rows
         self.annotated_structure.add_to_modification_log(*modification2)
