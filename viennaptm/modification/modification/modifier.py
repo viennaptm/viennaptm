@@ -55,24 +55,37 @@ class Modifier(BaseModel):
         # note: this assumes, that for all modifications a template PDB exists
         original_residue_abbreviation = residue.get_resname()
         modification = self._library[original_residue_abbreviation, target_abbreviation]
-        target_residue = self._library.load_template_residue(target_abbreviation)
+        target_residue = self._library.load_residue_from_pdb(target_abbreviation)
 
         # apply the modification (changes to the respective residue are saved, since it is mutable) and log it
-        self._execute(residue=residue,
-                      modification=modification,
-                      target_residue=target_residue)
+        self._execute_modification(residue=residue,
+                                   modification=modification,
+                                   template_residue=target_residue)
         structure.add_to_modification_log(residue_number=residue_number,
                                           chain_identifier=chain_identifier,
+                                          original_abbreviation=original_residue_abbreviation,
                                           target_abbreviation=target_abbreviation)
         return structure
 
     @staticmethod
     def _execute_modification(residue: Residue,
                               modification: Modification,
-                              target_residue: Residue):
+                              template_residue: Residue):
         for branch in modification.add_branches:
+            # atoms names may change from the original to the modified residue; therefore, we use
+            # the atom mapping to get the anchor lists for both with the right atom
+            # identity (irrespective of name); for example, in VAL->V3H the template residue's anchor atoms
+            # ['CB', 'CA', 'CG1', 'C', 'N'] map to ['CB', 'CA', 'CG2', 'C', 'N'] in the original residue
+            _mapping = {temp: ori for ori, temp in modification.atom_mapping}
+            anchor_atoms_in_original_residue = [_mapping[x] for x in branch.anchor_atoms]
+            logger.debug(f"Anchor atoms used for {residue.get_resname()}->{template_residue.get_resname()}: {anchor_atoms_in_original_residue} and {branch.anchor_atoms}")
 
-        # extract atom positions for mapped atoms
+            # extract Atoms for anchor atoms in both original residue and template
+            # the following ensures that the order of atoms is identical in both lists
+            original_anchor_atoms = [residue[name] for name in anchor_atoms_in_original_residue]
+            template_anchor_atoms = [template_residue[name] for name in branch.anchor_atoms]
+
+
 
 
     """"@staticmethod

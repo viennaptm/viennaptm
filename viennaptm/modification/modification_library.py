@@ -125,13 +125,13 @@ class ModificationLibrary(BaseModel):
         raise IndexError(f"Index {index} is out of range.")
 
     def load_residue_from_pdb(self, target_abbreviation: str) -> Residue:
-        target_template_path = self._library.target_templates[target_abbreviation]
+        target_template_path = self.target_templates[target_abbreviation]
 
         parser = PDBParser()
         structure = parser.get_structure(id=target_abbreviation, file=target_template_path)
 
         # this assumes, that the template PDB files contain exactly one residue
-        residue = structure.get_residues()[0]
+        residue = next(structure.get_residues())
         if residue.resname != target_abbreviation:
             raise_with_logging_error(f"File {target_template_path} needs to contain exactly one residue entry for {target_abbreviation}, abort.",
                                      logger, ValueError)
