@@ -21,7 +21,8 @@ setuptools.setup(
            "setuptools>=60",
            "pydantic>=2",
            "pandas",
-           "biopython>=1.8"
+           "biopython>=1.8",
+           "scipy"
        ],
        classifiers=[
            "Programming Language :: Python :: 3",

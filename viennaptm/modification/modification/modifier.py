@@ -1,3 +1,5 @@
+from typing import List
+
 import numpy as np
 import logging
 from copy import deepcopy
@@ -7,6 +9,7 @@ from Bio.PDB.Atom import Atom
 from pydantic import BaseModel
 
 from viennaptm.dataclasses.annotatedstructure import AnnotatedStructure
+from viennaptm.modification.calculation.align import compute_alignment_transform, apply_transform
 from viennaptm.modification.modification_library import ModificationLibrary, Modification
 from viennaptm.utils.error_handling import raise_with_logging_error
 
@@ -82,67 +85,29 @@ class Modifier(BaseModel):
 
             # extract Atoms for anchor atoms in both original residue and template
             # the following ensures that the order of atoms is identical in both lists
-            original_anchor_atoms = [residue[name] for name in anchor_atoms_in_original_residue]
-            template_anchor_atoms = [template_residue[name] for name in branch.anchor_atoms]
+            original_anchor_atoms = [residue[atom_name] for atom_name in anchor_atoms_in_original_residue]
+            template_anchor_atoms = [template_residue[atom_name] for atom_name in branch.anchor_atoms]
 
+            # extract the atoms that are to be transferred from the template to the original residue
+            add_atoms = [template_residue[atom_name] for atom_name in branch.add_atoms]
+            coords = Modifier.atoms_to_array(add_atoms)
 
+            # create roto-translational alignment
+            M_rotation, v_translation = compute_alignment_transform(coord_reference=Modifier.atoms_to_array(original_anchor_atoms),
+                                                                    coord_template=Modifier.atoms_to_array(template_anchor_atoms),
+                                                                    weights=np.array(branch.weights))
 
+            # transform atoms to be added
+            coords_aligned = apply_transform(coords=coords,
+                                             M_rotation=M_rotation,
+                                             v_translation=v_translation)
 
-    """"@staticmethod
-    def _execute_modification(residue: Residue, modification: Modification) -> ModificationReport:
-        report = ModificationReport()
+            # TODO: update coordinates
+            # TODO: rename atoms based on atom_mapping (remove those that are mapped to "None" in the updated form)
 
-        # change name of target (three-letter abbreviation only!)
-        residue.resname = modification.target_abbreviation
-
-        # delete atoms, if specified
-        if len(modification.atom_deletions) > 0:
-            for deletion in modification.atom_deletions:
-                if deletion.name in residue:
-                    residue.detach_child(deletion.name)
-                    report.atoms_deleted += 1
-
-        # rename atoms, if specified
-        # note: do not forget to update the element-type in case this is required
-        if len(modification.atom_replacements) > 0:
-            for replacement in modification.atom_replacements:
-                if replacement.name in residue:
-                    # create a new atom to properly update parent dictionary
-                    oldAtom = residue[replacement.name]
-                    repAtom = Atom(name=replacement.by,
-                                   coord=oldAtom.coord,
-                                   bfactor=oldAtom.bfactor,
-                                   occupancy=oldAtom.occupancy,
-                                   altloc=oldAtom.altloc,
-                                   fullname=replacement.by.center(4, ' '),
-                                   serial_number=oldAtom.serial_number,
-                                   element=oldAtom.element if replacement.new_eletype is None else replacement.new_eletype)
-                    residue.detach_child(replacement.name)
-                    residue.add(repAtom)
-                    report.atoms_renamed += 1
-
-        # if specified, start by obtain an internal, relative coordinate system
-        if len(modification.atom_additions) > 0:
-            AtomPosCalc = AtomPositionCalculator(anchor_coordinates=residue[modification.anchor].coord,
-                                                 vector_1=residue[modification.axis1.p2].coord -
-                                                          residue[modification.axis1.p1].coord,
-                                                 vector_2=residue[modification.axis2.p2].coord -
-                                                          residue[modification.axis2.p1].coord)
-            for addition in modification.atom_additions:
-                if addition.name not in residue:
-                    residue.add(Atom(name=addition.name,
-                                     coord=AtomPosCalc.project_coordinates(coordinates=np.array([addition.xcoorr,
-                                                                                                 addition.ycoorr,
-                                                                                                 addition.zcoorr])),
-                                     bfactor=0,
-                                     occupancy=1.0,
-                                     altloc=' ',
-                                     fullname=addition.name.center(4, ' '),
-                                     serial_number=None,
-                                     element=addition.eletype))
-                    report.atoms_added += 1
-        return report
-        """
+    @staticmethod
+    def atoms_to_array(atoms: List[Atom]) -> np.ndarray:
+        return np.array([atom.get_coord() for atom in atoms])
 
     def get_library(self):
         return self._library
