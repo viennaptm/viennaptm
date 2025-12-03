@@ -28,10 +28,12 @@ class AnnotatedStructure(Structure):
 
     def _init_calls(self):
         self.modification_log = pd.DataFrame(columns=["residue_number", "chain_identifier",
-                                                      "target_abbreviation", "modification_name"])
+                                                      "original_abbreviation", "target_abbreviation"])
 
-    def add_to_modification_log(self, residue_number: int, chain_identifier: str,
-                                target_abbreviation: str, modification_name: str):
+    def add_to_modification_log(self, residue_number: int,
+                                chain_identifier: str,
+                                original_abbreviation: str,
+                                target_abbreviation: str):
         """Adds modification of atoms to modification_log.
 
         :param residue_number: A residue number indicates the position of an amino acid in a protein's
@@ -42,19 +44,16 @@ class AnnotatedStructure(Structure):
         :param chain_identifier: Peptide or protein chain ID for instances of chains - commonly 1 capital letter.
         :type chain_identifier: str
         .
-        :param target_abbreviation: A target abbreviation for a canonical protein refers to a standardized
+        :param original_abbreviation: The original abbreviation for a canonical amino acid refers to a standardized
         abbreviation for a standard, representative amino acid in a database like ``UniProt`` eg: ``ASP`` for Aspartic acid
         or ``GLU`` for Glutamic acid.
-        :type target_abbreviation: str
+        :type original_abbreviation: str
         .
-        :param modification_name: Protein modification refers to changes made to proteins after they are synthesized,
-        with common types including glycosylation, phosphorylation, acetylation, ubiquitination, and methylation.
-        These processes, often called post-translational modifications (PTMs), attach functional groups to a
-        protein, altering its function and regulating cellular processes.
-        :type modification_name: str
+        :param target_abbreviation: A target abbreviation for a modified amino acid.
+        :type target_abbreviation: str
         """
         self.modification_log.loc[len(self.modification_log)] = [residue_number, chain_identifier,
-                                                                 target_abbreviation, modification_name]
+                                                                 original_abbreviation, target_abbreviation]
         ###TODO set modification input to user input
 
     def get_log(self) -> pd.DataFrame:

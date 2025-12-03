@@ -4,28 +4,78 @@ from copy import deepcopy
 
 from Bio.PDB.Residue import Residue
 from Bio.PDB.Atom import Atom
+from pydantic import BaseModel
+
 from viennaptm.dataclasses.annotatedstructure import AnnotatedStructure
-from viennaptm.modification.modification.modification import Modification
-from viennaptm.modification.modification.modification_report import ModificationReport
-from viennaptm.modification.calculation.calculate_atom_positions import AtomPositionCalculator
+from viennaptm.modification.modification_library import ModificationLibrary, Modification
 from viennaptm.utils.error_handling import raise_with_logging_error
 
 logger = logging.getLogger(__name__)
 
-class Modifier:
+
+class Modifier(BaseModel):
     """Class that actually applies any number of modifications in a modification library to a structure"""
 
-    def __init__(self, structure: AnnotatedStructure, library=None):
+    def __init__(self, library: ModificationLibrary=None):
+        BaseModel.__init__(self)
+
         # if no library is specified, load the internal default
         if library is None:
-            io_lib = IOModLibrary()
-            library = io_lib.load_database(path=None)
+            library = ModificationLibrary()
 
         self._library = library
-        self._original_structure = structure
-        self._structure = deepcopy(structure)
+
+    def apply_modification(self,
+                           structure: AnnotatedStructure,
+                           chain_identifier: str,
+                           residue_number: int,
+                           target_abbreviation: str,
+                           inplace: bool = True) -> AnnotatedStructure:
+        # if inplace is set to False, make a copy for the manipulation
+        if not inplace:
+            structure = deepcopy(structure)
+
+        # get residue from structure
+        # note: this assumes that chain IDs are unique over all models
+        residue = None
+        for cur_residue in structure.get_residues():
+            # get the full residue identifier, e.g. ("1vii.pdb", 0, 'A', (' ', 41, ' '))
+            # this means (target identifier, model number, chain identifier, (hetero- or non-hetero residue, residue
+            # number, insertion code))
+            full_id = cur_residue.get_full_id()
+            if full_id[2] == chain_identifier and full_id[3][1] == residue_number:
+                residue = cur_residue
+                break
+        if residue is None:
+            raise_with_logging_error(f"Could not find specified residue in specified chain: {chain_identifier}:{residue_number}.",
+                                     logger=logger,
+                                     exception_type=ValueError)
+
+        # fetch the desired modification and load the respective template PDB file
+        # note: this assumes, that for all modifications a template PDB exists
+        original_residue_abbreviation = residue.get_resname()
+        modification = self._library[original_residue_abbreviation, target_abbreviation]
+        target_residue = self._library.load_template_residue(target_abbreviation)
+
+        # apply the modification (changes to the respective residue are saved, since it is mutable) and log it
+        self._execute(residue=residue,
+                      modification=modification,
+                      target_residue=target_residue)
+        structure.add_to_modification_log(residue_number=residue_number,
+                                          chain_identifier=chain_identifier,
+                                          target_abbreviation=target_abbreviation)
+        return structure
 
     @staticmethod
+    def _execute_modification(residue: Residue,
+                              modification: Modification,
+                              target_residue: Residue):
+        for branch in modification.add_branches:
+
+        # extract atom positions for mapped atoms
+
+
+    """"@staticmethod
     def _execute_modification(residue: Residue, modification: Modification) -> ModificationReport:
         report = ModificationReport()
 
@@ -79,48 +129,8 @@ class Modifier:
                                      element=addition.eletype))
                     report.atoms_added += 1
         return report
-
-    def apply_modification(self, chain_identifier: str, residue_number: int,
-                           target_abbreviation=None,
-                           modification_name=None,
-                           atoms_added=None,
-                           atoms_deleted=None,
-                           atoms_renamed=None) -> ModificationReport:
-
-        # get residue from structure
-        # note: this assumes that chain IDs are unique over all models
-        residue = None
-        for cur_residue in self._structure.get_residues():
-            # get the full residue identifier, e.g. ("1vii.pdb", 0, 'A', (' ', 41, ' '))
-            # this means (target identifier, model number, chain identifier, (hetero- or non-hetero residue, residue
-            # number, insertion code))
-            full_id = cur_residue.get_full_id()
-            if full_id[2] == chain_identifier and full_id[3][1] == residue_number:
-                residue = cur_residue
-                break
-        if residue is None:
-            raise_with_logging_error("Could not find specified residue in specified chain.",
-                                    logger=logger,
-                                    exception_type=ValueError)
-
-        # try to get modification from library
-        modification = self._library.get_modification(initial_abbreviation=residue.get_resname(),
-                                                      target_abbreviation=target_abbreviation,
-                                                      modification_name=modification_name)
-
-        # apply the modification
-        report = self._execute_modification(residue=residue, modification=modification)
-        self._structure.add_to_modification_log(residue_number=residue_number,
-                                                chain_identifier=chain_identifier,
-                                                modification_name=modification_name,
-                                                target_abbreviation=target_abbreviation)
-        return report
-
-    def reset_structure(self):
-        self._structure = deepcopy(self._original_structure)
+        """
 
     def get_library(self):
         return self._library
 
-    def get_structure(self):
-        return self._structure

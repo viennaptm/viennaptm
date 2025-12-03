@@ -2,13 +2,14 @@ import json
 import logging
 import os
 from pathlib import Path
-from typing import List, Tuple, Union
+from typing import List, Tuple, Union, Dict
 
+from Bio.PDB import PDBParser
+from Bio.PDB.Residue import Residue
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from viennaptm.utils.error_handling import raise_with_logging_error
 from viennaptm.utils.fixtures import ViennaPTMFixtures
-
 
 logger = logging.getLogger(__name__)
 
@@ -67,6 +68,7 @@ class Modification(BaseModel):
 
 class ModificationLibrary(BaseModel):
     modifications: List[Modification] = Field(default_factory=list)
+    target_templates: Dict[str, str] = Field(default_factory=dict)
     library_version: str = None
     model_config = ConfigDict(extra="forbid")
 
@@ -85,7 +87,8 @@ class ModificationLibrary(BaseModel):
             self.library_version = "custom"
             logger.info(f"Using custom library ({library_path}) and PDB directory ({pdbs_minimized}).")
 
-        # load modification library, make sure that minimized PDBs are available
+        # load modification library, make sure that minimized PDBs are available and store the absolute paths
+        # in dictionary of the form: {"MOD1": "/full/path/MOD1.pdb", ...}
         with open(library_path, 'r') as f:
             library = json.load(f)
         if not os.path.isdir(pdbs_minimized):
@@ -98,6 +101,7 @@ class ModificationLibrary(BaseModel):
             raise_with_logging_error(f"The specified PDB directory does not contain any PDB files: {pdbs_minimized}",
                                      logger,
                                      FileNotFoundError)
+        self.target_templates = {f[:-4]: os.path.join(pdbs_minimized, f) for f in minimized_pdb_files if f.endswith(".pdb")}
 
         # parse modification file and report on loading
         for key in library.keys():
@@ -120,6 +124,18 @@ class ModificationLibrary(BaseModel):
                     return mod
         raise IndexError(f"Index {index} is out of range.")
 
+    def load_residue_from_pdb(self, target_abbreviation: str) -> Residue:
+        target_template_path = self._library.target_templates[target_abbreviation]
+
+        parser = PDBParser()
+        structure = parser.get_structure(id=target_abbreviation, file=target_template_path)
+
+        # this assumes, that the template PDB files contain exactly one residue
+        residue = structure.get_residues()[0]
+        if residue.resname != target_abbreviation:
+            raise_with_logging_error(f"File {target_template_path} needs to contain exactly one residue entry for {target_abbreviation}, abort.",
+                                     logger, ValueError)
+        return residue
 
     def __setitem__(self, index, value):
         self.modifications[index] = value
