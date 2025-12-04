@@ -2,7 +2,7 @@ import unittest
 
 from pathlib import Path
 from pydantic import ValidationError
-from viennaptm.entrypoints.modifier import ModifierParameters
+from viennaptm.entrypoints.viennaptm import ModifierParameters
 
 class TestEntrypoints(unittest.TestCase):
     def test_output_pdb(self):

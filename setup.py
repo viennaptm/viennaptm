@@ -12,7 +12,7 @@ setuptools.setup(
        author_email="christian.margreitter@gmail.com",
        entry_points={
            "console_scripts": [
-               "viennaptm = viennaptm.entrypoints.modifier:main"
+               "viennaptm = viennaptm.entrypoints.viennaptm:main"
                 ]
        },
        packages=setuptools.find_packages(),

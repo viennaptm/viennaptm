@@ -107,8 +107,7 @@ def main():
         structure = AnnotatedStructure.from_pdb_db(identifier=cfg.input)
 
     # initialize modifier with most recent internal modification database
-    modifier = Modifier(structure=structure)
-
+    modifier = Modifier()
 
     modlist = cfg.modification
     for mod_input in modlist:
@@ -125,9 +124,10 @@ def main():
                              f"with the target residue abbreviation being a string of length 3.")
 
         # apply a modification
-        modifier.apply_modification(chain_identifier=modification[0],
-                                    residue_number=int(modification[1]),
-                                    target_abbreviation=modification[2])
+        structure = modifier.apply_modification(structure = structure,
+                                                chain_identifier=modification[0],
+                                                residue_number=int(modification[1]),
+                                                target_abbreviation=modification[2])
 
         logger.debug(f"Modification with parameters: "
                      f"chain identifier {modification[0]}, "
@@ -135,7 +135,7 @@ def main():
                      f"target abbreviation {modification[2]} has been successfully applied.")
 
     # write modified pdb
-    modifier.get_structure().to_pdb(str(cfg.output_pdb))
+    structure.to_pdb(str(cfg.output_pdb))
     logger.debug(f"Wrote structure to temporary PDB file: {cfg.output_pdb}")
 
 if __name__ == "__main__":

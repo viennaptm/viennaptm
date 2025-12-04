@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 
 
 class Modifier(BaseModel):
-    """Class that actually applies any number of modifications in a modification library to a structure"""
+    """Class that actually applies any number of modifications from a modification library to a structure"""
 
     def __init__(self, library: ModificationLibrary=None):
         BaseModel.__init__(self)
@@ -64,6 +64,9 @@ class Modifier(BaseModel):
         self._execute_modification(residue=residue,
                                    modification=modification,
                                    template_residue=target_residue)
+        residue.resname = target_residue.get_resname()
+
+        # attach information on applied modification
         structure.add_to_modification_log(residue_number=residue_number,
                                           chain_identifier=chain_identifier,
                                           original_abbreviation=original_residue_abbreviation,
@@ -88,22 +91,43 @@ class Modifier(BaseModel):
             original_anchor_atoms = [residue[atom_name] for atom_name in anchor_atoms_in_original_residue]
             template_anchor_atoms = [template_residue[atom_name] for atom_name in branch.anchor_atoms]
 
-            # extract the atoms that are to be transferred from the template to the original residue
-            add_atoms = [template_residue[atom_name] for atom_name in branch.add_atoms]
-            coords = Modifier.atoms_to_array(add_atoms)
-
             # create roto-translational alignment
             M_rotation, v_translation = compute_alignment_transform(coord_reference=Modifier.atoms_to_array(original_anchor_atoms),
                                                                     coord_template=Modifier.atoms_to_array(template_anchor_atoms),
                                                                     weights=np.array(branch.weights))
+
+            # extract the atoms that are to be transferred from the template to the original residue
+            add_atoms = [template_residue[atom_name] for atom_name in branch.add_atoms]
+            coords = Modifier.atoms_to_array(add_atoms)
 
             # transform atoms to be added
             coords_aligned = apply_transform(coords=coords,
                                              M_rotation=M_rotation,
                                              v_translation=v_translation)
 
-            # TODO: update coordinates
-            # TODO: rename atoms based on atom_mapping (remove those that are mapped to "None" in the updated form)
+            # add new atoms
+            for atom_idx, atom in enumerate(add_atoms):
+                residue.add(Atom(name=atom.get_fullname(),
+                                 coord=coords_aligned[atom_idx],
+                                 bfactor=0,
+                                 occupancy=1.0,
+                                 altloc=' ',
+                                 fullname=atom.get_fullname().center(4, ' '),
+                                 serial_number=None,
+                                 element=atom.element))
+
+            # rename atoms based on atom_mapping (remove those that are mapped to "None" in the updated form)
+            for ori, tar in modification.atom_mapping:
+                # skip atoms that are not present in the original residue (they were added in the previous step)
+                if ori is not None:
+                    if tar is None:
+                        # this indicates, that this particular ori-atom is to be removed
+                        if ori in residue:
+                            residue.detach_child(ori)
+                    else:
+                        # this means, an atom is to be renamed
+                        if ori != tar:
+                            residue[ori].name = tar
 
     @staticmethod
     def atoms_to_array(atoms: List[Atom]) -> np.ndarray:
