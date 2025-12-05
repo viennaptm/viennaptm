@@ -46,13 +46,17 @@ class Modifier(BaseModel):
             # this means (target identifier, model number, chain identifier, (hetero- or non-hetero residue, residue
             # number, insertion code))
             full_id = cur_residue.get_full_id()
+
             if full_id[2] == chain_identifier and full_id[3][1] == residue_number:
                 residue = cur_residue
                 break
+
         if residue is None:
             raise_with_logging_error(f"Could not find specified residue in specified chain: {chain_identifier}:{residue_number}.",
                                      logger=logger,
                                      exception_type=ValueError)
+
+        self.remove_hydrogens(residue)
 
         # fetch the desired modification and load the respective template PDB file
         # note: this assumes, that for all modifications a template PDB exists
@@ -132,6 +136,15 @@ class Modifier(BaseModel):
     @staticmethod
     def atoms_to_array(atoms: List[Atom]) -> np.ndarray:
         return np.array([atom.get_coord() for atom in atoms])
+
+    @staticmethod
+    def remove_hydrogens(residue: Residue):
+        # deletes atom if it is a Hydrogen, because otherwise they could be "lingering" if they do not conform
+        # to the standard naming scheme; note that Hydrogen deletions are not part of the ModificationLibrary
+        to_delete = [atom.name for atom in residue.get_atoms() if atom.name.startswith("H")]
+        for atom_name in to_delete:
+            residue.detach_child(atom_name)
+
 
     def get_library(self):
         return self._library

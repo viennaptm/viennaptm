@@ -2,6 +2,7 @@ import logging
 import unittest
 import os
 
+from Bio.PDB.Residue import Residue
 from viennaptm.dataclasses.annotatedstructure import AnnotatedStructure
 from tests.file_paths import UNITTEST_PATH_1VII_PDB, UNITTEST_JUNK_FOLDER
 from viennaptm.modification.modification.modifier import Modifier
@@ -36,7 +37,27 @@ class Test_Modification(unittest.TestCase):
                                                 chain_identifier='A',
                                                 residue_number=55,
                                                 target_abbreviation="GSA")
-        ###TODO check on structure object not write out
+
+        # check write-out
         structure.to_pdb(output_pdb_path)
         self.assertTrue(os.path.exists(output_pdb_path))
-        self.assertEqual(os.path.getsize(output_pdb_path), 47369)
+        self.assertEqual(os.path.getsize(output_pdb_path), 46649)
+
+        ###TODO check on structure object
+
+
+    def test_deletion_hydrogen_atoms(self):
+        # load internal PDB file
+        structure = self._struc_io.from_pdb(path=self._1vii_PDB_path)
+
+        residue = list(structure.get_residues())[12]
+        atoms_before = [atom.name for atom in residue.get_atoms()]
+        Modifier.remove_hydrogens(residue)
+        atoms_after = [atom.name for atom in residue.get_atoms()]
+
+        self.assertNotEqual(len(atoms_before), len(atoms_after))
+        self.assertFalse(atoms_after == atoms_before)
+
+        self.assertListEqual(['N', 'CA', 'C', 'O', 'CB', 'CG', 'SD', 'CE', 'H', 'HA', 'HB2', 'HB3', 'HG2', 'HG3',
+                                  'HE1', 'HE2', 'HE3'], atoms_before)
+        self.assertListEqual(['N', 'CA', 'C', 'O', 'CB', 'CG', 'SD', 'CE'], atoms_after)
