@@ -55,6 +55,10 @@ docs = [
     "sphinxcontrib-napoleon>=0.7",
     "sphinx_rtd_theme>=3.0.0"
 ]
+render = [
+    "nglview>=4.0",
+    "notebook>=7.0.0"
+]
 
 [project.urls]
 Homepage = "https://viennaptm.univie.ac.at"
