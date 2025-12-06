@@ -58,6 +58,7 @@ class Test_Modification(unittest.TestCase):
         self.assertNotEqual(len(atoms_before), len(atoms_after))
         self.assertFalse(atoms_after == atoms_before)
 
-        self.assertListEqual(['N', 'CA', 'C', 'O', 'CB', 'CG', 'SD', 'CE', 'H', 'HA', 'HB2', 'HB3', 'HG2', 'HG3',
-                                  'HE1', 'HE2', 'HE3'], atoms_before)
+        self.assertListEqual(['N', 'CA', 'C', 'O', 'CB', 'CG', 'SD', 'CE',
+                                  'H', 'HA', 'HB2', 'HB3', 'HG2', 'HG3', 'HE1',
+                                  'HE2', 'HE3'], atoms_before)
         self.assertListEqual(['N', 'CA', 'C', 'O', 'CB', 'CG', 'SD', 'CE'], atoms_after)

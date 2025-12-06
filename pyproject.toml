@@ -46,13 +46,14 @@ dependencies = [
     "scipy"
 ]
 
-[dependency-groups]
+[project.optional-dependencies]
 test = [
     "pytest>=8.4.0"
 ]
-dev = [
+docs = [
     "sphinx>=8.2.0",
-    "sphinxcontrib-napoleon>=0.7"
+    "sphinxcontrib-napoleon>=0.7",
+    "sphinx_rtd_theme>=3.0.0"
 ]
 
 [project.urls]
