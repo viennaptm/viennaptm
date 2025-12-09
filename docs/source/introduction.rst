@@ -7,3 +7,5 @@ Example code:
 .. code-block:: python
 
    # some code
+   import os
+

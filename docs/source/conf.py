@@ -12,14 +12,15 @@ release = "0.0.1"
 extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.napoleon",
-    "sphinx.ext.autosummary"
+    "sphinx.ext.autosummary",
+    "sphinxcontrib.bibtex"
 ]
 
 autosummary_generate = True
 autodoc_default_options = {
     "members": True,
     "undoc-members": True,
-    "show-inheritance": True,
+    "show-inheritance": True
 }
 
 # Google-style docstrings
@@ -35,3 +36,5 @@ html_theme_options = {
 
 templates_path = ["_templates"]
 exclude_patterns = []
+
+bibtex_bibfiles = ["references.bib"]
