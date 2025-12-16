@@ -61,11 +61,11 @@ pip install .
 ```
 
 ## Usage
-
+CLI and API
 ## Contributing
-
+fork, make changes then do Pull Request
 ## License
-
+Apache-2 for code, Attribution-NonCommercial 4.0 International for modification library
 ## Authors / Contributors
 
 - **Christian Margreitter** - [GitHub](https://github.com/CMargreitter)  
