@@ -1,0 +1,372 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>viennaptm.dataclasses.annotatedstructure.AnnotatedStructure &mdash; viennaptm 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="viennaptm.modification.modification_library.ModificationLibrary" href="viennaptm.modification.modification_library.ModificationLibrary.html" />
+    <link rel="prev" title="Introduction" href="../introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            viennaptm
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">viennaptm.dataclasses.annotatedstructure.AnnotatedStructure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#viennaptm.dataclasses.annotatedstructure.AnnotatedStructure"><code class="docutils literal notranslate"><span class="pre">AnnotatedStructure</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.__init__"><code class="docutils literal notranslate"><span class="pre">AnnotatedStructure.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.add_to_modification_log"><code class="docutils literal notranslate"><span class="pre">AnnotatedStructure.add_to_modification_log()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.delete_log_entry"><code class="docutils literal notranslate"><span class="pre">AnnotatedStructure.delete_log_entry()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.from_pdb"><code class="docutils literal notranslate"><span class="pre">AnnotatedStructure.from_pdb()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.from_pdb_db"><code class="docutils literal notranslate"><span class="pre">AnnotatedStructure.from_pdb_db()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.get_log"><code class="docutils literal notranslate"><span class="pre">AnnotatedStructure.get_log()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.print_log"><code class="docutils literal notranslate"><span class="pre">AnnotatedStructure.print_log()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.to_pdb"><code class="docutils literal notranslate"><span class="pre">AnnotatedStructure.to_pdb()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.modification.modification_library.ModificationLibrary.html">viennaptm.modification.modification_library.ModificationLibrary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="viennaptm.modification.modification_library.ModificationLibrary.html#viennaptm.modification.modification_library.ModificationLibrary"><code class="docutils literal notranslate"><span class="pre">ModificationLibrary</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="viennaptm.modification.modification_library.ModificationLibrary.html#viennaptm.modification.modification_library.ModificationLibrary.__init__"><code class="docutils literal notranslate"><span class="pre">ModificationLibrary.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="viennaptm.modification.modification_library.ModificationLibrary.html#viennaptm.modification.modification_library.ModificationLibrary.library_version"><code class="docutils literal notranslate"><span class="pre">ModificationLibrary.library_version</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="viennaptm.modification.modification_library.ModificationLibrary.html#viennaptm.modification.modification_library.ModificationLibrary.load_residue_from_pdb"><code class="docutils literal notranslate"><span class="pre">ModificationLibrary.load_residue_from_pdb()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="viennaptm.modification.modification_library.ModificationLibrary.html#viennaptm.modification.modification_library.ModificationLibrary.model_config"><code class="docutils literal notranslate"><span class="pre">ModificationLibrary.model_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="viennaptm.modification.modification_library.ModificationLibrary.html#viennaptm.modification.modification_library.ModificationLibrary.modifications"><code class="docutils literal notranslate"><span class="pre">ModificationLibrary.modifications</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="viennaptm.modification.modification_library.ModificationLibrary.html#viennaptm.modification.modification_library.ModificationLibrary.target_templates"><code class="docutils literal notranslate"><span class="pre">ModificationLibrary.target_templates</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">viennaptm</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">viennaptm.dataclasses.annotatedstructure.AnnotatedStructure</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="viennaptm-dataclasses-annotatedstructure-annotatedstructure">
+<h1>viennaptm.dataclasses.annotatedstructure.AnnotatedStructure<a class="headerlink" href="#viennaptm-dataclasses-annotatedstructure-annotatedstructure" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="viennaptm.dataclasses.annotatedstructure.AnnotatedStructure">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">viennaptm.dataclasses.annotatedstructure.</span></span><span class="sig-name descname"><span class="pre">AnnotatedStructure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#viennaptm.dataclasses.annotatedstructure.AnnotatedStructure" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Structure</span></code></p>
+<p>Annotates structure of the <code class="docutils literal notranslate"><span class="pre">biopython</span> <span class="pre">Structure</span></code> class. Log administration as well as adding of new modifications.
+PDB’s can be loaded from database or a file and annotated structures can be saved in a PDB file.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the class.</p>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.__init__" title="viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(id)</p></td>
+<td><p>Initialize the class.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add</span></code>(entity)</p></td>
+<td><p>Add a child to the Entity.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.add_to_modification_log" title="viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.add_to_modification_log"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_to_modification_log</span></code></a>(residue_number, ...)</p></td>
+<td><p>Adds modification of atoms to modification_log.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">atom_to_internal_coordinates</span></code>([verbose])</p></td>
+<td><p>Create/update internal coordinates from Atom X,Y,Z coordinates.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">center_of_mass</span></code>([geometric])</p></td>
+<td><p>Return the center of mass of the Entity as a numpy array.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code>()</p></td>
+<td><p>Copy entity recursively.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.delete_log_entry" title="viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.delete_log_entry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_log_entry</span></code></a>(residue_number, ...)</p></td>
+<td><p>Deletes a log entry according to residue_number and chain_identifier.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">detach_child</span></code>(id)</p></td>
+<td><p>Remove a child.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">detach_parent</span></code>()</p></td>
+<td><p>Detach the parent.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.from_pdb" title="viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.from_pdb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_pdb</span></code></a>(path)</p></td>
+<td><p>Loads a PDB structure from given path.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.from_pdb_db" title="viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.from_pdb_db"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_pdb_db</span></code></a>(identifier)</p></td>
+<td><p>Loads structure from 'PDB database &lt;<a class="reference external" href="https://www.rcsb.org/">https://www.rcsb.org/</a>&gt;'.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_atoms</span></code>()</p></td>
+<td><p>Return atoms from residue.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_chains</span></code>()</p></td>
+<td><p>Return chains from models.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_full_id</span></code>()</p></td>
+<td><p>Return the full id.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_id</span></code>()</p></td>
+<td><p>Return the id.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_iterator</span></code>()</p></td>
+<td><p>Return iterator over children.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_level</span></code>()</p></td>
+<td><p>Return level in hierarchy.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_list</span></code>()</p></td>
+<td><p>Return a copy of the list of children.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.get_log" title="viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.get_log"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_log</span></code></a>()</p></td>
+<td><p>Accesses and returns modification log.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_models</span></code>()</p></td>
+<td><p>Return models.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_parent</span></code>()</p></td>
+<td><p>Return the parent Entity object.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_residues</span></code>()</p></td>
+<td><p>Return residues from chains.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_id</span></code>(id)</p></td>
+<td><p>Check if a child with given id exists.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert</span></code>(pos, entity)</p></td>
+<td><p>Add a child to the Entity at a specified position.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">internal_to_atom_coordinates</span></code>([verbose])</p></td>
+<td><p>Create/update atom coordinates from internal coordinates.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.print_log" title="viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.print_log"><code class="xref py py-obj docutils literal notranslate"><span class="pre">print_log</span></code></a>()</p></td>
+<td><p>Removes the index from the modification log and then prints the log.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_parent</span></code>(entity)</p></td>
+<td><p>Set the parent Entity object.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">strictly_equals</span></code>(other[, compare_coordinates])</p></td>
+<td><p>Compare this entity to the other entity for equality.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.to_pdb" title="viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.to_pdb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_pdb</span></code></a>(path)</p></td>
+<td><p>Saves a <code class="docutils literal notranslate"><span class="pre">biopython</span> <span class="pre">PDB</span> <span class="pre">structure</span></code> to a given path.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">transform</span></code>(rot, tran)</p></td>
+<td><p>Apply rotation and translation to the atomic coordinates.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p>Return identifier.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">parent</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">child_list</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">child_dict</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">level</span></code></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.add_to_modification_log">
+<span class="sig-name descname"><span class="pre">add_to_modification_log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">residue_number</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chain_identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">original_abbreviation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_abbreviation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.add_to_modification_log" title="Link to this definition"></a></dt>
+<dd><p>Adds modification of atoms to modification_log.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>residue_number</strong> (<em>int</em>) – A residue number indicates the position of an amino acid in a protein’s
+polypeptide chain, starting from (1) at the N-terminus and ending at the C-terminus. For example,
+<code class="docutils literal notranslate"><span class="pre">&quot;His</span> <span class="pre">18&quot;</span></code> means the 18th amino acid in the chain is Histidine.</p></li>
+<li><p><strong>chain_identifier</strong> (<em>str</em>) – Peptide or protein chain ID for instances of chains - commonly 1 capital letter.</p></li>
+</ul>
+</dd>
+</dl>
+<p>.
+:param original_abbreviation: The original abbreviation for a canonical amino acid refers to a standardized
+abbreviation for a standard, representative amino acid in a database like <code class="docutils literal notranslate"><span class="pre">UniProt</span></code> eg: <code class="docutils literal notranslate"><span class="pre">ASP</span></code> for Aspartic acid
+or <code class="docutils literal notranslate"><span class="pre">GLU</span></code> for Glutamic acid.
+:type original_abbreviation: str
+.
+:param target_abbreviation: A target abbreviation for a modified amino acid.
+:type target_abbreviation: str</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.delete_log_entry">
+<span class="sig-name descname"><span class="pre">delete_log_entry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">residue_number</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chain_identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.delete_log_entry" title="Link to this definition"></a></dt>
+<dd><p>Deletes a log entry according to residue_number and chain_identifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>residue_number</strong> – A residue number indicates the position of an amino acid in a protein’s</p>
+</dd>
+</dl>
+<p>polypeptide chain, starting from (1) at the N-terminus and ending at the C-terminus. For example,
+<code class="docutils literal notranslate"><span class="pre">&quot;His</span> <span class="pre">18&quot;</span></code> means the 18th amino acid in the chain is Histidine.
+:type residue_number: int
+.
+:param chain_identifier: Petite or protein chain ID for instances of chains - commonly 1 capital letter.
+:type chain_identifier: str</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.from_pdb">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_pdb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.from_pdb" title="Link to this definition"></a></dt>
+<dd><p>Loads a PDB structure from given path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em><em> or </em><em>Path object</em>) – Path to a local PDB file.</p>
+</dd>
+</dl>
+<p>…
+:raises TypeError: Raises error if given path is not a string or Path object.
+…
+:return: Returns a <code class="docutils literal notranslate"><span class="pre">biopython</span> <span class="pre">PDB</span> <span class="pre">structure</span></code>.
+:rtype: AnnotatedStructure</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.from_pdb_db">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_pdb_db</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.from_pdb_db" title="Link to this definition"></a></dt>
+<dd><p>Loads structure from ‘PDB database &lt;<a class="reference external" href="https://www.rcsb.org/">https://www.rcsb.org/</a>&gt;’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>identifier</strong> (<em>str</em>) – Identifier string of length four.</p>
+</dd>
+</dl>
+<p>…
+:raises AttributeError: Raises an error when the parameter identifier string has not a length of four.
+:raises FileExistsError: Raises an error when file cannot be accessed from given path.
+…
+:return: Returns a <code class="docutils literal notranslate"><span class="pre">biopython</span> <span class="pre">PDB</span> <span class="pre">structure</span></code>.
+:rtype: AnnotatedStructure</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.get_log">
+<span class="sig-name descname"><span class="pre">get_log</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.get_log" title="Link to this definition"></a></dt>
+<dd><p>Accesses and returns modification log.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>modification_log</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.print_log">
+<span class="sig-name descname"><span class="pre">print_log</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.print_log" title="Link to this definition"></a></dt>
+<dd><p>Removes the index from the modification log and then prints the log. Even long (max. columns 1000) and
+wide (width 1000) data frames are printable.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.to_pdb">
+<span class="sig-name descname"><span class="pre">to_pdb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.to_pdb" title="Link to this definition"></a></dt>
+<dd><p>Saves a <code class="docutils literal notranslate"><span class="pre">biopython</span> <span class="pre">PDB</span> <span class="pre">structure</span></code> to a given path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Path to save the PDB file.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../introduction.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="viennaptm.modification.modification_library.ModificationLibrary.html" class="btn btn-neutral float-right" title="viennaptm.modification.modification_library.ModificationLibrary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

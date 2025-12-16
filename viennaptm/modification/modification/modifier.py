@@ -18,6 +18,7 @@ class Modifier:
     def __init__(self, structure: AnnotatedStructure, library=None):
         # if no library is specified, load the internal default
         if library is None:
+            ### TODO add IOMOD library?
             io_lib = IOModLibrary()
             library = io_lib.load_database(path=None)
 
