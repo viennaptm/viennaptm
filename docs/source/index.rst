@@ -7,19 +7,23 @@ viennaptm package
 
    introduction
 
-API
+Classes and functions
 ---
 
 .. autosummary::
    :toctree: generated/
 
    viennaptm.dataclasses.annotatedstructure.AnnotatedStructure
-   viennaptm.modification.modification_library.ModificationLibrary
+   viennaptm.modification.modification.modifier.Modifier
+   viennaptm.modification.modification.modification_report.ModificationReport
+   viennaptm.modification.modification_library.AddBranch
+   viennaptm.modification.modification_library.Modification
+   viennaptm.entrypoints.viennaptm.ModifierParameters
+   viennaptm.modification.calculation.align.compute_alignment_transform
+   viennaptm.modification.calculation.align.apply_transform
 
-See :cite:`Strunk1979` for an introduction
 
-
-
+See :cite:`Margreitter2013` for the `publication <https://doi.org/10.1093/nar/gkt416>`_.
 
 
 

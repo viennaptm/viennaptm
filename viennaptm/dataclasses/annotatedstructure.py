@@ -43,12 +43,10 @@ class AnnotatedStructure(Structure):
         :type residue_number: int
         :param chain_identifier: Peptide or protein chain ID for instances of chains - commonly 1 capital letter.
         :type chain_identifier: str
-        .
         :param original_abbreviation: The original abbreviation for a canonical amino acid refers to a standardized
-        abbreviation for a standard, representative amino acid in a database like ``UniProt`` eg: ``ASP`` for Aspartic acid
-        or ``GLU`` for Glutamic acid.
+                                      abbreviation for a standard, representative amino acid in a database like
+                                      ``UniProt`` eg: ``ASP`` for Aspartic acid or ``GLU`` for Glutamic acid.
         :type original_abbreviation: str
-        .
         :param target_abbreviation: A target abbreviation for a modified amino acid.
         :type target_abbreviation: str
         """
@@ -85,10 +83,9 @@ class AnnotatedStructure(Structure):
         """Deletes a log entry according to residue_number and chain_identifier.
 
         :param residue_number: A residue number indicates the position of an amino acid in a protein's
-        polypeptide chain, starting from \(1\) at the N-terminus and ending at the C-terminus. For example,
-        ``"His 18"`` means the 18th amino acid in the chain is Histidine.
+                               polypeptide chain, starting from \(1\) at the N-terminus and ending at the C-terminus.
+                               For example, ``"His 18"`` means the 18th amino acid in the chain is Histidine.
         :type residue_number: int
-        .
         :param chain_identifier: Petite or protein chain ID for instances of chains - commonly 1 capital letter.
         :type chain_identifier: str
         """
@@ -99,14 +96,12 @@ class AnnotatedStructure(Structure):
 
     @classmethod
     def from_pdb_db(cls, identifier: str):
-        """Loads structure from 'PDB database <https://www.rcsb.org/>'.
+        """Loads structure from the `PDB database <https://www.rcsb.org/>`_.
 
         :param identifier: Identifier string of length four.
         :type identifier: str
-        ...
         :raises AttributeError: Raises an error when the parameter identifier string has not a length of four.
         :raises FileExistsError: Raises an error when file cannot be accessed from given path.
-        ...
         :return: Returns a ``biopython PDB structure``.
         :rtype: AnnotatedStructure
         """
@@ -139,9 +134,7 @@ class AnnotatedStructure(Structure):
 
         :param path: Path to a local PDB file.
         :type path: str or Path object
-        ...
         :raises TypeError: Raises error if given path is not a string or Path object.
-        ...
         :return: Returns a ``biopython PDB structure``.
         :rtype: AnnotatedStructure
         """

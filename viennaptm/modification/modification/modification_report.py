@@ -1,5 +1,7 @@
 
 class ModificationReport:
+    """Modification Report class"""
+
     def __init__(self, atoms_added=0, atoms_deleted=0, atoms_renamed=0):
         self.atoms_added = atoms_added
         self.atoms_deleted = atoms_deleted

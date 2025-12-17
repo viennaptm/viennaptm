@@ -31,7 +31,9 @@ napoleon_numpy_docstring = False
 html_theme = "sphinx_rtd_theme"
 html_theme_options = {
     "collapse_navigation": False,
-    "navigation_depth": 4,
+    "sticky_navigation": True,
+    "navigation_depth": -1,
+    "titles_only": True,
 }
 
 templates_path = ["_templates"]
