@@ -39,7 +39,7 @@ class ModifierParameters(BaseModel):
 
         :param input: Path object or string pointing to the input structure.
         :type input: Union[Path, str]
-        :param modification: One or more modifications to apply. For example, ``--modification "A:50=V3H" "Y:65=Y1P"``.
+        :param modification: One or more modifications to apply. For example: ``--modification "A:50=V3H" "Y:65=Y1P"``.
         :type modification: Union[list[str], str]
         :param output_pdb: Output PDB filename or Path object. Defaults to ``"output.pdb"``.
         :type output_pdb: Optional[Union[Path, str]]

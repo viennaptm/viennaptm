@@ -10,21 +10,18 @@ def compute_alignment_transform(coord_reference: np.ndarray, coord_template: np.
     """
     Compute the roto-translational transform (with weights!) that aligns coord_template to coord_reference.
 
-    Parameters
-    ----------
-    coord_reference : (N, 3) array
-        Reference coordinates (anchor atoms from input residue).
-    coord_template : (N, 3) array
-        Template coordinates to be aligned (anchor atoms from template residue).
-    weights : List[float]
-        Weights for centroid and rotation calculation.
+    :param coord_reference: Reference coordinates (anchor atoms from input residue).
+    :type coord_reference: (N, 3) array
+    :param coord_template: Template coordinates to be aligned (anchor atoms from template residue).
+    :type coord_template: (N, 3) array
+    :param weights: Weights for centroid and rotation calculation.
+    :type weights: List[float]
 
-    Returns
-    -------
-    M_rotation : (3, 3) ndarray
-        Rotation matrix.
-    V_translation : (3,) ndarray
-        Translation vector.
+    :return M_rotation: Rotation matrix.
+    :rtype: (3, 3) ndarray
+
+    :return v_translation: Translation vector.
+    :rtype: (3,) ndarray
     """
 
     # centroids (weighted)
@@ -54,18 +51,14 @@ def apply_transform(coords: np.ndarray, M_rotation: np.ndarray, v_translation: n
     Apply a roto-translational transform to a set of points, i.e. the atomic positions of atoms that are to be added
     from the template to the original reference frame.
 
-    Parameters
-    ----------
-    coords : (M, 3) array
-        Points to transform.
-    M_rotation : (3, 3) array
-        Rotation matrix.
-    v_translation : (3,) array
-        Translation vector.
+    :param coords: Points to transform.
+    :type coords: (M, 3) array
+    :param M_rotation: Rotation matrix.
+    :type M_rotation: (3, 3) array
+    :param v_translation: Translation vector.
+    :type v_translation: (3,) array
 
-    Returns
-    -------
-    v_transformed : (M, 3) array
-        Transformed coordinates: M_rotation @ coords + v_translation.
+    :return v_transformed: Returns the transformed coordinates: M_rotation @ coords + v_translation.
+    :rtype: (M, 3) array
     """
     return (M_rotation @ coords.T).T + v_translation

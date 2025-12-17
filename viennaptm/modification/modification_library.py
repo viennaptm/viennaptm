@@ -15,6 +15,30 @@ logger = logging.getLogger(__name__)
 
 
 class AddBranch(BaseModel):
+    """
+    Definition of a modification branch for residue transformation.
+
+    An :class:`AddBranch` describes how a specific part (branch) of a residue
+    should be modified. It specifies anchor atoms used for geometric alignment,
+    optional weights for the alignment, and atoms to be added from a template
+    residue.
+
+    Each branch is applied independently, allowing complex modifications to be
+    decomposed into multiple localized transformations.
+
+    :ivar anchor_atoms: Atom names defining the alignment reference.
+    :vartype anchor_atoms: list[str]
+    :ivar weights: Weights applied to anchor atoms during alignment.
+                   If empty, all anchor atoms are weighted equally.
+    :vartype weights: list[float]
+    :ivar add_atoms: Atom names to be added from the template residue.
+    :vartype add_atoms: list[str]
+
+    note::
+    If no weights are provided but anchor atoms are defined, equal weights
+    are automatically assigned during validation.
+    """
+
     ### TODO create alignment class for anchor and weights
     # atoms that define the overlay, i.e. the orientation
     anchor_atoms: List[str] = Field(default_factory=list)
@@ -31,6 +55,16 @@ class AddBranch(BaseModel):
 
     @model_validator(mode="after")
     def check_branch(self):
+        """
+        Validate anchor atom and weight consistency.
+
+        Ensures that the number of weights matches the number of anchor atoms.
+        If no weights are provided, equal weights are assigned automatically.
+
+        :raises ValueError:
+            If the number of weights does not match the number of anchor atoms.
+        """
+
         # if weights are specified, we need to ensure that we have the
         # right number (one per anchor atom)
         if self.weights:
@@ -48,6 +82,32 @@ class AddBranch(BaseModel):
 
 
 class Modification(BaseModel):
+    """
+    Definition of a residue modification.
+
+    A :class:`Modification` specifies how an original residue is transformed
+    into a modified residue. It includes atom mappings between the two residue
+    states and one or more modification branches that describe how atoms are
+    added and aligned.
+
+    :ivar residue_original_abbreviation: Abbreviation of the original residue.
+    :vartype residue_original_abbreviation: str
+    :ivar residue_modified_abbreviation: Abbreviation of the modified residue.
+    :vartype residue_modified_abbreviation: str
+    :ivar atom_mapping: Mapping between original and modified atom names.
+                        Each entry is a tuple ``(original, modified)`` where
+                        either element may be ``None`` to indicate deletion
+                        or addition.
+    :vartype atom_mapping: list[tuple[str | None, str | None]]
+    :ivar add_branches: Branches defining how atoms are geometrically added.
+    :vartype add_branches: list[AddBranch]
+
+    Note:
+        Atom deletions and renaming are handled exclusively via
+        ``atom_mapping``; branches only describe atom additions.
+    """
+
+
     residue_original_abbreviation: str
     residue_modified_abbreviation: str
 
@@ -67,6 +127,22 @@ class Modification(BaseModel):
 
 
 class ModificationLibrary(BaseModel):
+    """
+    Container and loader for residue modifications and template structures.
+
+    The :class:`ModificationLibrary` loads modification definitions from a JSON
+    library file and associates them with minimized PDB template structures.
+    It provides indexed access to modifications and utilities for loading
+    template residues.
+
+    :ivar modifications: List of available residue modifications.
+    :vartype modifications: list[Modification]
+    :ivar target_templates: Mapping of residue abbreviations to PDB file paths.
+    :vartype target_templates: dict[str, str]
+    :ivar library_version: Version identifier of the loaded library.
+    :vartype library_version: str or None
+    """
+
     modifications: List[Modification] = Field(default_factory=list)
     target_templates: Dict[str, str] = Field(default_factory=dict)
     library_version: str = None
@@ -74,6 +150,22 @@ class ModificationLibrary(BaseModel):
 
     def __init__(self, library_path: Union[str, Path] = None, pdbs_minimized: Union[str, Path] = None):
         BaseModel.__init__(self)
+        """
+        Load a modification library and associated template PDB files.
+
+        If no paths are provided, the latest installed default modification
+        library and minimized PDB directory are loaded automatically.
+
+        :param library_path: Path to the JSON modification library file.
+        :type library_path: str or pathlib.Path or None
+        :param pdbs_minimized: Directory containing minimized PDB templates.
+        :type pdbs_minimized: str or pathlib.Path or None
+
+        :raises FileNotFoundError:
+            If the PDB directory does not exist or contains no PDB files.
+        :raises ValueError:
+            If library parsing fails or required templates are missing.
+        """
 
         fixtures = ViennaPTMFixtures()
 
@@ -113,6 +205,17 @@ class ModificationLibrary(BaseModel):
         logger.info(f"Loaded {len(self.modifications)} modifications and indexed {len(minimized_pdb_files)} PDB files for library {fixtures.LATEST_PTMS_VERSION_DATE}.")
 
     def __getitem__(self, index):
+        """
+        Retrieve a modification by index or residue pair.
+
+        :param index: Either an integer index or a tuple
+                        ``(original_abbreviation, modified_abbreviation)``.
+        :type index: int or tuple[str, str]
+        :return: Matching modification.
+        :rtype: Modification
+        :raises IndexError: If no matching modification is found.
+        """
+
         if isinstance(index, int):
             return self.modifications[index]
         elif isinstance(index, tuple):
@@ -125,6 +228,20 @@ class ModificationLibrary(BaseModel):
         raise IndexError(f"Index {index} is out of range.")
 
     def load_residue_from_pdb(self, target_abbreviation: str) -> Residue:
+        """
+        Load a template residue from a minimized PDB file.
+
+        The PDB file must contain exactly one residue whose name matches
+        the requested target abbreviation.
+
+        :param target_abbreviation: Residue abbreviation to load.
+        :type target_abbreviation: str
+        :return: Template residue.
+        :rtype: Residue
+        :raises ValueError:
+            If the PDB file does not contain exactly one matching residue.
+        """
+
         target_template_path = self.target_templates[target_abbreviation]
 
         parser = PDBParser()
@@ -138,10 +255,30 @@ class ModificationLibrary(BaseModel):
         return residue
 
     def __setitem__(self, index, value):
+        """
+        Replace a modification at the specified index.
+
+        :param index: Index of the modification to replace.
+        :type index: int
+        :param value: New modification.
+        :type value: Modification
+        """
         self.modifications[index] = value
 
     def __len__(self):
+        """
+        Return the number of available modifications.
+
+        :return: Number of modifications.
+        :rtype: int
+        """
         return len(self.modifications)
 
     def __iter__(self):
+        """
+        Iterate over available modifications.
+
+        :return: Iterator over modifications.
+        :rtype: iterator[Modification]
+        """
         return iter(self.modifications)

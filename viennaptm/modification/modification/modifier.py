@@ -17,7 +17,22 @@ logger = logging.getLogger(__name__)
 
 
 class Modifier(BaseModel):
-    """Class that actually applies any number of modifications from a modification library to a structure"""
+    """
+    Apply chemical modifications to residues in a structure.
+
+    This class serves as the execution engine for residue modifications defined
+    in a :class:`ModificationLibrary`. It locates a target residue in a structure,
+    removes hydrogens, applies the requested modification using geometric
+    alignment and atom mappings, and records the modification in the structure's
+    modification log.
+
+    :param library: Library containing available residue modifications.
+                    If ``None``, the default internal library is loaded.
+    :type library: ModificationLibrary or None
+
+    :ivar _library: Modification library used to resolve and apply modifications.
+    :vartype _library: ModificationLibrary
+    """
 
     def __init__(self, library: ModificationLibrary=None):
         BaseModel.__init__(self)
@@ -34,6 +49,30 @@ class Modifier(BaseModel):
                            residue_number: int,
                            target_abbreviation: str,
                            inplace: bool = True) -> AnnotatedStructure:
+        """
+        Apply a residue modification to a structure.
+
+        The method locates the specified residue by chain identifier and residue
+        number, removes hydrogens, applies the requested modification using the
+        associated template residue, and updates the structure's modification log.
+
+        :param structure: Structure containing the residue to be modified.
+        :type structure: AnnotatedStructure
+        :param chain_identifier: Chain identifier of the target residue.
+        :type chain_identifier: str
+        :param residue_number: Residue number of the target residue.
+        :type residue_number: int
+        :param target_abbreviation: Abbreviation of the target (modified) residue.
+        :type target_abbreviation: str
+        :param inplace: If ``True``, modify the structure in place.
+                                If ``False``, a deep copy of the structure is modified.
+        :type inplace: bool
+        :return: The modified structure.
+        :rtype: AnnotatedStructure
+        :raises ValueError: If the specified residue cannot be found in the structure.
+        """
+
+
         # if inplace is set to False, make a copy for the manipulation
         if not inplace:
             structure = deepcopy(structure)
@@ -81,6 +120,23 @@ class Modifier(BaseModel):
     def _execute_modification(residue: Residue,
                               modification: Modification,
                               template_residue: Residue):
+        """
+        Execute a modification on a residue.
+
+        This method performs the geometric alignment between the original residue
+        and a template residue, transfers new atoms, removes atoms that are no
+        longer needed, and renames atoms according to the modification's atom
+        mapping.
+
+        :param residue: Residue to be modified.
+        :type residue: Residue
+        :param modification: Modification definition to apply.
+        :type modification: Modification
+        :param template_residue: Template residue providing new atoms and geometry.
+        :type template_residue: Residue
+        """
+
+
         for branch in modification.add_branches:
             # atoms names may change from the original to the modified residue; therefore, we use
             # the atom mapping to get the anchor lists for both with the right atom
@@ -135,10 +191,29 @@ class Modifier(BaseModel):
 
     @staticmethod
     def atoms_to_array(atoms: List[Atom]) -> np.ndarray:
+        """
+        Convert a list of atoms to a coordinate array.
+
+        :param atoms: List of atoms.
+        :type atoms: list[Atom]
+        :return: Array of atomic coordinates with shape ``(n_atoms, 3)``.
+        :rtype: numpy.ndarray
+        """
+
         return np.array([atom.get_coord() for atom in atoms])
 
     @staticmethod
     def remove_hydrogens(residue: Residue):
+        """
+        Remove hydrogen atoms from a residue.
+
+        Hydrogen atoms are deleted prior to modification to avoid inconsistencies
+        due to non-standard naming or geometry.
+
+        :param residue: Residue from which hydrogen atoms are removed.
+        :type residue: Residue
+        """
+
         # deletes atom if it is a Hydrogen, because otherwise they could be "lingering" if they do not conform
         # to the standard naming scheme; note that Hydrogen deletions are not part of the ModificationLibrary
         to_delete = [atom.name for atom in residue.get_atoms() if atom.name.startswith("H")]
@@ -147,5 +222,11 @@ class Modifier(BaseModel):
 
 
     def get_library(self):
+        """
+        Return the modification library used by this modifier.
+
+        :return: Modification library instance.
+        :rtype: ModificationLibrary
+        """
         return self._library
 

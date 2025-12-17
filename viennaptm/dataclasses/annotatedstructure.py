@@ -18,7 +18,8 @@ logger = logging.getLogger(__name__)
 
 
 class AnnotatedStructure(Structure):
-    """Annotates structure of the ``biopython Structure`` class. Log administration as well as adding of new modifications.
+    """
+    Annotates a structure of the :class:`biopython Structure` class. Log administration as well as adding of new modifications.
     PDB's can be loaded from database or a file and annotated structures can be saved in a PDB file.
     """
 
@@ -35,7 +36,8 @@ class AnnotatedStructure(Structure):
                                 chain_identifier: str,
                                 original_abbreviation: str,
                                 target_abbreviation: str):
-        """Adds modification of atoms to modification_log.
+        """
+        Adds modification of atoms to modification_log.
 
         :param residue_number: A residue number indicates the position of an amino acid in a protein's
                                polypeptide chain, starting from \(1\) at the N-terminus and ending at the C-terminus. For example,
@@ -55,7 +57,8 @@ class AnnotatedStructure(Structure):
         ###TODO set modification input to user input
 
     def get_log(self) -> pd.DataFrame:
-        """Accesses and returns modification log.
+        """
+        Accesses and returns modification log.
 
         :return: modification_log
         :rtype: pd.DataFrame
@@ -63,7 +66,8 @@ class AnnotatedStructure(Structure):
         return self.modification_log
 
     def print_log(self):
-        """Removes the index from the modification log and then prints the log. Even long (max. columns 1000) and
+        """
+        Removes the index from the modification log and then prints the log. Even long (max. columns 1000) and
         wide (width 1000) data frames are printable.
         """
 
@@ -80,7 +84,8 @@ class AnnotatedStructure(Structure):
         print(self.modification_log)
 
     def delete_log_entry(self, residue_number: int, chain_identifier: str,):
-        """Deletes a log entry according to residue_number and chain_identifier.
+        """
+        Deletes a log entry according to residue_number and chain_identifier.
 
         :param residue_number: A residue number indicates the position of an amino acid in a protein's
                                polypeptide chain, starting from \(1\) at the N-terminus and ending at the C-terminus.
@@ -100,10 +105,12 @@ class AnnotatedStructure(Structure):
 
         :param identifier: Identifier string of length four.
         :type identifier: str
+
         :raises AttributeError: Raises an error when the parameter identifier string has not a length of four.
         :raises FileExistsError: Raises an error when file cannot be accessed from given path.
-        :return: Returns a ``biopython PDB structure``.
-        :rtype: AnnotatedStructure
+
+        :return: Returns a :class:`biopython PDB structure`.
+        :rtype: :class:`AnnotatedStructure`
         """
         if not isinstance(identifier, str) or len(identifier) != 4:
             raise_with_logging_error("Parameter identifier required to be a string of length four.",
@@ -130,13 +137,16 @@ class AnnotatedStructure(Structure):
 
     @classmethod
     def from_pdb(cls, path: Union[str, Path]):
-        """Loads a PDB structure from given path.
+        """
+        Loads a PDB structure from given path.
 
         :param path: Path to a local PDB file.
         :type path: str or Path object
+
         :raises TypeError: Raises error if given path is not a string or Path object.
-        :return: Returns a ``biopython PDB structure``.
-        :rtype: AnnotatedStructure
+
+        :return: Returns a :class:`biopython PDB structure`.
+        :rtype: :class:`AnnotatedStructure`
         """
         if not isinstance(path, str) and not isinstance(path, Path):
             raise_with_logging_error(f"Parameter path (attempted path: {path}) required to be a path "
@@ -154,7 +164,7 @@ class AnnotatedStructure(Structure):
         return structure
 
     def to_pdb(self, path: str) -> None:
-        """Saves a ``biopython PDB structure`` to a given path.
+        """Saves a :class:`biopython PDB structure` to a given path.
 
         :param path: Path to save the PDB file.
         :type path: str
