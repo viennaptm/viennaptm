@@ -12,8 +12,10 @@ def compute_alignment_transform(coord_reference: np.ndarray, coord_template: np.
 
     :param coord_reference: Reference coordinates (anchor atoms from input residue).
     :type coord_reference: (N, 3) array
+
     :param coord_template: Template coordinates to be aligned (anchor atoms from template residue).
     :type coord_template: (N, 3) array
+
     :param weights: Weights for centroid and rotation calculation.
     :type weights: List[float]
 
@@ -53,8 +55,10 @@ def apply_transform(coords: np.ndarray, M_rotation: np.ndarray, v_translation: n
 
     :param coords: Points to transform.
     :type coords: (M, 3) array
+
     :param M_rotation: Rotation matrix.
     :type M_rotation: (3, 3) array
+
     :param v_translation: Translation vector.
     :type v_translation: (3,) array
 

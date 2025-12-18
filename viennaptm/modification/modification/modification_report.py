@@ -9,15 +9,20 @@ class ModificationReport:
 
     :param atoms_added: Number of atoms added.
     :type atoms_added: int
+
     :param atoms_deleted: Number of atoms deleted.
     :type atoms_deleted: int
+
     :param atoms_renamed: Number of atoms renamed.
     :type atoms_renamed: int
 
+
     :ivar atoms_added: Number of atoms added.
     :vartype atoms_added: int
+
     :ivar atoms_deleted: Number of atoms deleted.
     :vartype atoms_deleted: int
+
     :ivar atoms_renamed: Number of atoms renamed.
     :vartype atoms_renamed: int
     """
@@ -28,13 +33,15 @@ class ModificationReport:
         self.atoms_renamed = atoms_renamed
 
     def __add__(self, other):
-        """Adds the modification (atoms added, deleted and renamed) to the modification report and returns an
-        updated modification report :class:`ModificationReport`.
+        """Adds the modification (atoms added, deleted and renamed) to the
+        :class:`ModificationReport` and returns an updated version of the
+        :class:`ModificationReport`.
 
-        :param other: Another modification report.
-        :type other: ModificationReport
+        :param other: Another :class:`ModificationReport`.
+        :type other: :class:`ModificationReport`
+
         :return: A new report with summed modification counts.
-        :rtype: ModificationReport
+        :rtype: :class:`ModificationReport`
         """
 
         return ModificationReport(atoms_added=self.atoms_added+other.atoms_added,

@@ -33,8 +33,14 @@ html_theme_options = {
     "collapse_navigation": False,
     "sticky_navigation": True,
     "navigation_depth": -1,
+
     "titles_only": True,
 }
+
+html_css_files = [
+    'custom.css',
+    ('print.css', {'media': 'print'}),
+]
 
 templates_path = ["_templates"]
 exclude_patterns = []
