@@ -7,7 +7,7 @@
 
 ---
 
-![Project Logo](link-to-image)
+![Project Logo](viennaptm/viennaptm_logo_c.png)
 
 ## Table of Contents
 
@@ -23,15 +23,13 @@
 
 
 ## Overview
-
-
-## Features
-
-- Feature 1  
-- Feature 2  
-- Feature 3  
-
----
+The web server Vienna-PTM is a platform for automated introduction of PTMs of choice to 
+protein 3D structures (PDB files) in a user-friendly visual environment. With 256 different 
+enzymatic and non-enzymatic PTMs available, the server performs geometrically realistic 
+introduction of modifications at sites of interests, as well as subsequent energy minimization. 
+Finally, the server makes available force field parameters and input files needed to run 
+MD simulations of modified proteins within the framework of the widely used GROMOS 54A7 and 
+45A3 force fields and GROMACS simulation package.
 
 ## Installation
 
@@ -54,6 +52,7 @@ pip install viennaptm[docs]
 ```bash
 # clone the repository; SSH alternative: git@github.com:viennaptm/viennaptm.git
 git clone https://github.com/viennaptm/viennaptm.git
+
 cd viennaptm
 
 # install from source; add "-e" to install in developer mode
@@ -61,11 +60,35 @@ pip install .
 ```
 
 ## Usage
-CLI and API
+### Entrypoint:
+```bash
+# 1. Activate conda environment
+conda activate viennaptm
+
+# 2. Use entrypoint to run ViennaPTM
+viennaptm --input tests/data/1vii.pdb \
+          --modification "A:50=V3H" \
+          --output_pdb testoutput.pdb
+```
+
+### API:
+```bash
+modifier = Modifier()
+structure = modifier.apply_modification(structure=structure,
+                                        chain_identifier='A',
+                                        residue_number=50,
+                                        target_abbreviation="V3H")
+```
+
 ## Contributing
-fork, make changes then do Pull Request
+Contributions are always welcome. Please fork the repository, make your changes and then do a Pull Request.
+
 ## License
-Apache-2 for code, Attribution-NonCommercial 4.0 International for modification library
+
+- Apache-2 (code)
+- Attribution-NonCommercial 4.0 International (modification library)
+
+
 ## Authors / Contributors
 
 - **Christian Margreitter** - [GitHub](https://github.com/CMargreitter)  
