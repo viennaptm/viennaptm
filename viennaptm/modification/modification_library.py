@@ -54,12 +54,14 @@ class Modification(BaseModel):
     # to the modified residue's; if an atom does not exist in one of the end-states, it is set to None
     # for example, atoms that need to be deleted during modification, are marked as None
     atom_mapping: List[Tuple[Union[str, None], Union[str, None]]] = Field(default_factory=list)
+    logger.debug(f"List of atoms mapped: {atom_mapping}")
 
     # each AddBranch contains information on how to modify _one_ part (or branch) of the original
     # residue into the target, modified PTM; for most modifications, only one branch is needed, but
     # this setup allows to modify the original residues in different regions without a need to
     # 'truncate' back all the way to last common atom
     add_branches: List[AddBranch] = Field(default_factory=list)
+    logger.debug(f"List of added branches: {add_branches}")
 
     # TODO: add actual modified names for PTMs (should be part of the server files)
     model_config = ConfigDict(extra="forbid")
@@ -122,10 +124,13 @@ class ModificationLibrary(BaseModel):
 
 
     def __setitem__(self, index, value):
+        logger.debug(f"Modification {self.modificationsp[index]} has value {value}.")
         self.modifications[index] = value
 
     def __len__(self):
+        logger.debug(f"Number of modifications: {len(self.modifications)}")
         return len(self.modifications)
 
     def __iter__(self):
+        logger.debug(f"{self.modifications} has been iterated over.")
         return iter(self.modifications)

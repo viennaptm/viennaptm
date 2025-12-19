@@ -32,6 +32,10 @@ class Modifier:
 
         # change name of target (three-letter abbreviation only!)
         residue.resname = modification.target_abbreviation
+        if len(residue.resname) != 3:
+            raise_with_logging_error("Only targets with three-letter abbreviations allowed.",
+                                     logger=logger,
+                                     exception_type=AttributeError)
 
         # delete atoms, if specified
         if len(modification.atom_deletions) > 0:
@@ -39,6 +43,7 @@ class Modifier:
                 if deletion.name in residue:
                     residue.detach_child(deletion.name)
                     report.atoms_deleted += 1
+                    logger.debug(f"Atoms deleted: {modification.atom_deletions}")
 
         # rename atoms, if specified
         # note: do not forget to update the element-type in case this is required
@@ -58,6 +63,7 @@ class Modifier:
                     residue.detach_child(replacement.name)
                     residue.add(repAtom)
                     report.atoms_renamed += 1
+                    logger.debug(f"Atoms: {replacement.name} replaced by: {replacement.by}.")
 
         # if specified, start by obtain an internal, relative coordinate system
         if len(modification.atom_additions) > 0:
@@ -79,6 +85,7 @@ class Modifier:
                                      serial_number=None,
                                      element=addition.eletype))
                     report.atoms_added += 1
+                    logger.debug(f"Atoms added: {addition.name}.")
         return report
 
     def apply_modification(self, chain_identifier: str, residue_number: int,
@@ -115,6 +122,10 @@ class Modifier:
                                                 chain_identifier=chain_identifier,
                                                 modification_name=modification_name,
                                                 target_abbreviation=target_abbreviation)
+        logger.debug(f"Applied modification: residue_number = {residue_number}/"
+                                           f"chain_identifier = {chain_identifier}/ "
+                                           f"modification_name = {modification_name}/ "
+                                           f"target_abbreviation = {target_abbreviation}.")
         return report
 
     def reset_structure(self):
