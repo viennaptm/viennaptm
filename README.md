@@ -31,6 +31,8 @@ Finally, the server makes available force field parameters and input files neede
 MD simulations of modified proteins within the framework of the widely used GROMOS 54A7 and 
 45A3 force fields and GROMACS simulation package.
 
+![protein_example](viennaptm/ptm_example.png)
+
 ## Installation
 
 ### Latest stable release
