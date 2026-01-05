@@ -120,7 +120,7 @@ class AnnotatedStructure(Structure):
         downloader = PDBList()
         tmp_folder = tempfile.mkdtemp()
         path = downloader.retrieve_pdb_file(pdb_code=identifier, pdir=tmp_folder, file_format="pdb")
-        logger.debug(f"Wrote temporary PDB file: {path}")
+
 
         # check whether file exists (success) or not
         if not os.path.isfile(path):
