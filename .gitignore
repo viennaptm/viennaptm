@@ -6,6 +6,7 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
+docs/build
 
 # User-specific stuff
 .idea/**/workspace.xml
