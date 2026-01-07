@@ -4,6 +4,7 @@ build
 *egg-info
 .vscode
 .idea
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -71,6 +72,15 @@ fabric.properties
 # Editor-based Rest Client
 .idea/httpRequests
 tests/junk
+
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
 /docs/source/generated/
+
+
+# docs
+docs/source/custom.css.py
+
+# temp pictures
+viennaptm/viennaptm_logo.png
+viennaptm/viennaptm_logo.xcf
