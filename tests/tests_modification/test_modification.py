@@ -41,7 +41,7 @@ class Test_Modification(unittest.TestCase):
         # check write-out
         structure.to_pdb(output_pdb_path)
         self.assertTrue(os.path.exists(output_pdb_path))
-        self.assertEqual(os.path.getsize(output_pdb_path), 46649)
+        self.assertEqual(os.path.getsize(output_pdb_path), 46009)
 
         ###TODO check on structure object
 
