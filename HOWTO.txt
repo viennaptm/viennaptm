@@ -1,5 +1,0 @@
-### Export environment
-conda env export > environment.yml
-
-### Create environment from YAML file
-conda env create -f environment.yml

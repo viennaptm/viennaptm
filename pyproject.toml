@@ -1,0 +1,77 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = ["setuptools>=61.0", "wheel>=0.37.1"]
+
+[project]
+name = "viennaptm"
+version = "0.0.1"
+description = "Python package to apply post-translational modifications to protein structures."
+readme = "README.md"
+authors = [
+  { name = "Sophie Margreitter", email = "sophie.margreitter@gmail.com" },
+  { name = "Drazen Petrov", email = "durozlikovski@gmail.com" },
+  { name = "Christian Margreitter", email = "christian.margreitter@gmail.com" },
+  { name = "Bojan Zagrovic", email = "bojan.zagrovich@univie.ac.at" }
+]
+maintainers = [
+  { name = "Sophie Margreitter", email = "sophie.margreitter@gmail.com" },
+  { name = "Christian Margreitter", email = "christian.margreitter@gmail.com" }
+]
+license-files = ["LICEN[CS]E*", "LICENSE", "viennaptm/resources/LICENSE"]
+keywords = [
+  "Post-translational modifications",
+  "python",
+  "python-packages",
+  "semantic-versions"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+
+    "Intended Audience :: Scientists",
+
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13"
+]
+requires-python = ">=3.9"
+dependencies = [
+    "pip>=25",
+    "setuptools>=60",
+    "pydantic>=2",
+    "pandas",
+    "biopython>=1.8",
+    "scipy"
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=8.4.0"
+]
+docs = [
+    "sphinx>=8.2.0",
+    "sphinxcontrib-napoleon>=0.7",
+    "sphinx_rtd_theme>=3.0.0"
+]
+render = [
+    "nglview>=4.0",
+    "notebook>=7.0.0"
+]
+
+[project.urls]
+Homepage = "https://viennaptm.univie.ac.at"
+Repository = "https://github.com/viennaptm/viennaptm"
+
+[project.scripts]
+viennaptm = "viennaptm.entrypoints.viennaptm:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.package-data]
+viennaptm = ["resources/**/*"]
