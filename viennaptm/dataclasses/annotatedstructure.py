@@ -13,6 +13,7 @@ from Bio.PDB.Structure import Structure
 from viennaptm.utils.error_handling import raise_with_logging_error
 from viennaptm.utils.files import log_writeout
 
+
 logger = logging.getLogger(__name__)
 
 
@@ -37,10 +38,9 @@ class AnnotatedStructure(Structure):
         """Adds modification of atoms to modification_log.
 
         :param residue_number: A residue number indicates the position of an amino acid in a protein's
-        polypeptide chain, starting from \(1\) at the N-terminus and ending at the C-terminus. For example,
-        ``"His 18"`` means the 18th amino acid in the chain is Histidine.
+                               polypeptide chain, starting from \(1\) at the N-terminus and ending at the C-terminus. For example,
+                               ``"His 18"`` means the 18th amino acid in the chain is Histidine.
         :type residue_number: int
-        .
         :param chain_identifier: Peptide or protein chain ID for instances of chains - commonly 1 capital letter.
         :type chain_identifier: str
         .
