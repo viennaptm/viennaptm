@@ -1,3 +1,6 @@
+import logging
+
+logger = logging.getLogger(__name__)
 
 class ModificationReport:
     def __init__(self, atoms_added=0, atoms_deleted=0, atoms_renamed=0):
@@ -6,6 +9,9 @@ class ModificationReport:
         self.atoms_renamed = atoms_renamed
 
     def __add__(self, other):
+        logger.debug(f"atoms_added: {self.atoms_added+other.atoms_added}, "
+                     f"atoms_deleted: {self.atoms_deleted+other.atoms_deleted}, "
+                     f"atoms_renamed: {self.atoms_renamed+other.atoms_renamed}")
         return ModificationReport(atoms_added=self.atoms_added+other.atoms_added,
                                   atoms_deleted=self.atoms_deleted+other.atoms_deleted,
                                   atoms_renamed=self.atoms_renamed+other.atoms_renamed)
