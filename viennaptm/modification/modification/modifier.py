@@ -92,8 +92,21 @@ class Modifier(BaseModel):
 
             # extract Atoms for anchor atoms in both original residue and template
             # the following ensures that the order of atoms is identical in both lists
-            original_anchor_atoms = [residue[atom_name] for atom_name in anchor_atoms_in_original_residue]
-            template_anchor_atoms = [template_residue[atom_name] for atom_name in branch.anchor_atoms]
+            try:
+                original_anchor_atoms = [residue[atom_name] for atom_name in anchor_atoms_in_original_residue]
+            except KeyError:
+                raise_with_logging_error(f"Key Error of original anchor atoms. Atom names do not match original"
+                                         f" residue: {anchor_atoms_in_original_residue}. Check for spelling errors.",
+                                         logger=logger,
+                                         exception_type=KeyError)
+
+            try:
+                template_anchor_atoms = [template_residue[atom_name] for atom_name in branch.anchor_atoms]
+            except KeyError:
+                raise_with_logging_error(f"Key Error of template anchor atoms. Atom names do not match template"
+                                         f" residue: {branch.anchor_atoms}. Check library.",
+                                         logger=logger,
+                                         exception_type=KeyError)
 
             # create roto-translational alignment
             M_rotation, v_translation = compute_alignment_transform(coord_reference=Modifier.atoms_to_array(original_anchor_atoms),
