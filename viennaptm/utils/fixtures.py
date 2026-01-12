@@ -7,7 +7,8 @@ from viennaptm.utils.paths import attach_root_path
 
 
 class ViennaPTMFixtures(BaseModel):
-    LATEST_PTMS_VERSION_DATE: str = "2025-11-30"
+    # TODO: replace by actually looking for the latest one instead of hard-coding it
+    LATEST_PTMS_VERSION_DATE: str = "2025-12-18"
     LATEST_PTMS_LIBRARY_PATH: Path = None
     LATEST_PTMS_PDBS_DIR_PATH: Path = None
 

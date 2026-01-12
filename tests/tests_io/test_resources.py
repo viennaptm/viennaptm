@@ -23,7 +23,7 @@ class Test_Resources(unittest.TestCase):
 
         # test right number of atom pairs and added branches
         self.assertEqual(len(modifications[99].add_branches), 1)
-        self.assertEqual(len(modifications[99].atom_mapping), 11)
+        self.assertEqual(len(modifications[99].atom_mapping), 14)
 
         self.assertEqual(len(modifications["VAL", "V3H"].add_branches), 1)
         self.assertEqual(len(modifications["VAL", "V3H"].atom_mapping), 11)

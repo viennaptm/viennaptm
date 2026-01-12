@@ -2,7 +2,6 @@ import logging
 import unittest
 import os
 
-from Bio.PDB.Residue import Residue
 from viennaptm.dataclasses.annotatedstructure import AnnotatedStructure
 from tests.file_paths import UNITTEST_PATH_1VII_PDB, UNITTEST_JUNK_FOLDER
 from viennaptm.modification.modification.modifier import Modifier
