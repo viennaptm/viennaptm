@@ -7,7 +7,7 @@
 
 ---
 
-![Project Logo](viennaptm/viennaptm_logo_c.png)
+![Project Logo](_static/viennaptm_logo_c.png)
 
 ## Table of Contents
 
@@ -31,7 +31,7 @@ Finally, the server makes available force field parameters and input files neede
 MD simulations of modified proteins within the framework of the widely used GROMOS 54A7 and 
 45A3 force fields and GROMACS simulation package.
 
-![protein_example](viennaptm/ptm_example.png)
+![protein_example](_static/ptm_example.png)
 
 ## Installation
 
@@ -69,7 +69,7 @@ conda activate viennaptm
 
 # 2. Use entrypoint to run ViennaPTM
 viennaptm --input tests/data/1vii.pdb \
-          --modification "A:50=V3H" \
+          --application "A:50=V3H" \
           --output_pdb testoutput.pdb
 ```
 

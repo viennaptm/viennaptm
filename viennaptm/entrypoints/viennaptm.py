@@ -7,7 +7,7 @@ from typing import Union, Optional, Literal
 from pydantic import BaseModel, field_validator
 
 from viennaptm.dataclasses.annotatedstructure import AnnotatedStructure
-from viennaptm.modification.modification.modifier import Modifier
+from viennaptm.modification.application.modifier import Modifier
 from viennaptm.utils.entrypoint_helper import collect_kwargs
 
 # logger settings

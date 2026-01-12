@@ -4,7 +4,7 @@ import os
 
 from viennaptm.dataclasses.annotatedstructure import AnnotatedStructure
 from tests.file_paths import UNITTEST_PATH_1VII_PDB, UNITTEST_JUNK_FOLDER
-from viennaptm.modification.modification.modifier import Modifier
+from viennaptm.modification.application.modifier import Modifier
 from viennaptm.utils.paths import attach_root_path
 from pathlib import Path
 
@@ -28,7 +28,7 @@ class Test_Modification(unittest.TestCase):
         # load internal PDB file
         structure = self._struc_io.from_pdb(path=self._1vii_PDB_path)
 
-        # use API pattern to apply two modification
+        # use API pattern to apply two application
         modifier = Modifier()
         structure = modifier.apply_modification(structure=structure,
                                                 chain_identifier='A',

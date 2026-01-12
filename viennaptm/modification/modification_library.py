@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 
 class AddBranch(BaseModel):
     """
-    Definition of a modification branch for residue transformation.
+    Definition of a application branch for residue transformation.
 
     An :class:`AddBranch` describes how a specific part (branch) of a residue
     should be modified. It specifies anchor atoms used for geometric alignment,
@@ -85,11 +85,11 @@ class AddBranch(BaseModel):
 
 class Modification(BaseModel):
     """
-    Definition of a residue modification.
+    Definition of a residue application.
 
     A :class:`Modification` specifies how an original residue is transformed
     into a modified residue. It includes atom mappings between the two residue
-    states and one or more modification branches that describe how atoms are
+    states and one or more application branches that describe how atoms are
     added and aligned.
 
     :ivar residue_original_abbreviation: Abbreviation of the original residue.
@@ -118,7 +118,7 @@ class Modification(BaseModel):
 
     # contains a list of the form [('N', 'N'), ...] which maps the original residue's atom names
     # to the modified residue's; if an atom does not exist in one of the end-states, it is set to None
-    # for example, atoms that need to be deleted during modification, are marked as None
+    # for example, atoms that need to be deleted during application, are marked as None
     atom_mapping: List[Tuple[Union[str, None], Union[str, None]]] = Field(default_factory=list)
     logger.debug(f"List of atoms mapped: {atom_mapping}")
 
@@ -137,7 +137,7 @@ class ModificationLibrary(BaseModel):
     """
     Container and loader for residue modifications and template structures.
 
-    The :class:`ModificationLibrary` loads modification definitions from a JSON
+    The :class:`ModificationLibrary` loads application definitions from a JSON
     library file and associates them with minimized :class:`Biopython PDB template structure`.
     It provides indexed access to modifications and utilities for loading
     template residues.
@@ -162,10 +162,10 @@ class ModificationLibrary(BaseModel):
         """
         Load a :class:`ModificationLibrary` and associated template PDB files.
 
-        If no paths are provided, the latest installed default modification
+        If no paths are provided, the latest installed default application
         library and minimized PDB directory are loaded automatically.
 
-        :param library_path: Path to the JSON modification library file.
+        :param library_path: Path to the JSON application library file.
         :type library_path: str or pathlib.Path or None
         
         :param pdbs_minimized: Directory containing minimized PDB templates.
@@ -189,7 +189,7 @@ class ModificationLibrary(BaseModel):
             self.library_version = "custom"
             logger.info(f"Using custom library ({library_path}) and PDB directory ({pdbs_minimized}).")
 
-        # load modification library, make sure that minimized PDBs are available and store the absolute paths
+        # load application library, make sure that minimized PDBs are available and store the absolute paths
         # in dictionary of the form: {"MOD1": "/full/path/MOD1.pdb", ...}
         with open(library_path, 'r') as f:
             library = json.load(f)
@@ -205,7 +205,7 @@ class ModificationLibrary(BaseModel):
                                      FileNotFoundError)
         self.target_templates = {f[:-4]: os.path.join(pdbs_minimized, f) for f in minimized_pdb_files if f.endswith(".pdb")}
 
-        # parse modification file and report on loading
+        # parse application file and report on loading
         for key in library.keys():
             original, modified = key.split('_')
             self.modifications.append(Modification(residue_original_abbreviation=original,
@@ -216,16 +216,16 @@ class ModificationLibrary(BaseModel):
 
     def __getitem__(self, index):
         """
-        Retrieve a modification by index or residue pair.
+        Retrieve a application by index or residue pair.
 
         :param index: Either an integer index or a tuple
                         ``(original_abbreviation, modified_abbreviation)``.
         :type index: int or tuple[str, str]
 
-        :return: Matching modification.
+        :return: Matching application.
         :rtype: Modification
 
-        :raises IndexError: If no matching modification is found.
+        :raises IndexError: If no matching application is found.
         """
 
         if isinstance(index, int):
@@ -271,12 +271,12 @@ class ModificationLibrary(BaseModel):
     def __setitem__(self, index, value):
         logger.debug(f"Modification {self.modificationsp[index]} has value {value}.")
         """
-        Replace a modification at the specified index.
+        Replace a application at the specified index.
 
-        :param index: Index of the modification to replace.
+        :param index: Index of the application to replace.
         :type index: int
 
-        :param value: New modification.
+        :param value: New application.
         :type value: Modification
         """
 

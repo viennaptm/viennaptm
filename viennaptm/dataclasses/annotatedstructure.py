@@ -26,7 +26,7 @@ class AnnotatedStructure(Structure):
     PDB database or from a local PDB file, annotated with modifications, and written
     back to disk.
 
-    The modification log is internally stored as a :class:`pandas.DataFrame`.
+    The application log is internally stored as a :class:`pandas.DataFrame`.
     """
 
     def __init__(self, id):
@@ -45,7 +45,7 @@ class AnnotatedStructure(Structure):
         """
         Initialize internal attributes.
 
-        This method sets up the modification log used to track residue
+        This method sets up the application log used to track residue
         modifications. It is called during normal initialization and must also
         be called manually when an existing :class:`Biopython structure` is cast to
         :class:`AnnotatedStructure`.
@@ -59,7 +59,7 @@ class AnnotatedStructure(Structure):
                                 original_abbreviation: str,
                                 target_abbreviation: str):
         """
-        Add a residue modification entry to the modification log.
+        Add a residue application entry to the application log.
 
         :param residue_number:
             Position of the residue in the polypeptide chain, starting at 1
@@ -86,11 +86,11 @@ class AnnotatedStructure(Structure):
 
         self.modification_log.loc[len(self.modification_log)] = [residue_number, chain_identifier,
                                                                  original_abbreviation, target_abbreviation]
-        ###TODO set modification input to user input
+        ###TODO set application input to user input
 
     def get_log(self) -> pd.DataFrame:
         """
-        Return the modification log.
+        Return the application log.
 
         :return: DataFrame containing all logged residue modifications.
         :rtype: :class:`pandas.DataFrame`
@@ -100,7 +100,7 @@ class AnnotatedStructure(Structure):
 
     def print_log(self):
         """
-        Print the modification log to stdout.
+        Print the application log to stdout.
 
         The index is removed prior to printing, and pandas display options
         are adjusted to allow printing of wide and long tables (max. columns 1000
@@ -121,7 +121,7 @@ class AnnotatedStructure(Structure):
 
     def delete_log_entry(self, residue_number: int, chain_identifier: str,):
         """
-        Delete a modification log entry.
+        Delete a application log entry.
 
         Entries are removed based on matching residue number and chain identifier.
 

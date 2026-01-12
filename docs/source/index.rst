@@ -10,16 +10,24 @@ viennaptm package
 Classes and functions
 ---
 
+
+.. currentmodule:: viennaptm
+
 .. autosummary::
    :toctree: generated/
 
-   viennaptm.dataclasses.annotatedstructure.AnnotatedStructure
-   viennaptm.modification.modification.modifier.Modifier
-   viennaptm.modification.modification_library.AddBranch
-   viennaptm.modification.modification_library.Modification
-   viennaptm.entrypoints.viennaptm.ModifierParameters
-   viennaptm.modification.calculation.align.compute_alignment_transform
-   viennaptm.modification.calculation.align.apply_transform
+   dataclasses.annotatedstructure.AnnotatedStructure
+   modification.application.modifier.Modifier
+   modification.modification_library.AddBranch
+   modification.modification_library.Modification
+   entrypoints.viennaptm.ModifierParameters
+
+.. autosummary::
+   :toctree: generated/
+   :template: functions
+
+   modification.calculation.align.compute_alignment_transform
+   modification.calculation.align.apply_transform
 
 
 See :cite:`Margreitter2013` for the `publication <https://doi.org/10.1093/nar/gkt416>`_.

@@ -17,6 +17,8 @@ extensions = [
 ]
 
 autosummary_generate = True
+add_module_names = False
+autosummary_short_names = True
 autodoc_default_options = {
     "members": True,
     "undoc-members": True,
@@ -33,8 +35,7 @@ html_theme_options = {
     "collapse_navigation": False,
     "sticky_navigation": True,
     "navigation_depth": -1,
-
-    "titles_only": True,
+    "titles_only": True
 }
 
 html_css_files = [

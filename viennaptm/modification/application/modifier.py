@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 
 
 class Modifier(BaseModel):
-    """Class that actually applies any number of modifications from a modification library to a structure"""
+    """Class that actually applies any number of modifications from a application library to a structure"""
 
     def __init__(self, library: ModificationLibrary=None):
         BaseModel.__init__(self)
@@ -58,19 +58,19 @@ class Modifier(BaseModel):
 
         self.remove_hydrogens(residue)
 
-        # fetch the desired modification and load the respective template PDB file
+        # fetch the desired application and load the respective template PDB file
         # note: this assumes, that for all modifications a template PDB exists
         original_residue_abbreviation = residue.get_resname()
         modification = self._library[original_residue_abbreviation, target_abbreviation]
         target_residue = self._library.load_residue_from_pdb(target_abbreviation)
 
-        # apply the modification (changes to the respective residue are saved, since it is mutable) and log it
+        # apply the application (changes to the respective residue are saved, since it is mutable) and log it
         self._execute_modification(residue=residue,
                                    modification=modification,
                                    template_residue=target_residue)
         residue.resname = target_residue.get_resname()
 
-        # attach information on applied modification
+        # attach information on applied application
         structure.add_to_modification_log(residue_number=residue_number,
                                           chain_identifier=chain_identifier,
                                           original_abbreviation=original_residue_abbreviation,

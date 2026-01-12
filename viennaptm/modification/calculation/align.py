@@ -23,7 +23,7 @@ def compute_alignment_transform(coord_reference: np.ndarray, coord_template: np.
     :rtype: (3, 3) ndarray
 
     :return v_translation: Translation vector.
-    :rtype: (3,) ndarray
+    :rtype: (3, ) ndarray
     """
 
     # centroids (weighted)

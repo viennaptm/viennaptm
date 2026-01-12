@@ -85,6 +85,6 @@ tests/junk
 docs/source/custom.css.py
 
 # temp pictures
-viennaptm/viennaptm_logo.png
-viennaptm/viennaptm_logo.xcf
+_static/viennaptm_logo.png
+_static/viennaptm_logo.xcf
 
