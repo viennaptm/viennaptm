@@ -15,7 +15,6 @@ Classes and functions
 
    viennaptm.dataclasses.annotatedstructure.AnnotatedStructure
    viennaptm.modification.modification.modifier.Modifier
-   viennaptm.modification.modification.modification_report.ModificationReport
    viennaptm.modification.modification_library.AddBranch
    viennaptm.modification.modification_library.Modification
    viennaptm.entrypoints.viennaptm.ModifierParameters
