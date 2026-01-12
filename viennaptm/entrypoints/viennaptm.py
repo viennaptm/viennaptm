@@ -12,6 +12,18 @@ from viennaptm.utils.entrypoint_helper import collect_kwargs
 
 # logger settings
 def setup_file_logging() -> None:
+    """
+    Configure logging to write both to a file and to the console.
+
+    This function initializes the root logger using :func:`logging.basicConfig`.
+    Log messages are written to a file named ``viennaptm.log`` (append mode,
+    UTF-8 encoded) and simultaneously streamed to standard output.
+
+    The logging level is set to ``INFO``.
+
+    :return: None
+    """
+
     logging.basicConfig(
         level=logging.INFO,
         format="%(asctime)s:%(levelname)s:%(name)s:%(message)s",
@@ -22,6 +34,16 @@ def setup_file_logging() -> None:
     )
 
 def setup_console_logging() -> None:
+    """
+    Configure logging to write only to the console.
+
+    This function initializes the root logger using :func:`logging.basicConfig`
+    with output directed exclusively to standard output. The logging level
+    is set to ``INFO``.
+
+    :return: None
+    """
+
     logging.basicConfig(
         level=logging.INFO,
         format="%(asctime)s:%(levelname)s:%(name)s:%(message)s",
@@ -35,20 +57,29 @@ logger = logging.getLogger(__name__)
 
 class ModifierParameters(BaseModel):
     """
-        Pydantic model containing parameters for a structure modification task.
+    Pydantic model defining configuration parameters for a structure modification run.
 
-        :param input: Path object or string pointing to the input structure.
-        :type input: Union[Path, str]
+    This model validates user input for loading a :class:`Biopython PDB structure`, applying
+    one or more residue modifications, selecting a logging mode, and
+    defining the output file.
 
-        :param modification: One or more modifications to apply. For example, ``--modification "A:50=V3H" "Y:65=Y1P"``.
-        :type modification: Union[list[str], str]
+    :param input:
+        Either a path to a local PDB file or a four-character `PDB database identifier <https://www.rcsb.org/>`_.
+    :type input: Union[pathlib.Path, str]
 
-        :param output_pdb: Output PDB filename or Path object. Defaults to ``"output.pdb"``.
-        :type output_pdb: Optional[Union[Path, str]]
+    :param modification:
+        One or more modification strings of the form ``"A:50=V3H"``.
+        Multiple modifications may be supplied as a list.
+    :type modification: Union[list[str], str]
 
-        :param logger: Logging mode, either ``"console"`` or ``"file"``. Defaults to ``"console"``.
-        :type logger: Literal['console', 'file']
-        """
+    :param output_pdb:
+        Output PDB filename or path. Must end with ``.pdb``.
+    :type output_pdb: Optional[Union[pathlib.Path, str]]
+
+    :param logger:
+        Logging mode. Either ``"console"`` or ``"file"``.
+    :type logger: Literal['console', 'file']
+    """
 
     input: Union[Path, str]
     modification: Union[list[str], str]
@@ -59,6 +90,22 @@ class ModifierParameters(BaseModel):
     @field_validator("output_pdb", mode="after")
     @classmethod
     def validate_output_pdb(cls, out: Union[Path, str]) -> Path:
+        """
+        Validate the output PDB path.
+
+        Ensures that the output filename ends with the ``.pdb`` suffix and
+        converts string paths to :class:`pathlib.Path`.
+
+        :param out: Output path or filename.
+        :type out: Union[pathlib.Path, str]
+
+        :raises ValueError:
+            If the output file does not end with ``.pdb``.
+
+        :return: Validated output path.
+        :rtype: pathlib.Path
+        """
+
         if isinstance(out, str):
             out = Path(out)
         if out.suffix == ".pdb":
@@ -70,6 +117,19 @@ class ModifierParameters(BaseModel):
     @field_validator("modification", mode="after")
     @classmethod
     def validate_input_modification(cls, input_modification: Union[list[str], str]) -> list[str]:
+        """
+        Normalize modification input to a list of strings.
+
+        Single modification strings are wrapped into a list to ensure
+        consistent downstream handling.
+
+        :param input_modification: Modification or list of modifications.
+        :type input_modification: Union[list[str], str]
+
+        :return: List of modification strings.
+        :rtype: list[str]
+        """
+
         # lists are mutable, therefore use [] to generate new list in memory
         if isinstance(input_modification, str):
             input_modification = [input_modification]
@@ -78,6 +138,24 @@ class ModifierParameters(BaseModel):
     @field_validator("input", mode="after")
     @classmethod
     def validate_file_input(cls, inp: Union[Path, str]):
+        """
+        Validate the input structure source.
+
+        If the input is a string ending with ``.pdb``, it is interpreted as a
+        file path and converted to :class:`pathlib.Path`. Otherwise, the string
+        is interpreted as a PDB database identifier and must be exactly four
+        characters long.
+
+        :param inp: Input path or PDB identifier.
+        :type inp: Union[pathlib.Path, str]
+
+        :raises ValueError:
+            If a database identifier is not exactly four characters long.
+
+        :return: Validated input value.
+        :rtype: Union[pathlib.Path, str]
+        """
+
         if isinstance(inp, str):
             if inp.lower()[-4:] == ".pdb":
                 # If input ends with ".pdb" assume it is a path
@@ -90,6 +168,21 @@ class ModifierParameters(BaseModel):
 
 
 def main():
+    """
+    Entry point for the :class:`AnnotatedStructure` modification command-line interface.
+
+    This function:
+    - Parses command-line arguments
+    - Validates parameters using :class:`ModifierParameters`
+    - Initializes logging
+    - Loads a :class:`Biopython PDB structure` (local file or database)
+    - Applies one or more residue modifications
+    - Writes the modified :class:`AnnotatedStructure` to a PDB file
+
+    :raises ValueError:
+        If modification strings do not conform to the expected format.
+    """
+
     raw_kwargs = collect_kwargs(sys.argv)
     cfg = ModifierParameters(**raw_kwargs)
 

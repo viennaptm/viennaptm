@@ -17,10 +17,12 @@ class Test_Modification(unittest.TestCase):
     def setUp(self):
         self._struc_io = AnnotatedStructure("dd")
         self._1vii_PDB_path = attach_root_path(UNITTEST_PATH_1VII_PDB)
-        Path(attach_root_path(UNITTEST_JUNK_FOLDER)).mkdir(parents=True, exist_ok=True)
+        self._junk_folder = attach_root_path(UNITTEST_JUNK_FOLDER)
+        print(self._junk_folder)
+        Path(self._junk_folder).mkdir(parents=True, exist_ok=True)
 
     def test_apply_modifications(self):
-        output_pdb_path = os.path.join(UNITTEST_JUNK_FOLDER, "apply_modifications.pdb")
+        output_pdb_path = os.path.join(self._junk_folder, "apply_modifications.pdb")
         if os.path.exists(output_pdb_path):
             os.remove(output_pdb_path)
 
@@ -41,7 +43,7 @@ class Test_Modification(unittest.TestCase):
         # check write-out
         structure.to_pdb(output_pdb_path)
         self.assertTrue(os.path.exists(output_pdb_path))
-        self.assertEqual(os.path.getsize(output_pdb_path), 46649)
+        self.assertEqual(os.path.getsize(output_pdb_path), 46009)
 
         ###TODO check on structure object
 

@@ -10,7 +10,7 @@ class TestModificationLog(unittest.TestCase):
         self.annotated_structure = AnnotatedStructure("jj")
         self.modification = [60, "A", "V3H", "mod_name"]
         self.columns = ["residue_number", "chain_identifier",
-                        "target_abbreviation", "modification_name"]
+                        "original_abbreviation", "target_abbreviation"]
 
         # adds modifications, df has now 1 row
         self.annotated_structure.add_to_modification_log(*self.modification)

@@ -1,12 +1,16 @@
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and WebStorm
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+.ipynb_checkpoints
 build
 *egg-info
 .vscode
+*.html
 .idea
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
+docs/build
 
 # User-specific stuff
 .idea/**/workspace.xml
@@ -71,6 +75,16 @@ fabric.properties
 # Editor-based Rest Client
 .idea/httpRequests
 tests/junk
+
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
 /docs/source/generated/
+
+
+# docs
+docs/source/custom.css.py
+
+# temp pictures
+viennaptm/viennaptm_logo.png
+viennaptm/viennaptm_logo.xcf
+
