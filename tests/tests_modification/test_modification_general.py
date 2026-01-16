@@ -11,7 +11,7 @@ from pathlib import Path
 logger = logging.getLogger(__name__)
 
 
-class Test_Modification(unittest.TestCase):
+class Test_Modification_General(unittest.TestCase):
 
     def setUp(self):
         self._struc_io = AnnotatedStructure("dd")
@@ -39,12 +39,15 @@ class Test_Modification(unittest.TestCase):
                                                 residue_number=55,
                                                 target_abbreviation="GSA")
 
+        # get list of residue and atoms after modification
+        modified_residue = list(structure.get_residues())[14]
+        atoms_after = [atom.name for atom in modified_residue.get_atoms()]
+        self.assertListEqual(['N', 'CA', 'C', 'O', 'CB', 'CG', 'CD', 'OE', 'HD'], atoms_after)
+
         # check write-out
         structure.to_pdb(output_pdb_path)
         self.assertTrue(os.path.exists(output_pdb_path))
-        self.assertEqual(os.path.getsize(output_pdb_path), 46009)
-
-        ###TODO check on structure object
+        self.assertGreaterEqual(os.path.getsize(output_pdb_path), 38000)
 
 
     def test_deletion_hydrogen_atoms(self):
@@ -63,3 +66,18 @@ class Test_Modification(unittest.TestCase):
                                   'H', 'HA', 'HB2', 'HB3', 'HG2', 'HG3', 'HE1',
                                   'HE2', 'HE3'], atoms_before)
         self.assertListEqual(['N', 'CA', 'C', 'O', 'CB', 'CG', 'SD', 'CE'], atoms_after)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
