@@ -263,8 +263,8 @@ class ModificationLibrary(BaseModel):
 
         # this assumes, that the template PDB files contain exactly one residue
         residue = next(structure.get_residues())
-        if residue.resname != target_abbreviation:
-            raise_with_logging_error(f"File {target_template_path} needs to contain exactly one residue entry for {target_abbreviation}, abort.",
+        if residue.resname not in target_abbreviation:
+            raise_with_logging_error(f"File {target_template_path} needs to contain exactly one residue entry for {target_abbreviation} with the residue name being part of the target name, abort.",
                                      logger, ValueError)
         return residue
 
