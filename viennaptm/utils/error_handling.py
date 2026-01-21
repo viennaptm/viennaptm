@@ -1,6 +1,9 @@
-def raise_with_logging_error(message, logger, exception_type):
+def raise_with_logging_error(message, logger, exception_type, exp=None):
     logger.error(message)
-    raise exception_type(message)
+    if exp is not None:
+        raise exception_type(message) from exp
+    else:
+        raise exception_type(message)
 
 def raise_with_logging_warning(message, logger, exception_type):
     logger.warning(message)

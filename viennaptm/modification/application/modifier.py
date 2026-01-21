@@ -99,7 +99,7 @@ class Modifier(BaseModel):
             If atom names required for the modification do not match those
             in the structure or the template residue.
 
-        .. note::
+        . note::
             This method assumes that:
 
             * Chain identifiers are unique across all models.
@@ -195,10 +195,13 @@ class Modifier(BaseModel):
             template residue.
         """
 
+        # since branches may rename atoms, multi-branch application could run into issues if the later branches
+        # attempt to rename again; therefore, only execute renaming for the first one
+        branch_first = True
         for branch in modification.add_branches:
             # atoms names may change from the original to the modified residue; therefore, we use
             # the atom mapping to get the anchor lists for both with the right atom
-            # identity (irrespective of name); for example, in VAL->V3H the template residue's anchor atoms
+            # identity (irrespective of name); for example, in VAL<>V3H the template residue's anchor atoms
             # ['CB', 'CA', 'CG1', 'C', 'N'] map to ['CB', 'CA', 'CG2', 'C', 'N'] in the original residue
             _mapping = {temp: ori for ori, temp in modification.atom_mapping}
             anchor_atoms_in_original_residue = [_mapping[x] for x in branch.anchor_atoms]
@@ -208,11 +211,12 @@ class Modifier(BaseModel):
             # the following ensures that the order of atoms is identical in both lists
             try:
                 original_anchor_atoms = [residue[atom_name] for atom_name in anchor_atoms_in_original_residue]
-            except KeyError:
+            except KeyError as e:
                 raise_with_logging_error(f"Key Error of original anchor atoms. Atom names do not match original"
                                          f" residue: {anchor_atoms_in_original_residue}. Check for spelling errors.",
                                          logger=logger,
-                                         exception_type=KeyError)
+                                         exception_type=KeyError,
+                                         exp=e)
 
             try:
                 template_anchor_atoms = [template_residue[atom_name] for atom_name in branch.anchor_atoms]
@@ -236,21 +240,22 @@ class Modifier(BaseModel):
                                              M_rotation=M_rotation,
                                              v_translation=v_translation)
 
-            # rename atoms based on atom_mapping (remove those that are mapped to "None" in the updated form)
-            for ori, tar in modification.atom_mapping:
-                if ori == tar:
-                    continue
+            # rename and delete atoms based on atom_mapping (remove those that are mapped to "None" in the updated form)
+            if branch_first:
+                for ori, tar in modification.atom_mapping:
+                    if ori == tar:
+                        continue
 
-                # skip atoms that are not present in the original residue (they were added in the previous step)
-                if ori is not None:
-                    if tar is None:
-                        # this indicates, that this particular ori-atom is to be removed
-                        if ori in residue:
-                            residue.detach_child(ori)
-                    else:
-                        # this means, an atom is to be renamed
-                        if ori != tar:
-                            Modifier._rename_atom(residue, ori, tar)
+                    # skip atoms that are not present in the original residue (they were added in the previous step)
+                    if ori is not None:
+                        if tar is None:
+                            # this indicates, that this particular ori-atom is to be removed
+                            if ori in residue:
+                                residue.detach_child(ori)
+                        else:
+                            # this means, an atom is to be renamed
+                            if ori != tar:
+                                Modifier._rename_atom(residue, ori, tar)
 
             # add new atoms
             for atom_idx, atom in enumerate(add_atoms):
@@ -262,6 +267,7 @@ class Modifier(BaseModel):
                                  fullname= f"{atom.get_fullname():>4}",
                                  serial_number=None,
                                  element=atom.element))
+            branch_first = False
 
     @staticmethod
     def atoms_to_array(atoms: List[Atom]) -> np.ndarray:
