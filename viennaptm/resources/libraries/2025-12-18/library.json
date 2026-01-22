@@ -4918,15 +4918,7 @@
                 "O"
             ],
             [
-                "HZ1",
-                null
-            ],
-            [
-                "HZ3",
-                null
-            ],
-            [
-                "HZ2",
+                null,
                 "HZ"
             ],
             [
@@ -4953,6 +4945,7 @@
         "add_branches": [
             {
                 "add_atoms": [
+                    "HZ",
                     "CH",
                     "OI1",
                     "NI2",
@@ -5015,15 +5008,11 @@
                 "O"
             ],
             [
-                "HZ1",
-                null
-            ],
-            [
-                "HZ3",
+                null,
                 "HZ1"
             ],
             [
-                "HZ2",
+                null,
                 "HZ2"
             ],
             [
@@ -5038,6 +5027,8 @@
         "add_branches": [
             {
                 "add_atoms": [
+                    "HZ1",
+                    "HZ2",
                     "OE1",
                     "HE1"
                 ],
@@ -5101,15 +5092,11 @@
                 "O"
             ],
             [
-                "HZ1",
-                null
-            ],
-            [
-                "HZ3",
+                null,
                 "HZ2"
             ],
             [
-                "HZ2",
+                null,
                 "HZ1"
             ],
             [
@@ -5124,6 +5111,8 @@
         "add_branches": [
             {
                 "add_atoms": [
+                    "HZ1",
+                    "HZ2",
                     "OE1",
                     "HE1"
                 ],
@@ -9485,28 +9474,24 @@
                 "O"
             ],
             [
-                "HD1",
+                null,
                 "HD1"
             ],
             [
-                "HE1",
+                null,
                 "HE1"
             ],
             [
-                "HE3",
+                null,
                 "HE3"
             ],
             [
-                "HZ3",
+                null,
                 "HZ3"
             ],
             [
-                "HH2",
+                null,
                 "HH3"
-            ],
-            [
-                "HZ2",
-                null
             ],
             [
                 null,
@@ -9521,7 +9506,12 @@
             {
                 "add_atoms": [
                     "OH2",
-                    "HH2"
+                    "HH2",
+                    "HH3",
+                    "HZ3",
+                    "HE3",
+                    "HE1",
+                    "HD1"
                 ],
                 "anchor_atoms": [
                     "CZ2",
