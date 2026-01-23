@@ -5262,16 +5262,16 @@
                 "O"
             ],
             [
-                "HZ1",
-                "HZ3"
+                null,
+                "HZ1"
             ],
             [
-                "HZ3",
+                null,
                 "HZ2"
             ],
             [
-                "HZ2",
-                "HZ1"
+                null,
+                "HZ3"
             ],
             [
                 null,
@@ -5285,6 +5285,9 @@
         "add_branches": [
             {
                 "add_atoms": [
+                    "HZ1",
+                    "HZ2",
+                    "HZ3",
                     "OE1",
                     "HE1"
                 ],
@@ -5348,15 +5351,7 @@
                 "O"
             ],
             [
-                "HZ1",
-                null
-            ],
-            [
-                "HZ3",
-                null
-            ],
-            [
-                "HZ2",
+                null,
                 "HZ"
             ],
             [
@@ -5375,6 +5370,7 @@
         "add_branches": [
             {
                 "add_atoms": [
+                    "HZ",
                     "CH",
                     "OI1",
                     "OI2"
@@ -5435,15 +5431,7 @@
                 "O"
             ],
             [
-                "HZ1",
-                null
-            ],
-            [
-                "HZ3",
-                null
-            ],
-            [
-                "HZ2",
+                null,
                 "HZ"
             ],
             [
@@ -5466,6 +5454,7 @@
         "add_branches": [
             {
                 "add_atoms": [
+                    "HZ",
                     "CH",
                     "OI1",
                     "OI2",
@@ -5527,15 +5516,11 @@
                 "O"
             ],
             [
-                "HZ1",
-                null
-            ],
-            [
-                "HZ3",
+                null,
                 "HZ2"
             ],
             [
-                "HZ2",
+                null,
                 "HZ1"
             ],
             [
@@ -5582,6 +5567,8 @@
         "add_branches": [
             {
                 "add_atoms": [
+                    "HZ1",
+                    "HZ2",
                     "CH",
                     "CT",
                     "CI2",
@@ -5649,15 +5636,11 @@
                 "O"
             ],
             [
-                "HZ1",
-                null
-            ],
-            [
-                "HZ3",
+                null,
                 "HZ2"
             ],
             [
-                "HZ2",
+                null,
                 "HZ1"
             ],
             [
@@ -5704,6 +5687,8 @@
         "add_branches": [
             {
                 "add_atoms": [
+                    "HZ1",
+                    "HZ2",
                     "CH",
                     "CT",
                     "CI2",
@@ -5771,15 +5756,7 @@
                 "O"
             ],
             [
-                "HZ1",
-                null
-            ],
-            [
-                "HZ3",
-                null
-            ],
-            [
-                "HZ2",
+                null,
                 "HZ"
             ],
             [
@@ -5846,6 +5823,7 @@
         "add_branches": [
             {
                 "add_atoms": [
+                    "HZ",
                     "CH",
                     "OXT1",
                     "CT2",
@@ -5918,15 +5896,7 @@
                 "O"
             ],
             [
-                "HZ1",
-                null
-            ],
-            [
-                "HZ3",
-                null
-            ],
-            [
-                "HZ2",
+                null,
                 "HZ"
             ],
             [
@@ -5993,6 +5963,7 @@
         "add_branches": [
             {
                 "add_atoms": [
+                    "HZ",
                     "CH",
                     "CT2",
                     "OXT1",
@@ -6065,15 +6036,7 @@
                 "O"
             ],
             [
-                "HZ1",
-                null
-            ],
-            [
-                "HZ3",
-                null
-            ],
-            [
-                "HZ2",
+                null,
                 "HZ"
             ],
             [
@@ -6092,6 +6055,7 @@
         "add_branches": [
             {
                 "add_atoms": [
+                    "HZ",
                     "CH",
                     "OI2",
                     "CI1"
@@ -6321,15 +6285,7 @@
                 "O"
             ],
             [
-                "HZ1",
-                null
-            ],
-            [
-                "HZ3",
-                null
-            ],
-            [
-                "HZ2",
+                null,
                 "HZ"
             ],
             [
@@ -6340,6 +6296,7 @@
         "add_branches": [
             {
                 "add_atoms": [
+                    "HZ",
                     "CH"
                 ],
                 "anchor_atoms": [
@@ -6398,15 +6355,11 @@
                 "O"
             ],
             [
-                "HZ1",
-                null
-            ],
-            [
-                "HZ3",
+                null,
                 "HZ1"
             ],
             [
-                "HZ2",
+                null,
                 "HZ2"
             ],
             [
@@ -6417,6 +6370,8 @@
         "add_branches": [
             {
                 "add_atoms": [
+                    "HZ1",
+                    "HZ2",
                     "CH"
                 ],
                 "anchor_atoms": [
@@ -6475,15 +6430,7 @@
                 "O"
             ],
             [
-                "HZ1",
-                null
-            ],
-            [
-                "HZ3",
-                null
-            ],
-            [
-                "HZ2",
+                null,
                 "HZ"
             ],
             [
@@ -6498,6 +6445,7 @@
         "add_branches": [
             {
                 "add_atoms": [
+                    "HZ",
                     "CH2",
                     "CH1"
                 ],
@@ -6692,15 +6640,7 @@
                 "O"
             ],
             [
-                "HZ1",
-                null
-            ],
-            [
-                "HZ3",
-                null
-            ],
-            [
-                "HZ2",
+                null,
                 "HZ"
             ],
             [
@@ -6723,6 +6663,7 @@
         "add_branches": [
             {
                 "add_atoms": [
+                    "HZ",
                     "PH",
                     "OI2",
                     "OI1",
@@ -7058,19 +6999,15 @@
                 "O"
             ],
             [
-                "HD2",
+                null,
                 "HD2"
             ],
             [
-                "HD1",
-                null
-            ],
-            [
-                "HE2",
+                null,
                 "HE2"
             ],
             [
-                "HZ",
+                null,
                 "HZ2"
             ],
             [
@@ -7097,19 +7034,20 @@
         "add_branches": [
             {
                 "add_atoms": [
+                    "HD2",
+                    "HE2",
+                    "HZ2",
                     "OZ1",
                     "HZ1"
                 ],
                 "anchor_atoms": [
                     "CE1",
-                    "CZ2",
                     "CD1",
                     "CE2",
                     "CG"
                 ],
                 "weights": [
                     4.0,
-                    1.0,
                     1.0,
                     0.5,
                     0.5
@@ -7294,24 +7232,20 @@
                 "O"
             ],
             [
-                "HD2",
+                null,
                 "HD2"
             ],
             [
-                "HD1",
+                null,
                 "HD1"
             ],
             [
-                "HE2",
+                null,
                 "HE2"
             ],
             [
-                "HZ",
+                null,
                 "HZ2"
-            ],
-            [
-                "HE1",
-                null
             ],
             [
                 null,
@@ -7325,6 +7259,11 @@
         "add_branches": [
             {
                 "add_atoms": [
+                    "HD1",
+                    "HD2",
+                    "HE2",
+                    "HZ1",
+                    "HZ2",
                     "OZ1",
                     "HZ1"
                 ],
@@ -10563,23 +10502,19 @@
                 "O"
             ],
             [
-                "HD1",
+                null,
                 "HD1"
             ],
             [
-                "HD2",
+                null,
                 "HD2"
             ],
             [
-                "HE1",
-                null
-            ],
-            [
-                "HE2",
+                null,
                 "HE2"
             ],
             [
-                "HH",
+                null,
                 "HH3"
             ],
             [
@@ -10598,6 +10533,10 @@
         "add_branches": [
             {
                 "add_atoms": [
+                    "HD1",
+                    "HD2",
+                    "HE2",
+                    "HH3",
                     "NZ1",
                     "OH1",
                     "OH2"
@@ -10676,23 +10615,19 @@
                 "O"
             ],
             [
-                "HD1",
+                null,
                 "HD1"
             ],
             [
-                "HD2",
+                null,
                 "HD2"
             ],
             [
-                "HE1",
-                null
-            ],
-            [
-                "HE2",
+                null,
                 "HE2"
             ],
             [
-                "HH",
+                null,
                 "HH3"
             ],
             [
@@ -10711,6 +10646,10 @@
         "add_branches": [
             {
                 "add_atoms": [
+                    "HD1",
+                    "HD2",
+                    "HE2",
+                    "HH3",
                     "NZ1",
                     "OH1",
                     "OH2"
