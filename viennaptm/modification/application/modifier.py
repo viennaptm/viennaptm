@@ -152,6 +152,19 @@ class Modifier(BaseModel):
         return structure
 
     @staticmethod
+    def _remove_from_residue_by_mapping(residue: Residue, atom_mapping: list[tuple[str | None, str | None]]):
+        for ori, tar in atom_mapping:
+            if ori == tar:
+                continue
+
+            # skip atoms that are not present in the original residue (they were added in the previous step)
+            if ori is not None:
+                if tar is None:
+                    # this indicates, that this particular ori-atom is to be removed
+                    if ori in residue:
+                        residue.detach_child(ori)
+
+    @staticmethod
     def _rename_atom(residue: Residue, old_name: str, new_name: str):
         atom = residue[old_name]
 
@@ -194,6 +207,10 @@ class Modifier(BaseModel):
             If required anchor atoms are missing in either the original or
             template residue.
         """
+
+        # remove atoms that map to "null"
+        Modifier._remove_from_residue_by_mapping(residue=residue,
+                                                 atom_mapping=modification.atom_mapping)
 
         # since branches may rename atoms, multi-branch application could run into issues if the later branches
         # attempt to rename again; therefore, only execute renaming for the first one
@@ -247,15 +264,9 @@ class Modifier(BaseModel):
                         continue
 
                     # skip atoms that are not present in the original residue (they were added in the previous step)
-                    if ori is not None:
-                        if tar is None:
-                            # this indicates, that this particular ori-atom is to be removed
-                            if ori in residue:
-                                residue.detach_child(ori)
-                        else:
-                            # this means, an atom is to be renamed
-                            if ori != tar:
-                                Modifier._rename_atom(residue, ori, tar)
+                    if ori is not None and tar is not None and ori != tar:
+                        # atom is to be renamed
+                        Modifier._rename_atom(residue, ori, tar)
 
             # add new atoms
             for atom_idx, atom in enumerate(add_atoms):

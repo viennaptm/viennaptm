@@ -6557,15 +6557,7 @@
                 "O"
             ],
             [
-                "HZ1",
-                null
-            ],
-            [
-                "HZ3",
-                null
-            ],
-            [
-                "HZ2",
+                null,
                 "HZ"
             ],
             [
@@ -6592,6 +6584,7 @@
         "add_branches": [
             {
                 "add_atoms": [
+                    "HZ",
                     "PH",
                     "OI3",
                     "OI1",
@@ -6651,18 +6644,6 @@
             ],
             [
                 "NZ",
-                null
-            ],
-            [
-                "HZ1",
-                null
-            ],
-            [
-                "HZ3",
-                null
-            ],
-            [
-                "HZ2",
                 null
             ]
         ],

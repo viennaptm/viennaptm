@@ -183,6 +183,35 @@ class Test_Modification_All(unittest.TestCase):
                        coordinates=[-13.109, -8.223, 0.148])
 
 # CYS
+    def test_CYS_CSE(self):
+        self._test_mod(residue_number=75, target_abbreviation="CSE",
+                       internal_residue_number=34, atom_name="OD3",
+                       coordinates=[10.134, -3.805, 1.341])
+
+    def test_CYS_CAM(self):
+        self._test_mod(residue_number=75, target_abbreviation="CAM",
+                       internal_residue_number=34, atom_name="NE2",
+                       coordinates=[10.95, -6.483, 1.945])
+
+    def test_CYS_CSA(self):
+        self._test_mod(residue_number=75, target_abbreviation="CSA",
+                       internal_residue_number=34, atom_name="OD2",
+                       coordinates=[9.088, -6.275, 1.157])
+
+    def test_CYS_CYH(self):
+        self._test_mod(residue_number=75, target_abbreviation="CYH",
+                        internal_residue_number=34, atom_name="OD",
+                        coordinates=[8.443, -4.204, -0.144])
+
+    def test_CYS_CSN(self):
+        self._test_mod(residue_number=75, target_abbreviation="CSN",
+                        internal_residue_number=34, atom_name="ND",
+                        coordinates=[9.2, -3.178, 0.482])
+
+    def test_CYS_CYM(self):
+        self._test_mod(residue_number=75, target_abbreviation="CYM",
+                       internal_residue_number=34, atom_name="CD",
+                       coordinates=[10.384, -5.059, 2.358])
 
 # GLN
     def test_GLN_Q4H(self):
@@ -226,6 +255,73 @@ class Test_Modification_All(unittest.TestCase):
                        coordinates=[10.597, 3.714, 8.186])
 
 # HIS
+    def test_HIS_H2X(self):
+        self._test_mod(residue_number=74, target_abbreviation="H2X",
+                       internal_residue_number=33, atom_name="OZ",
+                       coordinates=[5.639, 0.626, 2.96])
+        self._reinitialize()
+        self._test_mod(residue_number=74, target_abbreviation="H2X",
+                       internal_residue_number=33, atom_name="HD1",
+                       coordinates=[3.973, -0.978, 4.35])
+
+    def test_HIS_H3M(self):
+        self._test_mod(residue_number=74, target_abbreviation="H3M",
+                       internal_residue_number=33, atom_name="CE3",
+                       coordinates=[3.866, -0.877, 4.807])
+
+    def test_HIS_H3C(self):
+        self._test_mod(residue_number=74, target_abbreviation="H3C",
+                       internal_residue_number=33, atom_name="CE3",
+                       coordinates=[3.767, -0.698, 4.771])
+
+    def test_HIS_H1C(self):
+        self._test_mod(residue_number=74, target_abbreviation="H1C",
+                       internal_residue_number=33, atom_name="CZ",
+                       coordinates=[5.7, -0.211, 0.143])
+        self._reinitialize()
+        self._test_mod(residue_number=74, target_abbreviation="H1C",
+                       internal_residue_number=33, atom_name="HD1",
+                       coordinates=[4.098, -1.15, 4.359])
+
+    def test_HIS_H1M(self):
+        self._test_mod(residue_number=74, target_abbreviation="H1M",
+                       internal_residue_number=33, atom_name="CZ",
+                       coordinates=[5.688, -0.167, 0.146])
+
+    def test_HIS_H32(self):
+        self._test_mod(residue_number=74, target_abbreviation="H32",
+                       internal_residue_number=33, atom_name="PE3",
+                       coordinates=[4.234, -1.04, 4.827])
+
+    def test_HIS_H31(self):
+        self._test_mod(residue_number=74, target_abbreviation="H31",
+                       internal_residue_number=33, atom_name="OZ3",
+                       coordinates=[2.613, -0.837, 5.349])
+
+    def test_HIS_H12(self):
+        self._test_mod(residue_number=74, target_abbreviation="H12",
+                       internal_residue_number=33, atom_name="OH3",
+                       coordinates=[7.01, 0.016, 0.414])
+
+    def test_HIS_H11(self):
+        self._test_mod(residue_number=74, target_abbreviation="H11",
+                       internal_residue_number=33, atom_name="OH1",
+                       coordinates=[5.293, 1.266, -0.028])
+
+    def test_HIS_ASP(self):
+        self._test_mod(residue_number=74, target_abbreviation="ASP",
+                       internal_residue_number=33, atom_name="OD2",
+                       coordinates=[3.065, -0.782, 2.005])
+
+    def test_HIS_ASPH(self):
+        self._test_mod(residue_number=74, target_abbreviation="ASPH",
+                       internal_residue_number=33, atom_name="OD1",
+                       coordinates=[4.075, -1.336, 3.467])
+
+    def test_HIS_ASN(self):
+        self._test_mod(residue_number=74, target_abbreviation="ASN",
+                       internal_residue_number=33, atom_name="ND2",
+                       coordinates=[3.623, -0.861, 3.33])
 
 # LEU
     def test_LEU_L3H(self):
@@ -368,10 +464,12 @@ class Test_Modification_All(unittest.TestCase):
                    coordinates=[1.891, 1.198, 7.482])
 
     def test_LYS_LNO(self):
-        # bug, no branch added
-        self._test_mod(residue_number=73, target_abbreviation="LNO",
-                   internal_residue_number=32, atom_name="",
-                   coordinates=[1.891, 1.198, 7.482])
+        with self.assertRaises(KeyError) as context:
+            # LNO removes atom NZ, no new atoms added
+            self._test_mod(residue_number=73, target_abbreviation="LNO",
+                           internal_residue_number=32, atom_name="NZ",
+                           coordinates=[1.891, 1.198, 7.482])
+        self.assertEqual(str(context.exception), "'NZ'")
 
     def test_LYS_K2P(self):
         # bug, KeyError: 'HZ2'
@@ -589,154 +687,50 @@ class Test_Modification_All(unittest.TestCase):
                    coordinates=[8.289, 11.141, -2.502])
 
 # TYR
+    def test_TYR_YSU(self):
+        self._test_mod(residue_number=76, target_abbreviation="YSU",
+                       internal_residue_number=35, atom_name="OI2",
+                       coordinates=[7.366, -13.306, 9.324])
+
+    def test_TYR_HTY(self):
+        self._test_mod(residue_number=76, target_abbreviation="HTY",
+                       internal_residue_number=35, atom_name="OZ1",
+                       coordinates=[8.701, -13.086, 5.837])
+
+    def test_TYR_YNB(self):
+        # bug, KeyError: 'HH'
+        self._test_mod(residue_number=76, target_abbreviation="YNB",
+                       internal_residue_number=35, atom_name="OH2",
+                       coordinates=[8.289, 11.141, -2.502])
+
+    def test_TYR_YNN(self):
+        # bug, KeyError: 'HH'
+        self._test_mod(residue_number=76, target_abbreviation="YNN",
+                       internal_residue_number=35, atom_name="NZ1",
+                       coordinates=[8.289, 11.141, -2.502])
+
+    def test_TYR_YNI(self):
+        self._test_mod(residue_number=76, target_abbreviation="YNI",
+                       internal_residue_number=35, atom_name="OH1",
+                       coordinates=[9.058, -12.71, 4.317])
+
+    def test_TYR_Y1P(self):
+        self._test_mod(residue_number=76, target_abbreviation="Y1P",
+                       internal_residue_number=35, atom_name="PT",
+                       coordinates=[7.114, -15.471, 6.361])
+
+    def test_TYR_YCH(self):
+        self._test_mod(residue_number=76, target_abbreviation="YCH",
+                       internal_residue_number=35, atom_name="CLZ1",
+                       coordinates=[8.976, -13.349, 5.729])
+
+    def test_TYR_Y2P(self):
+        self._test_mod(residue_number=76, target_abbreviation="Y2P",
+                       internal_residue_number=35, atom_name="OI1",
+                       coordinates=[8.443, -15.321, 5.957])
 
 # VAL
     def test_VAL_V3H(self):
         self._test_mod(residue_number=50, target_abbreviation="V3H",
                        internal_residue_number=9, atom_name="HG3",
                        coordinates=[1.029, -3.052, 5.974])
-
-
-"""  
-# CYS                               
-    def test_CYS_CSE(self):
-        self._test_mod(residue_number=, target_abbreviation="CSE",
-                   internal_residue_number=, atom_name="OD3",
-                   coordinates=[9.186, 7.968, 4.45])
-                   
-    def test_CYS_CAM(self):
-        self._test_mod(residue_number=, target_abbreviation="CAM",
-                   internal_residue_number=, atom_name="NE2",
-                   coordinates=[9.186, 7.968, 4.45])
-                   
-    def test_CYS_CSA(self):
-        self._test_mod(residue_number=, target_abbreviation="CSA",
-                   internal_residue_number=, atom_name="OD2",
-                   coordinates=[9.186, 7.968, 4.45])
-                   
-    def test_CYS_CYH(self):
-        self._test_mod(residue_number=, target_abbreviation="CYH",
-                   internal_residue_number=, atom_name="OD",
-                   coordinates=[9.186, 7.968, 4.45])
-                   
-    def test_CYS_CSN(self):
-        self._test_mod(residue_number=, target_abbreviation="CYS_CSN",
-                   internal_residue_number=, atom_name="ND",
-                   coordinates=[9.186, 7.968, 4.45])
-                   
-    def test_CYS_CYM(self):
-        self._test_mod(residue_number=, target_abbreviation="CYM",
-                   internal_residue_number=, atom_name="CD",
-                   coordinates=[9.186, 7.968, 4.45])          
-          
-# HIS    
-    def test_HIS_H2X(self):
-        self._test_mod(residue_number=66/67, target_abbreviation="H2X",
-                   internal_residue_number=26/27, atom_name="OZ",
-                   coordinates=[9.186, 7.968, 4.45])
-        self._reinitialize()
-        self._test_mod(residue_number=66/67, target_abbreviation="H2X",
-                   internal_residue_number=26/27, atom_name="HD1",
-                   coordinates=[9.186, 7.968, 4.45])
-    
-    def test_HIS_H3M(self):
-        self._test_mod(residue_number=66/67, target_abbreviation="H3M",
-                   internal_residue_number=26/27, atom_name="CE3",
-                   coordinates=[9.186, 7.968, 4.45])
-                   
-    def test_HIS_H3C(self):
-        self._test_mod(residue_number=66/67, target_abbreviation="H3C",
-                   internal_residue_number=26/27, atom_name="CE3",
-                   coordinates=[9.186, 7.968, 4.45])   
-    
-    def test_HIS_H1C(self):
-        self._test_mod(residue_number=66/67, target_abbreviation="H1C",
-                   internal_residue_number=26/27, atom_name="CZ",
-                   coordinates=[9.186, 7.968, 4.45])   
-        self._reinitialize()
-        self._test_mod(residue_number=66/67, target_abbreviation="H1C",
-                   internal_residue_number=26/27, atom_name="HD1",
-                   coordinates=[9.186, 7.968, 4.45])
-    
-    def test_HIS_H1M(self):
-        self._test_mod(residue_number=66/67, target_abbreviation="H1M",
-                   internal_residue_number=26/27, atom_name="CZ",
-                   coordinates=[9.186, 7.968, 4.45])       
-    
-    def test_HIS_H32(self):
-        self._test_mod(residue_number=66/67, target_abbreviation="H32",
-                   internal_residue_number=26/27, atom_name="PE3",
-                   coordinates=[9.186, 7.968, 4.45]) 
-                   
-    def test_HIS_H31(self):
-        self._test_mod(residue_number=66/67, target_abbreviation="H31",
-                   internal_residue_number=26/27, atom_name="OZ3",
-                   coordinates=[9.186, 7.968, 4.45]) 
-                   
-    def test_HIS_H12(self):
-        self._test_mod(residue_number=66/67, target_abbreviation="H12",
-                   internal_residue_number=26/27, atom_name="OH3",
-                   coordinates=[9.186, 7.968, 4.45]) 
-                   
-    def test_HIS_H11(self):
-        self._test_mod(residue_number=66/67, target_abbreviation="H11",
-                   internal_residue_number=26/27, atom_name="OH1",
-                   coordinates=[9.186, 7.968, 4.45]) 
-                   
-    def test_HIS_ASP(self):
-        self._test_mod(residue_number=66/67, target_abbreviation="ASP",
-                   internal_residue_number=26/27, atom_name="OD2",
-                   coordinates=[9.186, 7.968, 4.45]) 
-                   
-    def test_HIS_ASPH(self):
-        self._test_mod(residue_number=66/67, target_abbreviation="ASPH",
-                   internal_residue_number=26/27, atom_name="OD1",
-                   coordinates=[9.186, 7.968, 4.45]) 
-                   
-    def test_HIS_ASN(self):
-        self._test_mod(residue_number=66/67, target_abbreviation="ASN",
-                   internal_residue_number=26/27, atom_name="ND2",
-                   coordinates=[9.186, 7.968, 4.45]) 
-                   
-# TYR
-    def test_TYR_YSU(self):
-        self._test_mod(residue_number=, target_abbreviation="YSU",
-                   internal_residue_number=, atom_name="OI2",
-                   coordinates=[8.289, 11.141, -2.502])
-
-    def test_TYR_HTY(self):
-        self._test_mod(residue_number=, target_abbreviation="HTY",
-                   internal_residue_number=, atom_name="OZ1",
-                   coordinates=[8.289, 11.141, -2.502])                 
-
-    def test_TYR_YNB(self):
-        self._test_mod(residue_number=, target_abbreviation="YNB",
-                   internal_residue_number=, atom_name="OH2",
-                   coordinates=[8.289, 11.141, -2.502])  
-                   
-    def test_TYR_YNN(self):
-        self._test_mod(residue_number=, target_abbreviation="YNN",
-                   internal_residue_number=, atom_name="NZ1",
-                   coordinates=[8.289, 11.141, -2.502])             
-
-    def test_TYR_YNI(self):
-        self._test_mod(residue_number=, target_abbreviation="YNI",
-                   internal_residue_number=, atom_name="OH1",
-                   coordinates=[8.289, 11.141, -2.502])     
-
-    def test_TYR_Y1P(self):
-        self._test_mod(residue_number=, target_abbreviation="Y1P",
-                   internal_residue_number=, atom_name="PT",
-                   coordinates=[8.289, 11.141, -2.502])     
-                   
-    def test_TYR_YCH(self):
-        self._test_mod(residue_number=, target_abbreviation="YCH",
-                   internal_residue_number=, atom_name="CLZ1",
-                   coordinates=[8.289, 11.141, -2.502])     
-                   
-    def test_TYR_Y2P(self):
-        self._test_mod(residue_number=, target_abbreviation="Y2P",
-                   internal_residue_number=, atom_name="OI1",
-                   coordinates=[8.289, 11.141, -2.502]) 
-
-"""
