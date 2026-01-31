@@ -54,7 +54,6 @@ pip install viennaptm[docs]
 ```bash
 # clone the repository; SSH alternative: git@github.com:viennaptm/viennaptm.git
 git clone https://github.com/viennaptm/viennaptm.git
-
 cd viennaptm
 
 # install from source; add "-e" to install in developer mode
@@ -87,13 +86,13 @@ Contributions are always welcome. Please fork the repository, make your changes 
 
 ## License
 
-- Apache-2 (code)
-- Attribution-NonCommercial 4.0 International (modification library)
+- Code: Apache-2
+- Resources, including modification libraries: Attribution-NonCommercial 4.0 International
 
 
 ## Authors / Contributors
 
-- **Christian Margreitter** - [GitHub](https://github.com/CMargreitter)  
 - **Sophie Margreitter** - [GitHub](https://github.com/SMargreitter)
+- **Christian Margreitter** - [GitHub](https://github.com/CMargreitter)  
 - **Drazen Petrov** - [GitHub](https://github.com/drazen-petrov)
 - **Bojan Zagrovic** - [GitHub](https://github.com/bojanzagrovic)
