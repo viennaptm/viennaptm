@@ -61,6 +61,11 @@ cd viennaptm
 pip install .
 ```
 
+### Install GROMACS
+```bash
+conda install conda-forge::gromacs
+```
+
 ## Usage
 ### Entrypoint:
 ```bash
