@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional, Tuple
 
 import numpy as np
 import logging
@@ -152,7 +152,7 @@ class Modifier(BaseModel):
         return structure
 
     @staticmethod
-    def _remove_from_residue_by_mapping(residue: Residue, atom_mapping: list[tuple[str | None, str | None]]):
+    def _remove_from_residue_by_mapping(residue: Residue, atom_mapping: List[Tuple[Optional[str], Optional[str]]]):
         for ori, tar in atom_mapping:
             if ori == tar:
                 continue
