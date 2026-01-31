@@ -28,6 +28,7 @@ Classes and functions
    gromacs.grompp.Grompp
    gromacs.mdrun.Mdrun
    gromacs.trjconv.Trjconv
+   utils.visualizer.Visualizer
 
 .. autosummary::
    :toctree: generated/
