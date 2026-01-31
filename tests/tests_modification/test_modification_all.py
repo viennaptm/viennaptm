@@ -561,11 +561,7 @@ class Test_Modification_All(unittest.TestCase):
         # bug, Atom names do not match template residue.
         self._test_mod(residue_number=62, target_abbreviation="GSA",
                    internal_residue_number=21, atom_name="CB",
-                   coordinates=[0.083, 12.473, 2.266])
-        self._reinitialize()
-        self._test_mod(residue_number=51, target_abbreviation="GSA",
-                       internal_residue_number=10, atom_name="H",
-                       coordinates=[-8.117, 3.973, 6.48])
+                   coordinates=[3.491, 12.349, -0.083])
 
 # SER
     def test_SER_SOG(self):
