@@ -197,7 +197,7 @@ def main():
     if isinstance(cfg.input, Path):
         structure = AnnotatedStructure.from_pdb(path=cfg.input)
     else:
-        structure = AnnotatedStructure.from_pdb_db(identifier=cfg.input)
+        structure = AnnotatedStructure.from_rcsb(identifier=cfg.input)
 
     # initialize modifier with most recent internal modification database
     modifier = Modifier()

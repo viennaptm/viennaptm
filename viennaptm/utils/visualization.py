@@ -4,8 +4,8 @@ import tempfile
 from Bio.PDB import PDBIO
 from copy import deepcopy
 
-from typing import Union, Optional, Literal
-from pydantic import BaseModel, field_validator
+from typing import Union, Optional, Tuple, List
+from pydantic import BaseModel
 
 from viennaptm.dataclasses.annotatedstructure import AnnotatedStructure
 
@@ -15,9 +15,9 @@ class Visualization(BaseModel):
     name: Optional[Union[str]] = "structure"
 
     def show_structure_with_highlights(self,
-                                       highlight_residues,
-                                       cartoon_color="residueindex",
-                                       save_html=True):
+                                       highlight_residues: List[Tuple[str, int]],
+                                       cartoon_color: str ="residueindex",
+                                       save_html: bool = True):
         # to avoid side-effects, duplicate structure
         structure = deepcopy(self.structure)
 

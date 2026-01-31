@@ -9,6 +9,7 @@ import pandas as pd
 
 from Bio.PDB import PDBIO, PDBParser, PDBList
 from Bio.PDB.Structure import Structure
+from Bio.PDB.MMCIFParser import MMCIFParser
 
 from viennaptm.utils.error_handling import raise_with_logging_error
 from viennaptm.utils.files import log_writeout
@@ -142,13 +143,12 @@ class AnnotatedStructure(Structure):
                                     inplace=True)
 
     @classmethod
-    def from_pdb_db(cls, identifier: str):
+    def from_rcsb(cls, identifier: str):
         """
-        Load a :class:`Biopython PDB structure` from the
-        `RCSB PDB database <https://www.rcsb.org/>`_.
+        Load a `AnnotatedStructure` (base: :class:`Biopython PDB structure`) from the
+        `RCSB PDB database <https://www.rcsb.org/>`_ via an identifier. Default format has changed to mmcif.
 
-        The PDB file is downloaded to a temporary directory, parsed, and then
-        removed after loading.
+        The file is downloaded to a temporary directory, parsed, and then removed after loading.
 
         :param identifier:
             Four-character PDB identifier.
@@ -159,7 +159,7 @@ class AnnotatedStructure(Structure):
         :raises FileExistsError:
             If the PDB file could not be retrieved.
 
-        :return: Loaded and annotated :class:`Biopython PDB structure`.
+        :return: Loaded and annotated structure.
         :rtype: :class:`AnnotatedStructure`
         """
 
@@ -172,7 +172,7 @@ class AnnotatedStructure(Structure):
         downloader = PDBList()
         tmp_folder = tempfile.mkdtemp()
         path = downloader.retrieve_pdb_file(pdb_code=identifier, pdir=tmp_folder, file_format="pdb")
-        logger.debug(f"Wrote temporary PDB file: {path}")
+        logger.debug(f"Wrote temporary file: {path}")
 
         # check whether file exists (success) or not
         if not os.path.isfile(path):
@@ -189,7 +189,7 @@ class AnnotatedStructure(Structure):
     @classmethod
     def from_pdb(cls, path: Union[str, Path]):
         """
-        Load a :class:`Biopython PDB structure` from a local file.
+        Instantiate an `AnnotatedStructure` (base: :class:`Biopython PDB structure`) with data from a local file.
 
         :param path:
             Path to the local PDB file.
@@ -198,7 +198,7 @@ class AnnotatedStructure(Structure):
         :raises TypeError:
             If the path is not a string or Path object.
 
-        :return: Loaded and annotated :class:`Biopython PDB structure`.
+        :return: Loaded and annotated structure.
         :rtype: :class:`AnnotatedStructure`
         """
 
@@ -211,6 +211,37 @@ class AnnotatedStructure(Structure):
         # load the file and return structure
         parser = PDBParser()
         structure = parser.get_structure(id=os.path.basename(path), file=path)
+
+        # caution: __init__() of AnnotatedStructure is not executed! Manually add attributes!
+        structure.__class__ = AnnotatedStructure
+        structure._init_calls()
+        return structure
+
+    @classmethod
+    def from_cif(cls, path: Union[str, Path]):
+        """
+        Instantiate an `AnnotatedStructure` (base: :class:`Biopython PDB structure`) with data from a local file.
+
+        :param path:
+            Path to the local MMCIF file (ends on .cif).
+        :type path: str or pathlib.Path
+
+        :raises TypeError:
+            If the path is not a string or Path object.
+
+        :return: Loaded and annotated structure.
+        :rtype: :class:`AnnotatedStructure`
+        """
+
+        if not isinstance(path, str) and not isinstance(path, Path):
+            raise_with_logging_error(f"Parameter path (attempted path: {path}) required to be a path "
+                                     f"(as string or Path object) to a local MMCIF file.",
+                                     logger=logger,
+                                     exception_type=TypeError)
+
+        # load the file and return structure
+        parser = MMCIFParser()
+        structure = parser.get_structure(structure_id=os.path.basename(path), filename=path)
 
         # caution: __init__() of AnnotatedStructure is not executed! Manually add attributes!
         structure.__class__ = AnnotatedStructure

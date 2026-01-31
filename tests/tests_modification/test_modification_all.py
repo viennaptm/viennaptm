@@ -512,13 +512,11 @@ class Test_Modification_All(unittest.TestCase):
 
 # PRO
     def test_PRO_PGA(self):
-        # bug, Atom names do not match template residue.
         self._test_mod(residue_number=62, target_abbreviation="PGA",
                    internal_residue_number=21, atom_name="CD",
                    coordinates=[1.681, 11.364, 1.117])
 
     def test_PRO_PHH(self):
-        # bug, Atom names do not match template residue.
         self._test_mod(residue_number=62, target_abbreviation="PHH",
                    internal_residue_number=21, atom_name="OD1",
                    coordinates=[1.485, 13.695, 0.719])
