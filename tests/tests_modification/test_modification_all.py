@@ -503,7 +503,7 @@ class Test_Modification_All(unittest.TestCase):
     def test_PHE_F3H(self):
         self._test_mod(residue_number=51, target_abbreviation="F3H",
                    internal_residue_number=10, atom_name="OZ1",
-                   coordinates=[0.323, 1.755, 4.236])
+                   coordinates=[2.286, 1.025, 2.517])
 
     def test_PHE_TYR(self):
         self._test_mod(residue_number=51, target_abbreviation="TYR",

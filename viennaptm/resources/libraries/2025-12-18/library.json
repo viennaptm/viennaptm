@@ -7220,6 +7220,10 @@
             ],
             [
                 "CZ",
+                null
+            ],
+            [
+                null,
                 "CZ2"
             ],
             [
@@ -7262,24 +7266,22 @@
         "add_branches": [
             {
                 "add_atoms": [
+                    "CZ2",
                     "HD1",
                     "HD2",
                     "HE2",
                     "HZ1",
                     "HZ2",
-                    "OZ1",
-                    "HZ1"
+                    "OZ1"
                 ],
                 "anchor_atoms": [
                     "CE1",
-                    "CZ2",
                     "CD1",
                     "CE2",
                     "CG"
                 ],
                 "weights": [
                     4.0,
-                    1.0,
                     1.0,
                     0.5,
                     0.5
