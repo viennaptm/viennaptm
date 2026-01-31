@@ -558,7 +558,6 @@ class Test_Modification_All(unittest.TestCase):
                    coordinates=[0.083, 12.473, 2.266])
 
     def test_PRO_GSA(self):
-        # bug, Atom names do not match template residue.
         self._test_mod(residue_number=62, target_abbreviation="GSA",
                    internal_residue_number=21, atom_name="CB",
                    coordinates=[3.491, 12.349, -0.083])
@@ -575,10 +574,9 @@ class Test_Modification_All(unittest.TestCase):
                    coordinates=[-5.472, -11.411, 2.811])
 
     def test_SER_SDH(self):
-        # bug, Atom names do not match template residue.
         self._test_mod(residue_number=43, target_abbreviation="SDH",
                    internal_residue_number=2, atom_name="CB",
-                   coordinates=[-5.472, -11.411, 2.811])
+                   coordinates=[-5.174, -10.448, -0.982])
 
     def test_SER_S2P(self):
         self._test_mod(residue_number=43, target_abbreviation="S2P",
@@ -602,10 +600,9 @@ class Test_Modification_All(unittest.TestCase):
                    coordinates=[-9.531, -0.437, 4.101])
 
     def test_THR_TDH(self):
-        # bug, Atom names do not match template residue.
         self._test_mod(residue_number=54, target_abbreviation="TDH",
                    internal_residue_number=13, atom_name="CB",
-                   coordinates=[-9.531, -0.437, 4.101])
+                   coordinates=[-7.79, -0.82, 1.221])
 
     def test_THR_T2P(self):
         self._test_mod(residue_number=54, target_abbreviation="T2P",
