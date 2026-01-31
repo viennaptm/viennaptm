@@ -489,11 +489,11 @@ class Test_Modification_All(unittest.TestCase):
     def test_PHE_F23(self):
         self._test_mod(residue_number=51, target_abbreviation="F23",
                    internal_residue_number=10, atom_name="OZ1",
-                   coordinates=[-8.117, 3.973, 6.48])
+                   coordinates=[2.414, 0.918, 2.668])
         self._reinitialize()
         self._test_mod(residue_number=51, target_abbreviation="F23",
                    internal_residue_number=10, atom_name="HE3",
-                   coordinates=[-8.117, 3.973, 6.48])
+                   coordinates=[1.186, 2.175, 4.294])
 
     def test_PHE_F2H(self):
         self._test_mod(residue_number=51, target_abbreviation="F2H",
