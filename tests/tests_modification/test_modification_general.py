@@ -17,7 +17,6 @@ class Test_Modification_General(unittest.TestCase):
         self._struc_io = AnnotatedStructure("dd")
         self._1vii_PDB_path = attach_root_path(UNITTEST_PATH_1VII_PDB)
         self._junk_folder = attach_root_path(UNITTEST_JUNK_FOLDER)
-        print(self._junk_folder)
         Path(self._junk_folder).mkdir(parents=True, exist_ok=True)
 
     def test_apply_modifications(self):

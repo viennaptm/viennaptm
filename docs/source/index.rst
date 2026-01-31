@@ -21,6 +21,13 @@ Classes and functions
    modification.modification_library.AddBranch
    modification.modification_library.Modification
    entrypoints.viennaptm.ModifierParameters
+   gromacs.pdb2gmx.PDB2GMXParameters
+   gromacs.pdb2gmx.PDB2GMX
+   gromacs.editconf.EditConf
+   gromacs.gromacs_command.GromacsCommand
+   gromacs.grompp.Grompp
+   gromacs.mdrun.Mdrun
+   gromacs.trjconv.Trjconv
 
 .. autosummary::
    :toctree: generated/
@@ -28,6 +35,7 @@ Classes and functions
 
    modification.calculation.align.compute_alignment_transform
    modification.calculation.align.apply_transform
+   gromacs.minimization_pipeline.minimize_and_write_pdb
 
 
 See :cite:`Margreitter2013` for the `publication <https://doi.org/10.1093/nar/gkt416>`_.

@@ -14,6 +14,8 @@ class ViennaPTMFixtures(BaseModel):
 
     PDB_ENDING: str = ".pdb"
 
+    GROMACS_MINIM_MDP_DEFAULT: Path = None
+
     @model_validator(mode="after")
     def ptms_fixture_validator(self):
         self.LATEST_PTMS_LIBRARY_PATH = attach_root_path(os.path.join("viennaptm",
@@ -25,4 +27,8 @@ class ViennaPTMFixtures(BaseModel):
                                                                        "resources",
                                                                        "pdbs_minimized",
                                                                        self.LATEST_PTMS_VERSION_DATE))
+        self.GROMACS_MINIM_MDP_DEFAULT = attach_root_path(os.path.join("viennaptm",
+                                                                       "resources",
+                                                                       "gromacs",
+                                                                       "minim.mdp"))
         return self
