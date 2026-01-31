@@ -674,12 +674,12 @@ class Test_Modification_All(unittest.TestCase):
     def test_TYR_YNB(self):
         self._test_mod(residue_number=76, target_abbreviation="YNB",
                        internal_residue_number=35, atom_name="OH2",
-                       coordinates=[8.289, 11.141, -2.502])
+                       coordinates=[8.913, -14.194, 5.84])
 
     def test_TYR_YNN(self):
         self._test_mod(residue_number=76, target_abbreviation="YNN",
                        internal_residue_number=35, atom_name="NZ1",
-                       coordinates=[8.289, 11.141, -2.502])
+                       coordinates=[8.508, -13.162, 5.442])
 
     def test_TYR_YNI(self):
         self._test_mod(residue_number=76, target_abbreviation="YNI",
