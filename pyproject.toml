@@ -43,7 +43,8 @@ dependencies = [
     "pydantic>=2",
     "pandas",
     "biopython>=1.8",
-    "scipy"
+    "scipy",
+    "pyyaml"
 ]
 
 [project.optional-dependencies]
