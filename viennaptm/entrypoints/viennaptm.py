@@ -10,7 +10,7 @@ from viennaptm.dataclasses.annotatedstructure import AnnotatedStructure
 from viennaptm.modification.application.modifier import Modifier
 from viennaptm.utils.entrypoint_helper import collect_kwargs
 
-# logger settings
+
 def setup_file_logging() -> None:
     """
     Configure logging to write both to a file and to the console.
