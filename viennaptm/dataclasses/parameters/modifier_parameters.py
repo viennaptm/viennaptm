@@ -24,7 +24,7 @@ class ModifierParameters(BaseModel):
 
     input: Optional[Union[Path, str]] = None
     modification: Optional[Union[list[str], str]] = None
-    output_pdb: Optional[Union[Path, str]] = "output.pdb"
+    output: Optional[Union[Path, str]] = "output.pdb"
     logger: str = "console"
     debug: bool = False
 
@@ -82,9 +82,9 @@ class ModifierParameters(BaseModel):
         # CLI args override config file values (if present)
         return {**config_data, **values}
 
-    @field_validator("output_pdb", mode="after")
+    @field_validator("output", mode="after")
     @classmethod
-    def validate_output_pdb(cls, out: Union[Path, str]) -> Path:
+    def validate_output(cls, out: Union[Path, str]) -> Path:
         """
         Validate the output PDB / mmCIF path.
 

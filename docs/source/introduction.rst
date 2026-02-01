@@ -17,7 +17,7 @@ Entrypoint:
    # 2. Use entrypoint to run ViennaPTM
    viennaptm --input tests/data/1vii.pdb \
              --modification "A:50=V3H" \
-             --output_pdb testoutput.pdb
+             --output testoutput.pdb
 
 
 

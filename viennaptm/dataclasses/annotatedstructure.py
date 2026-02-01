@@ -7,7 +7,7 @@ from typing import Union
 
 import pandas as pd
 
-from Bio.PDB import PDBIO, PDBParser, PDBList
+from Bio.PDB import PDBIO, PDBParser, PDBList, MMCIFIO
 from Bio.PDB.Structure import Structure
 from Bio.PDB.MMCIFParser import MMCIFParser
 
@@ -250,7 +250,7 @@ class AnnotatedStructure(Structure):
 
     def to_pdb(self, path: str) -> None:
         """
-        Write the :class:`Biopython PDB structure` to a PDB file.
+        Write the ``AnnotatedStructure`` object (CAUTION: Only :class:`Biopython PDB structure` elements) to a PDB file.
 
         :param path:
             Destination path for the PDB file.
@@ -260,4 +260,17 @@ class AnnotatedStructure(Structure):
         io = PDBIO()
         io.set_structure(self)
         io.save(file=path)
+        log_writeout(logger=logger, path=path)
+
+    def to_cif(self, path: str) -> None:
+        """
+        Write the ``AnnotatedStructure`` object (CAUTION: Only :class:`Biopython PDB structure` elements) to an mmCIF file.
+
+        :param path:
+            Destination path for the mmCIF file.
+        :type path: str
+        """
+        io = MMCIFIO()
+        io.set_structure(self)
+        io.save(path)
         log_writeout(logger=logger, path=path)

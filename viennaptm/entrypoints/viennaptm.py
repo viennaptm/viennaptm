@@ -1,4 +1,3 @@
-import json
 import logging
 import re
 import sys
@@ -71,9 +70,14 @@ def main():
                      f"residue number {modification[1]} and"
                      f"target abbreviation {modification[2]} has been successfully applied.")
 
-    # write modified pdb
-    structure.to_pdb(str(cfg.output_pdb))
-    logger.debug(f"Wrote structure to temporary PDB file: {cfg.output_pdb}")
+    # write modified file
+    if str(cfg.output).endswith(".pdb"):
+        structure.to_pdb(str(cfg.output))
+    elif str(cfg.output).endswith(".cif"):
+        structure.to_cif(str(cfg.output))
+    else:
+        raise ValueError(f"Output file format not recognized, needs to be \".pdb\" or \".cif\".")
+    logger.debug(f"Wrote structure to file: {cfg.output}")
 
 if __name__ == "__main__":
     main()

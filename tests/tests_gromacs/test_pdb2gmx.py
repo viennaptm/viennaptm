@@ -16,7 +16,7 @@ class Test_PDB2GMX(unittest.TestCase):
             raise unittest.SkipTest("GROMACS (gmx) not found on PATH")
 
     def setUp(self):
-        self._workdir = Path(os.path.join(attach_root_path(UNITTEST_JUNK_FOLDER))) / "pdb2gmx"
+        self._workdir = Path(attach_root_path(UNITTEST_JUNK_FOLDER)) / "pdb2gmx"
         if os.path.exists(self._workdir):
             shutil.rmtree(self._workdir)
         self._workdir.mkdir(parents=True, exist_ok=True)

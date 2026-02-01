@@ -19,11 +19,13 @@ class Test_MinimizeAndWritePDB(unittest.TestCase):
 
         cls.gmx_bin = shutil.which("gmx")
 
+        # remove lingering artefact from previous runs, if present
+        cls._workdir = Path(os.path.join(attach_root_path(UNITTEST_JUNK_FOLDER))) / "minimization_pipeline"
+        if os.path.exists(cls._workdir):
+            shutil.rmtree(cls._workdir)
+        cls._workdir.mkdir(parents=True, exist_ok=True)
+
     def setUp(self):
-        self._workdir = Path(os.path.join(attach_root_path(UNITTEST_JUNK_FOLDER))) / "minimization_pipeline"
-        if os.path.exists(self._workdir):
-            shutil.rmtree(self._workdir)
-        self._workdir.mkdir(parents=True, exist_ok=True)
         self._pdb = attach_root_path(UNITTEST_PATH_1VII_PDB)
         self._minim_mdp = ViennaPTMFixtures().GROMACS_MINIM_MDP_DEFAULT
 
