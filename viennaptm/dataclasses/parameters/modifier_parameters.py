@@ -8,16 +8,36 @@ from pydantic import BaseModel, model_validator, field_validator
 
 class ModifierParameters(BaseModel):
     """
-    Pydantic model defining configuration parameters for a Vienna-PTM run.
+    Configuration model for a Vienna-PTM command-line run.
 
-    Parameters may be supplied either:
-      - Directly via CLI arguments, or
-      - via a YAML / JSON configuration file specified with ``--config``.
+    This Pydantic model represents the fully resolved configuration used by
+    the Vienna-PTM CLI. Parameters can be provided either via command-line
+    arguments or through an external YAML / JSON configuration file.
 
-    Resolution rules:
-      - The config file initializes parameters.
-      - Explicit CLI arguments override config values.
-      - All values are validated after merging.
+    Configuration resolution follows a strict precedence order:
+
+    1. Values from the configuration file (``--config``) are loaded first.
+    2. Explicit CLI arguments override values from the config file.
+    3. The merged configuration is validated and normalized.
+
+    Invalid or unknown parameters are rejected.
+
+    Attributes
+    ----------
+    config : pathlib.Path or str, optional
+        Path to a YAML or JSON configuration file.
+    input : pathlib.Path or str, optional
+        Input structure, either as a local PDB/mmCIF file or a 4-character
+        PDB identifier.
+    modification : list[str] or str, optional
+        One or more residue modification specifications.
+    output : pathlib.Path or str, optional
+        Output structure file. Must end with ``.pdb`` or ``.cif``.
+    logger : str
+        Logging destination. Use ``"console"`` for stdout logging or a file
+        path to enable file logging.
+    debug : bool
+        Enable verbose debug logging if ``True``.
     """
 
     config: Optional[Union[Path, str]] = None
@@ -34,14 +54,29 @@ class ModifierParameters(BaseModel):
 
     def is_console_logging(self) -> bool:
         """
-        Return True if logging should go to the console.
+        Determine whether logging should be directed to the console.
+
+        :returns:
+            ``True`` if logging is configured for stdout, ``False`` if logging
+            should be written to a file.
+        :rtype: bool
         """
+
         return self.logger == "console"
 
     def log_file_path(self) -> Optional[Path]:
         """
-        Return the log file path if file logging is enabled, else None.
+        Return the log file path if file logging is enabled.
+
+        When logging is set to ``"console"``, no log file is used and ``None``
+        is returned. Otherwise, the value of :attr:`logger` is interpreted as
+        a file path.
+
+        :returns:
+            Path to the log file, or ``None`` if console logging is enabled.
+        :rtype: pathlib.Path or None
         """
+
         if self.is_console_logging():
             return None
         return Path(self.logger)
@@ -50,13 +85,23 @@ class ModifierParameters(BaseModel):
     @classmethod
     def load_config_file(cls, values: Dict[str, Any]) -> Dict[str, Any]:
         """
-        Load parameters from a YAML or JSON config file if provided.
+        Load and merge a YAML or JSON configuration file.
 
-        The config file is loaded first, then supplied keyword arguments
-        (if any) override values from the configuration.
+        If a configuration file is specified via the ``config`` parameter, it
+        is loaded first and used to initialize parameters. Any values provided
+        directly (e.g. via CLI arguments) override those from the config file.
 
-        :param values: Raw keyword arguments passed to the entrypoint.
-        :return: Merged parameter dictionary.
+        :param values:
+            Raw keyword arguments passed to the model constructor.
+        :type values: dict
+
+        :returns:
+            Merged parameter dictionary with CLI values taking precedence.
+        :rtype: dict
+
+        :raises ValueError:
+            If the config file does not exist, has an unsupported extension,
+            or does not contain a top-level mapping.
         """
 
         config = values.get("config")
@@ -86,14 +131,23 @@ class ModifierParameters(BaseModel):
     @classmethod
     def validate_output(cls, out: Union[Path, str]) -> Path:
         """
-        Validate the output PDB / mmCIF path.
+        Validate and normalize the output structure path.
 
         Ensures that the output filename ends with ``.pdb`` or ``.cif`` and
         converts string paths to :class:`pathlib.Path`.
 
-        :param out: Output path or filename.
-        :return: Validated output path.
+        :param out:
+            Output path or filename.
+        :type out: pathlib.Path or str
+
+        :returns:
+            Validated output path.
+        :rtype: pathlib.Path
+
+        :raises ValueError:
+            If the output file extension is not supported.
         """
+
         if isinstance(out, str):
             out = Path(out)
 
@@ -111,12 +165,18 @@ class ModifierParameters(BaseModel):
         """
         Normalize modification input to a list of strings.
 
-        Single modification strings are wrapped into a list to ensure
-        consistent downstream handling.
+        Single modification specifications are automatically wrapped into a
+        list to ensure consistent downstream handling.
 
-        :param input_modification: Modification or list of modifications.
-        :return: List of modification strings.
+        :param input_modification:
+            Modification specification(s).
+        :type input_modification: str or list[str]
+
+        :returns:
+            List of modification strings.
+        :rtype: list[str]
         """
+
         if isinstance(input_modification, str):
             input_modification = [input_modification]
         return input_modification
@@ -127,14 +187,24 @@ class ModifierParameters(BaseModel):
         """
         Validate the input structure source.
 
-        If the input is a string ending with ``.pdb`` or ``.cif``, it is
-        interpreted as a file path and converted to :class:`pathlib.Path`.
-        Otherwise, it is treated as a PDB database identifier and must be
-        exactly four characters long.
+        If the input is a string ending with ``.pdb`` or ``.cif``, it is treated
+        as a local file path and converted to :class:`pathlib.Path`. Otherwise,
+        it is interpreted as a PDB database identifier and must be exactly four
+        characters long.
 
-        :param inp: Input path or PDB identifier.
-        :return: Validated input value.
+        :param inp:
+            Input path or PDB identifier.
+        :type inp: pathlib.Path or str
+
+        :returns:
+            Validated input value.
+        :rtype: pathlib.Path or str
+
+        :raises ValueError:
+            If a non-file string input does not conform to the 4-character
+            PDB identifier format.
         """
+
         if isinstance(inp, str):
             if inp.lower().endswith((".pdb", ".cif")):
                 inp = Path(inp)
@@ -148,10 +218,16 @@ class ModifierParameters(BaseModel):
 
     def dump_resolved_config(self) -> str:
         """
-        Dump the fully resolved and validated configuration as a YAML string.
+        Serialize the resolved configuration to YAML.
 
-        :return: YAML-formatted configuration.
+        All paths are converted to strings to ensure clean, human-readable
+        output suitable for logging or inspection.
+
+        :returns:
+            YAML-formatted configuration string.
+        :rtype: str
         """
+
         data = self.model_dump()
 
         for key, value in data.items():

@@ -13,25 +13,33 @@ def minimize_and_write_pdb(
     workdir: Path,
 ) -> Path:
     """
-    Run an energy minimization starting from a processed GRO file
-    and write out a minimized PDB. Does not include pdb2gmx.
+    Run an energy minimization workflow and write a minimized PDB file.
 
-    Parameters
-    ----------
-    conf_gro : Path
-        Input structure (from pdb2gmx)
-    topology : Path
-        GROMACS topology file
-    minim_mdp : Path
-        Energy minimization MDP file
-    workdir : Path
-        Working directory
+    This function performs a minimal GROMACS preprocessing and execution
+    pipeline starting from an existing GRO structure. The workflow
+    defines a simulation box, preprocesses inputs, runs an energy
+    minimization, and converts the minimized structure to PDB format.
 
-    Returns
-    -------
-    Path
-        Path to the minimized PDB file
+    The workflow assumes that topology generation (e.g. via
+    ``pdb2gmx``) has already been performed.
+
+    :param conf_gro:
+        Input GRO structure file.
+    :type conf_gro: pathlib.Path
+    :param topology:
+        GROMACS topology file.
+    :type topology: pathlib.Path
+    :param minim_mdp:
+        Energy minimization MDP parameter file.
+    :type minim_mdp: pathlib.Path
+    :param workdir:
+        Working directory used for all intermediate and output files.
+    :type workdir: pathlib.Path
+    :return:
+        Path to the minimized PDB file.
+    :rtype: pathlib.Path
     """
+
     boxed = workdir / "boxed.gro"
     tpr = workdir / "em.tpr"
     minimized = workdir / "em.gro"

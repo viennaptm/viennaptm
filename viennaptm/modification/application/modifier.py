@@ -22,8 +22,8 @@ class Modifier(BaseModel):
 
     The :class:`Modifier` class acts as a high-level interface between a
     :class:`ModificationLibrary` and an annotated structure. It locates a
-    specific residue within a structure, removes hydrogen atoms, applies the
-    requested modification using a template residue, and records the
+    specific residue within a structure, removes hydrogen atoms from the target residue,
+    applies the requested modification using a template residue, and records the
     modification in the structure's modification log.
 
     :param library:
@@ -75,8 +75,8 @@ class Modifier(BaseModel):
         :type chain_identifier: str
 
         :param residue_number:
-            Position of the residue in the polypeptide chain, starting at \(1\)
-            from the N-terminus.
+            Position of the residue in the polypeptide chain, Residue number as
+            defined in the structure (PDB numbering).
         :type residue_number: int
 
         :param target_abbreviation:
@@ -94,12 +94,13 @@ class Modifier(BaseModel):
         :rtype: AnnotatedStructure
 
         :raises ValueError:
-            If the specified residue cannot be found in the given chain.
+            If no residue matching the given chain identifier and residue number
+            can be found in the structure.
         :raises KeyError:
             If atom names required for the modification do not match those
             in the structure or the template residue.
 
-        . note::
+        .. note::
             This method assumes that:
 
             * Chain identifiers are unique across all models.
@@ -153,6 +154,22 @@ class Modifier(BaseModel):
 
     @staticmethod
     def _remove_from_residue_by_mapping(residue: Residue, atom_mapping: List[Tuple[Optional[str], Optional[str]]]):
+        """
+        Remove atoms from a residue based on an atom name mapping.
+
+        This method interprets mapping entries where the target atom name
+        is ``None`` as an instruction to remove the corresponding original
+        atom from the residue. Atoms not present in the residue are ignored.
+
+        :param residue:
+            Residue from which atoms may be removed.
+        :type residue: Bio.PDB.Residue.Residue
+        :param atom_mapping:
+            List of (original, target) atom name pairs. A ``None`` target
+            indicates that the original atom should be removed.
+        :type atom_mapping: list[tuple[str or None, str or None]]
+        """
+
         for ori, tar in atom_mapping:
             if ori == tar:
                 continue
@@ -166,6 +183,26 @@ class Modifier(BaseModel):
 
     @staticmethod
     def _rename_atom(residue: Residue, old_name: str, new_name: str):
+        """
+        Rename an atom within a residue.
+
+        The atom is temporarily removed from the residue, its identifying
+        properties are updated, and it is reinserted under the new name.
+
+        :param residue:
+            Residue containing the atom to rename.
+        :type residue: Bio.PDB.Residue.Residue
+        :param old_name:
+            Original atom name.
+        :type old_name: str
+        :param new_name:
+            New atom name.
+        :type new_name: str
+        :raises KeyError:
+            If the atom with the given original name does not exist in the
+            residue.
+        """
+
         atom = residue[old_name]
 
         # Remove atom from residue internal list of atoms

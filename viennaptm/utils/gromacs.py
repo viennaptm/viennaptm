@@ -4,22 +4,25 @@ import shutil
 
 def resolve_gmx_binary() -> str:
     """
-    Resolve the GROMACS binary to use.
+    Determine the GROMACS executable to invoke.
 
-    Resolution order:
-    1. GMX_BIN environment variable
-    2. `gmx` on PATH
+    The GROMACS binary is resolved using the following precedence:
 
-    Returns
-    -------
-    str
-        Absolute path or executable name for gmx.
+    1. The ``GMX_BIN`` environment variable, if defined.
+    2. The ``gmx`` executable discovered on the system ``PATH``.
 
-    Raises
-    ------
-    RuntimeError
-        If no GROMACS binary can be found.
+    This function does not validate the GROMACS version; it only
+    ensures that an executable can be located.
+
+    :return:
+        Path to the GROMACS executable or its command name.
+    :rtype: str
+
+    :raises RuntimeError:
+        If neither the ``GMX_BIN`` environment variable is set nor a
+        ``gmx`` executable can be found on the system ``PATH``.
     """
+
     gmx = os.environ.get("GMX_BIN")
     if gmx:
         return gmx

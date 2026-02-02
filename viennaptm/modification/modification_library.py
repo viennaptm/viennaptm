@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 
 class AddBranch(BaseModel):
     """
-    Definition of a application branch for residue transformation.
+    Definition of an application branch for residue transformation.
 
     An :class:`AddBranch` describes how a specific part (branch) of a residue
     should be modified. It specifies anchor atoms used for geometric alignment,
@@ -111,7 +111,6 @@ class Modification(BaseModel):
         Atom deletions and renaming are handled exclusively via
         ``atom_mapping``; branches only describe atom additions.
     """
-
 
     residue_original_abbreviation: str
     residue_modified_abbreviation: str

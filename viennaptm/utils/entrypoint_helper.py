@@ -1,8 +1,23 @@
 
 def _add_value(kwargs: dict, key: str, value):
     """
-    Add a value or list of values under a given key. If the key exists, merge into a list, otherwise create the key.
+    Add a value to a keyword-argument dictionary.
+
+    If the key already exists, values are merged into a list. Existing
+    scalar values are promoted to lists as needed. If the key does not
+    exist, it is created.
+
+    :param kwargs:
+        Dictionary collecting parsed keyword arguments.
+    :type kwargs: dict
+    :param key:
+        Argument name.
+    :type key: str
+    :param value:
+        Value or list of values to associate with the key.
+    :type value: Any
     """
+
     # Normalize to list internally
     if key in kwargs:
         if not isinstance(kwargs[key], list):
@@ -17,7 +32,9 @@ def _add_value(kwargs: dict, key: str, value):
 
 def collect_kwargs(argv: list[str]) -> dict:
     """
-    Supported forms:
+    Parse command-line arguments into a keyword-argument dictionary.
+
+    Supported argument forms include::
 
         --key=value
         --key value
@@ -26,8 +43,22 @@ def collect_kwargs(argv: list[str]) -> dict:
         -key v1 v2 v3
         repeated flags: --key v1 --key v2
 
-    Rules:
-        After a flag, all consecutive non-flag tokens are values.
+    Parsing rules:
+
+    * Flags start with ``--`` or ``-`` (excluding negative numbers).
+    * After a flag, all consecutive non-flag tokens are interpreted
+      as values for that flag.
+    * Repeated flags accumulate values under the same key.
+
+    :param argv:
+        Command-line argument vector (typically ``sys.argv``).
+    :type argv: list[str]
+    :return:
+        Dictionary mapping argument names to values or lists of values.
+    :rtype: dict
+    :raises ValueError:
+        If a flag is missing required values or if an invalid argument
+        format is encountered.
     """
 
     kwargs = {}
