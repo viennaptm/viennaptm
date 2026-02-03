@@ -1,42 +1,74 @@
-viennaptm package
+ViennaPTM package
 =================
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :maxdepth: 4
 
    introduction
+   tutorial
+   entrypoint
+   api
 
-Classes and functions
+
+Datastructures
 ---
-
 
 .. currentmodule:: viennaptm
 
 .. autosummary::
    :toctree: generated/
+   :caption: Datastructures
 
    dataclasses.annotatedstructure.AnnotatedStructure
+
+
+Modifier
+---
+
+.. currentmodule:: viennaptm
+
+.. autosummary::
+   :toctree: generated/
+   :caption: Modifier
+
    modification.application.modifier.Modifier
    modification.modification_library.AddBranch
    modification.modification_library.Modification
    entrypoints.viennaptm.ModifierParameters
-   gromacs.pdb2gmx.PDB2GMXParameters
-   gromacs.pdb2gmx.PDB2GMX
+
+
+GROMACS
+---
+
+.. currentmodule:: viennaptm
+
+.. autosummary::
+   :toctree: generated/
+   :caption: GROMACS
+
    gromacs.editconf.EditConf
    gromacs.gromacs_command.GromacsCommand
    gromacs.grompp.Grompp
+   gromacs.pdb2gmx.PDB2GMXParameters
+   gromacs.pdb2gmx.PDB2GMX
    gromacs.mdrun.Mdrun
+   gromacs.minimization_pipeline.minimize_and_write_pdb
    gromacs.trjconv.Trjconv
-   utils.visualizer.Visualizer
+
+Miscellaneous
+---
+
+.. currentmodule:: viennaptm
 
 .. autosummary::
    :toctree: generated/
    :template: functions
+   :caption: Miscellaneous
 
    modification.calculation.align.compute_alignment_transform
    modification.calculation.align.apply_transform
-   gromacs.minimization_pipeline.minimize_and_write_pdb
+   utils.visualizer.Visualizer
+
 
 
 See :cite:`Margreitter2013` for the `publication <https://doi.org/10.1093/nar/gkt416>`_.
@@ -44,4 +76,3 @@ See :cite:`Margreitter2013` for the `publication <https://doi.org/10.1093/nar/gk
 
 
 .. bibliography:: references.bib
-   :style: plain
