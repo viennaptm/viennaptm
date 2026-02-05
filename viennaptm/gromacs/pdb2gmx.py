@@ -81,7 +81,7 @@ class PDB2GMXParameters(BaseModel):
         "posre_itp",
         "index_file",
         "clean_pdb",
-        mode="after",
+        mode="after"
     )
     @classmethod
     def ensure_paths(cls, v):
@@ -126,7 +126,7 @@ class PDB2GMX(GromacsCommand):
         workdir: Optional[Path] = None,
         stdin: Optional[str] = None,
         timeout: Optional[int] = None,
-        env: Optional[dict] = None,
+        env: Optional[dict] = None
     ):
         self.params = params
 
@@ -135,7 +135,7 @@ class PDB2GMX(GromacsCommand):
             workdir=workdir,
             stdin=stdin,
             timeout=timeout,
-            env=env,
+            env=env
         )
 
     def build_gromacs_cmd(self) -> List[str]:
@@ -196,6 +196,6 @@ class PDB2GMX(GromacsCommand):
 
         outputs = [
             self.params.output_gro,
-            self.params.topology,
+            self.params.topology
         ]
         return outputs

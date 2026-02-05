@@ -37,7 +37,7 @@ class Mdrun(GromacsCommand):
 
         return [
             self.gmx_bin, "mdrun",
-            "-deffnm", self.deffnm,
+            "-deffnm", self.deffnm
         ]
 
     def expected_outputs(self):

@@ -49,7 +49,7 @@ class EditConf(GromacsCommand):
             "-o", str(self.output_gro),
             "-c",
             "-d", "1.0",
-            "-bt", "cubic",
+            "-bt", "cubic"
         ]
 
     def expected_outputs(self):

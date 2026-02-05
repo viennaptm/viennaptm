@@ -1,33 +1,63 @@
 Tutorial
 ============
 
-The web server `Vienna-PTM <https://vienna-ptm.univie.ac.at/>`__ is a platform for automated introduction of PTMs of choice to protein 3D structures (PDB files) in a user-friendly visual environment. With 256 different enzymatic and non-enzymatic PTMs available, the server performs geometrically realistic introduction of modifications at sites of interests, as well as subsequent energy minimization. Finally, the server makes available force field parameters and input files needed to run MD simulations of modified proteins within the framework of the widely used GROMOS 54A7 and 45A3 force fields and GROMACS simulation package.
 
+.. rubric:: HOW TO USE VIENNA PTM
 
+When the :doc:`installation` of ViennaPTM and its dependencies is finished you have multiple ways of using it.
+The entrypoint allows a usage via command line or a config file whereas the API offers more possibilities for adapt
+to specific user needs and is therefore a favoured option for proprietary data, batch processing of if user
+modifications are needed.
 
-**HOW TO USE VIENNA PTM**
+Here we start with a user journey for a command line input.
 
-Entrypoint:
+.. rubric:: Command line
 
 .. code-block:: python
 
-   # 1. Activate conda environment
+   # 1. Activate conda environment in your console
    conda activate viennaptm
 
-   # 2. Use entrypoint to run ViennaPTM
+   # 2. Use entrypoint command line to run ViennaPTM
    viennaptm --input tests/data/1vii.pdb \
              --modification "A:50=V3H" \
              --output testoutput.pdb
 
 
+.. image:: _static/example.png
 
-API:
+
+For a more detailed explanation of the available parameters please check the :doc:`entrypoint` page.
+
+.. rubric:: Config file
+
+Make a config file in yaml format.
 
 .. code-block:: python
 
-   modifier = Modifier()
-   structure = modifier.apply_modification(structure=structure,
-                                           chain_identifier='A',
-                                           residue_number=50,
-                                           target_abbreviation="V3H")
+    input: ./tests/data/1vii.pdb
+    modification:
+      - "A:50=V3H"
+    output: output.pdb
+    logger: console
+    debug: false
 
+Run the config file via the console.
+
+.. code-block:: python
+
+    viennaptm --config /home/nutzer/Projects/viennaptm/tests/data/example_config.yaml
+
+
+.. image:: _static/config.png
+
+
+You can still selectively override certain parameters. Simply add those changes to the end of
+the code line:
+
+.. code-block:: python
+
+   viennaptm --config /home/nutzer/Projects/viennaptm/tests/data/example_config.yaml --input tests/data/1vii.pdb
+
+
+.. image:: _static/logger_override.png

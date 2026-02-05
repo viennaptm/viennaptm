@@ -37,7 +37,7 @@ class Grompp(GromacsCommand):
         structure: Path,
         topology: Path,
         tpr: Path,
-        **kwargs,
+        **kwargs
     ):
         self.mdp = mdp
         self.structure = structure

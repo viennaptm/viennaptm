@@ -1,5 +1,5 @@
-{{ name }}
-{{ "=" * name|length }}
+{{ objname }}
+{{ "=" * objname|length }}
 
 .. rubric:: Module
 
@@ -10,6 +10,7 @@
 .. currentmodule:: {{ module }}
 
 .. autoclass:: {{ objname }}
+   :members:
 
 {% block methods %}
 .. automethod:: __init__
@@ -19,17 +20,6 @@
 
 .. autosummary::
 {% for item in methods %}
-   ~{{ name }}.{{ item }}
-{% endfor %}
-{% endif %}
-{% endblock %}
-
-{% block attributes %}
-{% if attributes %}
-.. rubric:: {{ _('Attributes') }}
-
-.. autosummary::
-{% for item in attributes %}
    ~{{ name }}.{{ item }}
 {% endfor %}
 {% endif %}

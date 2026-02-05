@@ -53,7 +53,7 @@ class Trjconv(GromacsCommand):
             self.gmx_bin, "trjconv",
             "-s", str(self.tpr),
             "-f", str(self.structure),
-            "-o", str(self.output_pdb),
+            "-o", str(self.output_pdb)
         ]
 
     def expected_outputs(self):

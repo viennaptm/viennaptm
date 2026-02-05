@@ -45,11 +45,10 @@ def minimize_and_write_pdb(
     minimized = workdir / "em.gro"
     minimized_pdb = workdir / "em.pdb"
 
-    # ---- define box ----
     EditConf(
         input_gro=conf_gro,
         output_gro=boxed,
-        workdir=workdir,
+        workdir=workdir
     ).run()
 
     Grompp(
@@ -57,19 +56,19 @@ def minimize_and_write_pdb(
         structure=boxed,
         topology=topology,
         tpr=tpr,
-        workdir=workdir,
+        workdir=workdir
     ).run()
 
     Mdrun(
         deffnm="em",
-        workdir=workdir,
+        workdir=workdir
     ).run()
 
     Trjconv(
         structure=minimized,
         tpr=tpr,
         output_pdb=minimized_pdb,
-        workdir=workdir,
+        workdir=workdir
     ).run()
 
     return minimized_pdb

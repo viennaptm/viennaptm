@@ -2,12 +2,15 @@ ViennaPTM package
 =================
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 7
 
    introduction
+   installation
    tutorial
+   list_of_ptms
    entrypoint
    api
+   citation
 
 
 Datastructures
@@ -19,7 +22,7 @@ Datastructures
    :toctree: generated/
    :caption: Datastructures
 
-   dataclasses.annotatedstructure.AnnotatedStructure
+   ~dataclasses.annotatedstructure.AnnotatedStructure
 
 
 Modifier
@@ -31,10 +34,10 @@ Modifier
    :toctree: generated/
    :caption: Modifier
 
-   modification.application.modifier.Modifier
-   modification.modification_library.AddBranch
-   modification.modification_library.Modification
-   entrypoints.viennaptm.ModifierParameters
+   ~modification.application.modifier.Modifier
+   ~modification.modification_library.AddBranch
+   ~modification.modification_library.Modification
+   ~entrypoints.viennaptm.ModifierParameters
 
 
 GROMACS
@@ -46,14 +49,13 @@ GROMACS
    :toctree: generated/
    :caption: GROMACS
 
-   gromacs.editconf.EditConf
-   gromacs.gromacs_command.GromacsCommand
-   gromacs.grompp.Grompp
-   gromacs.pdb2gmx.PDB2GMXParameters
-   gromacs.pdb2gmx.PDB2GMX
-   gromacs.mdrun.Mdrun
-   gromacs.minimization_pipeline.minimize_and_write_pdb
-   gromacs.trjconv.Trjconv
+   ~gromacs.editconf.EditConf
+   ~gromacs.gromacs_command.GromacsCommand
+   ~gromacs.grompp.Grompp
+   ~gromacs.pdb2gmx.PDB2GMXParameters
+   ~gromacs.pdb2gmx.PDB2GMX
+   ~gromacs.mdrun.Mdrun
+   ~gromacs.trjconv.Trjconv
 
 Miscellaneous
 ---
@@ -65,14 +67,8 @@ Miscellaneous
    :template: functions
    :caption: Miscellaneous
 
-   modification.calculation.align.compute_alignment_transform
-   modification.calculation.align.apply_transform
-   utils.visualizer.Visualizer
+   ~modification.calculation.align.compute_alignment_transform
+   ~modification.calculation.align.apply_transform
+   ~gromacs.minimization_pipeline.minimize_and_write_pdb
+   ~utils.visualizer.Visualizer
 
-
-
-See :cite:`Margreitter2013` for the `publication <https://doi.org/10.1093/nar/gkt416>`_.
-
-
-
-.. bibliography:: references.bib

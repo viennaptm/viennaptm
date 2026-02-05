@@ -193,7 +193,7 @@ class GromacsCommand(ABC):
         fatal_markers = (
             "Fatal error",
             "Segmentation fault",
-            "MPI_ABORT",
+            "MPI_ABORT"
         )
 
         combined = "\n".join(
