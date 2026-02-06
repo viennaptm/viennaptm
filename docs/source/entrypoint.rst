@@ -10,7 +10,7 @@ Entrypoint
    # 1. Activate conda environment
    conda activate viennaptm
 
-   # 2. Use entrypoint to run ViennaPTM
+   # 2. Use entrypoint (CLI) to run ViennaPTM
    viennaptm --input tests/data/1vii.pdb \
              --modification "A:50=V3H" \
              --output testoutput.pdb
@@ -20,6 +20,7 @@ Entrypoint
 
 .. code-block:: python
 
+   # 1. Generate config file
     input: ./tests/data/1vii.pdb
     modification:
       - "A:50=V3H"
@@ -27,9 +28,12 @@ Entrypoint
     logger: console
     debug: false
 
+   # 2. Use entrypoint (CLI) to run config file
+    viennaptm --config tests/data/example_config.yaml
+
+
 
 .. rubric:: PARAMETERS
-
 
 .. list-table::
    :header-rows: 1
@@ -50,21 +54,21 @@ Entrypoint
        | Otherwise, it is interpreted as a
        | PDB database identifier and must be
        | exactly four characters long.
-     - | ./tests/data/1vii.cif
+     - | ./tests/data/1vii.cif or
        | ./tests/data/1vii.pdb
    * - --modification
      - List of modifications
-     - | A modification is a string (str)
+     - | A modification is a ``string (str)``
        | which consists of "chain_identifier",
        | "residue_number" and
        | "target abbreviation":
        | "A:50=V3H"
        |
        | A list of modifications is also
-       | accepted in form of a list of strings
-       | (list[str]):
+       | accepted in form of a ``list of strings
+       | (list[str])``:
        | [("A", 50), ("A", 55), ("A", 60)]
-     - | "A:50=V3H"
+     - | "A:50=V3H" or
        | [("A", 50), ("A", 55), ("A", 60)]
    * - --output
      - Output path or filename
