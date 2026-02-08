@@ -85,6 +85,9 @@ class Test_ViennaPTM(unittest.TestCase):
                              "TYR"])
 
     def test_viennaptm_minimization_pdb(self):
+        if shutil.which("gmx") is None:
+            raise unittest.SkipTest("GROMACS (gmx) not available.")
+
         # test mmCIF generation
         output_path = self._workdir / "minimization.pdb"
         result = subprocess.run(

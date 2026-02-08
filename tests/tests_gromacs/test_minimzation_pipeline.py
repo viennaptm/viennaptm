@@ -3,12 +3,9 @@ import unittest
 import shutil
 from pathlib import Path
 
-import numpy as np
-
 from tests.file_paths import UNITTEST_PATH_1VII_PDB, UNITTEST_JUNK_FOLDER
 from viennaptm.dataclasses.annotatedstructure import AnnotatedStructure
-from viennaptm.gromacs.minimization_pipeline import minimize_and_write_pdb, execute_energy_minimization
-from viennaptm.gromacs.pdb2gmx import PDB2GMX, PDB2GMXParameters
+from viennaptm.gromacs.minimization_pipeline import execute_energy_minimization
 from viennaptm.utils.fixtures import ViennaPTMFixtures
 from viennaptm.utils.paths import attach_root_path
 
