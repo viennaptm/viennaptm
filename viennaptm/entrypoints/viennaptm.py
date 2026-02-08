@@ -18,12 +18,13 @@ def main():
     """
     Entry point for the :class:`AnnotatedStructure` modification command-line interface.
 
-    This function:
+    This tool:
     - Parses command-line arguments
     - Validates parameters using :class:`ModifierParameters`
     - Initializes logging
     - Loads a :class:`Biopython PDB structure` (local file or database)
     - Applies one or more residue modifications
+    - (Optionally) Energy minimizes the structure using GROMACS
     - Writes the modified :class:`AnnotatedStructure` to a PDB file
 
     :raises ValueError:
@@ -50,7 +51,6 @@ def main():
 
     # initialize modifier with most recent internal modification database
     modifier = Modifier()
-
     modlist = cfg.modify
     if modlist:
         for mod_input in modlist:
