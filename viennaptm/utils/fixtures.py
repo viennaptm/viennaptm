@@ -1,6 +1,5 @@
 import os
 from pathlib import Path
-
 from pydantic import BaseModel, model_validator
 
 from viennaptm.utils.paths import attach_root_path
@@ -19,10 +18,8 @@ class ViennaPTMFixtures(BaseModel):
     fixed version date.
     """
 
-    # TODO: replace by actually looking for the latest one instead of hard-coding it
-    LATEST_PTMS_VERSION_DATE: str = "2025-12-18"
-    LATEST_PTMS_LIBRARY_PATH: Path = None
-    LATEST_PTMS_PDBS_DIR_PATH: Path = None
+    PTMS_LIBRARY_PATH: Path = None
+    PTMS_PDBS_DIR_PATH: Path = None
 
     PDB_ENDING: str = ".pdb"
 
@@ -35,23 +32,20 @@ class ViennaPTMFixtures(BaseModel):
 
         This validator populates internal path attributes for the
         modification library, minimized PDB templates, and default
-        GROMACS energy minimization parameters based on the configured
-        PTM version date.
+        GROMACS energy minimization parameters.
 
         :return:
             The validated fixture configuration instance.
         :rtype: ViennaPTMFixtures
         """
 
-        self.LATEST_PTMS_LIBRARY_PATH = attach_root_path(os.path.join("viennaptm",
-                                                                      "resources",
-                                                                      "libraries",
-                                                                      self.LATEST_PTMS_VERSION_DATE,
-                                                                      "library.json"))
-        self.LATEST_PTMS_PDBS_DIR_PATH = attach_root_path(os.path.join("viennaptm",
-                                                                       "resources",
-                                                                       "pdbs_minimized",
-                                                                       self.LATEST_PTMS_VERSION_DATE))
+        self.PTMS_LIBRARY_PATH = attach_root_path(os.path.join("viennaptm",
+                                                               "resources",
+                                                               "libraries",
+                                                               "library.json"))
+        self.PTMS_PDBS_DIR_PATH = attach_root_path(os.path.join("viennaptm",
+                                                                "resources",
+                                                                "pdbs_minimized"))
         self.GROMACS_MINIM_MDP_DEFAULT = attach_root_path(os.path.join("viennaptm",
                                                                        "resources",
                                                                        "gromacs",

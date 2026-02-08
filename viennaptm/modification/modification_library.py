@@ -2,7 +2,7 @@ import json
 import logging
 import os
 from pathlib import Path
-from typing import List, Tuple, Union, Dict
+from typing import List, Tuple, Union, Dict, Optional
 
 from Bio.PDB import PDBParser
 from Bio.PDB.Residue import Residue
@@ -12,6 +12,7 @@ from viennaptm.utils.error_handling import raise_with_logging_error
 from viennaptm.utils.fixtures import ViennaPTMFixtures
 
 logger = logging.getLogger(__name__)
+fixtures = ViennaPTMFixtures()
 
 
 class AddBranch(BaseModel):
@@ -41,7 +42,6 @@ class AddBranch(BaseModel):
     are automatically assigned during validation.
     """
 
-    ### TODO create alignment class for anchor and weights
     # atoms that define the overlay, i.e. the orientation
     anchor_atoms: List[str] = Field(default_factory=list)
 
@@ -129,7 +129,16 @@ class Modification(BaseModel):
     logger.debug(f"List of added branches: {add_branches}")
 
     # TODO: add actual modified names for PTMs (should be part of the server files)
+    #       plan is to use another JSON in the "metadata" resource folder for this purpose
     model_config = ConfigDict(extra="forbid")
+
+
+class ModificationLibraryMetadata(BaseModel):
+    """
+    Container for library metadata such as the date it was created.
+    """
+    date: Optional[str] = "undefined"
+    custom_library: bool = False
 
 
 class ModificationLibrary(BaseModel):
@@ -144,16 +153,16 @@ class ModificationLibrary(BaseModel):
     :ivar modifications: List of available residue modifications.
     :vartype modifications: list[Modification]
 
+    :ivar metadata: Metadata of the library.
+    :vartype metadata: ModificationLibraryMetadata
+
     :ivar target_templates: Mapping of residue abbreviations to PDB file paths.
     :vartype target_templates: dict[str, str]
-
-    :ivar library_version: Version identifier of the loaded library.
-    :vartype library_version: str or None
     """
 
     modifications: List[Modification] = Field(default_factory=list)
+    metadata: ModificationLibraryMetadata = Field(default_factory=ModificationLibraryMetadata)
     target_templates: Dict[str, str] = Field(default_factory=dict)
-    library_version: str = None
     model_config = ConfigDict(extra="forbid")
 
     def __init__(self, library_path: Union[str, Path] = None, pdbs_minimized: Union[str, Path] = None):
@@ -176,42 +185,61 @@ class ModificationLibrary(BaseModel):
             If library parsing fails or required templates are missing.
         """
 
-        fixtures = ViennaPTMFixtures()
-
         # if not set, assume, that the default (i.e. latest installed) PTM library and the latest PDBs are to be used
         if not library_path or not pdbs_minimized:
-            self.library_version = fixtures.LATEST_PTMS_VERSION_DATE
-            library_path = fixtures.LATEST_PTMS_LIBRARY_PATH
-            pdbs_minimized = fixtures.LATEST_PTMS_PDBS_DIR_PATH
-            logger.info(f"No modifications library or PDB directory specified, loading current default: {fixtures.LATEST_PTMS_VERSION_DATE}")
+            library_path = fixtures.PTMS_LIBRARY_PATH
+            pdbs_minimized = fixtures.PTMS_PDBS_DIR_PATH
+            logger.info(f"No modifications library or PDB directory specified, loading current default.")
         else:
-            self.library_version = "custom"
+            self.metadata.custom_library = True
             logger.info(f"Using custom library ({library_path}) and PDB directory ({pdbs_minimized}).")
 
-        # load application library, make sure that minimized PDBs are available and store the absolute paths
-        # in dictionary of the form: {"MOD1": "/full/path/MOD1.pdb", ...}
+        # load modification information and paths to pre-minimized PDB files
+        self._load_library(library_path)
+        self._populate_minimized_PDBs(pdbs_minimized)
+
+        logger.info(f"Modification library version: {self.metadata.date} (custom_library={self.metadata.custom_library})")
+        logger.info(f"---> Comprised of {len(self.modifications)} modifications, indexed {len(self.target_templates)} PDB files.")
+
+    def _load_library(self, library_path: Union[str, Path] = None):
+        # load application library from JSON (modifications and metadata
         with open(library_path, 'r') as f:
             library = json.load(f)
+
+        # check if required keys are present
+        required_keys = ["metadata", "modifications"]
+        if [key for key in required_keys if key not in library]:
+            raise_with_logging_error(message=f"The following keys need to be present on the top level of a valid modification library: [{', '.join(required_keys)}]",
+                                     logger=logger,
+                                     exception_type=KeyError)
+
+        # parse metadata
+        self.metadata = ModificationLibraryMetadata.model_validate(library["metadata"])
+
+        # parse application file and report on loading
+        for key in library["modifications"].keys():
+            original, modified = key.split('_')
+            self.modifications.append(Modification(residue_original_abbreviation=original,
+                                                   residue_modified_abbreviation=modified,
+                                                   **library["modifications"][key]))
+            logger.debug(f"Modification {original}->{modified} added.")
+
+    def _populate_minimized_PDBs(self, pdbs_minimized: Union[Path, str]):
+        # make sure that minimized PDBs are available and store the absolute paths
+        # in dictionary of the form: {"MOD1": "/full/path/MOD1.pdb", ...}
         if not os.path.isdir(pdbs_minimized):
             raise_with_logging_error(f"The specified PDB directory does not exist: {pdbs_minimized}",
                                      logger,
                                      FileNotFoundError)
+
         minimized_pdb_files = os.listdir(pdbs_minimized)
         minimized_pdb_files = {x for x in minimized_pdb_files if x.lower().endswith(fixtures.PDB_ENDING)}
         if len(minimized_pdb_files) == 0:
             raise_with_logging_error(f"The specified PDB directory does not contain any PDB files: {pdbs_minimized}",
                                      logger,
                                      FileNotFoundError)
-        self.target_templates = {f[:-4]: os.path.join(pdbs_minimized, f) for f in minimized_pdb_files if f.endswith(".pdb")}
-
-        # parse application file and report on loading
-        for key in library.keys():
-            original, modified = key.split('_')
-            self.modifications.append(Modification(residue_original_abbreviation=original,
-                                                   residue_modified_abbreviation=modified,
-                                                   **library[key]))
-            logger.debug(f"Modification {original}->{modified} added.")
-        logger.info(f"Loaded {len(self.modifications)} modifications and indexed {len(minimized_pdb_files)} PDB files for library {fixtures.LATEST_PTMS_VERSION_DATE}.")
+        self.target_templates = {f[:-4]: os.path.join(pdbs_minimized, f) for f in minimized_pdb_files if
+                                 f.endswith(".pdb")}
 
     def __getitem__(self, index):
         """
