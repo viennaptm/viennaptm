@@ -233,7 +233,7 @@ class AnnotatedStructure(Structure):
         :rtype: :class:`AnnotatedStructure`
         """
 
-        if not isinstance(path, str) and not isinstance(path, Path):
+        if not isinstance(path, Union[str, Path]) and not isinstance(path, Path):
             raise_with_logging_error(f"Parameter path (attempted path: {path}) required to be a path "
                                      f"(as string or Path object) to a local MMCIF file.",
                                      logger=logger,
@@ -248,7 +248,7 @@ class AnnotatedStructure(Structure):
         structure._init_calls()
         return structure
 
-    def to_pdb(self, path: str) -> None:
+    def to_pdb(self, path: Union[str, Path]) -> None:
         """
         Write the ``AnnotatedStructure`` object (CAUTION: Only :class:`Biopython PDB structure` elements) to a PDB file.
 
@@ -259,10 +259,10 @@ class AnnotatedStructure(Structure):
 
         io = PDBIO()
         io.set_structure(self)
-        io.save(file=path)
+        io.save(file=str(path))
         log_writeout(logger=logger, path=path)
 
-    def to_cif(self, path: str) -> None:
+    def to_cif(self, path: Union[str, Path]) -> None:
         """
         Write the ``AnnotatedStructure`` object (CAUTION: Only :class:`Biopython PDB structure` elements) to an mmCIF file.
 
@@ -272,5 +272,5 @@ class AnnotatedStructure(Structure):
         """
         io = MMCIFIO()
         io.set_structure(self)
-        io.save(path)
+        io.save(str(path))
         log_writeout(logger=logger, path=path)

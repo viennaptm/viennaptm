@@ -66,7 +66,8 @@ cd viennaptm
 pip install .
 ```
 
-### Install GROMACS
+### Install GROMACS (optional)
+`GROMACS` is required for energy minimzation of modified structures.
 ```bash
 conda install conda-forge::gromacs
 ```

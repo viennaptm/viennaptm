@@ -83,3 +83,24 @@ class Test_ViennaPTM(unittest.TestCase):
                              "PRO", "LEU", "TRP", "LYS", "GLN", "GLN", "ASN",
                              "LEU", "LYS", "LYS", "GLU", "LYS", "HIS", "CYS",
                              "TYR"])
+
+    def test_viennaptm_minimization_pdb(self):
+        # test mmCIF generation
+        output_path = self._workdir / "minimization.pdb"
+        result = subprocess.run(
+            [
+                "viennaptm",
+                "--input", str(self._1vii_PDB_path),
+                # TODO: enable, once force field parameters are installed
+                #"--modify", "A:50=V3H",
+                "--gromacs.minimize", "True",
+                "--output", str(output_path)
+            ],
+            capture_output=True,
+            text=True
+        )
+
+        # file creation sanity check
+        self.assertEqual(result.returncode, 0, msg=result.stderr)
+        self.assertTrue(output_path.exists())
+        self.assertGreater(output_path.stat().st_size, 27000)

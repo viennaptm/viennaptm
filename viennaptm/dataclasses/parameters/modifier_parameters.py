@@ -3,7 +3,15 @@ from pathlib import Path
 from typing import Optional, Union, Dict, Any
 
 import yaml
-from pydantic import BaseModel, model_validator, field_validator
+from pydantic import BaseModel, model_validator, field_validator, Field
+
+
+class GROMACSParameters(BaseModel):
+    minimize: bool = Field(default=False, description="Energy minimize the modified structure.")
+
+    model_config = {
+        "extra": "forbid"
+    }
 
 
 class ModifierParameters(BaseModel):
@@ -40,11 +48,12 @@ class ModifierParameters(BaseModel):
         Enable verbose debug logging if ``True``.
     """
 
-    config: Optional[Union[Path, str]] = None
+    config: Optional[Union[Path, str]] = Field(default=None, description="Path to a YAML or JSON configuration file (optional).")
 
-    input: Optional[Union[Path, str]] = None
-    modify: Optional[Union[list[str], str]] = None
-    output: Optional[Union[Path, str]] = "output.pdb"
+    input: Optional[Union[Path, str]] = Field(default=None, description="Input structure, either CIF or PDB.")
+    modify: Optional[Union[list[str], str]] = Field(default=None, description="Modifications in the form of \"A:50=V3H\", which means \"chain:residue=target\".")
+    output: Optional[Union[Path, str]] = Field(default="output.pdb", description="Output structure, either CIF or PDB.")
+    gromacs: Optional[GROMACSParameters] = Field(default_factory=GROMACSParameters, description="Gromacs parameters.")
     logger: str = "console"
     debug: bool = False
 

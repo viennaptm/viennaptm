@@ -1,3 +1,8 @@
+import sys
+from typing import get_args, get_origin
+
+from pydantic import BaseModel
+
 
 def _add_value(kwargs: dict, key: str, value):
     """
@@ -104,3 +109,55 @@ def collect_kwargs(argv: list[str]) -> dict:
         raise ValueError(f"Invalid argument format: {arg}")
 
     return kwargs
+
+def expand_dotted_keys(flat: dict) -> dict:
+    # pydantic does not expand things like "--gromacs.minimize" automatically,
+    # so 'digest' them here and unpack as required
+    out = {}
+    for key, value in flat.items():
+        parts = key.split(".")
+        cur = out
+        for p in parts[:-1]:
+            cur = cur.setdefault(p, {})
+        cur[parts[-1]] = value
+    return out
+
+
+def print_help_CLI(tool: str, argv: list[str], parameters_object):
+    def is_basemodel_type(tp):
+        origin = get_origin(tp)
+        if origin is not None:
+            tp = get_args(tp)[0]
+        return isinstance(tp, type) and issubclass(tp, BaseModel)
+
+    def get_basemodel_type(tp):
+        origin = get_origin(tp)
+        if origin is not None:
+            return get_args(tp)[0]
+        return tp
+
+    def print_help(model: type[BaseModel], prefix=""):
+        for name, field in model.model_fields.items():
+            option = f"{prefix}{name}"
+            annotation = field.annotation
+
+            if is_basemodel_type(annotation):
+                nested_model = get_basemodel_type(annotation)
+                print_help(nested_model, option + ".")
+                continue
+
+            typ = getattr(annotation, "__name__", str(annotation))
+            default = field.default
+            desc = field.description or ""
+
+            print(f"  --{option:<20} ")
+            print(f"      [{typ}, default={default}]")
+            if desc:
+                print(f"      {desc}")
+
+    if "--help" in argv or "-h" in argv or "--version" in argv or "-v" in argv:
+        print("Usage:")
+        print(f"  {tool} [OPTIONS]\n")
+        print("Options:")
+        print_help(parameters_object)
+        sys.exit(0)

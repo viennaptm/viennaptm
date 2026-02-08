@@ -1,9 +1,18 @@
+import logging
+import shutil
+import tempfile
 from pathlib import Path
+from typing import Union
 
+from viennaptm.dataclasses.annotatedstructure import AnnotatedStructure
 from viennaptm.gromacs.editconf import EditConf
 from viennaptm.gromacs.grompp import Grompp
 from viennaptm.gromacs.mdrun import Mdrun
+from viennaptm.gromacs.pdb2gmx import PDB2GMX, PDB2GMXParameters
 from viennaptm.gromacs.trjconv import Trjconv
+from viennaptm.utils.fixtures import ViennaPTMFixtures
+
+logger = logging.getLogger(__name__)
 
 
 def minimize_and_write_pdb(
@@ -72,3 +81,48 @@ def minimize_and_write_pdb(
     ).run()
 
     return minimized_pdb
+
+
+def execute_energy_minimization(structure: AnnotatedStructure, workdir: Union[Path, str] = None, clean_up: bool = True) -> AnnotatedStructure:
+    # prepare temporary folder and input
+    if not workdir:
+        workdir = Path(tempfile.mkdtemp(suffix=None, prefix="viennaptm_", dir=None))
+    else:
+        workdir = Path(workdir)
+        workdir.mkdir(parents=True, exist_ok=True)
+    logger.debug(f"Executing energy minimization in this directory: {workdir}")
+    input_path = workdir / "input.pdb"
+    structure.to_pdb(input_path.resolve())
+
+    # prepare GROMACS paths
+    conf_gro = workdir / "conf.gro"
+    topol = workdir / "topol.top"
+    minim_mdp = ViennaPTMFixtures().GROMACS_MINIM_MDP_DEFAULT
+
+    # execute PDB2GMX
+    PDB2GMX(
+        params=PDB2GMXParameters(
+            input=input_path,
+            output_gro=conf_gro,
+            topology=topol,
+            forcefield="gromos54a7",
+            water="spc",
+            ignore_h=True
+        ),
+        workdir=workdir,
+        stdin="1\n",
+    ).run()
+
+    # execute remaining energy minimization pipeline
+    minimized_path = minimize_and_write_pdb(
+        conf_gro=conf_gro,
+        topology=topol,
+        minim_mdp=minim_mdp,
+        workdir=workdir
+    )
+
+    # reload, clean up (if set to True) and return minimized structure
+    minimized_structure = AnnotatedStructure.from_pdb(minimized_path)
+    if clean_up:
+        shutil.rmtree(workdir)
+    return minimized_structure
