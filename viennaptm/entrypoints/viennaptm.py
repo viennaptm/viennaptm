@@ -60,10 +60,10 @@ def main():
                              f"with the target residue abbreviation being a string of length 3.")
 
         # apply a modification
-        structure = modifier.apply_modification(structure = structure,
-                                                chain_identifier=modification[0],
-                                                residue_number=int(modification[1]),
-                                                target_abbreviation=modification[2])
+        structure = modifier.modify(structure = structure,
+                                    chain_identifier=modification[0],
+                                    residue_number=int(modification[1]),
+                                    target_abbreviation=modification[2])
 
         logger.debug(f"Modification with parameters: "
                      f"chain identifier {modification[0]}, "

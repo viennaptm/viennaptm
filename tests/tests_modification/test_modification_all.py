@@ -32,10 +32,10 @@ class Test_Modification_All(unittest.TestCase):
                   internal_residue_number: int,
                   atom_name: str,
                   coordinates: List[float]):
-        modified_structure = self._modifier.apply_modification(structure=self._structure,
-                                                               chain_identifier='A',
-                                                               residue_number=residue_number,
-                                                               target_abbreviation=target_abbreviation)
+        modified_structure = self._modifier.modify(structure=self._structure,
+                                                   chain_identifier='A',
+                                                   residue_number=residue_number,
+                                                   target_abbreviation=target_abbreviation)
 
 
         modified_residue = list(modified_structure.get_residues())[internal_residue_number]

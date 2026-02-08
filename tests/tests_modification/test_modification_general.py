@@ -19,8 +19,8 @@ class Test_Modification_General(unittest.TestCase):
         self._junk_folder = attach_root_path(UNITTEST_JUNK_FOLDER)
         Path(self._junk_folder).mkdir(parents=True, exist_ok=True)
 
-    def test_apply_modifications(self):
-        output_pdb_path = os.path.join(self._junk_folder, "apply_modifications.pdb")
+    def test_modify(self):
+        output_pdb_path = os.path.join(self._junk_folder, "modify.pdb")
         if os.path.exists(output_pdb_path):
             os.remove(output_pdb_path)
 
@@ -29,14 +29,14 @@ class Test_Modification_General(unittest.TestCase):
 
         # use API pattern to apply two application
         modifier = Modifier()
-        structure = modifier.apply_modification(structure=structure,
-                                                chain_identifier='A',
-                                                residue_number=50,
-                                                target_abbreviation="V3H")
-        structure = modifier.apply_modification(structure=structure,
-                                                chain_identifier='A',
-                                                residue_number=55,
-                                                target_abbreviation="GSA")
+        structure = modifier.modify(structure=structure,
+                                    chain_identifier='A',
+                                    residue_number=50,
+                                    target_abbreviation="V3H")
+        structure = modifier.modify(structure=structure,
+                                    chain_identifier='A',
+                                    residue_number=55,
+                                    target_abbreviation="GSA")
 
         # get list of residue and atoms after modification
         modified_residue = list(structure.get_residues())[14]

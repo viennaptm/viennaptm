@@ -40,17 +40,17 @@ modification in the structure's modification log.
 
 .. rubric:: HOW TO MODIFY A STRUCTURE?
 
-The :py:meth:`Modifier.apply_modification` method locates a residue by chain identifier and residue number,
+The :py:meth:`Modifier.modify` method locates a residue by chain identifier and residue number,
 removes all hydrogen atoms, applies a modification defined in the modification library, and
 optionally returns a modified copy of the structure.
 
 .. code-block:: python
 
    # apply the modification to the modifier
-   structure = modifier.apply_modification(structure=structure,
-                                           chain_identifier='A',
-                                           residue_number=50,
-                                           target_abbreviation="V3H")
+   structure = modifier.modify(structure=structure,
+                               chain_identifier='A',
+                               residue_number=50,
+                               target_abbreviation="V3H")
 
 
 .. rubric:: HOW TO WRITE A STRUCTURE?

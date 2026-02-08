@@ -80,10 +80,10 @@ viennaptm --input tests/data/1vii.pdb \
 ### API:
 ```bash
 modifier = Modifier()
-structure = modifier.apply_modification(structure=structure,
-                                        chain_identifier='A',
-                                        residue_number=50,
-                                        target_abbreviation="V3H")
+structure = modifier.modify(structure=structure,
+                            chain_identifier='A',
+                            residue_number=50,
+                            target_abbreviation="V3H")
 ```
 
 ## Contributing
@@ -92,7 +92,7 @@ Contributions are always welcome. Please fork the repository, make your changes 
 ## License
 
 - Code: Apache-2
-- Resources, including modification libraries: Attribution-NonCommercial 4.0 International
+- Resources [including modification libraries]: Attribution-NonCommercial 4.0 International
 
 
 ## Authors / Contributors

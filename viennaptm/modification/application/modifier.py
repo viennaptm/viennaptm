@@ -51,12 +51,12 @@ class Modifier(BaseModel):
 
         self._library = library
 
-    def apply_modification(self,
-                           structure: AnnotatedStructure,
-                           chain_identifier: str,
-                           residue_number: int,
-                           target_abbreviation: str,
-                           inplace: bool = True) -> AnnotatedStructure:
+    def modify(self,
+               structure: AnnotatedStructure,
+               chain_identifier: str,
+               residue_number: int,
+               target_abbreviation: str,
+               inplace: bool = True) -> AnnotatedStructure:
         """
         Apply a residue modification to a structure.
 

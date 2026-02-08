@@ -44,7 +44,7 @@ class Visualizer(BaseModel):
     model_config = ConfigDict(arbitrary_types_allowed=True)
 
     def render_view(self,
-                    highlight_residues: Optional[List[Tuple[str, str]]] = None,
+                    highlight_residues: Optional[List[Tuple[str, int]]] = None,
                     save_html: Union[str, Path] = None):
         """
         Render the structure as an interactive NGLview widget.
