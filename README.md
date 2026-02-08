@@ -73,7 +73,7 @@ conda activate viennaptm
 
 # 2. Use entrypoint to run ViennaPTM
 viennaptm --input tests/data/1vii.pdb \
-          --application "A:50=V3H" \
+          --modify "A:50=V3H" \
           --output testoutput.pdb
 ```
 

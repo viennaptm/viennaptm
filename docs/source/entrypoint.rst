@@ -12,7 +12,7 @@ Entrypoint
 
    # 2. Use entrypoint (CLI) to run ViennaPTM
    viennaptm --input tests/data/1vii.pdb \
-             --modification "A:50=V3H" \
+             --modify "A:50=V3H" \
              --output testoutput.pdb
 
 
@@ -22,7 +22,7 @@ Entrypoint
 
    # 1. Generate config file
     input: ./tests/data/1vii.pdb
-    modification:
+    modify:
       - "A:50=V3H"
     output: output.pdb
     logger: console
@@ -56,7 +56,7 @@ Entrypoint
        | exactly four characters long.
      - | ./tests/data/1vii.cif or
        | ./tests/data/1vii.pdb
-   * - --modification
+   * - --modify
      - List of modifications
      - | A modification is a ``string (str)``
        | which consists of "chain_identifier",

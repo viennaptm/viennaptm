@@ -33,7 +33,7 @@ class Test_ViennaPTM(unittest.TestCase):
             [
                 "viennaptm",
                 "--input", str(self._1vii_PDB_path),
-                "--modification", "A:50=V3H",
+                "--modify", "A:50=V3H",
                 "--output", str(output_path)
             ],
             capture_output=True,
@@ -62,7 +62,7 @@ class Test_ViennaPTM(unittest.TestCase):
             [
                 "viennaptm",
                 "--input", str(self._1vii_PDB_path),
-                "--modification", "A:50=V3H",
+                "--modify", "A:50=V3H",
                 "--output", str(output_path)
             ],
             capture_output=True,

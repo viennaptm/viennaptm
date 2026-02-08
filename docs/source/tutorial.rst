@@ -36,7 +36,7 @@ explanation of the available parameters please check the :doc:`entrypoint` page.
 .. code-block:: python
 
    viennaptm --input tests/data/1vii.pdb \
-             --modification "A:50=V3H" \
+             --modify "A:50=V3H" \
              --output testoutput.pdb
 
 
@@ -69,7 +69,7 @@ Config file example:
 
 
     input: ./tests/data/1vii.pdb
-    modification:
+    modify:
       - "A:50=V3H"
     output: output.pdb
     logger: console
@@ -82,7 +82,7 @@ Another config file example:
 
 
     input: ./tests/data/1vii.cif
-    modification:
+    modify:
       - [("A", 50), ("A", 55), ("A", 60)]
     output: output.pdb
     logger: logger_test_file

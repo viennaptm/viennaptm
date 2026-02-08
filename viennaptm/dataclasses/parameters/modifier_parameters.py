@@ -29,7 +29,7 @@ class ModifierParameters(BaseModel):
     input : pathlib.Path or str, optional
         Input structure, either as a local PDB/mmCIF file or a 4-character
         PDB identifier.
-    modification : list[str] or str, optional
+    modify : list[str] or str, optional
         One or more residue modification specifications.
     output : pathlib.Path or str, optional
         Output structure file. Must end with ``.pdb`` or ``.cif``.
@@ -43,7 +43,7 @@ class ModifierParameters(BaseModel):
     config: Optional[Union[Path, str]] = None
 
     input: Optional[Union[Path, str]] = None
-    modification: Optional[Union[list[str], str]] = None
+    modify: Optional[Union[list[str], str]] = None
     output: Optional[Union[Path, str]] = "output.pdb"
     logger: str = "console"
     debug: bool = False
@@ -157,7 +157,7 @@ class ModifierParameters(BaseModel):
             )
         return out
 
-    @field_validator("modification", mode="after")
+    @field_validator("modify", mode="after")
     @classmethod
     def validate_input_modification(
         cls, input_modification: Union[list[str], str]

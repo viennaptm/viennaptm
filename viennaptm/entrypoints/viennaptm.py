@@ -45,7 +45,7 @@ def main():
     # initialize modifier with most recent internal modification database
     modifier = Modifier()
 
-    modlist = cfg.modification
+    modlist = cfg.modify
     for mod_input in modlist:
         modification = (re.split(":|=", mod_input))
         if not len(modification[0]) == 1:
