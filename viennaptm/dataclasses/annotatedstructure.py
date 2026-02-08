@@ -202,7 +202,7 @@ class AnnotatedStructure(Structure):
         :rtype: :class:`AnnotatedStructure`
         """
 
-        if not isinstance(path, str) and not isinstance(path, Path):
+        if not isinstance(path, (str, Path)):
             raise_with_logging_error(f"Parameter path (attempted path: {path}) required to be a path "
                                      f"(as string or Path object) to a local PDB file.",
                                      logger=logger,
@@ -233,7 +233,7 @@ class AnnotatedStructure(Structure):
         :rtype: :class:`AnnotatedStructure`
         """
 
-        if not isinstance(path, Union[str, Path]) and not isinstance(path, Path):
+        if not isinstance(path, (str, Path)):
             raise_with_logging_error(f"Parameter path (attempted path: {path}) required to be a path "
                                      f"(as string or Path object) to a local MMCIF file.",
                                      logger=logger,
