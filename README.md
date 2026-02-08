@@ -35,6 +35,12 @@ MD simulations of modified proteins within the framework of the widely used GROM
 
 ## Installation
 
+### Create a new `conda` environment (optional)
+```bash
+conda create --name viennaptm python=3.11
+conda activate viennaptm
+```
+
 ### Latest stable release
 ```bash
 # install minimal package
@@ -86,8 +92,8 @@ structure = modifier.modify(structure=structure,
                             target_abbreviation="V3H")
 ```
 
-## Contributing
-Contributions are always welcome. Please fork the repository, make your changes and then do a Pull Request.
+## Contributing / Issue reporting
+Contributions and issue reports are always welcome, please follow the instructions in the [CONTRIBUTE.md](CONTRIBUTE.md) file.
 
 ## License
 
