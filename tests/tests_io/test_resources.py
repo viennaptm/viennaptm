@@ -39,5 +39,5 @@ class Test_Resources(unittest.TestCase):
         self.assertTrue(not "T2P" in templates["T1P"])
 
         # check, that PDB template file paths are correct
-        self.assertEqual(os.path.getsize(templates["T1P"]), 1414)
-        self.assertEqual(os.path.getsize(templates["T2P"]), 1335)
+        self.assertEqual(os.path.getsize(templates["T1P"]), 1322)
+        self.assertEqual(os.path.getsize(templates["T2P"]), 1241)
