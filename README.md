@@ -17,6 +17,7 @@
 - [Usage](#usage)  
 - [Contributing](#contributing)  
 - [License](#license)  
+- [Logo and Trademarks](#logo--trademarks)  
 - [Authors / Contributors](#authors--contributors)  
 
 ---
@@ -93,13 +94,18 @@ structure = modifier.modify(structure=structure,
                             target_abbreviation="V3H")
 ```
 
-## Contributing / Issue reporting
+## Contributing
 Contributions and issue reports are always welcome, please follow the instructions in the [CONTRIBUTE.md](CONTRIBUTE.md) file.
 
 ## License
 
 - Code: Apache-2
 - Resources [including modification libraries]: Attribution-NonCommercial 4.0 International
+
+
+## Logo and Trademarks
+The project name and logo are the property of the project maintainers.
+You may use the logo to refer to or link to this project, but not in a way that suggests endorsement or affiliation with derivative works without permission.
 
 
 ## Authors / Contributors
