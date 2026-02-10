@@ -1,26 +1,28 @@
 Entrypoint
 ============
 
+Vienna-PTM can be used via an entrypoint from the command line, a configuration
+file, or custom scripts.
+
 
 .. rubric:: COMMAND LINE
 
+.. code-block:: bash
 
-.. code-block:: python
+    # 1. Activate the conda environment
+    conda activate viennaptm
 
-   # 1. Activate conda environment
-   conda activate viennaptm
-
-   # 2. Use entrypoint (CLI) to run ViennaPTM
-   viennaptm --input tests/data/1vii.pdb \
-             --modify "A:50=V3H" \
-             --output testoutput.pdb
+    # 2. Use the entrypoint (CLI) to run Vienna-PTM
+    viennaptm --input tests/data/1vii.pdb \
+              --modify "A:50=V3H" \
+              --output testoutput.pdb
 
 
 .. rubric:: CONFIG FILE
 
-.. code-block:: python
+.. code-block:: yaml
 
-   # 1. Generate config file
+    # Example configuration file
     input: ./tests/data/1vii.pdb
     modify:
       - "A:50=V3H"
@@ -28,63 +30,157 @@ Entrypoint
     logger: console
     debug: false
 
-   # 2. Use entrypoint (CLI) to run config file
-    viennaptm --config tests/data/example_config.yaml
+To run Vienna-PTM using a configuration file:
 
+.. code-block:: bash
+
+    viennaptm --config tests/data/example_config.yaml
 
 
 .. rubric:: PARAMETERS
 
 .. list-table::
    :header-rows: 1
-   :widths: 1 1 1 1
+   :widths: 1 2 3 2
 
    * - Parameter
      - Description
      - Explanation
      - Example
 
-   * - --input
+   * - ``--input``
      - Input path or PDB identifier
      - | If the input is a string ending with
-       | ``.pdb`` or ``.cif``, it is treated
-       | as a local file path and converted
-       | to :class:`pathlib.Path`.
+       | ``.pdb`` or ``.cif``, it is treated as
+       | a local file path and converted to a
+       | :class:`pathlib.Path`.
        |
-       | Otherwise, it is interpreted as a
-       | PDB database identifier and must be
+       | Otherwise, the input is interpreted as
+       | a PDB database identifier and must be
        | exactly four characters long.
-     - | ./tests/data/1vii.cif or
-       | ./tests/data/1vii.pdb
-   * - --modify
+     - | ``./tests/data/1vii.cif`` or
+       | ``1vii``
+
+   * - ``--modify``
      - List of modifications
-     - | A modification is a ``string (str)``
-       | which consists of "chain_identifier",
-       | "residue_number" and
-       | "target abbreviation":
-       | "A:50=V3H"
+     - | A modification is specified as a
+       | string consisting of a
+       | ``chain_identifier``, a
+       | ``residue_number``, and a
+       | ``target_abbreviation``, for example:
+       | ``"A:50=V3H"``.
        |
-       | A list of modifications is also
-       | accepted in form of a ``list of strings
-       | (list[str])``:
-       | [("A", 50), ("A", 55), ("A", 60)]
-     - | "A:50=V3H" or
-       | [("A", 50), ("A", 55), ("A", 60)]
-   * - --output
+       | Multiple modifications can be provided
+       | as a list of strings.
+     - | ``"A:50=V3H"`` or
+       | ``["A:50=V3H", "A:55=V3H"]``
+
+   * - ``--output``
      - Output path or filename
-     - | The output filename has to end with
-       | ``.pdb`` or ``.cif`` and converts
-       | string paths to :class:`pathlib.Path`.
-     - output.pdb
-   * - --logger
-     - Logging to console or file
-     - | When logging is set to ``"console"``,
-       | the logging will be printed to the
-       | console. Otherwise, a log file is used
-       | and the value of :attr:`logger` is
-       | interpreted as a file path.
-     - console or file
-   * - --debug
+     - | The output filename must end with
+       | ``.pdb`` or ``.cif``. String paths are
+       | converted to :class:`pathlib.Path`.
+     - ``output.pdb``
+
+   * - ``--logger``
+     - Logging destination
+     - | If set to ``"console"``, log messages
+       | are printed to standard output.
+       |
+       | Otherwise, the value is interpreted as
+       | a file path and logging output is
+       | written to a file.
+     - ``console`` or ``log.txt``
+
+   * - ``--debug``
      - Debug mode
-     - | Enables verbose debug logging if ``True``.
-     - false or true
+     - | Enables verbose debug logging when
+       | set to ``true``.
+     - ``false`` or ``true``
+
+
+.. rubric:: BASH SCRIPT
+
+Example Bash script:
+
+.. code-block:: bash
+
+    #!/usr/bin/env bash
+
+    # Exit immediately if a command fails
+    set -e
+
+    # 1. Initialize conda (required outside an interactive shell)
+    # Adjust this path if your conda installation is located elsewhere
+    source "$(conda info --base)/etc/profile.d/conda.sh"
+
+    # 2. Activate the conda environment
+    conda activate viennaptm
+
+    # 3. Run Vienna-PTM
+    viennaptm --input tests/data/1vii.pdb \
+              --modify "A:50=V3H" \
+              --output testoutput.pdb
+
+Save the script as, for example:
+
+| ``run_viennaptm.sh``
+
+Make it executable:
+
+.. code-block:: bash
+
+    chmod +x run_viennaptm.sh
+
+Run it:
+
+.. code-block:: bash
+
+    ./run_viennaptm.sh
+
+
+.. rubric:: SLURM SCRIPT
+
+Example SLURM submission script:
+
+.. code-block:: bash
+
+    #!/usr/bin/env bash
+    #SBATCH --job-name=viennaptm
+    #SBATCH --output=viennaptm_%j.out
+    #SBATCH --error=viennaptm_%j.err
+    #SBATCH --time=01:00:00
+    #SBATCH --cpus-per-task=1
+    #SBATCH --mem=4G
+
+    # Fail fast on errors and undefined variables
+    set -euo pipefail
+
+    echo "Job started on $(hostname) at $(date)"
+
+    # ---- Conda setup ----
+    source "$(conda info --base)/etc/profile.d/conda.sh"
+    conda activate viennaptm
+
+    # ---- Run Vienna-PTM ----
+    viennaptm --input tests/data/1vii.pdb \
+              --modify "A:50=V3H" \
+              --output testoutput.pdb
+
+    echo "Job finished at $(date)"
+
+
+**NOTE:** Alternatively, you can skip the conda initialization and directly provide the full path to the Vienna-PTM entrypoint:
+
+.. code-block:: bash
+
+    /path/to/your/installation/bin/viennaptm \
+        --input tests/data/1vii.pdb \
+        --modify "A:50=V3H" \
+        --output testoutput.pdb
+
+Submit the SLURM script to the cluster using:
+
+.. code-block:: bash
+
+    sbatch run_viennaptm.slurm

@@ -1,3 +1,6 @@
+<!-- Logo floated to the right -->
+<img src="docs/source/_static/logo.png" alt="Vienna-PTM Logo" style="float: right; width: 120px; margin: 0 0 0.5em 1em;" />
+
 # Vienna-PTM 3.0: Modify proteins with post-translational modifications
 
 [![Coverage Status](https://coveralls.io/repos/github/username/project-name/badge.svg?branch=main)](https://coveralls.io/github/username/project-name?branch=main)  
@@ -6,8 +9,6 @@
 [![Python Version](https://img.shields.io/badge/python-3.9%2B-green.svg)](https://www.python.org/)
 
 ---
-
-![Project Logo](_static/viennaptm_logo_c.png)
 
 ## Table of Contents
 
@@ -22,19 +23,35 @@
 
 ---
 
-
 ## Overview
-The web server Vienna-PTM is a platform for automated introduction of PTMs of choice to 
-protein 3D structures (PDB files) in a user-friendly visual environment. With 256 different 
-enzymatic and non-enzymatic PTMs available, the server performs geometrically realistic 
-introduction of modifications at sites of interests, as well as subsequent energy minimization. 
-Finally, the server makes available force field parameters and input files needed to run 
-MD simulations of modified proteins within the framework of the widely used GROMOS 54A7 and 
-45A3 force fields and GROMACS simulation package.
 
-![protein_example](_static/ptm_example.png)
+<img src="_static/ptm_example.png" alt="protein example" style="float: right; margin: 0 0 1em 1em;" />
+
+[Vienna-PTM](https://doi.org/10.1093/nar/gkt416) is a software tool developed in the
+group of Prof. Bojan Žagrović at the [MFPL Institute](https://www.maxperutzlabs.ac.at/research/research-groups/zagrovic)
+the University of Vienna. It enables the automated and chemically realistic introduction
+of PTMs into protein three-dimensional structures provided as PDB files.
+
+Vienna-PTM currently supports 256 different enzymatic and non-enzymatic PTMs and performs
+geometrically accurate placement of modifications at user-defined sites 
+(see [list_of_ptms](link missing) for a complete list).
+
+Optionally, users can perform a subsequent energy minimization using the GROMACS molecular
+simulation package. This removes unfavorable steric orientations and makes the structure
+amenable to downstream processing.
+
+Vienna-PTM is designed to support structural and computational applications,
+such as molecular dynamics simulations and structural analysis. Force-field parameters are
+provided for the widely used **GROMOS 45A3, 54A7, and 54A8** force fields, with direct
+compatibility with GROMACS.
+
+For full documentation, tutorials, and API reference, please visit the
+[Vienna-PTM Documentation](link missing).
 
 ## Installation
+
+For detailed installation instructions, refer to the [Installation](link missing) page, and for a step-by-step tutorial, 
+consult the [Tutorial](link missing) page in the Documentation.
 
 ### Create a new `conda` environment (optional)
 ```bash
@@ -44,68 +61,84 @@ conda activate viennaptm
 
 ### Latest stable release
 ```bash
-# install minimal package
+# Install the minimal package
 pip install viennaptm
 
-# adds dependencies for 3D protein rendering
+# Install additional dependencies for 3D protein rendering
 pip install viennaptm[render]
+```
 
-# adds dependencies for test execution
+### Install with development dependencies
+```bash
+# Install additional dependencies for running tests
 pip install viennaptm[test]
 
-# adds dependencies for documenation generation
+# Install additional dependencies for documentation generation
 pip install viennaptm[docs]
 ```
 
 ### Install from source
 ```bash
-# clone the repository; SSH alternative: git@github.com:viennaptm/viennaptm.git
+# Clone the repository
+# SSH alternative: git@github.com:viennaptm/viennaptm.git
 git clone https://github.com/viennaptm/viennaptm.git
 cd viennaptm
 
-# install from source; add "-e" to install in developer mode
+# Install from source
+# Add "-e" to install in editable (developer) mode
 pip install .
 ```
 
 ### Install GROMACS (optional)
-`GROMACS` is required for energy minimzation of modified structures.
+`GROMACS` is required only if you wish to perform energy minimization on modified structures.
 ```bash
 conda install conda-forge::gromacs
 ```
 
 ## Usage
+
 ### Entrypoint:
+For more information, refer to the [Entrypoint](link missing) page in the documentation.
 ```bash
-# 1. Activate conda environment
+# Activate the conda environment
 conda activate viennaptm
 
-# 2. Use entrypoint to run ViennaPTM
+# Use the entrypoint to run Vienna-PTM
 viennaptm --input tests/data/1vii.pdb \
           --modify "A:50=V3H" \
           --output testoutput.pdb
 ```
 
 ### API:
+For more information, refer to the [API](link missing) page in the documentation.
 ```bash
 modifier = Modifier()
-structure = modifier.modify(structure=structure,
-                            chain_identifier='A',
-                            residue_number=50,
-                            target_abbreviation="V3H")
+structure = modifier.modify(
+    structure=structure,
+    chain_identifier="A",
+    residue_number=50,
+    target_abbreviation="V3H"
+)
 ```
 
 ## Contributing
-Contributions and issue reports are always welcome, please follow the instructions in the [CONTRIBUTE.md](CONTRIBUTE.md) file.
+
+Contributions from the community are highly welcome. Please consult the
+[CONTRIBUTE.md](CONTRIBUTE.md) before submitting changes, in order to help keep the 
+code base maintainable, robust, and efficient.
+
 
 ## License
 
-- Code: Apache-2
-- Resources [including modification libraries]: Attribution-NonCommercial 4.0 International
+- Code: Apache-2 (see [code licence](https://github.com/viennaptm/viennaptm/blob/development/LICENSE) for more details)
+- Resources [including modification libraries]: Attribution-NonCommercial 4.0 International (see [library licence](https://github.com/viennaptm/viennaptm/blob/development/viennaptm/resources/LICENSE) for more details)
 
 
 ## Logo and Trademarks
-The project name and logo are the property of the project maintainers.
-You may use the logo to refer to or link to this project, but not in a way that suggests endorsement or affiliation with derivative works without permission.
+
+The project name and logo are the property of the project maintainers. You may use the
+logo to refer to or link to this project, but not in a way that suggests endorsement or
+affiliation with derivative works without prior permission.
 
 
 ## Authors / Contributors
@@ -113,4 +146,6 @@ You may use the logo to refer to or link to this project, but not in a way that 
 - **Sophie Margreitter** - [GitHub](https://github.com/SMargreitter)
 - **Christian Margreitter** - [GitHub](https://github.com/CMargreitter)  
 - **Drazen Petrov** - [GitHub](https://github.com/drazen-petrov)
-- **Bojan Zagrovic** - [GitHub](https://github.com/bojanzagrovic)
+- **Bojan Žagrović** - [GitHub](https://github.com/bojanzagrovic)
+
+
