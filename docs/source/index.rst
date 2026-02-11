@@ -37,6 +37,7 @@ Modifier
    ~modification.application.modifier.Modifier
    ~modification.modification_library.AddBranch
    ~modification.modification_library.Modification
+   ~modification.modification_library.ModificationLibraryMetadata
    ~modification.modification_library.ModificationLibrary
    ~entrypoints.viennaptm.ModifierParameters
 

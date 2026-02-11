@@ -54,8 +54,8 @@ class ModifierParameters(BaseModel):
     modify: Optional[Union[list[str], str]] = Field(default=None, description="Modifications in the form of \"A:50=V3H\", which means \"chain:residue=target\".")
     output: Optional[Union[Path, str]] = Field(default="output.pdb", description="Output structure, either CIF or PDB.")
     gromacs: Optional[GROMACSParameters] = Field(default_factory=GROMACSParameters, description="Gromacs parameters.")
-    logger: str = "console"
-    debug: bool = False
+    logger: Optional[str] = Field(default="console", description="Set logger to either console (default) or provide a file name.")
+    debug: Optional[bool] = Field(default=False, description="If set to true, enable verbose debugging logging.")
 
     model_config = {
         "extra": "forbid"

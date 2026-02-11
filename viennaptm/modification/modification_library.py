@@ -243,7 +243,7 @@ class ModificationLibrary(BaseModel):
 
     def __getitem__(self, index):
         """
-        Retrieve a application by index or residue pair.
+        Retrieve an application by index or residue pair.
 
         :param index: Either an integer index or a tuple
                         ``(original_abbreviation, modified_abbreviation)``.

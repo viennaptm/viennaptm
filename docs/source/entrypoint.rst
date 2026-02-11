@@ -17,6 +17,50 @@ file, or custom scripts.
               --modify "A:50=V3H" \
               --output testoutput.pdb
 
+**Help**
+
+The ``help`` parameter shows the available options in detail.
+
+.. code-block:: bash
+
+    viennaptm --help
+
+Alternatively, you can append --help to any command:
+
+.. code-block:: bash
+
+   viennaptm --input tests/data/1vii.pdb --modify "A:50=V3H" --output testoutput.pdb --help
+
+
+Help message:
+
+.. code-block:: bash
+
+    Options:
+      --config
+          [Union, default=None]
+          Path to a YAML or JSON configuration file (optional).
+      --input
+          [Union, default=None]
+          Input structure, either CIF or PDB.
+      --modify
+          [Union, default=None]
+          Modifications in the form of "A:50=V3H", which means "chain:residue=target".
+      --output
+          [Union, default=output.pdb]
+          Output structure, either CIF or PDB.
+      --gromacs.minimize
+          [bool, default=False]
+          Energy minimize the modified structure.
+      --logger
+          [Optional, default=console]
+          Set logger to either console (default) or provide a file name.
+      --debug
+          [Optional, default=False]
+          If set to true, enable verbose debugging logging.
+
+
+
 
 .. rubric:: CONFIG FILE
 

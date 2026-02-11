@@ -99,7 +99,7 @@ Multiple parameters can be changed at once. For example, to change both the logg
 
 **4. Logger details**
 
-Vienna-PTM uses Python's `logging` module. Log levels indicate the severity or importance of messages:
+Vienna-PTM uses `Python's logging module <https://docs.python.org/3/library/logging.html>`__. Log levels indicate the severity or importance of messages:
 
 DEBUG
 
