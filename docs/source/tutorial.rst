@@ -121,4 +121,6 @@ WARNING
 
 .. code-block:: bash
 
-   viennaptm --config tests/data/example_config.yaml --debug
+   viennaptm --config tests/data/example_config.yaml --debug true
+
+.. image:: _static/debug_mode.png

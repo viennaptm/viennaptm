@@ -10,7 +10,7 @@ diversity of proteins beyond what is directly encoded in the amino-acid sequence
 From a chemical perspective, PTMs are covalent modifications of amino-acid side chains and,
 in some cases, of the protein backbone or the N- and C-termini.
 PTMs can affect key protein properties such as molecular mass, electric charge, three-dimensional
-| structure, stability and lifetime, cellular localization, and biological activity.
+structure, stability and lifetime, cellular localization, and biological activity.
 
 
 In cells, PTMs are introduced via two main mechanisms:

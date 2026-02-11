@@ -73,7 +73,7 @@ To run Vienna-PTM using a configuration file:
        | Multiple modifications can be provided
        | as a list of strings.
      - | ``"A:50=V3H"`` or
-       | ``["A:50=V3H", "A:55=V3H"]``
+       | ``"A:50=V3H" "A:55=V3H"``
 
    * - ``--output``
      - Output path or filename
