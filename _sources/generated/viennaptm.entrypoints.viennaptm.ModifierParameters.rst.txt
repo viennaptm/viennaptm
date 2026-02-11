@@ -1,0 +1,85 @@
+﻿ModifierParameters
+==================
+
+.. rubric:: Module
+
+.. code-block:: python
+
+   viennaptm.entrypoints.viennaptm
+
+.. currentmodule:: viennaptm.entrypoints.viennaptm
+
+.. autoclass:: ModifierParameters
+   :members:
+
+
+.. automethod:: __init__
+
+
+.. rubric:: Methods
+
+.. autosummary::
+
+   ~ModifierParameters.__init__
+
+   ~ModifierParameters.construct
+
+   ~ModifierParameters.copy
+
+   ~ModifierParameters.dict
+
+   ~ModifierParameters.dump_resolved_config
+
+   ~ModifierParameters.from_orm
+
+   ~ModifierParameters.is_console_logging
+
+   ~ModifierParameters.json
+
+   ~ModifierParameters.load_config_file
+
+   ~ModifierParameters.log_file_path
+
+   ~ModifierParameters.model_construct
+
+   ~ModifierParameters.model_copy
+
+   ~ModifierParameters.model_dump
+
+   ~ModifierParameters.model_dump_json
+
+   ~ModifierParameters.model_json_schema
+
+   ~ModifierParameters.model_parametrized_name
+
+   ~ModifierParameters.model_post_init
+
+   ~ModifierParameters.model_rebuild
+
+   ~ModifierParameters.model_validate
+
+   ~ModifierParameters.model_validate_json
+
+   ~ModifierParameters.model_validate_strings
+
+   ~ModifierParameters.parse_file
+
+   ~ModifierParameters.parse_obj
+
+   ~ModifierParameters.parse_raw
+
+   ~ModifierParameters.schema
+
+   ~ModifierParameters.schema_json
+
+   ~ModifierParameters.update_forward_refs
+
+   ~ModifierParameters.validate
+
+   ~ModifierParameters.validate_file_input
+
+   ~ModifierParameters.validate_input_modification
+
+   ~ModifierParameters.validate_output
+
+

@@ -1,0 +1,6 @@
+﻿minimize_and_write_pdb  
+======================
+
+.. currentmodule:: viennaptm.gromacs.minimization_pipeline
+
+.. autofunction:: minimize_and_write_pdb

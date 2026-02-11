@@ -1,0 +1,71 @@
+﻿Modification
+============
+
+.. rubric:: Module
+
+.. code-block:: python
+
+   viennaptm.modification.modification_library
+
+.. currentmodule:: viennaptm.modification.modification_library
+
+.. autoclass:: Modification
+   :members:
+
+
+.. automethod:: __init__
+
+
+.. rubric:: Methods
+
+.. autosummary::
+
+   ~Modification.__init__
+
+   ~Modification.construct
+
+   ~Modification.copy
+
+   ~Modification.dict
+
+   ~Modification.from_orm
+
+   ~Modification.json
+
+   ~Modification.model_construct
+
+   ~Modification.model_copy
+
+   ~Modification.model_dump
+
+   ~Modification.model_dump_json
+
+   ~Modification.model_json_schema
+
+   ~Modification.model_parametrized_name
+
+   ~Modification.model_post_init
+
+   ~Modification.model_rebuild
+
+   ~Modification.model_validate
+
+   ~Modification.model_validate_json
+
+   ~Modification.model_validate_strings
+
+   ~Modification.parse_file
+
+   ~Modification.parse_obj
+
+   ~Modification.parse_raw
+
+   ~Modification.schema
+
+   ~Modification.schema_json
+
+   ~Modification.update_forward_refs
+
+   ~Modification.validate
+
+

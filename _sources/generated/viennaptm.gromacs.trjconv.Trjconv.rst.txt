@@ -1,0 +1,39 @@
+﻿Trjconv
+=======
+
+.. rubric:: Module
+
+.. code-block:: python
+
+   viennaptm.gromacs.trjconv
+
+.. currentmodule:: viennaptm.gromacs.trjconv
+
+.. autoclass:: Trjconv
+   :members:
+
+
+.. automethod:: __init__
+
+
+.. rubric:: Methods
+
+.. autosummary::
+
+   ~Trjconv.__init__
+
+   ~Trjconv.build_command
+
+   ~Trjconv.build_gromacs_cmd
+
+   ~Trjconv.expected_outputs
+
+   ~Trjconv.inspect_result
+
+   ~Trjconv.mpi_prefix
+
+   ~Trjconv.post_run_checks
+
+   ~Trjconv.run
+
+

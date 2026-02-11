@@ -1,0 +1,39 @@
+﻿GromacsCommand
+==============
+
+.. rubric:: Module
+
+.. code-block:: python
+
+   viennaptm.gromacs.gromacs_command
+
+.. currentmodule:: viennaptm.gromacs.gromacs_command
+
+.. autoclass:: GromacsCommand
+   :members:
+
+
+.. automethod:: __init__
+
+
+.. rubric:: Methods
+
+.. autosummary::
+
+   ~GromacsCommand.__init__
+
+   ~GromacsCommand.build_command
+
+   ~GromacsCommand.build_gromacs_cmd
+
+   ~GromacsCommand.expected_outputs
+
+   ~GromacsCommand.inspect_result
+
+   ~GromacsCommand.mpi_prefix
+
+   ~GromacsCommand.post_run_checks
+
+   ~GromacsCommand.run
+
+

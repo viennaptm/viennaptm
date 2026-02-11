@@ -1,0 +1,234 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tutorial &mdash; viennaptm 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+      <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
+      <script src="_static/datatable-init.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="List of PTMs" href="list_of_ptms.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            viennaptm
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="list_of_ptms.html">List of PTMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entrypoint.html">Entrypoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="citation.html">Citation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Datastructures</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="generated/viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.html">AnnotatedStructure</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modifier</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="generated/viennaptm.modification.application.modifier.Modifier.html">Modifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/viennaptm.modification.modification_library.AddBranch.html">AddBranch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/viennaptm.modification.modification_library.Modification.html">Modification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/viennaptm.modification.modification_library.ModificationLibraryMetadata.html">ModificationLibraryMetadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/viennaptm.modification.modification_library.ModificationLibrary.html">ModificationLibrary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/viennaptm.entrypoints.viennaptm.ModifierParameters.html">ModifierParameters</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GROMACS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="generated/viennaptm.gromacs.editconf.EditConf.html">EditConf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/viennaptm.gromacs.gromacs_command.GromacsCommand.html">GromacsCommand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/viennaptm.gromacs.grompp.Grompp.html">Grompp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/viennaptm.gromacs.pdb2gmx.PDB2GMXParameters.html">PDB2GMXParameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/viennaptm.gromacs.pdb2gmx.PDB2GMX.html">PDB2GMX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/viennaptm.gromacs.mdrun.Mdrun.html">Mdrun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/viennaptm.gromacs.trjconv.Trjconv.html">Trjconv</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Miscellaneous</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="generated/viennaptm.modification.calculation.align.compute_alignment_transform.html">compute_alignment_transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/viennaptm.modification.calculation.align.apply_transform.html">apply_transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/viennaptm.gromacs.minimization_pipeline.minimize_and_write_pdb.html">minimize_and_write_pdb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/viennaptm.utils.visualizer.Visualizer.html">Visualizer</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">viennaptm</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Tutorial</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/tutorial.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tutorial">
+<h1>Tutorial<a class="headerlink" href="#tutorial" title="Link to this heading"></a></h1>
+<p class="rubric">HOW TO USE VIENNA-PTM</p>
+<p>Once Vienna-PTM (and optionally GROMACS) is installed (see the <a class="reference internal" href="installation.html"><span class="doc">Installation</span></a> page for all necessary steps), there are multiple ways to run it.</p>
+<p>The entrypoint provides quick and easy usage via the command line (CLI) or a configuration file. The Application Programming Interface (API) offers more flexibility and is recommended for batch processing or advanced user modifications.</p>
+<p>This tutorial starts with an example of CLI usage.</p>
+<p class="rubric">COMMAND LINE</p>
+<p><strong>1. Environment</strong></p>
+<p>To run Vienna-PTM, first activate the conda environment in your terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>viennaptm
+</pre></div>
+</div>
+<img alt="_images/example.png" src="_images/example.png" />
+<p><strong>2. Run</strong></p>
+<p>Next, use the entrypoint command to generate the desired post-translational modifications. For detailed explanations of available parameters, see the <a class="reference internal" href="entrypoint.html"><span class="doc">Entrypoint</span></a> page.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>viennaptm<span class="w"> </span>--input<span class="w"> </span>tests/data/1vii.pdb<span class="w"> </span><span class="se">\</span>
+<span class="w">          </span>--modify<span class="w"> </span><span class="s2">&quot;A:50=V3H&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">          </span>--output<span class="w"> </span>testoutput.pdb
+</pre></div>
+</div>
+<img alt="_images/parameter_console_input.png" src="_images/parameter_console_input.png" />
+<p><strong>3. Finish</strong></p>
+<p>Congratulations! You have generated your first Vienna-PTM run. The modified structure is now saved in the output file (here: “testoutput.pdb”).</p>
+<img alt="_images/finished_run.png" src="_images/finished_run.png" />
+<p class="rubric">CONFIG FILE</p>
+<p>For repetitive runs, a configuration file can be useful as it reduces the risk of typos or mistakes.</p>
+<p><strong>1. Generate file</strong></p>
+<p>Start by creating a <a class="reference external" href="https://yaml.org/spec/1.2.2/">YAML</a> config file containing the desired parameters. See the <a class="reference internal" href="entrypoint.html"><span class="doc">Entrypoint</span></a> page for a full list of options.</p>
+<p>Example config file:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./tests/data/1vii.pdb</span>
+<span class="nt">modify</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;A:50=V3H&quot;</span>
+<span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">output.pdb</span>
+<span class="nt">logger</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">console</span>
+<span class="nt">debug</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</pre></div>
+</div>
+<p>Another example:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./tests/data/1vii.cif</span>
+<span class="nt">modify</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;A:50=V3H&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;A:55=GSA&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;A:60=ASN&quot;</span>
+<span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">output.pdb</span>
+<span class="nt">logger</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">logger_test_file</span>
+<span class="nt">debug</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+<p><strong>NOTE:</strong> <a class="reference external" href="https://www.json.org/json-en.html">JSON</a> format can also be used, which can be convenient for REST endpoints.</p>
+<p><strong>2. Run</strong></p>
+<p>Run the config file via the terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>viennaptm<span class="w"> </span>--config<span class="w"> </span>tests/data/example_config.yaml
+</pre></div>
+</div>
+<img alt="_images/config.png" src="_images/config.png" />
+<p><strong>3. Selectively override</strong></p>
+<p>You can override specific parameters on the command line. For example, to redirect logging to a file instead of the console:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>viennaptm<span class="w"> </span>--config<span class="w"> </span>tests/data/example_config.yaml<span class="w"> </span>--logger<span class="w"> </span>file
+</pre></div>
+</div>
+<p>Multiple parameters can be changed at once. For example, to change both the logger and the input file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>viennaptm<span class="w"> </span>--config<span class="w"> </span>tests/data/example_config.yaml<span class="w"> </span>--logger<span class="w"> </span>file<span class="w"> </span>--input<span class="w"> </span>tests/data/1vii.cif
+</pre></div>
+</div>
+<p><strong>4. Logger details</strong></p>
+<p>Vienna-PTM uses <a class="reference external" href="https://docs.python.org/3/library/logging.html">Python’s logging module</a>. Log levels indicate the severity or importance of messages:</p>
+<p>DEBUG</p>
+<div class="line-block">
+<div class="line">• Purpose: Detailed information useful for diagnosing problems and understanding the program’s internal state.</div>
+<div class="line">• Use case: Outputs every step of a calculation, data transformation, or function call.</div>
+<div class="line">• Visibility: Only shown if the logger is set to <cite>DEBUG</cite>.</div>
+</div>
+<p>INFO</p>
+<div class="line-block">
+<div class="line">• Purpose: General information about the progress of the program.</div>
+<div class="line">• Use case: High-level messages a user or developer might want to see during normal operation.</div>
+<div class="line">• Visibility: Shown if the logger is set to <cite>INFO</cite> or lower (<cite>DEBUG</cite> also shows <cite>INFO</cite>).</div>
+</div>
+<p>WARNING</p>
+<div class="line-block">
+<div class="line">• Purpose: Indicates something unexpected or potentially problematic, but not fatal.</div>
+<div class="line">• Use case: Non-critical issues, such as missing optional data or minor inconsistencies.</div>
+<div class="line">• Visibility: Always shown if the logger level is <cite>WARNING</cite> or lower.</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>viennaptm<span class="w"> </span>--config<span class="w"> </span>tests/data/example_config.yaml<span class="w"> </span>--debug<span class="w"> </span><span class="nb">true</span>
+</pre></div>
+</div>
+<img alt="_images/debug_mode.png" src="_images/debug_mode.png" />
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="list_of_ptms.html" class="btn btn-neutral float-right" title="List of PTMs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

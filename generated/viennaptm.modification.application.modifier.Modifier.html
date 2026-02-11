@@ -1,0 +1,360 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modifier &mdash; viennaptm 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+      <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
+      <script src="../_static/datatable-init.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="AddBranch" href="viennaptm.modification.modification_library.AddBranch.html" />
+    <link rel="prev" title="AnnotatedStructure" href="viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            viennaptm
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../list_of_ptms.html">List of PTMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../entrypoint.html">Entrypoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citation.html">Citation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Datastructures</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.html">AnnotatedStructure</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modifier</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Modifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.modification.modification_library.AddBranch.html">AddBranch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.modification.modification_library.Modification.html">Modification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.modification.modification_library.ModificationLibraryMetadata.html">ModificationLibraryMetadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.modification.modification_library.ModificationLibrary.html">ModificationLibrary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.entrypoints.viennaptm.ModifierParameters.html">ModifierParameters</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GROMACS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.gromacs.editconf.EditConf.html">EditConf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.gromacs.gromacs_command.GromacsCommand.html">GromacsCommand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.gromacs.grompp.Grompp.html">Grompp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.gromacs.pdb2gmx.PDB2GMXParameters.html">PDB2GMXParameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.gromacs.pdb2gmx.PDB2GMX.html">PDB2GMX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.gromacs.mdrun.Mdrun.html">Mdrun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.gromacs.trjconv.Trjconv.html">Trjconv</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Miscellaneous</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.modification.calculation.align.compute_alignment_transform.html">compute_alignment_transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.modification.calculation.align.apply_transform.html">apply_transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.gromacs.minimization_pipeline.minimize_and_write_pdb.html">minimize_and_write_pdb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.utils.visualizer.Visualizer.html">Visualizer</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">viennaptm</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Modifier</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/viennaptm.modification.application.modifier.Modifier.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="modifier">
+<h1>Modifier<a class="headerlink" href="#modifier" title="Link to this heading"></a></h1>
+<p class="rubric">Module</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">viennaptm</span><span class="o">.</span><span class="n">modification</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">modifier</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="viennaptm.modification.application.modifier.Modifier">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">Modifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">library</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="viennaptm.modification.modification_library.ModificationLibrary.html#viennaptm.modification.modification_library.ModificationLibrary" title="viennaptm.modification.modification_library.ModificationLibrary"><span class="pre">ModificationLibrary</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#viennaptm.modification.application.modifier.Modifier" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Applies residue-level chemical modifications to a biomolecular structure.</p>
+<p>The <a class="reference internal" href="#viennaptm.modification.application.modifier.Modifier" title="viennaptm.modification.application.modifier.Modifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">Modifier</span></code></a> class acts as a high-level interface between a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">ModificationLibrary</span></code> and an annotated structure. It locates a
+specific residue within a structure, removes hydrogen atoms from the target residue,
+applies the requested modification using a template residue, and records the
+modification in the structure’s modification log.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>library</strong> (<a class="reference internal" href="viennaptm.modification.modification_library.ModificationLibrary.html#viennaptm.modification.modification_library.ModificationLibrary" title="viennaptm.modification.modification_library.ModificationLibrary"><em>ModificationLibrary</em></a><em>, </em><em>optional</em>) – Library containing residue modification definitions and template
+residues. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, an internal default
+<code class="xref py py-class docutils literal notranslate"><span class="pre">ModificationLibrary</span></code> is loaded.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="viennaptm.modification.application.modifier.Modifier.atoms_to_array">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">atoms_to_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">atoms</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Atom</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#viennaptm.modification.application.modifier.Modifier.atoms_to_array" title="Link to this definition"></a></dt>
+<dd><p>Convert a list of atoms to a NumPy coordinate array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>atoms</strong> (<em>list</em><em>[</em><em>Atom</em><em>]</em>) – Atoms whose coordinates should be extracted.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of shape <code class="docutils literal notranslate"><span class="pre">(n_atoms,</span> <span class="pre">3)</span></code> containing atomic coordinates.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="viennaptm.modification.application.modifier.Modifier.get_library">
+<span class="sig-name descname"><span class="pre">get_library</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#viennaptm.modification.application.modifier.Modifier.get_library" title="Link to this definition"></a></dt>
+<dd><p>Return the associated modification library.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The library used by this <a class="reference internal" href="#viennaptm.modification.application.modifier.Modifier" title="viennaptm.modification.application.modifier.Modifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">Modifier</span></code></a> instance.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="viennaptm.modification.modification_library.ModificationLibrary.html#viennaptm.modification.modification_library.ModificationLibrary" title="viennaptm.modification.modification_library.ModificationLibrary">ModificationLibrary</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="viennaptm.modification.application.modifier.Modifier.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></span><a class="headerlink" href="#viennaptm.modification.application.modifier.Modifier.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="viennaptm.modification.application.modifier.Modifier.modify">
+<span class="sig-name descname"><span class="pre">modify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.html#viennaptm.dataclasses.annotatedstructure.AnnotatedStructure" title="viennaptm.dataclasses.annotatedstructure.AnnotatedStructure"><span class="pre">AnnotatedStructure</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">chain_identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">residue_number</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_abbreviation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.html#viennaptm.dataclasses.annotatedstructure.AnnotatedStructure" title="viennaptm.dataclasses.annotatedstructure.AnnotatedStructure"><span class="pre">AnnotatedStructure</span></a></span></span><a class="headerlink" href="#viennaptm.modification.application.modifier.Modifier.modify" title="Link to this definition"></a></dt>
+<dd><p>Apply a residue modification to a structure.</p>
+<p>This method locates a residue by chain identifier and residue number,
+removes all hydrogen atoms, applies a modification defined in the
+modification library, and optionally returns a modified copy of the
+structure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>structure</strong> (<a class="reference internal" href="viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.html#viennaptm.dataclasses.annotatedstructure.AnnotatedStructure" title="viennaptm.dataclasses.annotatedstructure.AnnotatedStructure"><em>AnnotatedStructure</em></a>) – The structure to be modified.</p></li>
+<li><p><strong>chain_identifier</strong> (<em>str</em>) – Chain identifier of the target residue (commonly a single uppercase
+letter).</p></li>
+<li><p><strong>residue_number</strong> (<em>int</em>) – Position of the residue in the polypeptide chain, Residue number as
+defined in the structure (PDB numbering).</p></li>
+<li><p><strong>target_abbreviation</strong> (<em>str</em>) – Three-letter abbreviation of the target (modified) residue.</p></li>
+<li><p><strong>inplace</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the structure is modified in place.
+If <code class="docutils literal notranslate"><span class="pre">False</span></code>, a deep copy of the structure is created and modified.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The modified structure. This is either the original structure
+(if <code class="docutils literal notranslate"><span class="pre">inplace=True</span></code>) or a modified copy.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.html#viennaptm.dataclasses.annotatedstructure.AnnotatedStructure" title="viennaptm.dataclasses.annotatedstructure.AnnotatedStructure">AnnotatedStructure</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – If no residue matching the given chain identifier and residue number
+can be found in the structure.</p></li>
+<li><p><strong>KeyError</strong> – If atom names required for the modification do not match those
+in the structure or the template residue.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method assumes that:</p>
+<ul class="simple">
+<li><p>Chain identifiers are unique across all models.</p></li>
+<li><p>A template PDB exists for every supported modification.</p></li>
+<li><p>The structure supports modification logging via
+<code class="docutils literal notranslate"><span class="pre">add_to_modification_log</span></code>.</p></li>
+</ul>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="viennaptm.modification.application.modifier.Modifier.remove_hydrogens">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">remove_hydrogens</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">residue</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Residue</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#viennaptm.modification.application.modifier.Modifier.remove_hydrogens" title="Link to this definition"></a></dt>
+<dd><p>Remove all hydrogen atoms from a residue.</p>
+<p>Hydrogen atoms are identified by atom names starting with <code class="docutils literal notranslate"><span class="pre">&quot;H&quot;</span></code>.
+This step avoids inconsistencies in atom naming schemes during
+modification.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>residue</strong> (<em>Residue</em>) – Residue from which hydrogen atoms will be removed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code>([library])</p></td>
+<td><p>Initialize a <a class="reference internal" href="#viennaptm.modification.application.modifier.Modifier" title="viennaptm.modification.application.modifier.Modifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">Modifier</span></code></a> instance.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#viennaptm.modification.application.modifier.Modifier.atoms_to_array" title="viennaptm.modification.application.modifier.Modifier.atoms_to_array"><code class="xref py py-obj docutils literal notranslate"><span class="pre">atoms_to_array</span></code></a>(atoms)</p></td>
+<td><p>Convert a list of atoms to a NumPy coordinate array.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">construct</span></code>([_fields_set])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code>(*[, include, exclude, update, deep])</p></td>
+<td><p>Returns a copy of the model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code>(*[, include, exclude, by_alias, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_orm</span></code>(obj)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#viennaptm.modification.application.modifier.Modifier.get_library" title="viennaptm.modification.application.modifier.Modifier.get_library"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_library</span></code></a>()</p></td>
+<td><p>Return the associated modification library.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">json</span></code>(*[, include, exclude, by_alias, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">model_construct</span></code>([_fields_set])</p></td>
+<td><p>Creates a new instance of the <cite>Model</cite> class with validated data.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">model_copy</span></code>(*[, update, deep])</p></td>
+<td><p>!!! abstract &quot;Usage Documentation&quot;</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">model_dump</span></code>(*[, mode, include, exclude, ...])</p></td>
+<td><p>!!! abstract &quot;Usage Documentation&quot;</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">model_dump_json</span></code>(*[, indent, ensure_ascii, ...])</p></td>
+<td><p>!!! abstract &quot;Usage Documentation&quot;</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">model_json_schema</span></code>(by_alias, ref_template, ...)</p></td>
+<td><p>Generates a JSON schema for a model class.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">model_parametrized_name</span></code>(params)</p></td>
+<td><p>Compute the class name for parametrizations of generic classes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">model_post_init</span></code>(context, /)</p></td>
+<td><p>Override this method to perform additional initialization after <cite>__init__</cite> and <cite>model_construct</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">model_rebuild</span></code>(*[, force, raise_errors, ...])</p></td>
+<td><p>Try to rebuild the pydantic-core schema for the model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">model_validate</span></code>(obj, *[, strict, extra, ...])</p></td>
+<td><p>Validate a pydantic model instance.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">model_validate_json</span></code>(json_data, *[, strict, ...])</p></td>
+<td><p>!!! abstract &quot;Usage Documentation&quot;</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">model_validate_strings</span></code>(obj, *[, strict, ...])</p></td>
+<td><p>Validate the given object with string data against the Pydantic model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#viennaptm.modification.application.modifier.Modifier.modify" title="viennaptm.modification.application.modifier.Modifier.modify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">modify</span></code></a>(structure, chain_identifier, ...[, ...])</p></td>
+<td><p>Apply a residue modification to a structure.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_file</span></code>(path, *[, content_type, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_obj</span></code>(obj)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_raw</span></code>(b, *[, content_type, encoding, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#viennaptm.modification.application.modifier.Modifier.remove_hydrogens" title="viennaptm.modification.application.modifier.Modifier.remove_hydrogens"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_hydrogens</span></code></a>(residue)</p></td>
+<td><p>Remove all hydrogen atoms from a residue.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">schema</span></code>([by_alias, ref_template])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">schema_json</span></code>(*[, by_alias, ref_template])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_forward_refs</span></code>(**localns)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate</span></code>(value)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.html" class="btn btn-neutral float-left" title="AnnotatedStructure" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="viennaptm.modification.modification_library.AddBranch.html" class="btn btn-neutral float-right" title="AddBranch" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+﻿Modifier
+========
+
+.. rubric:: Module
+
+.. code-block:: python
+
+   viennaptm.modification.application.modifier
+
+.. currentmodule:: viennaptm.modification.application.modifier
+
+.. autoclass:: Modifier
+   :members:
+
+
+.. automethod:: __init__
+
+
+.. rubric:: Methods
+
+.. autosummary::
+
+   ~Modifier.__init__
+
+   ~Modifier.atoms_to_array
+
+   ~Modifier.construct
+
+   ~Modifier.copy
+
+   ~Modifier.dict
+
+   ~Modifier.from_orm
+
+   ~Modifier.get_library
+
+   ~Modifier.json
+
+   ~Modifier.model_construct
+
+   ~Modifier.model_copy
+
+   ~Modifier.model_dump
+
+   ~Modifier.model_dump_json
+
+   ~Modifier.model_json_schema
+
+   ~Modifier.model_parametrized_name
+
+   ~Modifier.model_post_init
+
+   ~Modifier.model_rebuild
+
+   ~Modifier.model_validate
+
+   ~Modifier.model_validate_json
+
+   ~Modifier.model_validate_strings
+
+   ~Modifier.modify
+
+   ~Modifier.parse_file
+
+   ~Modifier.parse_obj
+
+   ~Modifier.parse_raw
+
+   ~Modifier.remove_hydrogens
+
+   ~Modifier.schema
+
+   ~Modifier.schema_json
+
+   ~Modifier.update_forward_refs
+
+   ~Modifier.validate
+
+

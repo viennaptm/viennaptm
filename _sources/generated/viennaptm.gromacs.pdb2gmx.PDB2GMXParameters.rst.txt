@@ -1,0 +1,73 @@
+﻿PDB2GMXParameters
+=================
+
+.. rubric:: Module
+
+.. code-block:: python
+
+   viennaptm.gromacs.pdb2gmx
+
+.. currentmodule:: viennaptm.gromacs.pdb2gmx
+
+.. autoclass:: PDB2GMXParameters
+   :members:
+
+
+.. automethod:: __init__
+
+
+.. rubric:: Methods
+
+.. autosummary::
+
+   ~PDB2GMXParameters.__init__
+
+   ~PDB2GMXParameters.construct
+
+   ~PDB2GMXParameters.copy
+
+   ~PDB2GMXParameters.dict
+
+   ~PDB2GMXParameters.ensure_paths
+
+   ~PDB2GMXParameters.from_orm
+
+   ~PDB2GMXParameters.json
+
+   ~PDB2GMXParameters.model_construct
+
+   ~PDB2GMXParameters.model_copy
+
+   ~PDB2GMXParameters.model_dump
+
+   ~PDB2GMXParameters.model_dump_json
+
+   ~PDB2GMXParameters.model_json_schema
+
+   ~PDB2GMXParameters.model_parametrized_name
+
+   ~PDB2GMXParameters.model_post_init
+
+   ~PDB2GMXParameters.model_rebuild
+
+   ~PDB2GMXParameters.model_validate
+
+   ~PDB2GMXParameters.model_validate_json
+
+   ~PDB2GMXParameters.model_validate_strings
+
+   ~PDB2GMXParameters.parse_file
+
+   ~PDB2GMXParameters.parse_obj
+
+   ~PDB2GMXParameters.parse_raw
+
+   ~PDB2GMXParameters.schema
+
+   ~PDB2GMXParameters.schema_json
+
+   ~PDB2GMXParameters.update_forward_refs
+
+   ~PDB2GMXParameters.validate
+
+

@@ -1,0 +1,39 @@
+﻿Mdrun
+=====
+
+.. rubric:: Module
+
+.. code-block:: python
+
+   viennaptm.gromacs.mdrun
+
+.. currentmodule:: viennaptm.gromacs.mdrun
+
+.. autoclass:: Mdrun
+   :members:
+
+
+.. automethod:: __init__
+
+
+.. rubric:: Methods
+
+.. autosummary::
+
+   ~Mdrun.__init__
+
+   ~Mdrun.build_command
+
+   ~Mdrun.build_gromacs_cmd
+
+   ~Mdrun.expected_outputs
+
+   ~Mdrun.inspect_result
+
+   ~Mdrun.mpi_prefix
+
+   ~Mdrun.post_run_checks
+
+   ~Mdrun.run
+
+

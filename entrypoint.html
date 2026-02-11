@@ -1,0 +1,367 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Entrypoint &mdash; viennaptm 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+      <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
+      <script src="_static/datatable-init.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API" href="api.html" />
+    <link rel="prev" title="List of PTMs" href="list_of_ptms.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            viennaptm
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="list_of_ptms.html">List of PTMs</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Entrypoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="citation.html">Citation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Datastructures</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="generated/viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.html">AnnotatedStructure</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modifier</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="generated/viennaptm.modification.application.modifier.Modifier.html">Modifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/viennaptm.modification.modification_library.AddBranch.html">AddBranch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/viennaptm.modification.modification_library.Modification.html">Modification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/viennaptm.modification.modification_library.ModificationLibraryMetadata.html">ModificationLibraryMetadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/viennaptm.modification.modification_library.ModificationLibrary.html">ModificationLibrary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/viennaptm.entrypoints.viennaptm.ModifierParameters.html">ModifierParameters</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GROMACS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="generated/viennaptm.gromacs.editconf.EditConf.html">EditConf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/viennaptm.gromacs.gromacs_command.GromacsCommand.html">GromacsCommand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/viennaptm.gromacs.grompp.Grompp.html">Grompp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/viennaptm.gromacs.pdb2gmx.PDB2GMXParameters.html">PDB2GMXParameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/viennaptm.gromacs.pdb2gmx.PDB2GMX.html">PDB2GMX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/viennaptm.gromacs.mdrun.Mdrun.html">Mdrun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/viennaptm.gromacs.trjconv.Trjconv.html">Trjconv</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Miscellaneous</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="generated/viennaptm.modification.calculation.align.compute_alignment_transform.html">compute_alignment_transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/viennaptm.modification.calculation.align.apply_transform.html">apply_transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/viennaptm.gromacs.minimization_pipeline.minimize_and_write_pdb.html">minimize_and_write_pdb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/viennaptm.utils.visualizer.Visualizer.html">Visualizer</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">viennaptm</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Entrypoint</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/entrypoint.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="entrypoint">
+<h1>Entrypoint<a class="headerlink" href="#entrypoint" title="Link to this heading"></a></h1>
+<p>Vienna-PTM can be used via an entrypoint from the command line, a configuration
+file, or custom scripts.</p>
+<p class="rubric">COMMAND LINE</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Activate the conda environment</span>
+conda<span class="w"> </span>activate<span class="w"> </span>viennaptm
+
+<span class="c1"># 2. Use the entrypoint (CLI) to run Vienna-PTM</span>
+viennaptm<span class="w"> </span>--input<span class="w"> </span>tests/data/1vii.pdb<span class="w"> </span><span class="se">\</span>
+<span class="w">          </span>--modify<span class="w"> </span><span class="s2">&quot;A:50=V3H&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">          </span>--output<span class="w"> </span>testoutput.pdb
+</pre></div>
+</div>
+<p><strong>Help</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">help</span></code> parameter shows the available options in detail.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>viennaptm<span class="w"> </span>--help
+</pre></div>
+</div>
+<p>Alternatively, you can append –help to any command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>viennaptm<span class="w"> </span>--input<span class="w"> </span>tests/data/1vii.pdb<span class="w"> </span>--modify<span class="w"> </span><span class="s2">&quot;A:50=V3H&quot;</span><span class="w"> </span>--output<span class="w"> </span>testoutput.pdb<span class="w"> </span>--help
+</pre></div>
+</div>
+<p>Help message:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Options:
+<span class="w">  </span>--config
+<span class="w">      </span><span class="o">[</span>Union,<span class="w"> </span><span class="nv">default</span><span class="o">=</span>None<span class="o">]</span>
+<span class="w">      </span>Path<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>YAML<span class="w"> </span>or<span class="w"> </span>JSON<span class="w"> </span>configuration<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>optional<span class="o">)</span>.
+<span class="w">  </span>--input
+<span class="w">      </span><span class="o">[</span>Union,<span class="w"> </span><span class="nv">default</span><span class="o">=</span>None<span class="o">]</span>
+<span class="w">      </span>Input<span class="w"> </span>structure,<span class="w"> </span>either<span class="w"> </span>CIF<span class="w"> </span>or<span class="w"> </span>PDB.
+<span class="w">  </span>--modify
+<span class="w">      </span><span class="o">[</span>Union,<span class="w"> </span><span class="nv">default</span><span class="o">=</span>None<span class="o">]</span>
+<span class="w">      </span>Modifications<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>form<span class="w"> </span>of<span class="w"> </span><span class="s2">&quot;A:50=V3H&quot;</span>,<span class="w"> </span>which<span class="w"> </span>means<span class="w"> </span><span class="s2">&quot;chain:residue=target&quot;</span>.
+<span class="w">  </span>--output
+<span class="w">      </span><span class="o">[</span>Union,<span class="w"> </span><span class="nv">default</span><span class="o">=</span>output.pdb<span class="o">]</span>
+<span class="w">      </span>Output<span class="w"> </span>structure,<span class="w"> </span>either<span class="w"> </span>CIF<span class="w"> </span>or<span class="w"> </span>PDB.
+<span class="w">  </span>--gromacs.minimize
+<span class="w">      </span><span class="o">[</span>bool,<span class="w"> </span><span class="nv">default</span><span class="o">=</span>False<span class="o">]</span>
+<span class="w">      </span>Energy<span class="w"> </span>minimize<span class="w"> </span>the<span class="w"> </span>modified<span class="w"> </span>structure.
+<span class="w">  </span>--logger
+<span class="w">      </span><span class="o">[</span>Optional,<span class="w"> </span><span class="nv">default</span><span class="o">=</span>console<span class="o">]</span>
+<span class="w">      </span>Set<span class="w"> </span>logger<span class="w"> </span>to<span class="w"> </span>either<span class="w"> </span>console<span class="w"> </span><span class="o">(</span>default<span class="o">)</span><span class="w"> </span>or<span class="w"> </span>provide<span class="w"> </span>a<span class="w"> </span>file<span class="w"> </span>name.
+<span class="w">  </span>--debug
+<span class="w">      </span><span class="o">[</span>Optional,<span class="w"> </span><span class="nv">default</span><span class="o">=</span>False<span class="o">]</span>
+<span class="w">      </span>If<span class="w"> </span><span class="nb">set</span><span class="w"> </span>to<span class="w"> </span>true,<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>verbose<span class="w"> </span>debugging<span class="w"> </span>logging.
+</pre></div>
+</div>
+<p class="rubric">CONFIG FILE</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example configuration file</span>
+<span class="nt">input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./tests/data/1vii.pdb</span>
+<span class="nt">modify</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;A:50=V3H&quot;</span>
+<span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">output.pdb</span>
+<span class="nt">logger</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">console</span>
+<span class="nt">debug</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</pre></div>
+</div>
+<p>To run Vienna-PTM using a configuration file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>viennaptm<span class="w"> </span>--config<span class="w"> </span>tests/data/example_config.yaml
+</pre></div>
+</div>
+<p class="rubric">PARAMETERS</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 12.5%" />
+<col style="width: 25.0%" />
+<col style="width: 37.5%" />
+<col style="width: 25.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Explanation</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--input</span></code></p></td>
+<td><p>Input path or PDB identifier</p></td>
+<td><div class="line-block">
+<div class="line">If the input is a string ending with</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">.pdb</span></code> or <code class="docutils literal notranslate"><span class="pre">.cif</span></code>, it is treated as</div>
+<div class="line">a local file path and converted to a</div>
+<div class="line"><code class="xref py py-class docutils literal notranslate"><span class="pre">pathlib.Path</span></code>.</div>
+<div class="line"><br /></div>
+<div class="line">Otherwise, the input is interpreted as</div>
+<div class="line">a PDB database identifier and must be</div>
+<div class="line">exactly four characters long.</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">./tests/data/1vii.cif</span></code> or</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">1vii</span></code></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--modify</span></code></p></td>
+<td><p>List of modifications</p></td>
+<td><div class="line-block">
+<div class="line">A modification is specified as a</div>
+<div class="line">string consisting of a</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">chain_identifier</span></code>, a</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">residue_number</span></code>, and a</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">target_abbreviation</span></code>, for example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&quot;A:50=V3H&quot;</span></code>.</div>
+<div class="line"><br /></div>
+<div class="line">Multiple modifications can be provided</div>
+<div class="line">as a list of strings.</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&quot;A:50=V3H&quot;</span></code> or</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&quot;A:50=V3H&quot;</span> <span class="pre">&quot;A:55=V3H&quot;</span></code></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--output</span></code></p></td>
+<td><p>Output path or filename</p></td>
+<td><div class="line-block">
+<div class="line">The output filename must end with</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">.pdb</span></code> or <code class="docutils literal notranslate"><span class="pre">.cif</span></code>. String paths are</div>
+<div class="line">converted to <code class="xref py py-class docutils literal notranslate"><span class="pre">pathlib.Path</span></code>.</div>
+</div>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">output.pdb</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--logger</span></code></p></td>
+<td><p>Logging destination</p></td>
+<td><div class="line-block">
+<div class="line">If set to <code class="docutils literal notranslate"><span class="pre">&quot;console&quot;</span></code>, log messages</div>
+<div class="line">are printed to standard output.</div>
+<div class="line"><br /></div>
+<div class="line">Otherwise, the value is interpreted as</div>
+<div class="line">a file path and logging output is</div>
+<div class="line">written to a file.</div>
+</div>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">console</span></code> or <code class="docutils literal notranslate"><span class="pre">log.txt</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--debug</span></code></p></td>
+<td><p>Debug mode</p></td>
+<td><div class="line-block">
+<div class="line">Enables verbose debug logging when</div>
+<div class="line">set to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</div>
+</div>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code> or <code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">BASH SCRIPT</p>
+<p>Example Bash script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env bash</span>
+
+<span class="c1"># Exit immediately if a command fails</span>
+<span class="nb">set</span><span class="w"> </span>-e
+
+<span class="c1"># 1. Initialize conda (required outside an interactive shell)</span>
+<span class="c1"># Adjust this path if your conda installation is located elsewhere</span>
+<span class="nb">source</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>conda<span class="w"> </span>info<span class="w"> </span>--base<span class="k">)</span><span class="s2">/etc/profile.d/conda.sh&quot;</span>
+
+<span class="c1"># 2. Activate the conda environment</span>
+conda<span class="w"> </span>activate<span class="w"> </span>viennaptm
+
+<span class="c1"># 3. Run Vienna-PTM</span>
+viennaptm<span class="w"> </span>--input<span class="w"> </span>tests/data/1vii.pdb<span class="w"> </span><span class="se">\</span>
+<span class="w">          </span>--modify<span class="w"> </span><span class="s2">&quot;A:50=V3H&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">          </span>--output<span class="w"> </span>testoutput.pdb
+</pre></div>
+</div>
+<p>Save the script as, for example:</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">run_viennaptm.sh</span></code></div>
+</div>
+<p>Make it executable:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chmod<span class="w"> </span>+x<span class="w"> </span>run_viennaptm.sh
+</pre></div>
+</div>
+<p>Run it:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./run_viennaptm.sh
+</pre></div>
+</div>
+<p class="rubric">SLURM SCRIPT</p>
+<p>Example SLURM submission script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env bash</span>
+<span class="c1">#SBATCH --job-name=viennaptm</span>
+<span class="c1">#SBATCH --output=viennaptm_%j.out</span>
+<span class="c1">#SBATCH --error=viennaptm_%j.err</span>
+<span class="c1">#SBATCH --time=01:00:00</span>
+<span class="c1">#SBATCH --cpus-per-task=1</span>
+<span class="c1">#SBATCH --mem=4G</span>
+
+<span class="c1"># Fail fast on errors and undefined variables</span>
+<span class="nb">set</span><span class="w"> </span>-euo<span class="w"> </span>pipefail
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Job started on </span><span class="k">$(</span>hostname<span class="k">)</span><span class="s2"> at </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&quot;</span>
+
+<span class="c1"># ---- Conda setup ----</span>
+<span class="nb">source</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>conda<span class="w"> </span>info<span class="w"> </span>--base<span class="k">)</span><span class="s2">/etc/profile.d/conda.sh&quot;</span>
+conda<span class="w"> </span>activate<span class="w"> </span>viennaptm
+
+<span class="c1"># ---- Run Vienna-PTM ----</span>
+viennaptm<span class="w"> </span>--input<span class="w"> </span>tests/data/1vii.pdb<span class="w"> </span><span class="se">\</span>
+<span class="w">          </span>--modify<span class="w"> </span><span class="s2">&quot;A:50=V3H&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">          </span>--output<span class="w"> </span>testoutput.pdb
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Job finished at </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p><strong>NOTE:</strong> Alternatively, you can skip the conda initialization and directly provide the full path to the Vienna-PTM entrypoint:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/path/to/your/installation/bin/viennaptm<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--input<span class="w"> </span>tests/data/1vii.pdb<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--modify<span class="w"> </span><span class="s2">&quot;A:50=V3H&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output<span class="w"> </span>testoutput.pdb
+</pre></div>
+</div>
+<p>Submit the SLURM script to the cluster using:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>run_viennaptm.slurm
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="list_of_ptms.html" class="btn btn-neutral float-left" title="List of PTMs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="api.html" class="btn btn-neutral float-right" title="API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

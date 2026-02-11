@@ -1,0 +1,170 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>apply_transform &mdash; viennaptm 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+      <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
+      <script src="../_static/datatable-init.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="minimize_and_write_pdb" href="viennaptm.gromacs.minimization_pipeline.minimize_and_write_pdb.html" />
+    <link rel="prev" title="compute_alignment_transform" href="viennaptm.modification.calculation.align.compute_alignment_transform.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            viennaptm
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../list_of_ptms.html">List of PTMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../entrypoint.html">Entrypoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citation.html">Citation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Datastructures</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.html">AnnotatedStructure</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modifier</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.modification.application.modifier.Modifier.html">Modifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.modification.modification_library.AddBranch.html">AddBranch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.modification.modification_library.Modification.html">Modification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.modification.modification_library.ModificationLibraryMetadata.html">ModificationLibraryMetadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.modification.modification_library.ModificationLibrary.html">ModificationLibrary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.entrypoints.viennaptm.ModifierParameters.html">ModifierParameters</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GROMACS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.gromacs.editconf.EditConf.html">EditConf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.gromacs.gromacs_command.GromacsCommand.html">GromacsCommand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.gromacs.grompp.Grompp.html">Grompp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.gromacs.pdb2gmx.PDB2GMXParameters.html">PDB2GMXParameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.gromacs.pdb2gmx.PDB2GMX.html">PDB2GMX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.gromacs.mdrun.Mdrun.html">Mdrun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.gromacs.trjconv.Trjconv.html">Trjconv</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Miscellaneous</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.modification.calculation.align.compute_alignment_transform.html">compute_alignment_transform</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">apply_transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.gromacs.minimization_pipeline.minimize_and_write_pdb.html">minimize_and_write_pdb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.utils.visualizer.Visualizer.html">Visualizer</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">viennaptm</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">apply_transform</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/viennaptm.modification.calculation.align.apply_transform.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="apply-transform">
+<h1>apply_transform<a class="headerlink" href="#apply-transform" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="viennaptm.modification.calculation.align.apply_transform">
+<span class="sig-name descname"><span class="pre">apply_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">M_rotation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_translation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#viennaptm.modification.calculation.align.apply_transform" title="Link to this definition"></a></dt>
+<dd><p>Apply a roto-translational transform to a set of points, i.e. the atomic positions of atoms that are to be added
+from the template to the original reference frame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>coords</strong> (<em>(</em><em>M</em><em>, </em><em>3</em><em>) </em><em>array</em>) – Points to transform.</p></li>
+<li><p><strong>M_rotation</strong> (<em>(</em><em>3</em><em>, </em><em>3</em><em>) </em><em>array</em>) – Rotation matrix.</p></li>
+<li><p><strong>v_translation</strong> (<em>(</em><em>3</em><em>,</em><em>) </em><em>array</em>) – Translation vector.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return v_transformed<span class="colon">:</span></dt>
+<dd class="field-even"><p>Returns the transformed coordinates: M_rotation &#64; coords + v_translation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(M, 3) array</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="viennaptm.modification.calculation.align.compute_alignment_transform.html" class="btn btn-neutral float-left" title="compute_alignment_transform" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="viennaptm.gromacs.minimization_pipeline.minimize_and_write_pdb.html" class="btn btn-neutral float-right" title="minimize_and_write_pdb" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

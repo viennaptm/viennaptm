@@ -1,0 +1,71 @@
+﻿ModificationLibraryMetadata
+===========================
+
+.. rubric:: Module
+
+.. code-block:: python
+
+   viennaptm.modification.modification_library
+
+.. currentmodule:: viennaptm.modification.modification_library
+
+.. autoclass:: ModificationLibraryMetadata
+   :members:
+
+
+.. automethod:: __init__
+
+
+.. rubric:: Methods
+
+.. autosummary::
+
+   ~ModificationLibraryMetadata.__init__
+
+   ~ModificationLibraryMetadata.construct
+
+   ~ModificationLibraryMetadata.copy
+
+   ~ModificationLibraryMetadata.dict
+
+   ~ModificationLibraryMetadata.from_orm
+
+   ~ModificationLibraryMetadata.json
+
+   ~ModificationLibraryMetadata.model_construct
+
+   ~ModificationLibraryMetadata.model_copy
+
+   ~ModificationLibraryMetadata.model_dump
+
+   ~ModificationLibraryMetadata.model_dump_json
+
+   ~ModificationLibraryMetadata.model_json_schema
+
+   ~ModificationLibraryMetadata.model_parametrized_name
+
+   ~ModificationLibraryMetadata.model_post_init
+
+   ~ModificationLibraryMetadata.model_rebuild
+
+   ~ModificationLibraryMetadata.model_validate
+
+   ~ModificationLibraryMetadata.model_validate_json
+
+   ~ModificationLibraryMetadata.model_validate_strings
+
+   ~ModificationLibraryMetadata.parse_file
+
+   ~ModificationLibraryMetadata.parse_obj
+
+   ~ModificationLibraryMetadata.parse_raw
+
+   ~ModificationLibraryMetadata.schema
+
+   ~ModificationLibraryMetadata.schema_json
+
+   ~ModificationLibraryMetadata.update_forward_refs
+
+   ~ModificationLibraryMetadata.validate
+
+

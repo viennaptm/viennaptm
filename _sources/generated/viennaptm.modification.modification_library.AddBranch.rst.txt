@@ -1,0 +1,73 @@
+﻿AddBranch
+=========
+
+.. rubric:: Module
+
+.. code-block:: python
+
+   viennaptm.modification.modification_library
+
+.. currentmodule:: viennaptm.modification.modification_library
+
+.. autoclass:: AddBranch
+   :members:
+
+
+.. automethod:: __init__
+
+
+.. rubric:: Methods
+
+.. autosummary::
+
+   ~AddBranch.__init__
+
+   ~AddBranch.check_branch
+
+   ~AddBranch.construct
+
+   ~AddBranch.copy
+
+   ~AddBranch.dict
+
+   ~AddBranch.from_orm
+
+   ~AddBranch.json
+
+   ~AddBranch.model_construct
+
+   ~AddBranch.model_copy
+
+   ~AddBranch.model_dump
+
+   ~AddBranch.model_dump_json
+
+   ~AddBranch.model_json_schema
+
+   ~AddBranch.model_parametrized_name
+
+   ~AddBranch.model_post_init
+
+   ~AddBranch.model_rebuild
+
+   ~AddBranch.model_validate
+
+   ~AddBranch.model_validate_json
+
+   ~AddBranch.model_validate_strings
+
+   ~AddBranch.parse_file
+
+   ~AddBranch.parse_obj
+
+   ~AddBranch.parse_raw
+
+   ~AddBranch.schema
+
+   ~AddBranch.schema_json
+
+   ~AddBranch.update_forward_refs
+
+   ~AddBranch.validate
+
+

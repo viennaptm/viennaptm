@@ -1,0 +1,39 @@
+﻿Grompp
+======
+
+.. rubric:: Module
+
+.. code-block:: python
+
+   viennaptm.gromacs.grompp
+
+.. currentmodule:: viennaptm.gromacs.grompp
+
+.. autoclass:: Grompp
+   :members:
+
+
+.. automethod:: __init__
+
+
+.. rubric:: Methods
+
+.. autosummary::
+
+   ~Grompp.__init__
+
+   ~Grompp.build_command
+
+   ~Grompp.build_gromacs_cmd
+
+   ~Grompp.expected_outputs
+
+   ~Grompp.inspect_result
+
+   ~Grompp.mpi_prefix
+
+   ~Grompp.post_run_checks
+
+   ~Grompp.run
+
+

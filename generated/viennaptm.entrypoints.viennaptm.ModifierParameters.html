@@ -1,0 +1,465 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ModifierParameters &mdash; viennaptm 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+      <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
+      <script src="../_static/datatable-init.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="EditConf" href="viennaptm.gromacs.editconf.EditConf.html" />
+    <link rel="prev" title="ModificationLibrary" href="viennaptm.modification.modification_library.ModificationLibrary.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            viennaptm
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../list_of_ptms.html">List of PTMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../entrypoint.html">Entrypoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citation.html">Citation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Datastructures</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.html">AnnotatedStructure</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modifier</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.modification.application.modifier.Modifier.html">Modifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.modification.modification_library.AddBranch.html">AddBranch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.modification.modification_library.Modification.html">Modification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.modification.modification_library.ModificationLibraryMetadata.html">ModificationLibraryMetadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.modification.modification_library.ModificationLibrary.html">ModificationLibrary</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ModifierParameters</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GROMACS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.gromacs.editconf.EditConf.html">EditConf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.gromacs.gromacs_command.GromacsCommand.html">GromacsCommand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.gromacs.grompp.Grompp.html">Grompp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.gromacs.pdb2gmx.PDB2GMXParameters.html">PDB2GMXParameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.gromacs.pdb2gmx.PDB2GMX.html">PDB2GMX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.gromacs.mdrun.Mdrun.html">Mdrun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.gromacs.trjconv.Trjconv.html">Trjconv</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Miscellaneous</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.modification.calculation.align.compute_alignment_transform.html">compute_alignment_transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.modification.calculation.align.apply_transform.html">apply_transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.gromacs.minimization_pipeline.minimize_and_write_pdb.html">minimize_and_write_pdb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viennaptm.utils.visualizer.Visualizer.html">Visualizer</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">viennaptm</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">ModifierParameters</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/viennaptm.entrypoints.viennaptm.ModifierParameters.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="modifierparameters">
+<h1>ModifierParameters<a class="headerlink" href="#modifierparameters" title="Link to this heading"></a></h1>
+<p class="rubric">Module</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">viennaptm</span><span class="o">.</span><span class="n">entrypoints</span><span class="o">.</span><span class="n">viennaptm</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="viennaptm.entrypoints.viennaptm.ModifierParameters">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ModifierParameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modify</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'output.pdb'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gromacs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">GROMACSParameters</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'console'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#viennaptm.entrypoints.viennaptm.ModifierParameters" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Configuration model for a Vienna-PTM command-line run.</p>
+<p>This Pydantic model represents the fully resolved configuration used by
+the Vienna-PTM CLI. Parameters can be provided either via command-line
+arguments or through an external YAML / JSON configuration file.</p>
+<p>Configuration resolution follows a strict precedence order:</p>
+<ol class="arabic simple">
+<li><p>Values from the configuration file (<code class="docutils literal notranslate"><span class="pre">--config</span></code>) are loaded first.</p></li>
+<li><p>Explicit CLI arguments override values from the config file.</p></li>
+<li><p>The merged configuration is validated and normalized.</p></li>
+</ol>
+<p>Invalid or unknown parameters are rejected.</p>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>config<span class="classifier">pathlib.Path or str, optional</span></dt><dd><p>Path to a YAML or JSON configuration file.</p>
+</dd>
+<dt>input<span class="classifier">pathlib.Path or str, optional</span></dt><dd><p>Input structure, either as a local PDB/mmCIF file or a 4-character
+PDB identifier.</p>
+</dd>
+<dt>modify<span class="classifier">list[str] or str, optional</span></dt><dd><p>One or more residue modification specifications.</p>
+</dd>
+<dt>output<span class="classifier">pathlib.Path or str, optional</span></dt><dd><p>Output structure file. Must end with <code class="docutils literal notranslate"><span class="pre">.pdb</span></code> or <code class="docutils literal notranslate"><span class="pre">.cif</span></code>.</p>
+</dd>
+<dt>logger<span class="classifier">str</span></dt><dd><p>Logging destination. Use <code class="docutils literal notranslate"><span class="pre">&quot;console&quot;</span></code> for stdout logging or a file
+path to enable file logging.</p>
+</dd>
+<dt>debug<span class="classifier">bool</span></dt><dd><p>Enable verbose debug logging if <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="viennaptm.entrypoints.viennaptm.ModifierParameters.config">
+<span class="sig-name descname"><span class="pre">config</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#viennaptm.entrypoints.viennaptm.ModifierParameters.config" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="viennaptm.entrypoints.viennaptm.ModifierParameters.debug">
+<span class="sig-name descname"><span class="pre">debug</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#viennaptm.entrypoints.viennaptm.ModifierParameters.debug" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="viennaptm.entrypoints.viennaptm.ModifierParameters.dump_resolved_config">
+<span class="sig-name descname"><span class="pre">dump_resolved_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#viennaptm.entrypoints.viennaptm.ModifierParameters.dump_resolved_config" title="Link to this definition"></a></dt>
+<dd><p>Serialize the resolved configuration to YAML.</p>
+<p>All paths are converted to strings to ensure clean, human-readable
+output suitable for logging or inspection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YAML-formatted configuration string.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="viennaptm.entrypoints.viennaptm.ModifierParameters.gromacs">
+<span class="sig-name descname"><span class="pre">gromacs</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">GROMACSParameters</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#viennaptm.entrypoints.viennaptm.ModifierParameters.gromacs" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="viennaptm.entrypoints.viennaptm.ModifierParameters.input">
+<span class="sig-name descname"><span class="pre">input</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#viennaptm.entrypoints.viennaptm.ModifierParameters.input" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="viennaptm.entrypoints.viennaptm.ModifierParameters.is_console_logging">
+<span class="sig-name descname"><span class="pre">is_console_logging</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#viennaptm.entrypoints.viennaptm.ModifierParameters.is_console_logging" title="Link to this definition"></a></dt>
+<dd><p>Determine whether logging should be directed to the console.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if logging is configured for stdout, <code class="docutils literal notranslate"><span class="pre">False</span></code> if logging
+should be written to a file.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="viennaptm.entrypoints.viennaptm.ModifierParameters.load_config_file">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">load_config_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#viennaptm.entrypoints.viennaptm.ModifierParameters.load_config_file" title="Link to this definition"></a></dt>
+<dd><p>Load and merge a YAML or JSON configuration file.</p>
+<p>If a configuration file is specified via the <code class="docutils literal notranslate"><span class="pre">config</span></code> parameter, it
+is loaded first and used to initialize parameters. Any values provided
+directly (e.g. via CLI arguments) override those from the config file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>values</strong> (<em>dict</em>) – Raw keyword arguments passed to the model constructor.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Merged parameter dictionary with CLI values taking precedence.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the config file does not exist, has an unsupported extension,
+or does not contain a top-level mapping.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="viennaptm.entrypoints.viennaptm.ModifierParameters.log_file_path">
+<span class="sig-name descname"><span class="pre">log_file_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#viennaptm.entrypoints.viennaptm.ModifierParameters.log_file_path" title="Link to this definition"></a></dt>
+<dd><p>Return the log file path if file logging is enabled.</p>
+<p>When logging is set to <code class="docutils literal notranslate"><span class="pre">&quot;console&quot;</span></code>, no log file is used and <code class="docutils literal notranslate"><span class="pre">None</span></code>
+is returned. Otherwise, the value of <a class="reference internal" href="#viennaptm.entrypoints.viennaptm.ModifierParameters.logger" title="viennaptm.entrypoints.viennaptm.ModifierParameters.logger"><code class="xref py py-attr docutils literal notranslate"><span class="pre">logger</span></code></a> is interpreted as
+a file path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Path to the log file, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if console logging is enabled.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>pathlib.Path or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="viennaptm.entrypoints.viennaptm.ModifierParameters.logger">
+<span class="sig-name descname"><span class="pre">logger</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#viennaptm.entrypoints.viennaptm.ModifierParameters.logger" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="viennaptm.entrypoints.viennaptm.ModifierParameters.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'extra':</span> <span class="pre">'forbid'}</span></span><a class="headerlink" href="#viennaptm.entrypoints.viennaptm.ModifierParameters.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="viennaptm.entrypoints.viennaptm.ModifierParameters.modify">
+<span class="sig-name descname"><span class="pre">modify</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#viennaptm.entrypoints.viennaptm.ModifierParameters.modify" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="viennaptm.entrypoints.viennaptm.ModifierParameters.output">
+<span class="sig-name descname"><span class="pre">output</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#viennaptm.entrypoints.viennaptm.ModifierParameters.output" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="viennaptm.entrypoints.viennaptm.ModifierParameters.validate_file_input">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">validate_file_input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#viennaptm.entrypoints.viennaptm.ModifierParameters.validate_file_input" title="Link to this definition"></a></dt>
+<dd><p>Validate the input structure source.</p>
+<p>If the input is a string ending with <code class="docutils literal notranslate"><span class="pre">.pdb</span></code> or <code class="docutils literal notranslate"><span class="pre">.cif</span></code>, it is treated
+as a local file path and converted to <code class="xref py py-class docutils literal notranslate"><span class="pre">pathlib.Path</span></code>. Otherwise,
+it is interpreted as a PDB database identifier and must be exactly four
+characters long.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>inp</strong> (<em>pathlib.Path</em><em> or </em><em>str</em>) – Input path or PDB identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Validated input value.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pathlib.Path or str</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If a non-file string input does not conform to the 4-character
+PDB identifier format.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="viennaptm.entrypoints.viennaptm.ModifierParameters.validate_input_modification">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">validate_input_modification</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_modification</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#viennaptm.entrypoints.viennaptm.ModifierParameters.validate_input_modification" title="Link to this definition"></a></dt>
+<dd><p>Normalize modification input to a list of strings.</p>
+<p>Single modification specifications are automatically wrapped into a
+list to ensure consistent downstream handling.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>input_modification</strong> (<em>str</em><em> or </em><em>list</em><em>[</em><em>str</em><em>]</em>) – Modification specification(s).</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of modification strings.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="viennaptm.entrypoints.viennaptm.ModifierParameters.validate_output">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">validate_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Path</span></span></span><a class="headerlink" href="#viennaptm.entrypoints.viennaptm.ModifierParameters.validate_output" title="Link to this definition"></a></dt>
+<dd><p>Validate and normalize the output structure path.</p>
+<p>Ensures that the output filename ends with <code class="docutils literal notranslate"><span class="pre">.pdb</span></code> or <code class="docutils literal notranslate"><span class="pre">.cif</span></code> and
+converts string paths to <code class="xref py py-class docutils literal notranslate"><span class="pre">pathlib.Path</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>out</strong> (<em>pathlib.Path</em><em> or </em><em>str</em>) – Output path or filename.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Validated output path.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pathlib.Path</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the output file extension is not supported.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code>(**data)</p></td>
+<td><p>Create a new model by parsing and validating input data from keyword arguments.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">construct</span></code>([_fields_set])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code>(*[, include, exclude, update, deep])</p></td>
+<td><p>Returns a copy of the model.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code>(*[, include, exclude, by_alias, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#viennaptm.entrypoints.viennaptm.ModifierParameters.dump_resolved_config" title="viennaptm.entrypoints.viennaptm.ModifierParameters.dump_resolved_config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dump_resolved_config</span></code></a>()</p></td>
+<td><p>Serialize the resolved configuration to YAML.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_orm</span></code>(obj)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#viennaptm.entrypoints.viennaptm.ModifierParameters.is_console_logging" title="viennaptm.entrypoints.viennaptm.ModifierParameters.is_console_logging"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_console_logging</span></code></a>()</p></td>
+<td><p>Determine whether logging should be directed to the console.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">json</span></code>(*[, include, exclude, by_alias, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#viennaptm.entrypoints.viennaptm.ModifierParameters.load_config_file" title="viennaptm.entrypoints.viennaptm.ModifierParameters.load_config_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_config_file</span></code></a>(values)</p></td>
+<td><p>Load and merge a YAML or JSON configuration file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#viennaptm.entrypoints.viennaptm.ModifierParameters.log_file_path" title="viennaptm.entrypoints.viennaptm.ModifierParameters.log_file_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">log_file_path</span></code></a>()</p></td>
+<td><p>Return the log file path if file logging is enabled.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">model_construct</span></code>([_fields_set])</p></td>
+<td><p>Creates a new instance of the <cite>Model</cite> class with validated data.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">model_copy</span></code>(*[, update, deep])</p></td>
+<td><p>!!! abstract &quot;Usage Documentation&quot;</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">model_dump</span></code>(*[, mode, include, exclude, ...])</p></td>
+<td><p>!!! abstract &quot;Usage Documentation&quot;</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">model_dump_json</span></code>(*[, indent, ensure_ascii, ...])</p></td>
+<td><p>!!! abstract &quot;Usage Documentation&quot;</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">model_json_schema</span></code>(by_alias, ref_template, ...)</p></td>
+<td><p>Generates a JSON schema for a model class.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">model_parametrized_name</span></code>(params)</p></td>
+<td><p>Compute the class name for parametrizations of generic classes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">model_post_init</span></code>(context, /)</p></td>
+<td><p>Override this method to perform additional initialization after <cite>__init__</cite> and <cite>model_construct</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">model_rebuild</span></code>(*[, force, raise_errors, ...])</p></td>
+<td><p>Try to rebuild the pydantic-core schema for the model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">model_validate</span></code>(obj, *[, strict, extra, ...])</p></td>
+<td><p>Validate a pydantic model instance.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">model_validate_json</span></code>(json_data, *[, strict, ...])</p></td>
+<td><p>!!! abstract &quot;Usage Documentation&quot;</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">model_validate_strings</span></code>(obj, *[, strict, ...])</p></td>
+<td><p>Validate the given object with string data against the Pydantic model.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_file</span></code>(path, *[, content_type, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_obj</span></code>(obj)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_raw</span></code>(b, *[, content_type, encoding, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">schema</span></code>([by_alias, ref_template])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">schema_json</span></code>(*[, by_alias, ref_template])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_forward_refs</span></code>(**localns)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate</span></code>(value)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#viennaptm.entrypoints.viennaptm.ModifierParameters.validate_file_input" title="viennaptm.entrypoints.viennaptm.ModifierParameters.validate_file_input"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate_file_input</span></code></a>(inp)</p></td>
+<td><p>Validate the input structure source.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#viennaptm.entrypoints.viennaptm.ModifierParameters.validate_input_modification" title="viennaptm.entrypoints.viennaptm.ModifierParameters.validate_input_modification"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate_input_modification</span></code></a>(input_modification)</p></td>
+<td><p>Normalize modification input to a list of strings.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#viennaptm.entrypoints.viennaptm.ModifierParameters.validate_output" title="viennaptm.entrypoints.viennaptm.ModifierParameters.validate_output"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate_output</span></code></a>(out)</p></td>
+<td><p>Validate and normalize the output structure path.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="viennaptm.modification.modification_library.ModificationLibrary.html" class="btn btn-neutral float-left" title="ModificationLibrary" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="viennaptm.gromacs.editconf.EditConf.html" class="btn btn-neutral float-right" title="EditConf" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

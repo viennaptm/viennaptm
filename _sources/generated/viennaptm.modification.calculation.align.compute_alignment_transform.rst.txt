@@ -1,0 +1,6 @@
+﻿compute_alignment_transform  
+===========================
+
+.. currentmodule:: viennaptm.modification.calculation.align
+
+.. autofunction:: compute_alignment_transform

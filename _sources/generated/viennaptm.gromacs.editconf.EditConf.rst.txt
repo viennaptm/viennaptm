@@ -1,0 +1,39 @@
+﻿EditConf
+========
+
+.. rubric:: Module
+
+.. code-block:: python
+
+   viennaptm.gromacs.editconf
+
+.. currentmodule:: viennaptm.gromacs.editconf
+
+.. autoclass:: EditConf
+   :members:
+
+
+.. automethod:: __init__
+
+
+.. rubric:: Methods
+
+.. autosummary::
+
+   ~EditConf.__init__
+
+   ~EditConf.build_command
+
+   ~EditConf.build_gromacs_cmd
+
+   ~EditConf.expected_outputs
+
+   ~EditConf.inspect_result
+
+   ~EditConf.mpi_prefix
+
+   ~EditConf.post_run_checks
+
+   ~EditConf.run
+
+

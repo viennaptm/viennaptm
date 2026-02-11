@@ -1,0 +1,39 @@
+﻿PDB2GMX
+=======
+
+.. rubric:: Module
+
+.. code-block:: python
+
+   viennaptm.gromacs.pdb2gmx
+
+.. currentmodule:: viennaptm.gromacs.pdb2gmx
+
+.. autoclass:: PDB2GMX
+   :members:
+
+
+.. automethod:: __init__
+
+
+.. rubric:: Methods
+
+.. autosummary::
+
+   ~PDB2GMX.__init__
+
+   ~PDB2GMX.build_command
+
+   ~PDB2GMX.build_gromacs_cmd
+
+   ~PDB2GMX.expected_outputs
+
+   ~PDB2GMX.inspect_result
+
+   ~PDB2GMX.mpi_prefix
+
+   ~PDB2GMX.post_run_checks
+
+   ~PDB2GMX.run
+
+
