@@ -1,0 +1,8 @@
+# A sample yaml config file
+
+input: ./tests/data/1vii.pdb
+modification:
+  - "A:50=V3H"
+output: output.pdb
+logger: console
+debug: false

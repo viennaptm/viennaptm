@@ -1,0 +1,10 @@
+{
+  "VAL_V3H": {
+    "original_residue_name": "Valine",
+    "modified_residue_name": "3-Hydroxy-Valine",
+    "modification_type": "hydroxylation",
+    "modification_smiles": "whatever",
+    "pubchem_id": "whatever",
+    "chemspider_id": "whatever"
+  }
+}
