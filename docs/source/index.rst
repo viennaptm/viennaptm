@@ -40,7 +40,6 @@ Modifier
    ~modification.modification_library.ModificationLibraryMetadata
    ~modification.modification_library.ModificationLibrary
    ~entrypoints.viennaptm.ModifierParameters
-   ~utils.visualizer.Visualizer
 
 
 GROMACS
@@ -73,3 +72,4 @@ Miscellaneous
    ~modification.calculation.align.compute_alignment_transform
    ~modification.calculation.align.apply_transform
    ~gromacs.minimization_pipeline.minimize_and_write_pdb
+   ~utils.visualizer.Visualizer
