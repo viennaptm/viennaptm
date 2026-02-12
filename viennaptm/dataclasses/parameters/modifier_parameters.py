@@ -41,22 +41,26 @@ class ModifierParameters(BaseModel):
 
     Invalid or unknown parameters are rejected.
 
-    Attributes
-    ----------
-    config : pathlib.Path or str, optional
-        Path to a YAML or JSON configuration file.
-    input : pathlib.Path or str, optional
-        Input structure, either as a local PDB/mmCIF file or a 4-character
-        PDB identifier.
-    modify : list[str] or str, optional
-        One or more residue modification specifications.
-    output : pathlib.Path or str, optional
-        Output structure file. Must end with ``.pdb`` or ``.cif``.
-    logger : str
-        Logging destination. Use ``"console"`` for stdout logging or a file
-        path to enable file logging.
-    debug : bool
-        Enable verbose debug logging if ``True``.
+    :param config: Path to a YAML or JSON configuration file (optional).
+    :type config: pathlib.Path or str, optional
+    :param input: Input structure, either as a local PDB/mmCIF file or a 4-character PDB identifier.
+    :type input: pathlib.Path or str, optional
+    :param modify: One or more residue modification specifications, e.g., ``"A:50=V3H"``.
+                   Multiple modifications can be provided as a list.
+    :type modify: list[str] or str, optional
+    :param output: Output structure file, must end with ``.pdb`` or ``.cif``.
+                   Defaults to ``output.pdb``.
+    :type output: pathlib.Path or str
+    :param gromacs: Nested GROMACS configuration parameters.
+    :type gromacs: GROMACSParameters
+    :param logger: Logging destination. Use ``"console"`` for stdout logging or
+                   provide a file path to log to a file.
+    :type logger: str
+    :param debug: Enable verbose debug logging if ``True``.
+    :type debug: bool
+
+    :raises ValueError: If unknown or extra parameters are provided
+                        (``extra="forbid"``).
     """
 
     config: Optional[Union[Path, str]] = Field(default=None, description="Path to a YAML or JSON configuration file (optional).")
