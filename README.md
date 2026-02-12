@@ -1,5 +1,7 @@
 <!-- Logo floated to the right -->
-<img src="docs/source/_static/logo.png" alt="Vienna-PTM Logo" style="float: right; width: 120px; margin: 0 0 0.5em 1em;" />
+<p align="right">
+  <img src="docs/source/_static/logo.png" width="120">
+</p>
 
 # Vienna-PTM 3.0: Modify proteins with post-translational modifications
 
@@ -34,7 +36,7 @@ of PTMs into protein three-dimensional structures provided as PDB files.
 
 Vienna-PTM currently supports 256 different enzymatic and non-enzymatic PTMs and performs
 geometrically accurate placement of modifications at user-defined sites 
-(see [list_of_ptms](link missing) for a complete list).
+(see [List of PTMs](https://viennaptm.github.io/viennaptm/list_of_ptms.html) for a complete list).
 
 Optionally, users can perform a subsequent energy minimization using the GROMACS molecular
 simulation package. This removes unfavorable steric orientations and makes the structure
@@ -46,12 +48,12 @@ provided for the widely used **GROMOS 45A3, 54A7, and 54A8** force fields, with 
 compatibility with GROMACS.
 
 For full documentation, tutorials, and API reference, please visit the
-[Vienna-PTM Documentation](link missing).
+[Vienna-PTM Documentation](https://viennaptm.github.io/viennaptm/index.html#).
 
 ## Installation
 
-For detailed installation instructions, refer to the [Installation](link missing) page, and for a step-by-step tutorial, 
-consult the [Tutorial](link missing) page in the Documentation.
+For detailed installation instructions, refer to the [Installation](https://viennaptm.github.io/viennaptm/installation.html) page, and for a step-by-step tutorial, 
+consult the [Tutorial](https://viennaptm.github.io/viennaptm/tutorial.html) page in the Documentation.
 
 ### Create a new `conda` environment (optional)
 ```bash
@@ -98,7 +100,7 @@ conda install conda-forge::gromacs
 ## Usage
 
 ### Entrypoint:
-For more information, refer to the [Entrypoint](link missing) page in the documentation.
+For more information, refer to the [Entrypoint](https://viennaptm.github.io/viennaptm/entrypoint.html) page in the documentation.
 ```bash
 # Activate the conda environment
 conda activate viennaptm
@@ -110,7 +112,7 @@ viennaptm --input tests/data/1vii.pdb \
 ```
 
 ### API:
-For more information, refer to the [API](link missing) page in the documentation.
+For more information, refer to the [API](https://viennaptm.github.io/viennaptm/api.html) page in the documentation.
 ```bash
 modifier = Modifier()
 structure = modifier.modify(

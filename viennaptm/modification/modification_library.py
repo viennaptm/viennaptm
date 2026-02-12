@@ -202,6 +202,22 @@ class ModificationLibrary(BaseModel):
         logger.info(f"---> Comprised of {len(self.modifications)} modifications, indexed {len(self.target_templates)} PDB files.")
 
     def _load_library(self, library_path: Union[str, Path] = None):
+        """
+        Load a modification library from a JSON file.
+
+        The JSON file must contain the top-level keys ``"metadata"`` and
+        ``"modifications"``. Each entry in ``"modifications"`` must use the
+        format ``"<original>_<modified>"`` (e.g., ``"SER_pSER"``) to define
+        the residue conversion.
+
+        :param library_path: Path to the JSON modification library file.
+        :type library_path: str or pathlib.Path or None
+
+        :raises KeyError: If required top-level keys are missing.
+        :raises FileNotFoundError: If the specified file does not exist.
+        :raises json.JSONDecodeError: If the file is not valid JSON.
+        """
+
         # load application library from JSON (modifications and metadata
         with open(library_path, 'r') as f:
             library = json.load(f)
@@ -225,6 +241,29 @@ class ModificationLibrary(BaseModel):
             logger.debug(f"Modification {original}->{modified} added.")
 
     def _populate_minimized_PDBs(self, pdbs_minimized: Union[Path, str]):
+        """
+        Populate the internal template dictionary with minimized PDB files.
+
+        The specified directory is scanned for PDB files (matching
+        ``fixtures.PDB_ENDING``). Each valid file is stored in
+        ``self.target_templates`` as a mapping from the filename (without
+        extension) to its absolute path.
+
+        Example structure::
+
+            {
+                "MOD1": "/full/path/MOD1.pdb",
+                "MOD2": "/full/path/MOD2.pdb"
+            }
+
+        :param pdbs_minimized: Path to a directory containing minimized
+                               PDB template files.
+        :type pdbs_minimized: str or pathlib.Path
+
+        :raises FileNotFoundError: If the directory does not exist.
+        :raises FileNotFoundError: If no valid PDB files are found in the directory.
+        """
+
         # make sure that minimized PDBs are available and store the absolute paths
         # in dictionary of the form: {"MOD1": "/full/path/MOD1.pdb", ...}
         if not os.path.isdir(pdbs_minimized):
@@ -296,9 +335,8 @@ class ModificationLibrary(BaseModel):
         return residue
 
     def __setitem__(self, index, value):
-        logger.debug(f"Modification {self.modificationsp[index]} has value {value}.")
         """
-        Replace a application at the specified index.
+        Replace an application at the specified index.
 
         :param index: Index of the application to replace.
         :type index: int
@@ -307,10 +345,10 @@ class ModificationLibrary(BaseModel):
         :type value: Modification
         """
 
+        logger.debug(f"Modification {self.modificationsp[index]} has value {value}.")
         self.modifications[index] = value
 
     def __len__(self):
-        logger.debug(f"Number of modifications: {len(self.modifications)}")
         """
         Return the number of available modifications.
 
@@ -318,10 +356,10 @@ class ModificationLibrary(BaseModel):
         :rtype: int
         """
 
+        logger.debug(f"Number of modifications: {len(self.modifications)}")
         return len(self.modifications)
 
     def __iter__(self):
-        logger.debug(f"{self.modifications} has been iterated over.")
         """
         Iterate over available modifications.
 
@@ -329,4 +367,5 @@ class ModificationLibrary(BaseModel):
         :rtype: iterator[Modification]
         """
 
+        logger.debug(f"{self.modifications} has been iterated over.")
         return iter(self.modifications)

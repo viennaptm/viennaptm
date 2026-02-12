@@ -84,6 +84,36 @@ def minimize_and_write_pdb(
 
 
 def execute_energy_minimization(structure: AnnotatedStructure, workdir: Union[Path, str] = None, clean_up: bool = True) -> AnnotatedStructure:
+    """
+    Perform GROMACS-based energy minimization on a structure.
+
+    The structure is written to a temporary or user-provided working
+    directory, processed using a standard GROMACS minimization pipeline
+    (``pdb2gmx`` followed by energy minimization), and reloaded as a new
+    :class:`AnnotatedStructure` instance.
+
+    If no working directory is provided, a temporary directory is created.
+    Optionally, the working directory is removed after completion.
+
+    :param structure: The input structure to be energy minimized.
+    :type structure: AnnotatedStructure
+
+    :param workdir: Directory in which GROMACS files are created and
+                    executed. If ``None``, a temporary directory is used.
+    :type workdir: str or pathlib.Path or None
+
+    :param clean_up: Whether to remove the working directory after
+                     successful minimization.
+    :type clean_up: bool
+
+    :return: The minimized structure reloaded from the resulting PDB file.
+    :rtype: AnnotatedStructure
+
+    :raises OSError: If working directory creation or deletion fails.
+    :raises RuntimeError: If any GROMACS step in the minimization
+                          pipeline fails.
+    """
+
     # prepare temporary folder and input
     if not workdir:
         workdir = Path(tempfile.mkdtemp(suffix=None, prefix="viennaptm_", dir=None))

@@ -7,6 +7,17 @@ from pydantic import BaseModel, model_validator, field_validator, Field
 
 
 class GROMACSParameters(BaseModel):
+    """
+    Configuration parameters controlling GROMACS-based processing steps.
+
+    :param minimize: Whether to perform energy minimization of the
+                     modified structure after applying the modification.
+    :type minimize: bool
+
+    :raises ValueError: If unknown or extra parameters are provided
+                        (``extra = "forbid"``).
+    """
+
     minimize: bool = Field(default=False, description="Energy minimize the modified structure.")
 
     model_config = {

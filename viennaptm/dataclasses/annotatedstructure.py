@@ -122,7 +122,7 @@ class AnnotatedStructure(Structure):
 
     def delete_log_entry(self, residue_number: int, chain_identifier: str,):
         """
-        Delete a application log entry.
+        Delete an application log entry.
 
         Entries are removed based on matching residue number and chain identifier.
 
