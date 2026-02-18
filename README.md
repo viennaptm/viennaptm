@@ -1,5 +1,5 @@
 <!-- Logo floated to the right -->
-<img src="docs/source/_static/logo.png" alt="Vienna-PTM logo" align="right" width="150"/>
+<img src="docs/source/_static/logo.png" alt="Vienna-PTM logo" align="right" width="140"/>
 
 # Vienna-PTM 3.0: Modify proteins with post-translational modifications
 
@@ -26,7 +26,7 @@
 ## Overview
 
 
-<img src="assets/ptm_example.png" alt="protein example" align="right" width="140"/>
+<img src="assets/ptm_example.png" alt="protein example" align="right" width="200"/>
 
 [Vienna-PTM](https://doi.org/10.1093/nar/gkt416) is a software tool developed in the
 group of [Prof. Bojan Žagrović](https://www.maxperutzlabs.ac.at/research/research-groups/zagrovic) 
