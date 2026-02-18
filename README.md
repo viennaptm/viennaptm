@@ -1,7 +1,5 @@
 <!-- Logo floated to the right -->
-<p align="right">
-  <img src="docs/source/_static/logo.png" width="120">
-</p>
+<img src="docs/source/_static/logo.png" alt="Vienna-PTM logo" align="right" width="150"/>
 
 # Vienna-PTM 3.0: Modify proteins with post-translational modifications
 
@@ -30,9 +28,9 @@
 <img src="assets/ptm_example.png" alt="protein example" style="float: right; margin: 0 0 1em 1em;" />
 
 [Vienna-PTM](https://doi.org/10.1093/nar/gkt416) is a software tool developed in the
-group of Prof. Bojan Žagrović at the [MFPL Institute](https://www.maxperutzlabs.ac.at/research/research-groups/zagrovic)
-the University of Vienna. It enables the automated and chemically realistic introduction
-of PTMs into protein three-dimensional structures provided as PDB files.
+group of [Prof. Bojan Žagrović](https://www.maxperutzlabs.ac.at/research/research-groups/zagrovic) 
+at the [Max Perutz Labs & University of Vienna](https://www.maxperutzlabs.ac.at/). It enables the automated and 
+chemically realistic introduction of PTMs into protein three-dimensional structures provided as PDB files.
 
 Vienna-PTM currently supports 256 different enzymatic and non-enzymatic PTMs and performs
 geometrically accurate placement of modifications at user-defined sites 
@@ -49,6 +47,7 @@ compatibility with GROMACS.
 
 For full documentation, tutorials, and API reference, please visit the
 [Vienna-PTM Documentation](https://viennaptm.github.io/viennaptm/index.html#).
+
 
 ## Installation
 
