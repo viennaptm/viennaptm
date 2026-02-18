@@ -9,6 +9,8 @@
   <title>ModifierParameters &mdash; viennaptm 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=101bffb8" />
+      <link media="print" rel="stylesheet" type="text/css" href="../_static/print.css" />
       <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css" />
 
   
@@ -18,8 +20,6 @@
       <script src="../_static/doctools.js?v=fd6eb6e6"></script>
       <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-      <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
-      <script src="../_static/datatable-init.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -131,22 +131,24 @@ arguments or through an external YAML / JSON configuration file.</p>
 <li><p>The merged configuration is validated and normalized.</p></li>
 </ol>
 <p>Invalid or unknown parameters are rejected.</p>
-<section id="attributes">
-<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading"></a></h2>
-<dl class="simple">
-<dt>config<span class="classifier">pathlib.Path or str, optional</span></dt><dd><p>Path to a YAML or JSON configuration file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<em>pathlib.Path</em><em> or </em><em>str</em><em>, </em><em>optional</em>) – Path to a YAML or JSON configuration file (optional).</p></li>
+<li><p><strong>input</strong> (<em>pathlib.Path</em><em> or </em><em>str</em><em>, </em><em>optional</em>) – Input structure, either as a local PDB/mmCIF file or a 4-character PDB identifier.</p></li>
+<li><p><strong>modify</strong> (<em>list</em><em>[</em><em>str</em><em>] or </em><em>str</em><em>, </em><em>optional</em>) – One or more residue modification specifications, e.g., <code class="docutils literal notranslate"><span class="pre">&quot;A:50=V3H&quot;</span></code>.
+Multiple modifications can be provided as a list.</p></li>
+<li><p><strong>output</strong> (<em>pathlib.Path</em><em> or </em><em>str</em>) – Output structure file, must end with <code class="docutils literal notranslate"><span class="pre">.pdb</span></code> or <code class="docutils literal notranslate"><span class="pre">.cif</span></code>.
+Defaults to <code class="docutils literal notranslate"><span class="pre">output.pdb</span></code>.</p></li>
+<li><p><strong>gromacs</strong> (<em>GROMACSParameters</em>) – Nested GROMACS configuration parameters.</p></li>
+<li><p><strong>logger</strong> (<em>str</em>) – Logging destination. Use <code class="docutils literal notranslate"><span class="pre">&quot;console&quot;</span></code> for stdout logging or
+provide a file path to log to a file.</p></li>
+<li><p><strong>debug</strong> (<em>bool</em>) – Enable verbose debug logging if <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+</ul>
 </dd>
-<dt>input<span class="classifier">pathlib.Path or str, optional</span></dt><dd><p>Input structure, either as a local PDB/mmCIF file or a 4-character
-PDB identifier.</p>
-</dd>
-<dt>modify<span class="classifier">list[str] or str, optional</span></dt><dd><p>One or more residue modification specifications.</p>
-</dd>
-<dt>output<span class="classifier">pathlib.Path or str, optional</span></dt><dd><p>Output structure file. Must end with <code class="docutils literal notranslate"><span class="pre">.pdb</span></code> or <code class="docutils literal notranslate"><span class="pre">.cif</span></code>.</p>
-</dd>
-<dt>logger<span class="classifier">str</span></dt><dd><p>Logging destination. Use <code class="docutils literal notranslate"><span class="pre">&quot;console&quot;</span></code> for stdout logging or a file
-path to enable file logging.</p>
-</dd>
-<dt>debug<span class="classifier">bool</span></dt><dd><p>Enable verbose debug logging if <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If unknown or extra parameters are provided
+(<code class="docutils literal notranslate"><span class="pre">extra=&quot;forbid&quot;</span></code>).</p>
 </dd>
 </dl>
 <dl class="py attribute">
@@ -328,7 +330,6 @@ converts string paths to <code class="xref py py-class docutils literal notransl
 </dl>
 </dd></dl>
 
-</section>
 </dd></dl>
 
 <p class="rubric">Methods</p>

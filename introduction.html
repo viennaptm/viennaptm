@@ -9,6 +9,8 @@
   <title>Introduction &mdash; viennaptm 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=101bffb8" />
+      <link media="print" rel="stylesheet" type="text/css" href="_static/print.css" />
       <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css" />
 
   
@@ -18,8 +20,6 @@
       <script src="_static/doctools.js?v=fd6eb6e6"></script>
       <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-      <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
-      <script src="_static/datatable-init.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -121,51 +121,47 @@ in some cases, of the protein backbone or the N- and C-termini.
 PTMs can affect key protein properties such as molecular mass, electric charge, three-dimensional
 structure, stability and lifetime, cellular localization, and biological activity.</p>
 <p>In cells, PTMs are introduced via two main mechanisms:</p>
-<div class="line-block">
-<div class="line">• <strong>Enzymatic PTMs</strong> are installed by specific enzymes. They are usually tightly regulated,</div>
-<div class="line-block">
-<div class="line">site-specific, and often reversible.</div>
-</div>
-<div class="line">• <strong>Non-enzymatic PTMs</strong> occur without enzymatic control and are driven by intrinsic</div>
-<div class="line-block">
-<div class="line">chemical reactivity and cellular conditions such as pH, redox state, or metabolite</div>
-<div class="line">concentrations.</div>
-</div>
-</div>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Enzymatic PTMs</strong> are installed by specific enzymes. They are usually tightly regulated, site-specific, and often reversible.</p></li>
+<li><p><strong>Non-enzymatic PTMs</strong> occur without enzymatic control and are driven by intrinsic chemical reactivity and cellular conditions such as pH, redox state, or metabolite concentrations.</p></li>
+</ul>
+</div></blockquote>
 <p class="rubric">WHY DO PTMs MATTER?</p>
 <p>PTMs dramatically increase proteome complexity and enable rapid regulation of protein
 function without the need for new protein synthesis, allowing a much larger set of building
 blocks than what is provided by the 20 canonical amino acids. Through PTMs, a single protein
 can adopt multiple functional states depending on the cellular context.</p>
 <p>Cellular regulation relies heavily on PTMs because they:</p>
-<div class="line-block">
-<div class="line">• enable fast and reversible decision-making</div>
-<div class="line">• conserve cellular energy</div>
-<div class="line">• ensure correct timing of biological processes</div>
-<div class="line">• allow cellular and tissue specialization</div>
-<div class="line">• prevent uncontrolled or damaging reactions</div>
-</div>
+<blockquote>
+<div><ul class="simple">
+<li><p>enable fast and reversible decision-making</p></li>
+<li><p>conserve cellular energy</p></li>
+<li><p>ensure correct timing of biological processes</p></li>
+<li><p>allow cellular and tissue specialization</p></li>
+<li><p>prevent uncontrolled or damaging reactions</p></li>
+</ul>
+</div></blockquote>
 <p>When regulatory mechanisms fail, normal cellular behavior breaks down and disease can
 arise. As a result, PTMs play central roles in cancer, neurodegeneration, metabolic
 disorders, and immune system function.</p>
-<p class="rubric">WHAT DOES VIENNA-PTM DO?</p>
-<p><a class="reference external" href="https://doi.org/10.1093/nar/gkt416">Vienna-PTM</a> is a software tool developed in the
-group of Prof. Bojan Žagrović at the
-<a class="reference external" href="https://www.maxperutzlabs.ac.at/research/research-groups/zagrovic">MFPL Institute</a> of
-the University of Vienna. It enables the automated and chemically realistic introduction
+<p class="rubric">WHAT DOES VIENNAPTM DO</p>
+<p><a class="reference external" href="https://doi.org/10.1093/nar/gkt416">ViennaPTM</a> is a software tool developed in the
+group of <a class="reference external" href="https://www.maxperutzlabs.ac.at/research/research-groups/zagrovic">Prof. Bojan Žagrović</a> at the
+<a class="reference external" href="https://www.maxperutzlabs.ac.at/">Max Perutz Labs &amp; University of Vienna</a>. It enables the automated and chemically realistic introduction
 of PTMs into protein three-dimensional structures provided as PDB files.
-Vienna-PTM currently supports 256 enzymatic and non-enzymatic PTMs and performs geometrically
+ViennaPTM currently supports 256 enzymatic and non-enzymatic PTMs and performs geometrically
 accurate placement of modifications at user-defined sites (see <a class="reference internal" href="list_of_ptms.html"><span class="doc">List of PTMs</span></a> for a complete list).
 Optionally, users can perform a subsequent energy minimization using the GROMACS molecular
-simulation package. This removes unfavorable steric orientations and makes the structure
+simulation package. This removes unfavorable steric clashes and makes the structure
 amenable to downstream processing.
-Vienna-PTM is designed to support structural and computational applications,
-such as molecular dynamics simulations and structural analysis. Force-field parameters are
-provided for the widely used <strong>GROMOS 45A3, 54A7, and 54A8</strong> force fields, with direct
+ViennaPTM is designed to support structural and computational applications,
+such as molecular dynamics simulations and structural analyses. Force-field parameters are
+provided for the widely used <strong>GROMOS 45A3, 54A7, and 54A8</strong> force-fields, with direct
 compatibility with GROMACS.</p>
 <p class="rubric">LICENCE AND CONTRIBUTION</p>
-<p>The <a class="reference external" href="https://github.com/viennaptm/viennaptm">Vienna-PTM package</a> is an open-source
-project and is free to use. Users are encouraged to review the
+<p>The <a class="reference external" href="https://github.com/viennaptm/viennaptm">ViennaPTM package</a> is an open-source
+project and is free to use (code: Apache-2 / library: attribution-NonCommercial 4.0 International). Users are encouraged to review the
 <a class="reference external" href="https://github.com/viennaptm/viennaptm/blob/development/LICENSE">code</a> and
 <a class="reference external" href="https://github.com/viennaptm/viennaptm/blob/development/viennaptm/resources/LICENSE">library</a>
 licences before using the software.</p>

@@ -1,0 +1,16 @@
+/* Justify normal paragraph text */
+.rst-content p {
+    text-align: justify;
+    hyphens: auto;
+}
+
+/* Justify list items */
+.rst-content li {
+    text-align: justify;
+}
+
+/* Reduce space above rubric */
+.rst-content p.rubric {
+    margin-top: 3em;      /* space above heading */
+    margin-bottom: 0.3em; /* space below heading */
+}

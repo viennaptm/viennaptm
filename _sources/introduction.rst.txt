@@ -15,11 +15,8 @@ structure, stability and lifetime, cellular localization, and biological activit
 
 In cells, PTMs are introduced via two main mechanisms:
 
-| • **Enzymatic PTMs** are installed by specific enzymes. They are usually tightly regulated,
-|   site-specific, and often reversible.
-| • **Non-enzymatic PTMs** occur without enzymatic control and are driven by intrinsic
-|   chemical reactivity and cellular conditions such as pH, redox state, or metabolite
-|   concentrations.
+ * **Enzymatic PTMs** are installed by specific enzymes. They are usually tightly regulated, site-specific, and often reversible.
+ * **Non-enzymatic PTMs** occur without enzymatic control and are driven by intrinsic chemical reactivity and cellular conditions such as pH, redox state, or metabolite concentrations.
 
 
 .. rubric:: WHY DO PTMs MATTER?
@@ -31,39 +28,38 @@ can adopt multiple functional states depending on the cellular context.
 
 Cellular regulation relies heavily on PTMs because they:
 
-| • enable fast and reversible decision-making
-| • conserve cellular energy
-| • ensure correct timing of biological processes
-| • allow cellular and tissue specialization
-| • prevent uncontrolled or damaging reactions
+ * enable fast and reversible decision-making
+ * conserve cellular energy
+ * ensure correct timing of biological processes
+ * allow cellular and tissue specialization
+ * prevent uncontrolled or damaging reactions
 
 When regulatory mechanisms fail, normal cellular behavior breaks down and disease can
 arise. As a result, PTMs play central roles in cancer, neurodegeneration, metabolic
 disorders, and immune system function.
 
 
-.. rubric:: WHAT DOES VIENNA-PTM DO?
+.. rubric:: WHAT DOES VIENNAPTM DO
 
-`Vienna-PTM <https://doi.org/10.1093/nar/gkt416>`__ is a software tool developed in the
-group of Prof. Bojan Žagrović at the
-`MFPL Institute <https://www.maxperutzlabs.ac.at/research/research-groups/zagrovic>`__ of
-the University of Vienna. It enables the automated and chemically realistic introduction
+`ViennaPTM <https://doi.org/10.1093/nar/gkt416>`__ is a software tool developed in the
+group of `Prof. Bojan Žagrović <https://www.maxperutzlabs.ac.at/research/research-groups/zagrovic>`__ at the
+`Max Perutz Labs & University of Vienna <https://www.maxperutzlabs.ac.at/>`__. It enables the automated and chemically realistic introduction
 of PTMs into protein three-dimensional structures provided as PDB files.
-Vienna-PTM currently supports 256 enzymatic and non-enzymatic PTMs and performs geometrically
+ViennaPTM currently supports 256 enzymatic and non-enzymatic PTMs and performs geometrically
 accurate placement of modifications at user-defined sites (see :doc:`list_of_ptms` for a complete list).
 Optionally, users can perform a subsequent energy minimization using the GROMACS molecular
-simulation package. This removes unfavorable steric orientations and makes the structure
+simulation package. This removes unfavorable steric clashes and makes the structure
 amenable to downstream processing.
-Vienna-PTM is designed to support structural and computational applications,
-such as molecular dynamics simulations and structural analysis. Force-field parameters are
-provided for the widely used **GROMOS 45A3, 54A7, and 54A8** force fields, with direct
+ViennaPTM is designed to support structural and computational applications,
+such as molecular dynamics simulations and structural analyses. Force-field parameters are
+provided for the widely used **GROMOS 45A3, 54A7, and 54A8** force-fields, with direct
 compatibility with GROMACS.
 
 
 .. rubric:: LICENCE AND CONTRIBUTION
 
-The `Vienna-PTM package <https://github.com/viennaptm/viennaptm>`__ is an open-source
-project and is free to use. Users are encouraged to review the
+The `ViennaPTM package <https://github.com/viennaptm/viennaptm>`__ is an open-source
+project and is free to use (code: Apache-2 / library: attribution-NonCommercial 4.0 International). Users are encouraged to review the
 `code <https://github.com/viennaptm/viennaptm/blob/development/LICENSE>`__ and
 `library <https://github.com/viennaptm/viennaptm/blob/development/viennaptm/resources/LICENSE>`__
 licences before using the software.

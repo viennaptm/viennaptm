@@ -9,6 +9,8 @@
   <title>API &mdash; viennaptm 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=101bffb8" />
+      <link media="print" rel="stylesheet" type="text/css" href="_static/print.css" />
       <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css" />
 
   
@@ -18,8 +20,6 @@
       <script src="_static/doctools.js?v=fd6eb6e6"></script>
       <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-      <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
-      <script src="_static/datatable-init.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -130,12 +130,14 @@ file, annotated with modifications, and written back to disk.</p>
 </div>
 <p>The application log is internally stored as a <code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> and
 includes the following columns:</p>
-<div class="line-block">
-<div class="line">• <code class="docutils literal notranslate"><span class="pre">residue_number</span></code></div>
-<div class="line">• <code class="docutils literal notranslate"><span class="pre">chain_identifier</span></code></div>
-<div class="line">• <code class="docutils literal notranslate"><span class="pre">original_abbreviation</span></code></div>
-<div class="line">• <code class="docutils literal notranslate"><span class="pre">target_abbreviation</span></code></div>
-</div>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">residue_number</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">chain_identifier</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">original_abbreviation</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">target_abbreviation</span></code></p></li>
+</ul>
+</div></blockquote>
 <p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">Modifier</span></code> class acts as a high-level interface between a
 <code class="xref py py-class docutils literal notranslate"><span class="pre">ModificationLibrary</span></code> and an annotated structure. It locates a specific
 residue within the structure, removes hydrogen atoms from the target residue,

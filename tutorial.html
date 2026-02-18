@@ -9,6 +9,8 @@
   <title>Tutorial &mdash; viennaptm 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=101bffb8" />
+      <link media="print" rel="stylesheet" type="text/css" href="_static/print.css" />
       <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css" />
 
   
@@ -18,8 +20,6 @@
       <script src="_static/doctools.js?v=fd6eb6e6"></script>
       <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-      <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
-      <script src="_static/datatable-init.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -112,13 +112,13 @@
              
   <section id="tutorial">
 <h1>Tutorial<a class="headerlink" href="#tutorial" title="Link to this heading"></a></h1>
-<p class="rubric">HOW TO USE VIENNA-PTM</p>
-<p>Once Vienna-PTM (and optionally GROMACS) is installed (see the <a class="reference internal" href="installation.html"><span class="doc">Installation</span></a> page for all necessary steps), there are multiple ways to run it.</p>
+<p class="rubric">HOW TO USE VIENNAPTM</p>
+<p>Once ViennaPTM (and optionally GROMACS) is installed (see the <a class="reference internal" href="installation.html"><span class="doc">Installation</span></a> page for all necessary steps), there are multiple ways to run it.</p>
 <p>The entrypoint provides quick and easy usage via the command line (CLI) or a configuration file. The Application Programming Interface (API) offers more flexibility and is recommended for batch processing or advanced user modifications.</p>
 <p>This tutorial starts with an example of CLI usage.</p>
 <p class="rubric">COMMAND LINE</p>
 <p><strong>1. Environment</strong></p>
-<p>To run Vienna-PTM, first activate the conda environment in your terminal:</p>
+<p>To run ViennaPTM, first activate the conda environment in your terminal:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>viennaptm
 </pre></div>
 </div>
@@ -132,7 +132,7 @@
 </div>
 <img alt="_images/parameter_console_input.png" src="_images/parameter_console_input.png" />
 <p><strong>3. Finish</strong></p>
-<p>Congratulations! You have generated your first Vienna-PTM run. The modified structure is now saved in the output file (here: “testoutput.pdb”).</p>
+<p>Congratulations! You have generated your first ViennaPTM run. The modified structure is now saved in the output file (here: “testoutput.pdb”).</p>
 <img alt="_images/finished_run.png" src="_images/finished_run.png" />
 <p class="rubric">CONFIG FILE</p>
 <p>For repetitive runs, a configuration file can be useful as it reduces the risk of typos or mistakes.</p>
@@ -175,25 +175,27 @@
 </pre></div>
 </div>
 <p><strong>4. Logger details</strong></p>
-<p>Vienna-PTM uses <a class="reference external" href="https://docs.python.org/3/library/logging.html">Python’s logging module</a>. Log levels indicate the severity or importance of messages:</p>
-<p>DEBUG</p>
-<div class="line-block">
-<div class="line">• Purpose: Detailed information useful for diagnosing problems and understanding the program’s internal state.</div>
-<div class="line">• Use case: Outputs every step of a calculation, data transformation, or function call.</div>
-<div class="line">• Visibility: Only shown if the logger is set to <cite>DEBUG</cite>.</div>
-</div>
-<p>INFO</p>
-<div class="line-block">
-<div class="line">• Purpose: General information about the progress of the program.</div>
-<div class="line">• Use case: High-level messages a user or developer might want to see during normal operation.</div>
-<div class="line">• Visibility: Shown if the logger is set to <cite>INFO</cite> or lower (<cite>DEBUG</cite> also shows <cite>INFO</cite>).</div>
-</div>
-<p>WARNING</p>
-<div class="line-block">
-<div class="line">• Purpose: Indicates something unexpected or potentially problematic, but not fatal.</div>
-<div class="line">• Use case: Non-critical issues, such as missing optional data or minor inconsistencies.</div>
-<div class="line">• Visibility: Always shown if the logger level is <cite>WARNING</cite> or lower.</div>
-</div>
+<p>ViennaPTM uses <a class="reference external" href="https://docs.python.org/3/library/logging.html">Python’s logging module</a>. Log levels indicate the severity or importance of messages:</p>
+<dl class="simple">
+<dt>DEBUG</dt><dd><ul class="simple">
+<li><p>Purpose: Detailed information useful for diagnosing problems and understanding the program’s internal state.</p></li>
+<li><p>Use case: Outputs every step of a calculation, data transformation, or function call.</p></li>
+<li><p>Visibility: Only shown if the logger is set to <cite>DEBUG</cite>.</p></li>
+</ul>
+</dd>
+<dt>INFO</dt><dd><ul class="simple">
+<li><p>Purpose: General information about the progress of the program.</p></li>
+<li><p>Use case: High-level messages a user or developer might want to see during normal operation.</p></li>
+<li><p>Visibility: Shown if the logger is set to <cite>INFO</cite> or lower (<cite>DEBUG</cite> also shows <cite>INFO</cite>).</p></li>
+</ul>
+</dd>
+<dt>WARNING</dt><dd><ul class="simple">
+<li><p>Purpose: Indicates something unexpected or potentially problematic, but not fatal.</p></li>
+<li><p>Use case: Non-critical issues, such as missing optional data or minor inconsistencies.</p></li>
+<li><p>Visibility: Always shown if the logger level is <cite>WARNING</cite> or lower.</p></li>
+</ul>
+</dd>
+</dl>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>viennaptm<span class="w"> </span>--config<span class="w"> </span>tests/data/example_config.yaml<span class="w"> </span>--debug<span class="w"> </span><span class="nb">true</span>
 </pre></div>
 </div>

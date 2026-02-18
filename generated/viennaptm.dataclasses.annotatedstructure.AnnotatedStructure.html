@@ -9,6 +9,8 @@
   <title>AnnotatedStructure &mdash; viennaptm 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=101bffb8" />
+      <link media="print" rel="stylesheet" type="text/css" href="../_static/print.css" />
       <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css" />
 
   
@@ -18,8 +20,6 @@
       <script src="../_static/doctools.js?v=fd6eb6e6"></script>
       <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-      <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
-      <script src="../_static/datatable-init.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -137,11 +137,11 @@ back to disk.</p>
 from the N-terminus. A residue number indicates the position of an amino acid
 in a protein’s polypeptide chain, starting from (1) at the N-terminus and
 ending at the C-terminus. For example, <code class="docutils literal notranslate"><span class="pre">&quot;His</span> <span class="pre">18&quot;</span></code> means the 18th amino acid
-in the chain is Histidine.</p></li>
+in the chain is histidine.</p></li>
 <li><p><strong>chain_identifier</strong> (<em>str</em>) – Chain identifier of the residue (commonly a single uppercase letter ).</p></li>
 <li><p><strong>original_abbreviation</strong> (<em>str</em>) – The original abbreviation for a canonical amino acid refers to a standardized
 three-letter abbreviation for a standard, representative amino acid in a database
-like <code class="docutils literal notranslate"><span class="pre">UniProt</span></code> eg: <code class="docutils literal notranslate"><span class="pre">ASP</span></code> for Aspartic acid or <code class="docutils literal notranslate"><span class="pre">GLU</span></code> for Glutamic acid.</p></li>
+like <code class="docutils literal notranslate"><span class="pre">UniProt</span></code> eg: <code class="docutils literal notranslate"><span class="pre">ASP</span></code> for aspartic acid or <code class="docutils literal notranslate"><span class="pre">GLU</span></code> for glutamic acid.</p></li>
 <li><p><strong>target_abbreviation</strong> (<em>str</em>) – Three-letter abbreviation of the modified or target amino acid.</p></li>
 </ul>
 </dd>
@@ -151,7 +151,7 @@ like <code class="docutils literal notranslate"><span class="pre">UniProt</span>
 <dl class="py method">
 <dt class="sig sig-object py" id="viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.delete_log_entry">
 <span class="sig-name descname"><span class="pre">delete_log_entry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">residue_number</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chain_identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.delete_log_entry" title="Link to this definition"></a></dt>
-<dd><p>Delete a application log entry.</p>
+<dd><p>Delete an application log entry.</p>
 <p>Entries are removed based on matching residue number and chain identifier.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -159,7 +159,7 @@ like <code class="docutils literal notranslate"><span class="pre">UniProt</span>
 <li><p><strong>residue_number</strong> (<em>int</em>) – Position of the residue in the polypeptide chain. A residue number indicates
 the position of an amino acid in a protein’s polypeptide chain, starting
 from (1) at the N-terminus and ending at the C-terminus. For example,
-<code class="docutils literal notranslate"><span class="pre">&quot;His</span> <span class="pre">18&quot;</span></code> means the 18th amino acid in the chain is Histidine.</p></li>
+<code class="docutils literal notranslate"><span class="pre">&quot;His</span> <span class="pre">18&quot;</span></code> means the 18th amino acid in the chain is histidine.</p></li>
 <li><p><strong>chain_identifier</strong> (<em>str</em>) – Chain identifier of the residue.</p></li>
 </ul>
 </dd>
@@ -300,7 +300,7 @@ and max. width 1000).</p>
 <td><p>Copy entity recursively.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.delete_log_entry" title="viennaptm.dataclasses.annotatedstructure.AnnotatedStructure.delete_log_entry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_log_entry</span></code></a>(residue_number, ...)</p></td>
-<td><p>Delete a application log entry.</p></td>
+<td><p>Delete an application log entry.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">detach_child</span></code>(id)</p></td>
 <td><p>Remove a child.</p></td>

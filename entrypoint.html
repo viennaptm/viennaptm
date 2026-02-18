@@ -9,6 +9,8 @@
   <title>Entrypoint &mdash; viennaptm 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=101bffb8" />
+      <link media="print" rel="stylesheet" type="text/css" href="_static/print.css" />
       <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css" />
 
   
@@ -18,8 +20,6 @@
       <script src="_static/doctools.js?v=fd6eb6e6"></script>
       <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-      <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
-      <script src="_static/datatable-init.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -112,13 +112,13 @@
              
   <section id="entrypoint">
 <h1>Entrypoint<a class="headerlink" href="#entrypoint" title="Link to this heading"></a></h1>
-<p>Vienna-PTM can be used via an entrypoint from the command line, a configuration
+<p>ViennaPTM can be used via an entrypoint from the command line, a configuration
 file, or custom scripts.</p>
 <p class="rubric">COMMAND LINE</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Activate the conda environment</span>
 conda<span class="w"> </span>activate<span class="w"> </span>viennaptm
 
-<span class="c1"># 2. Use the entrypoint (CLI) to run Vienna-PTM</span>
+<span class="c1"># 2. Use the entrypoint (CLI) to run ViennaPTM</span>
 viennaptm<span class="w"> </span>--input<span class="w"> </span>tests/data/1vii.pdb<span class="w"> </span><span class="se">\</span>
 <span class="w">          </span>--modify<span class="w"> </span><span class="s2">&quot;A:50=V3H&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">          </span>--output<span class="w"> </span>testoutput.pdb
@@ -168,7 +168,7 @@ viennaptm<span class="w"> </span>--input<span class="w"> </span>tests/data/1vii.
 <span class="nt">debug</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </pre></div>
 </div>
-<p>To run Vienna-PTM using a configuration file:</p>
+<p>To run ViennaPTM using a configuration file:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>viennaptm<span class="w"> </span>--config<span class="w"> </span>tests/data/example_config.yaml
 </pre></div>
 </div>
@@ -275,7 +275,7 @@ viennaptm<span class="w"> </span>--input<span class="w"> </span>tests/data/1vii.
 <span class="c1"># 2. Activate the conda environment</span>
 conda<span class="w"> </span>activate<span class="w"> </span>viennaptm
 
-<span class="c1"># 3. Run Vienna-PTM</span>
+<span class="c1"># 3. Run ViennaPTM</span>
 viennaptm<span class="w"> </span>--input<span class="w"> </span>tests/data/1vii.pdb<span class="w"> </span><span class="se">\</span>
 <span class="w">          </span>--modify<span class="w"> </span><span class="s2">&quot;A:50=V3H&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">          </span>--output<span class="w"> </span>testoutput.pdb
@@ -312,7 +312,7 @@ viennaptm<span class="w"> </span>--input<span class="w"> </span>tests/data/1vii.
 <span class="nb">source</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>conda<span class="w"> </span>info<span class="w"> </span>--base<span class="k">)</span><span class="s2">/etc/profile.d/conda.sh&quot;</span>
 conda<span class="w"> </span>activate<span class="w"> </span>viennaptm
 
-<span class="c1"># ---- Run Vienna-PTM ----</span>
+<span class="c1"># ---- Run ViennaPTM ----</span>
 viennaptm<span class="w"> </span>--input<span class="w"> </span>tests/data/1vii.pdb<span class="w"> </span><span class="se">\</span>
 <span class="w">          </span>--modify<span class="w"> </span><span class="s2">&quot;A:50=V3H&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">          </span>--output<span class="w"> </span>testoutput.pdb
@@ -320,7 +320,7 @@ viennaptm<span class="w"> </span>--input<span class="w"> </span>tests/data/1vii.
 <span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Job finished at </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
-<p><strong>NOTE:</strong> Alternatively, you can skip the conda initialization and directly provide the full path to the Vienna-PTM entrypoint:</p>
+<p><strong>NOTE:</strong> Alternatively, you can skip the conda initialization and directly provide the full path to the ViennaPTM entrypoint:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/path/to/your/installation/bin/viennaptm<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--input<span class="w"> </span>tests/data/1vii.pdb<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--modify<span class="w"> </span><span class="s2">&quot;A:50=V3H&quot;</span><span class="w"> </span><span class="se">\</span>
