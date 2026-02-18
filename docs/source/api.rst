@@ -25,10 +25,10 @@ file, annotated with modifications, and written back to disk.
 The application log is internally stored as a :class:`pandas.DataFrame` and
 includes the following columns:
 
-| • ``residue_number``
-| • ``chain_identifier``
-| • ``original_abbreviation``
-| • ``target_abbreviation``
+ *  ``residue_number``
+ *  ``chain_identifier``
+ *  ``original_abbreviation``
+ *  ``target_abbreviation``
 
 
 The :class:`Modifier` class acts as a high-level interface between a

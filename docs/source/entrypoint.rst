@@ -1,7 +1,7 @@
 Entrypoint
 ============
 
-Vienna-PTM can be used via an entrypoint from the command line, a configuration
+ViennaPTM can be used via an entrypoint from the command line, a configuration
 file, or custom scripts.
 
 
@@ -12,7 +12,7 @@ file, or custom scripts.
     # 1. Activate the conda environment
     conda activate viennaptm
 
-    # 2. Use the entrypoint (CLI) to run Vienna-PTM
+    # 2. Use the entrypoint (CLI) to run ViennaPTM
     viennaptm --input tests/data/1vii.pdb \
               --modify "A:50=V3H" \
               --output testoutput.pdb
@@ -74,7 +74,7 @@ Help message:
     logger: console
     debug: false
 
-To run Vienna-PTM using a configuration file:
+To run ViennaPTM using a configuration file:
 
 .. code-block:: bash
 
@@ -161,7 +161,7 @@ Example Bash script:
     # 2. Activate the conda environment
     conda activate viennaptm
 
-    # 3. Run Vienna-PTM
+    # 3. Run ViennaPTM
     viennaptm --input tests/data/1vii.pdb \
               --modify "A:50=V3H" \
               --output testoutput.pdb
@@ -206,7 +206,7 @@ Example SLURM submission script:
     source "$(conda info --base)/etc/profile.d/conda.sh"
     conda activate viennaptm
 
-    # ---- Run Vienna-PTM ----
+    # ---- Run ViennaPTM ----
     viennaptm --input tests/data/1vii.pdb \
               --modify "A:50=V3H" \
               --output testoutput.pdb
@@ -214,7 +214,7 @@ Example SLURM submission script:
     echo "Job finished at $(date)"
 
 
-**NOTE:** Alternatively, you can skip the conda initialization and directly provide the full path to the Vienna-PTM entrypoint:
+**NOTE:** Alternatively, you can skip the conda initialization and directly provide the full path to the ViennaPTM entrypoint:
 
 .. code-block:: bash
 

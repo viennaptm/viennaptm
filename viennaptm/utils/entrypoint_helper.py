@@ -111,7 +111,7 @@ def collect_kwargs(argv: list[str]) -> dict:
     return kwargs
 
 def expand_dotted_keys(flat: dict) -> dict:
-    # pydantic does not expand things like "--gromacs.minimize" automatically,
+    # Pydantic does not expand things like "--gromacs.minimize" automatically,
     # so 'digest' them here and unpack as required
     out = {}
     for key, value in flat.items():

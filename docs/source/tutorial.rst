@@ -1,9 +1,9 @@
 Tutorial
 ============
 
-.. rubric:: HOW TO USE VIENNA-PTM
+.. rubric:: HOW TO USE VIENNAPTM
 
-Once Vienna-PTM (and optionally GROMACS) is installed (see the :doc:`installation` page for all necessary steps), there are multiple ways to run it.
+Once ViennaPTM (and optionally GROMACS) is installed (see the :doc:`installation` page for all necessary steps), there are multiple ways to run it.
 
 The entrypoint provides quick and easy usage via the command line (CLI) or a configuration file. The Application Programming Interface (API) offers more flexibility and is recommended for batch processing or advanced user modifications.
 
@@ -13,7 +13,7 @@ This tutorial starts with an example of CLI usage.
 
 **1. Environment**
 
-To run Vienna-PTM, first activate the conda environment in your terminal:
+To run ViennaPTM, first activate the conda environment in your terminal:
 
 .. code-block:: bash
 
@@ -35,7 +35,7 @@ Next, use the entrypoint command to generate the desired post-translational modi
 
 **3. Finish**
 
-Congratulations! You have generated your first Vienna-PTM run. The modified structure is now saved in the output file (here: "testoutput.pdb").
+Congratulations! You have generated your first ViennaPTM run. The modified structure is now saved in the output file (here: "testoutput.pdb").
 
 .. image:: _static/finished_run.png
 
@@ -99,25 +99,22 @@ Multiple parameters can be changed at once. For example, to change both the logg
 
 **4. Logger details**
 
-Vienna-PTM uses `Python's logging module <https://docs.python.org/3/library/logging.html>`__. Log levels indicate the severity or importance of messages:
+ViennaPTM uses `Python's logging module <https://docs.python.org/3/library/logging.html>`__. Log levels indicate the severity or importance of messages:
 
 DEBUG
-
-| • Purpose: Detailed information useful for diagnosing problems and understanding the program’s internal state.
-| • Use case: Outputs every step of a calculation, data transformation, or function call.
-| • Visibility: Only shown if the logger is set to `DEBUG`.
+ *  Purpose: Detailed information useful for diagnosing problems and understanding the program’s internal state.
+ *  Use case: Outputs every step of a calculation, data transformation, or function call.
+ *  Visibility: Only shown if the logger is set to `DEBUG`.
 
 INFO
-
-| • Purpose: General information about the progress of the program.
-| • Use case: High-level messages a user or developer might want to see during normal operation.
-| • Visibility: Shown if the logger is set to `INFO` or lower (`DEBUG` also shows `INFO`).
+ *  Purpose: General information about the progress of the program.
+ *  Use case: High-level messages a user or developer might want to see during normal operation.
+ *  Visibility: Shown if the logger is set to `INFO` or lower (`DEBUG` also shows `INFO`).
 
 WARNING
-
-| • Purpose: Indicates something unexpected or potentially problematic, but not fatal.
-| • Use case: Non-critical issues, such as missing optional data or minor inconsistencies.
-| • Visibility: Always shown if the logger level is `WARNING` or lower.
+ *  Purpose: Indicates something unexpected or potentially problematic, but not fatal.
+ *  Use case: Non-critical issues, such as missing optional data or minor inconsistencies.
+ *  Visibility: Always shown if the logger level is `WARNING` or lower.
 
 .. code-block:: bash
 

@@ -27,7 +27,7 @@
 
 ## Overview
 
-<img src="_static/ptm_example.png" alt="protein example" style="float: right; margin: 0 0 1em 1em;" />
+<img src="assets/ptm_example.png" alt="protein example" style="float: right; margin: 0 0 1em 1em;" />
 
 [Vienna-PTM](https://doi.org/10.1093/nar/gkt416) is a software tool developed in the
 group of Prof. Bojan Žagrović at the [MFPL Institute](https://www.maxperutzlabs.ac.at/research/research-groups/zagrovic)
@@ -44,7 +44,7 @@ amenable to downstream processing.
 
 Vienna-PTM is designed to support structural and computational applications,
 such as molecular dynamics simulations and structural analysis. Force-field parameters are
-provided for the widely used **GROMOS 45A3, 54A7, and 54A8** force fields, with direct
+provided for the widely used **GROMOS 45A3, 54A7, and 54A8** force-fields, with direct
 compatibility with GROMACS.
 
 For full documentation, tutorials, and API reference, please visit the

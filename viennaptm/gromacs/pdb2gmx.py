@@ -13,7 +13,7 @@ class PDB2GMXParameters(BaseModel):
     Parameter model for the GROMACS ``pdb2gmx`` command.
 
     This model defines all input and output paths as well as optional
-    command-line flags controlling force field selection, water model,
+    command-line flags controlling force-field selection, water model,
     chain handling, and verbosity.
 
     All path-like parameters are normalized to :class:`pathlib.Path`
@@ -38,7 +38,7 @@ class PDB2GMXParameters(BaseModel):
         Optional cleaned PDB output file.
     :type clean_pdb: pathlib.Path or None
     :param forcefield:
-        Force field identifier passed to ``pdb2gmx``.
+        Force-field identifier passed to ``pdb2gmx``.
     :type forcefield: str or None
     :param water:
         Water model identifier.
@@ -93,7 +93,7 @@ class PDB2GMX(GromacsCommand):
     Wrapper for the GROMACS ``pdb2gmx`` topology generation command.
 
     This command converts a PDB structure into a GROMACS-compatible
-    coordinate file and topology using the provided force field and
+    coordinate file and topology using the provided force-field and
     water model settings.
 
     Command-line arguments are derived from a

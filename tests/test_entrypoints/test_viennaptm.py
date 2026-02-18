@@ -94,7 +94,7 @@ class Test_ViennaPTM(unittest.TestCase):
             [
                 "viennaptm",
                 "--input", str(self._1vii_PDB_path),
-                # TODO: enable, once force field parameters are installed
+                # TODO: enable, once force-field parameters are installed
                 #"--modify", "A:50=V3H",
                 "--gromacs.minimize", "True",
                 "--output", str(output_path)

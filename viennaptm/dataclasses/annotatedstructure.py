@@ -67,7 +67,7 @@ class AnnotatedStructure(Structure):
             from the N-terminus. A residue number indicates the position of an amino acid
             in a protein's polypeptide chain, starting from \(1\) at the N-terminus and
             ending at the C-terminus. For example, ``"His 18"`` means the 18th amino acid
-            in the chain is Histidine.
+            in the chain is histidine.
         :type residue_number: int
 
         :param chain_identifier:
@@ -77,7 +77,7 @@ class AnnotatedStructure(Structure):
         :param original_abbreviation:
             The original abbreviation for a canonical amino acid refers to a standardized
             three-letter abbreviation for a standard, representative amino acid in a database
-            like ``UniProt`` eg: ``ASP`` for Aspartic acid or ``GLU`` for Glutamic acid.
+            like ``UniProt`` eg: ``ASP`` for aspartic acid or ``GLU`` for glutamic acid.
         :type original_abbreviation: str
 
         :param target_abbreviation:
@@ -130,7 +130,7 @@ class AnnotatedStructure(Structure):
             Position of the residue in the polypeptide chain. A residue number indicates
             the position of an amino acid in a protein's polypeptide chain, starting
             from \(1\) at the N-terminus and ending at the C-terminus. For example,
-            ``"His 18"`` means the 18th amino acid in the chain is Histidine.
+            ``"His 18"`` means the 18th amino acid in the chain is histidine.
         :type residue_number: int
 
         :param chain_identifier:
