@@ -74,11 +74,14 @@ jobs:
     name: 📦 Build Package
     runs-on: ubuntu-latest
     needs: [test, docs]
-    if: startsWith(github.ref, 'refs/tags/v')
+    if: github.ref_type == 'tag'
 
     steps:
       - name: Package check-out
         uses: actions/checkout@v4
+
+      - name: Clean previous builds
+        run: rm -rf dist build *.egg-info
 
       - name: Set up Pyton 3.11
         uses: actions/setup-python@v4
@@ -89,9 +92,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install --upgrade build "setuptools>=77" wheel twine
-
-      - name: Clean previous builds
-        run: rm -rf dist build *.egg-info
 
       - name: Build distributions
         run: python -m build
@@ -109,7 +109,7 @@ jobs:
     name: 🧪 Publish to TestPyPI
     runs-on: ubuntu-latest
     needs: build
-    if: startsWith(github.ref, 'refs/tags/v')
+    if: github.ref_type == 'tag'
 
     environment:
       name: testpypi
@@ -122,8 +122,10 @@ jobs:
           name: dist
           path: dist
 
-      - name: Install twine
-        run: python -m pip install twine
+      - name: Install build tools
+        run: |
+          python -m pip install --upgrade pip
+          pip install --upgrade "setuptools>=77" wheel twine
 
       - name: Upload to TestPyPI
         run: |
@@ -138,7 +140,7 @@ jobs:
     name: 🚀 Publish to PyPI
     runs-on: ubuntu-latest
     needs: publish-testpypi
-    if: startsWith(github.ref, 'refs/tags/v')
+    if: github.ref_type == 'tag'
 
     environment:
       name: pypi
@@ -154,8 +156,10 @@ jobs:
           name: dist
           path: dist
 
-      - name: Install twine
-        run: python -m pip install twine
+      - name: Install build tools
+        run: |
+          python -m pip install --upgrade pip
+          pip install --upgrade "setuptools>=77" wheel twine
 
       - name: Upload to PyPI
         run: python -m twine upload dist/*
