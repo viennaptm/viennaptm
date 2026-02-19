@@ -17,7 +17,6 @@ maintainers = [
   { name = "Sophie Margreitter", email = "sophie.margreitter@gmail.com" },
   { name = "Christian Margreitter", email = "christian.margreitter@gmail.com" }
 ]
-license-files = ["LICEN[CS]E*", "LICENSE", "viennaptm/resources/LICENSE"]
 keywords = [
   "Post-translational modifications",
   "python",
@@ -61,6 +60,10 @@ render = [
     "nglview>=4.0",
     "notebook>=7.0.0"
 ]
+build = [
+    "twine",
+    "build"
+]
 
 [project.urls]
 Homepage = "https://viennaptm.univie.ac.at"
@@ -74,6 +77,10 @@ where = ["."]
 
 [tool.setuptools]
 include-package-data = true
+license-files = [
+  "LICEN[CS]E*",
+  "viennaptm/resources/LICENSE"
+]
 
 [tool.setuptools.package-data]
 viennaptm = ["resources/**/*"]
