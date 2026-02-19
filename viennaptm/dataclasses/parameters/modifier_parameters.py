@@ -27,10 +27,10 @@ class GROMACSParameters(BaseModel):
 
 class ModifierParameters(BaseModel):
     """
-    Configuration model for a Vienna-PTM command-line run.
+    Configuration model for a ViennaPTM command-line run.
 
     This Pydantic model represents the fully resolved configuration used by
-    the Vienna-PTM CLI. Parameters can be provided either via command-line
+    the ViennaPTM CLI. Parameters can be provided either via command-line
     arguments or through an external YAML / JSON configuration file.
 
     Configuration resolution follows a strict precedence order:

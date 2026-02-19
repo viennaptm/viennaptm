@@ -174,7 +174,7 @@ def instantiate_logging_CLI(cfg: ModifierParameters, logger) -> None:
     * Configures logging based on the resolved CLI configuration
       (console-only or file + console).
     * Logs the execution start timestamp.
-    * Logs the installed Vienna-PTM package version.
+    * Logs the installed ViennaPTM package version.
     * Logs the fully resolved configuration with a dedicated configuration logger.
 
     CLI arguments override configuration file values when both are present.
@@ -199,7 +199,7 @@ def instantiate_logging_CLI(cfg: ModifierParameters, logger) -> None:
 
     # log header region with package version number installed
     pkg_version = get_package_version("viennaptm")
-    logging.getLogger().info("Vienna-PTM version installed: %s", pkg_version)
+    logging.getLogger().info("ViennaPTM version installed: %s", pkg_version)
 
     # log resolved configuration: --config (if used) is the base, CLI arguments override selectively
     config_logger = get_config_logger(include_file_handler=not cfg.is_console_logging())

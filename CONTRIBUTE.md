@@ -1,6 +1,6 @@
 # Contribute
 
-Vienna-PTM is constantly evolving, and we are grateful for any contributions - bug fixes, features, issue reports and documentation.
+ViennaPTM is constantly evolving, and we are grateful for any contributions - bug fixes, features, issue reports and documentation.
 This document outlines best practices, and we kindly ask you to follow them to make the process seamless for everyone!
 
 ---

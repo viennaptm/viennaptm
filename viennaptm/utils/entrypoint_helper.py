@@ -2,6 +2,7 @@ import sys
 from typing import get_args, get_origin
 
 from pydantic import BaseModel
+from viennaptm.utils.logger import get_package_version
 
 
 def _add_value(kwargs: dict, key: str, value):
@@ -123,6 +124,16 @@ def expand_dotted_keys(flat: dict) -> dict:
     return out
 
 
+def print_logo():
+    print("""██╗   ██╗██╗███████╗███╗   ██╗███╗   ██╗ █████╗ ██████╗ ████████╗███╗   ███╗
+██║   ██║██║██╔════╝████╗  ██║████╗  ██║██╔══██╗██╔══██╗╚══██╔══╝████╗ ████║
+██║   ██║██║█████╗  ██╔██╗ ██║██╔██╗ ██║███████║██████╔╝   ██║   ██╔████╔██║
+╚██╗ ██╔╝██║██╔══╝  ██║╚██╗██║██║╚██╗██║██╔══██║██╔═══╝    ██║   ██║╚██╔╝██║
+ ╚████╔╝ ██║███████╗██║ ╚████║██║ ╚████║██║  ██║██║        ██║   ██║ ╚═╝ ██║
+  ╚═══╝  ╚═╝╚══════╝╚═╝  ╚═══╝╚═╝  ╚═══╝╚═╝  ╚═╝╚═╝        ╚═╝   ╚═╝     ╚═╝
+                                                                            """)
+
+
 def print_help_CLI(tool: str, argv: list[str], parameters_object):
     def is_basemodel_type(tp):
         origin = get_origin(tp)
@@ -156,8 +167,15 @@ def print_help_CLI(tool: str, argv: list[str], parameters_object):
                 print(f"      {desc}")
 
     if "--help" in argv or "-h" in argv or "--version" in argv or "-v" in argv:
-        print("Usage:")
+        print("\n")
+        print_logo()
+        print("\nMain entrypoint of ViennaPTM, a toolkit that enables the automated and chemically\n"
+              "realistic introduction of PTMs into protein three-dimensional structures provided\n"
+              "as PDB files.")
+
+        print("\n\nUsage:")
         print(f"  {tool} [OPTIONS]\n")
         print("Options:")
         print_help(parameters_object)
+        print(f"\nVersion: {get_package_version('viennaptm')}")
         sys.exit(0)

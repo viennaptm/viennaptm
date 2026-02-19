@@ -1,7 +1,7 @@
 <!-- Logo floated to the right -->
-<img src="docs/source/_static/logo.png" alt="Vienna-PTM logo" align="right" width="140"/>
+<img src="docs/source/_static/logo.png" alt="ViennaPTM logo" align="right" width="140"/>
 
-# Vienna-PTM 3.0: Modify proteins with post-translational modifications
+# ViennaPTM 3.0: Modify proteins with post-translational modifications
 
 [![Coverage Status](https://coveralls.io/repos/github/username/project-name/badge.svg?branch=main)](https://coveralls.io/github/username/project-name?branch=main)  
 [![PyPI version](https://badge.fury.io/py/viennaptm.svg)](https://pypi.org/project/viennaptm/)  
@@ -28,12 +28,12 @@
 
 <img src="assets/ptm_example.png" alt="protein example" align="right" width="170"/>
 
-[Vienna-PTM](https://doi.org/10.1093/nar/gkt416) is a software tool developed in the
+[ViennaPTM](https://doi.org/10.1093/nar/gkt416) is a software tool developed in the
 group of [Prof. Bojan Žagrović](https://www.maxperutzlabs.ac.at/research/research-groups/zagrovic) 
 at the [Max Perutz Labs & University of Vienna](https://www.maxperutzlabs.ac.at/). It enables the automated and 
 chemically realistic introduction of PTMs into protein three-dimensional structures provided as PDB files.
 
-Vienna-PTM currently supports 256 different enzymatic and non-enzymatic PTMs and performs
+ViennaPTM currently supports 256 different enzymatic and non-enzymatic PTMs and performs
 geometrically accurate placement of modifications at user-defined sites 
 (see [List of PTMs](https://viennaptm.github.io/viennaptm/list_of_ptms.html) for a complete list).
 
@@ -41,13 +41,13 @@ Optionally, users can perform a subsequent energy minimization using the GROMACS
 simulation package. This removes unfavorable steric orientations and makes the structure
 amenable to downstream processing.
 
-Vienna-PTM is designed to support structural and computational applications,
+ViennaPTM is designed to support structural and computational applications,
 such as molecular dynamics simulations and structural analysis. Force-field parameters are
 provided for the widely used **GROMOS 45A3, 54A7, and 54A8** force-fields, with direct
 compatibility with GROMACS.
 
 For full documentation, tutorials, and API reference, please visit the
-[Vienna-PTM Documentation](https://viennaptm.github.io/viennaptm/index.html#).
+[ViennaPTM Documentation](https://viennaptm.github.io/viennaptm/index.html#).
 
 
 ## Installation
@@ -65,13 +65,13 @@ conda activate viennaptm
 ```bash
 # Install the minimal package
 pip install viennaptm
-
-# Install additional dependencies for 3D protein rendering
-pip install viennaptm[render]
 ```
 
 ### Install with development dependencies
 ```bash
+# Install additional dependencies for 3D protein rendering
+pip install viennaptm[render]
+
 # Install additional dependencies for running tests
 pip install viennaptm[test]
 
@@ -105,7 +105,7 @@ For more information, refer to the [Entrypoint](https://viennaptm.github.io/vien
 # Activate the conda environment
 conda activate viennaptm
 
-# Use the entrypoint to run Vienna-PTM
+# Use the entrypoint to run ViennaPTM
 viennaptm --input tests/data/1vii.pdb \
           --modify "A:50=V3H" \
           --output testoutput.pdb

@@ -7,7 +7,7 @@ from viennaptm.utils.paths import attach_root_path
 
 class ViennaPTMFixtures(BaseModel):
     """
-    Container for file-system fixtures used by Vienna-PTM.
+    Container for file-system fixtures used by ViennaPTM.
 
     This model centralizes paths to bundled resources such as the
     modification library, template PDB files, and default GROMACS
