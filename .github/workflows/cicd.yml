@@ -76,6 +76,10 @@ jobs:
     needs: [test, docs]
     if: github.ref_type == 'tag'
 
+    environment:
+      name: testpypi
+      url: https://test.pypi.org/project/${{ github.event.repository.name }}/
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
