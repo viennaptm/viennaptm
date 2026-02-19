@@ -26,7 +26,7 @@
 ## Overview
 
 
-<img src="assets/ptm_example.png" alt="protein example" align="right" width="200"/>
+<img src="assets/ptm_example.png" alt="protein example" align="right" width="170"/>
 
 [Vienna-PTM](https://doi.org/10.1093/nar/gkt416) is a software tool developed in the
 group of [Prof. Bojan Žagrović](https://www.maxperutzlabs.ac.at/research/research-groups/zagrovic) 
