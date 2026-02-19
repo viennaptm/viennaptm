@@ -91,7 +91,7 @@ jobs:
       - name: Install build tools
         run: |
           python -m pip install --upgrade pip
-          pip install --upgrade build "setuptools>=77" wheel twine
+          pip install --upgrade build "setuptools>=77" wheel "twine==6.2.0"
 
       - name: Build distributions
         run: python -m build
@@ -125,7 +125,7 @@ jobs:
       - name: Install build tools
         run: |
           python -m pip install --upgrade pip
-          pip install --upgrade "setuptools>=77" wheel twine
+          pip install --upgrade "setuptools>=77" wheel "twine==6.2.0"
 
       - name: Upload to TestPyPI
         run: |
@@ -159,7 +159,7 @@ jobs:
       - name: Install build tools
         run: |
           python -m pip install --upgrade pip
-          pip install --upgrade "setuptools>=77" wheel twine
+          pip install --upgrade "setuptools>=77" wheel "twine==6.2.0"
 
       - name: Upload to PyPI
         run: python -m twine upload dist/*
