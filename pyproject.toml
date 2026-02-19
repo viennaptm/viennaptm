@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=70", "wheel", "build"]
+requires = ["setuptools>=77", "wheel", "build"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -35,6 +35,13 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13"
 ]
+
+license = "Apache-2.0"
+license-files = [
+  "LICEN[CS]E*",
+  "viennaptm/resources/LICENSE"
+]
+
 requires-python = ">=3.9"
 dependencies = [
     "pydantic>=2",
@@ -75,10 +82,6 @@ where = ["."]
 
 [tool.setuptools]
 include-package-data = true
-license-files = [
-  "LICEN[CS]E*",
-  "viennaptm/resources/LICENSE"
-]
 
 [tool.setuptools.package-data]
 viennaptm = ["resources/**/*"]
