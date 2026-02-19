@@ -109,7 +109,7 @@ jobs:
           TWINE_PASSWORD: ${{ secrets.TEST_PYPI_API_TOKEN }}
 
   release-pypi:
-    name: 🚀 Publish to PyPI
+    name: 🚀 Publish to PyPI (manual confirmation required)
     runs-on: ubuntu-latest
     needs: release-testpypi
     if: github.ref_type == 'tag'
