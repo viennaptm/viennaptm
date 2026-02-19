@@ -137,7 +137,7 @@ jobs:
       - name: Install build tools
         run: |
           python -m pip install --upgrade pip
-          pip install --upgrade "setuptools>=77" wheel "twine>=6"
+          pip install --upgrade build "setuptools>=77" wheel "twine>=6"
 
       - name: Build distributions
         run: python -m build
