@@ -8,7 +8,7 @@ from Bio.PDB import PDBParser
 from Bio.PDB.Residue import Residue
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
-from viennaptm.utils.error_handling import raise_with_logging_error
+from viennaptm.utils.error_handling import raise_with_logging_error, raise_with_logging_warning
 from viennaptm.utils.fixtures import ViennaPTMFixtures
 
 logger = logging.getLogger(__name__)
@@ -83,6 +83,35 @@ class AddBranch(BaseModel):
         return self
 
 
+class ModificationMetadata(BaseModel):
+    """
+    Structured container for chemical modification metadata associated with a residue.
+
+    This model stores identifiers and descriptive information for a residue
+    modification, including:
+
+    - original_residue_name: Name of the unmodified (parent) residue.
+    - modified_residue_name: Name of the modified residue.
+    - modification_type: Classification or description of the modification
+      (e.g., substitution, phosphorylation, methylation).
+    - modification_smiles: SMILES string representing the chemical structure
+      of the modification.
+    - pubchem_id: Identifier of the modification in the PubChem database.
+    - chemspider_id: Identifier of the modification in the ChemSpider database.
+
+    All fields are optional. Additional (unexpected) fields are forbidden.
+    """
+
+    original_residue_name: Optional[str] = None
+    modified_residue_name: Optional[str] = None
+    modification_type: Optional[str] = None
+    modification_smiles: Optional[str] = None
+    pubchem_id: Optional[str] = None
+    chemspider_id: Optional[str] = None
+
+    model_config = ConfigDict(extra="forbid")
+
+
 class Modification(BaseModel):
     """
     Definition of a residue application.
@@ -119,17 +148,17 @@ class Modification(BaseModel):
     # to the modified residue's; if an atom does not exist in one of the end-states, it is set to None
     # for example, atoms that need to be deleted during application, are marked as None
     atom_mapping: List[Tuple[Union[str, None], Union[str, None]]] = Field(default_factory=list)
-    logger.debug(f"List of atoms mapped: {atom_mapping}")
 
     # each AddBranch contains information on how to modify _one_ part (or branch) of the original
     # residue into the target, modified PTM; for most modifications, only one branch is needed, but
     # this setup allows to modify the original residues in different regions without a need to
     # 'truncate' back all the way to last common atom
     add_branches: List[AddBranch] = Field(default_factory=list)
-    logger.debug(f"List of added branches: {add_branches}")
 
-    # TODO: add actual modified names for PTMs (should be part of the server files)
-    #       plan is to use another JSON in the "metadata" resource folder for this purpose
+    # annotations such as chemical name and catalogue IDs for a given result of a modification
+    # not mandatory
+    metadata: ModificationMetadata = Field(default_factory=ModificationMetadata)
+
     model_config = ConfigDict(extra="forbid")
 
 
@@ -139,6 +168,8 @@ class ModificationLibraryMetadata(BaseModel):
     """
     date: Optional[str] = "undefined"
     custom_library: bool = False
+
+    model_config = ConfigDict(extra="forbid")
 
 
 class ModificationLibrary(BaseModel):
@@ -163,9 +194,13 @@ class ModificationLibrary(BaseModel):
     modifications: List[Modification] = Field(default_factory=list)
     metadata: ModificationLibraryMetadata = Field(default_factory=ModificationLibraryMetadata)
     target_templates: Dict[str, str] = Field(default_factory=dict)
+
     model_config = ConfigDict(extra="forbid")
 
-    def __init__(self, library_path: Union[str, Path] = None, pdbs_minimized: Union[str, Path] = None):
+    def __init__(self,
+                 library_path: Union[str, Path] = None,
+                 metadata_path: Union[str, Path] = None,
+                 pdbs_minimized: Union[str, Path] = None):
         BaseModel.__init__(self)
         """
         Load a :class:`ModificationLibrary` and associated template PDB files.
@@ -176,6 +211,9 @@ class ModificationLibrary(BaseModel):
         :param library_path: Path to the JSON application library file.
         :type library_path: str or pathlib.Path or None
         
+        :param metadata_path: Path to the JSON annotations file holding full chemical names and other information.
+        :type metadata_path: str or pathlib.Path or None
+        
         :param pdbs_minimized: Directory containing minimized PDB templates.
         :type pdbs_minimized: str or pathlib.Path or None
 
@@ -185,23 +223,50 @@ class ModificationLibrary(BaseModel):
             If library parsing fails or required templates are missing.
         """
 
-        # if not set, assume, that the default (i.e. latest installed) PTM library and the latest PDBs are to be used
-        if not library_path or not pdbs_minimized:
+        # if not set, assume, that the default (i.e. in-built) PTM library, annotations and
+        # the latest PDBs are to be used
+        if not library_path or not metadata_path or not pdbs_minimized:
             library_path = fixtures.PTMS_LIBRARY_PATH
             pdbs_minimized = fixtures.PTMS_PDBS_DIR_PATH
-            logger.info(f"No modifications library or PDB directory specified, loading current default.")
+            metadata_path = fixtures.PTMS_METADATA_PATH
+            logger.info(f"No modifications library, annotations file or PDB directory specified, loading current default.")
         else:
             self.metadata.custom_library = True
-            logger.info(f"Using custom library ({library_path}) and PDB directory ({pdbs_minimized}).")
+            logger.info(f"Using custom library ({library_path}), annotations file ({metadata_path}) and PDB directory ({pdbs_minimized}).")
 
         # load modification information and paths to pre-minimized PDB files
-        self._load_library(library_path)
+        self._load_library(library_path, metadata_path)
         self._populate_minimized_PDBs(pdbs_minimized)
 
         logger.info(f"Modification library version: {self.metadata.date} (custom_library={self.metadata.custom_library})")
         logger.info(f"---> Comprised of {len(self.modifications)} modifications, indexed {len(self.target_templates)} PDB files.")
 
-    def _load_library(self, library_path: Union[str, Path] = None):
+    def _load_metadata(self, metadata_path: str) -> Dict[str, ModificationMetadata]:
+        # load modifications from JSON ("VAL_V3H")
+        # with its metadata (residue name, modification type and smiles, PubChemID, ... )
+        with open(metadata_path, 'r') as f:
+            metadata = json.load(f)
+
+        # generate dictionary metadata
+        metadata_objects = {}
+
+        # attach metadata
+        for key in metadata.keys():
+            try:
+                modification_metadata = ModificationMetadata(**metadata[key])
+                metadata_objects[key] = modification_metadata
+            except Exception as e:
+                logger.warning(f"Metadata of modification {key} could not be added. "
+                               f"Check for spelling mistakes or errors. JSON can only include:"
+                               f"'original_residue_name', 'modified_residue_name', "
+                               f"'modification_type', 'modification_smiles', "
+                               f"'pubchem_id' and 'chemspider_id'. Exception reads: {e}")
+                continue
+        return metadata_objects
+
+    def _load_library(self,
+                      library_path: Union[str, Path] = None,
+                      metadata_path: Union[str, Path] = None):
         """
         Load a modification library from a JSON file.
 
@@ -213,12 +278,15 @@ class ModificationLibrary(BaseModel):
         :param library_path: Path to the JSON modification library file.
         :type library_path: str or pathlib.Path or None
 
+        :param metadata_path: Path to the JSON annotations file holding full chemical names and other information.
+        :type metadata_path: str or pathlib.Path or None
+
         :raises KeyError: If required top-level keys are missing.
         :raises FileNotFoundError: If the specified file does not exist.
         :raises json.JSONDecodeError: If the file is not valid JSON.
         """
 
-        # load application library from JSON (modifications and metadata
+        # load application library from JSON (modifications and metadata)
         with open(library_path, 'r') as f:
             library = json.load(f)
 
@@ -229,14 +297,23 @@ class ModificationLibrary(BaseModel):
                                      logger=logger,
                                      exception_type=KeyError)
 
-        # parse metadata
+        # parse metadata: first are library-level metadata, then modification-level annotations
         self.metadata = ModificationLibraryMetadata.model_validate(library["metadata"])
+        modifications_metadata = self._load_metadata(metadata_path=metadata_path)
 
         # parse application file and report on loading
         for key in library["modifications"].keys():
+            # if available, use the annotations loaded above
+            try:
+                modification_metadata = modifications_metadata[key]
+            except KeyError:
+                modification_metadata = ModificationMetadata()
+
+            # create new instance of Modification
             original, modified = key.split('_')
             self.modifications.append(Modification(residue_original_abbreviation=original,
                                                    residue_modified_abbreviation=modified,
+                                                   metadata=modification_metadata,
                                                    **library["modifications"][key]))
             logger.debug(f"Modification {original}->{modified} added.")
 

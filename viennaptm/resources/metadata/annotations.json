@@ -1,10 +1,970 @@
 {
+  "ARG_RMN": {
+    "original_residue_name": "Arginine",
+    "modified_residue_name": "omega-N-methylarginine (0)",
+    "modification_type": "methylation",
+    "modification_smiles": "CN=C(N)NCCC[C@@H](C(=O)O)N",
+    "pubchem_id": "132862",
+    "chemspider_id": "117259"
+  },
+  "ARG_RSM": {
+    "original_residue_name": "Arginine",
+    "modified_residue_name": "symmetric-dimethylarginine (0)",
+    "modification_type": "methylation",
+    "modification_smiles": "CNC(=NC)NCCC[C@@H](C(=O)O)N",
+    "pubchem_id": "169148",
+    "chemspider_id": "147942"
+  },
+  "ARG_RMS": {
+    "original_residue_name": "Arginine",
+    "modified_residue_name": "symmetric-dimethylarginine (+1)",
+    "modification_type": "methylation",
+    "modification_smiles": "CNC(=[NH+]C)NCCC[C@@H](C(=O)[O-])[NH3+]",
+    "pubchem_id": "25320698",
+    "chemspider_id": "21239047"
+  },
+  "ARG_RAM": {
+    "original_residue_name": "Arginine",
+    "modified_residue_name": "asymmetric-dimethylarginine (0)",
+    "modification_type": "methylation",
+    "modification_smiles": "CN(C)C(=NCCC[C@@H](C(=O)O)N)N",
+    "pubchem_id": "123831",
+    "chemspider_id": "110375"
+  },
+  "ARG_RMA": {
+    "original_residue_name": "Arginine",
+    "modified_residue_name": "asymmetric-dimethylarginine (+1)",
+    "modification_type": "methylation",
+    "modification_smiles": "",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "ARG_RCI": {
+    "original_residue_name": "Arginine",
+    "modified_residue_name": "citrulline",
+    "modification_type": "deamination",
+    "modification_smiles": "C(C[C@@H](C(=O)O)N)CNC(=O)N",
+    "pubchem_id": "9750",
+    "chemspider_iid": "9367"
+  },
+  "ARG_ROP": {
+    "original_residue_name": "Arginine",
+    "modified_residue_name": "phosphoarginine (0)",
+    "modification_type": "phosphorylation",
+    "modification_smiles": "C(C[C@@H](C(=O)O)N)CN=C(N)NP(=O)(O)O",
+    "pubchem_id": "92150",
+    "chemspider_id": "83195"
+  },
+  "ARG_GSA": {
+    "original_residue_name": "Arginine",
+    "modified_residue_name": "glutamic semialdehyde",
+    "modification_type": "deamination",
+    "modification_smiles": "C(C[C@@H](C(=O)O)N)C=O",
+    "pubchem_id": "193305",
+    "chemspider_id": "167744"
+  },
+  "ARG_R1P": {
+    "original_residue_name": "Arginine",
+    "modified_residue_name": "phosphoarginine (-1)",
+    "modification_type": "phosphorylation",
+    "modification_smiles": "",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "ARG_RMC": {
+    "original_residue_name": "Arginine",
+    "modified_residue_name": "omega-N-methylarginine",
+    "modification_type": "methylation",
+    "modification_smiles": "",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "ASN_N3H": {
+    "original_residue_name": "Asparagine",
+    "modified_residue_name": "3-hydroxyasparagine (R)",
+    "modification_type": "hydroxylation",
+    "modification_smiles": "C(C(C(=O)N)O)(C(=O)O)N",
+    "pubchem_id": "4471902",
+    "chemspider_id": "3670287"
+  },
+  "ASN_NH3": {
+    "original_residue_name": "Asparagine",
+    "modified_residue_name": "3-hydroxyasparagine (S)",
+    "modification_type": "hydroxylation",
+    "modification_smiles": "[C@H]([C@@H](C(=O)N)O)(C(=O)O)N",
+    "pubchem_id": "15991574",
+    "chemspider_id": "13122509"
+  },
+  "ASN_ASP": {
+    "original_residue_name": "Asparagine",
+    "modified_residue_name": "aspartic acid (-1)",
+    "modification_type": "deamidation",
+    "modification_smiles": "",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "ASN_NNG": {
+    "original_residue_name": "Asparagine",
+    "modified_residue_name": "N-acetylglucosamine",
+    "modification_type": "glycosylation",
+    "modification_smiles": "CC(=O)N[C@@H](C=O)[C@H]([C@@H]([C@@H](CO)O)O)O",
+    "pubchem_id": "1738118",
+    "chemspider_id": "1376695"
+  },
+  "ASN_NME": {
+    "original_residue_name": "Asparagine",
+    "modified_residue_name": "N4-methylasparagine",
+    "modification_type": "methylation",
+    "modification_smiles": "CNC(=O)CC(C(=O)O)N",
+    "pubchem_id": "325695",
+    "chemspider_id": "288387"
+  },
+  "ASP_D2P": {
+    "original_residue_name": "Aspartate",
+    "modified_residue_name": "phosphoaspartate (-2)",
+    "modification_type": "phosphorylation",
+    "modification_smiles": "",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "ASP_DN3": {
+    "original_residue_name": "Aspartate",
+    "modified_residue_name": "3-hydroxyaspartate (0, R)",
+    "modification_type": "hydroxylation",
+    "modification_smiles": "[C@@H]([C@H](C(=O)O)O)(C(=O)O)N",
+    "pubchem_id": "11788378",
+    "chemspider_id": "9963052"
+  },
+  "ASP_D3H": {
+    "original_residue_name": "Aspartate",
+    "modified_residue_name": "3-hydroxyaspartate (-1, S)",
+    "modification_type": "hydroxylation",
+    "modification_smiles": "",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "ASP_DH3": {
+    "original_residue_name": "Aspartate",
+    "modified_residue_name": "3-hydroxyaspartate (-1, R)",
+    "modification_type": "hydroxylation",
+    "modification_smiles": "",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "ASP_D1P": {
+    "original_residue_name": "Aspartate",
+    "modified_residue_name": "phosphoaspartate (-1)",
+    "modification_type": "phosphorylation",
+    "modification_smiles": "",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "ASP_D3N": {
+    "original_residue_name": "Aspartate",
+    "modified_residue_name": "3-hydroxyaspartate (0, S)",
+    "modification_type": "hydroxylation",
+    "modification_smiles": "C(C(C(=O)O)O)(C(=O)O)N",
+    "pubchem_id": "5425",
+    "chemspider_id": "5232"
+  },
+  "ASP_DMA": {
+    "original_residue_name": "Aspartate",
+    "modified_residue_name": "aspartate methyl ester",
+    "modification_type": "methylation",
+    "modification_smiles": "COC(=O)C[C@@H](C(=O)O)N",
+    "pubchem_id": "97368",
+    "chemspider_id": "87886"
+  },
+  "CYS_CAM": {
+    "original_residue_name": "Cysteine",
+    "modified_residue_name": "S-carbamoyl-cysteine",
+    "modification_type": "carbamylation",
+    "modification_smiles": "C([C@@H](C(=O)O)NC(=O)N)S",
+    "pubchem_id": "90546",
+    "chemspider_id": "81753"
+  },
+  "CYS_CYM": {
+    "original_residue_name": "Cysteine",
+    "modified_residue_name": "S-methylcysteine",
+    "modification_type": "methylation",
+    "modification_smiles": "CSC[C@@H](C(=O)O)N",
+    "pubchem_id": "24417",
+    "chemspider_id": "22826"
+  },
+  "CYS_CSE": {
+    "original_residue_name": "Cysteine",
+    "modified_residue_name": "cysteic acid",
+    "modification_type": "oxidation",
+    "modification_smiles": "C(C(C(=O)O)N)S(=O)(=O)O",
+    "pubchem_id": "25701",
+    "chemspider_id": "23942"
+  },
+  "CYS_CSN": {
+    "original_residue_name": "Cysteine",
+    "modified_residue_name": "S-nitrosocysteine",
+    "modification_type": "nitrosylation",
+    "modification_smiles": "C([C@@H](C(=O)O)N)SN=O",
+    "pubchem_id": "9793848",
+    "chemspider_id": "7969615"
+  },
+  "CYS_CSA": {
+    "original_residue_name": "Cysteine",
+    "modified_residue_name": "cysteine sulfinic acid",
+    "modification_type": "oxidation",
+    "modification_smiles": "C(C(C(=O)O)N)S(=O)O",
+    "pubchem_id": "109",
+    "chemspider_id": "107"
+  },
+  "CYS_CYH": {
+    "original_residue_name": "Cysteine",
+    "modified_residue_name": "cysteine sulfenic acid",
+    "modification_type": "hydroxylation",
+    "modification_smiles": "C([C@@H](C(=O)O)N)SO",
+    "pubchem_id": "165339",
+    "chemspider_id": "144942"
+  },
+  "GLN_QH4": {
+    "original_residue_name": "Glutamine",
+    "modified_residue_name": "4-hydroxyglutamine (S)",
+    "modification_type": "hydroxylation",
+    "modification_smiles": "C([C@@H](C(=O)O)N)C(C(=O)N)O",
+    "pubchem_id": "54409926",
+    "chemspider_id": "61327209"
+  },
+  "GLN_Q4H": {
+    "original_residue_name": "Glutamine",
+    "modified_residue_name": "4-hydroxyglutamine (R)",
+    "modification_type": "hydroxylation",
+    "modification_smiles": "C(C(C(=O)O)N)C(C(=O)N)O",
+    "pubchem_id": "22621570",
+    "chemspider_id": "13488647"
+  },
+  "GLN_GLU": {
+    "original_residue_name": "Glutamine",
+    "modified_residue_name": "glutamic acid (-1)",
+    "modification_type": "deamidation",
+    "modification_smiles": "",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "GLN_QME": {
+    "original_residue_name": "Glutamine",
+    "modified_residue_name": "N5-methylglutamine",
+    "modification_type": "methylation",
+    "modification_smiles": "CNC(=O)CC[C@@H](C(=O)O)N",
+    "pubchem_id": "439925",
+    "chemspider_id": "388957"
+  },
+  "GLU_ECA": {
+    "original_residue_name": "Glutamate",
+    "modified_residue_name": "4-carboxyglutamate (-2)",
+    "modification_type": "carboxylation",
+    "modification_smiles":"",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "GLU_ECN": {
+    "original_residue_name": "Glutamate",
+    "modified_residue_name": "4-carboxyglutamate (-1)",
+    "modification_type": "carboxylation",
+    "modification_smiles":"",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "GLU_EME": {
+    "original_residue_name": "Glutamate",
+    "modified_residue_name": "glutamate methyl ester",
+    "modification_type": "methylation",
+    "modification_smiles":"COC(=O)CC[C@@H](C(=O)O)N",
+    "pubchem_id": "68662",
+    "chemspider_id": "61916"
+  },
+  "HIS_H11": {
+    "original_residue_name": "Histidine",
+    "modified_residue_name": "1-phosphohistidine (-1)",
+    "modification_type": "phosphorylation",
+    "modification_smiles":"",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "HIS_H12": {
+    "original_residue_name": "Histidine",
+    "modified_residue_name": "1-phosphohistidine (-2)",
+    "modification_type": "phosphorylation",
+    "modification_smiles":"",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "HIS_H1M": {
+    "original_residue_name": "Histidine",
+    "modified_residue_name": "1-methylhistidine (0)",
+    "modification_type": "methylation",
+    "modification_smiles":"CN1C=C(N=C1)C[C@@H](C(=O)O)N",
+    "pubchem_id": "92105",
+    "chemspider_id": "83153"
+  },
+  "HIS_H3C": {
+    "original_residue_name": "Histidine",
+    "modified_residue_name": "3-methylhistidine (+1)",
+    "modification_type": "methylation",
+    "modification_smiles":"",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "HIS_H1C": {
+    "original_residue_name": "Histidine",
+    "modified_residue_name": "1-methylhistidine (+1)",
+    "modification_type": "methylation",
+    "modification_smiles":"",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "HIS_H31": {
+    "original_residue_name": "Histidine",
+    "modified_residue_name": "3-phosphohistidine (-1)",
+    "modification_type": "phosphorylation",
+    "modification_smiles":"",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "HIS_H32": {
+    "original_residue_name": "Histidine",
+    "modified_residue_name": "3-phosphohistidine (-2)",
+    "modification_type": "phosphorylation",
+    "modification_smiles":"",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "HIS_ASP": {
+    "original_residue_name": "Histidine",
+    "modified_residue_name": "aspartic acid (-1)",
+    "modification_type": "?",
+    "modification_smiles":"",
+    "pubchem_id": "",
+    "chemspider_id": ""
+    },
+  "HIS_ASN": {
+    "original_residue_name": "Histidine",
+    "modified_residue_name": "asparagine",
+    "modification_type": "?",
+    "modification_smiles":"C([C@@H](C(=O)O)N)C(=O)N",
+    "pubchem_id": "6267",
+    "chemspider_id": "6031"
+  },
+  "HIS_H3M": {
+    "original_residue_name": "Histidine",
+    "modified_residue_name": "3-methylhistidine (0)",
+    "modification_type": "methylation",
+    "modification_smiles":"CN1C=NC=C1C[C@@H](C(=O)O)N",
+    "pubchem_id": "64969",
+    "chemspider_id": "58494"
+  },
+  "HIS_H2X": {
+    "original_residue_name": "Histidine",
+    "modified_residue_name": "2-oxo-histidine",
+    "modification_type": "oxidation",
+    "modification_smiles":"C1=C(NC(=O)N1)CC(C(=O)O)N",
+    "pubchem_id": "127761",
+    "chemspider_id": "113326"
+  },
+  "LEU_LNO": {
+    "original_residue_name": "Leucine",
+    "modified_residue_name": "norleucine",
+    "modification_type": "?",
+    "modification_smiles":"CCCC[C@@H](C(=O)O)N",
+    "pubchem_id": "21236",
+    "chemspider_id": "19964"
+  },
+  "LEU_L3H": {
+    "original_residue_name": "Leucine",
+    "modified_residue_name": "3-hydroxyleucine (R)",
+    "modification_type": "hydroxylation",
+    "modification_smiles":"",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "LEU_L5H": {
+    "original_residue_name": "Leucine",
+    "modified_residue_name": "5-hydroxyleucine (R)",
+    "modification_type": "hydroxylation",
+    "modification_smiles":"C[C@H](C[C@@H](C(=O)O)N)CO",
+    "pubchem_id": "15927964",
+    "chemspider_id": "32970048"
+  },
+  "LEU_LH5": {
+    "original_residue_name": "Leucine",
+    "modified_residue_name": "5-hydroxyleucine (S)",
+    "modification_type": "hydroxylation",
+    "modification_smiles":"C[C@@H](C[C@@H](C(=O)O)N)CO",
+    "pubchem_id": "15927962",
+    "chemspider_id": "32970047"
+  },
+  "LEU_L4H": {
+    "original_residue_name": "Leucine",
+    "modified_residue_name": "4-hydroxyleucine",
+    "modification_type": "hydroxylation",
+    "modification_smiles":"CC(C)(C[C@@H](C(=O)O)N)O",
+    "pubchem_id": "21087467",
+    "chemspider_id": "19895986"
+  },
+  "LEU_LH3": {
+    "original_residue_name": "Leucine",
+    "modified_residue_name": "3-hydroxyleucine (S)",
+    "modification_type": "hydroxylation",
+    "modification_smiles": "CC(C)[C@@H]([C@@H](C(=O)O)N)O ",
+    "pubchem_id": "6994741",
+    "chemspider_id": "5362730"
+  },
+  "LYS_LNO": {
+    "original_residue_name": "Lysine",
+    "modified_residue_name": "norleucine",
+    "modification_type": "deamination",
+    "modification_smiles": "CCCC[C@@H](C(=O)O)N",
+    "pubchem_id": "21236",
+    "chemspider_id": "19964"
+  },
+  "LYS_KPH": {
+    "original_residue_name": "Lysine",
+    "modified_residue_name": "5-hydroxylysine (+1, R)",
+    "modification_type": "hydroxylation",
+    "modification_smiles": "",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "LYS_KB2": {
+    "original_residue_name": "Lysine",
+    "modified_residue_name": "2-hydroxybutyryl-lysine (S)",
+    "modification_type": "hydroxybutyrylation",
+    "modification_smiles": "CC(CC(=O)N[C@@H](CCCCN)C(=O)O)O",
+    "pubchem_id": "117874440",
+    "chemspider_id": ""
+  },
+  "LYS_K2P": {
+    "original_residue_name": "Lysine",
+    "modified_residue_name": "phospholysine (-2)",
+    "modification_type": "phosphorylation",
+    "modification_smiles": "",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "LYS_K2B": {
+    "original_residue_name": "Lysine",
+    "modified_residue_name": "2-hydroxybutyryl-lysine (R)",
+    "modification_type": "hydroxybutyrylation",
+    "modification_smiles": "",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "LYS_KLB": {
+    "original_residue_name": "Lysine",
+    "modified_residue_name": "beta-lysyllysine",
+    "modification_type": "lysylation",
+    "modification_smiles": "",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "LYS_KLA": {
+    "original_residue_name": "Lysine",
+    "modified_residue_name": "alpha-lysyllysine",
+    "modification_type": "lysylation",
+    "modification_smiles": "",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "LYS_KHS": {
+    "original_residue_name": "Lysine",
+    "modified_residue_name": "hypusine (S)",
+    "modification_type": "?",
+    "modification_smiles": "",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "LYS_KHR": {
+    "original_residue_name": "Lysine",
+    "modified_residue_name": "hypusine (R)",
+    "modification_type": "",
+    "modification_smiles": "C(CCNC[C@@H](CCN)O)C[C@@H](C(=O)O)N",
+    "pubchem_id": "10922432",
+    "chemspider_id": "9097677"
+  },
+  "LYS_KHB": {
+    "original_residue_name": "Lysine",
+    "modified_residue_name": "2-hydroxyisobutyryl-lysine",
+    "modification_type": "hydroxyisobutyrylation",
+    "modification_smiles": "CC(C)(C(=O)N[C@@H](CCCCN)C(=O)O)O",
+    "pubchem_id": "129031734",
+    "chemspider_id": ""
+  },
+  "LYS_K1P": {
+    "original_residue_name": "Lysine",
+    "modified_residue_name": "phospholysine (-1)",
+    "modification_type": "phosphorylation",
+    "modification_smiles": "",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "LYS_K3C": {
+    "original_residue_name": "Lysine",
+    "modified_residue_name": "N6,N6,N6-trimethyllysine",
+    "modification_type": "methylation",
+    "modification_smiles": "C[N+](C)(C)CCCC[C@@H](C(=O)O)N",
+    "pubchem_id": "440121",
+    "chemspider_id": "389121"
+  },
+  "LYS_KAM": {
+    "original_residue_name": "Lysine",
+    "modified_residue_name": "homocitrulline",
+    "modification_type": "",
+    "modification_smiles": "C(CCNC(=O)N)C[C@@H](C(=O)O)N",
+    "pubchem_id": "65072",
+    "chemspider_id": "58582"
+  },
+  "LYS_KCA": {
+    "original_residue_name": "Lysine",
+    "modified_residue_name": "carboxylysine (-1)",
+    "modification_type": "carboxylation",
+    "modification_smiles": "",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "LYS_KCN": {
+    "original_residue_name": "Lysine",
+    "modified_residue_name": "carboxylysine (0)",
+    "modification_type": "carboxylation",
+    "modification_smiles": "",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "LYS_KHP": {
+    "original_residue_name": "Lysine",
+    "modified_residue_name": "5-hydroxylysine (+1, S)",
+    "modification_type": "hydroxylation",
+    "modification_smiles": "",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "LYS_KH5": {
+    "original_residue_name": "Lysine",
+    "modified_residue_name": "5-hydroxylysine (0, R)",
+    "modification_type": "hydroxylation",
+    "modification_smiles": "C(C[C@@H](C(=O)O)N)[C@H](CN)O",
+    "pubchem_id": "3032849",
+    "chemspider_id": "2297721"
+  },
+  "LYS_K5H": {
+    "original_residue_name": "Lysine",
+    "modified_residue_name": "5-hydroxylysine (0, S)",
+    "modification_type": "hydroxylation",
+    "modification_smiles": "",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "LYS_KMN": {
+    "original_residue_name": "Lysine",
+    "modified_residue_name": "methyllysine (0)",
+    "modification_type": "methylation",
+    "modification_smiles": "CNCCCCC(C(=O)O)N",
+    "pubchem_id": "541646",
+    "chemspider_id": "471673"
+  },
+  "LYS_KMC": {
+    "original_residue_name": "Lysine",
+    "modified_residue_name": "N6-methyllysine (+1)",
+    "modification_type": "methylation",
+    "modification_smiles": "",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "LYS_K2M": {
+    "original_residue_name": "Lysine",
+    "modified_residue_name": "N6,N6-dimethyllysine (0)",
+    "modification_type": "methylation",
+    "modification_smiles": "CN(C)CCCC[C@@H](C(=O)O)N",
+    "pubchem_id": "193344",
+    "chemspider_id": "167778"
+  },
+  "LYS_K2C": {
+    "original_residue_name": "Lysine",
+    "modified_residue_name": "N6,N6-dimethyllysine (+1)",
+    "modification_type": "methylation",
+    "modification_smiles": "",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "LYS_KAL": {
+    "original_residue_name": "Lysine",
+    "modified_residue_name": "allysine",
+    "modification_type": "deamination",
+    "modification_smiles": "C(CC=O)C[C@@H](C(=O)O)N",
+    "pubchem_id": "160603",
+    "chemspider_id": "141126"
+  },
+  "LYS_KAC": {
+    "original_residue_name": "Lysine",
+    "modified_residue_name": "N-acetyllysine",
+    "modification_type": "acetylation",
+    "modification_smiles": "CC(=O)N[C@@H](CCCCN)C(=O)O",
+    "pubchem_id": "92907",
+    "chemspider_id": "83869"
+  },
+  "MET_MXS": {
+    "original_residue_name": "Methionine",
+    "modified_residue_name": "methionine sulfoxide (S)",
+    "modification_type": "oxidation",
+    "modification_smiles": "CS(=O)CC[C@@H](C(=O)O)N",
+    "pubchem_id": "158980",
+    "chemspider_id": "139840"
+  },
+  "MET_MSX": {
+    "original_residue_name": "Methionine",
+    "modified_residue_name": "methionine sulfoxide (R)",
+    "modification_type": "oxidation",
+    "modification_smiles": "CS(=O)CC[C@H](C(=O)O)N",
+    "pubchem_id": "148508",
+    "chemspider_id": "130911"
+  },
+  "MET_MES": {
+    "original_residue_name": "Methionine",
+    "modified_residue_name": "methionine sulfone",
+    "modification_type": "oxidation",
+    "modification_smiles": "CS(=O)(=O)CC[C@@H](C(=O)O)N",
+    "pubchem_id": "445282",
+    "chemspider_id": "392966"
+  },
+  "MET_LNO": {
+    "original_residue_name": "Methionine",
+    "modified_residue_name": "norleucine",
+    "modification_type": "desulfurization",
+    "modification_smiles": "CCCC[C@@H](C(=O)O)N",
+    "pubchem_id": "21236",
+    "chemspider_id": "19964"
+  },
+  "Phe_F23": {
+    "original_residue_name": "Phenylalanine",
+    "modified_residue_name": "2,3-dihydroxyphenylalanine",
+    "modification_type": "hydroxylation",
+    "modification_smiles": "C1=CC(=C(C(=C1)O)O)C[C@@H](C(=O)O)N",
+    "pubchem_id": "54101444",
+    "chemspider_id": "28536357"
+  },
+  "PHE_F2H": {
+    "original_residue_name": "Phenylalanine",
+    "modified_residue_name": "2-hydroxyphenylalanine",
+    "modification_type": "hydroxylation",
+    "modification_smiles": "C1=CC=C(C(=C1)CC(C(=O)O)N)O",
+    "pubchem_id": "91482",
+    "chemspider_id": "82607"
+  },
+  "PHE_F3H": {
+    "original_residue_name": "Phenylalanine",
+    "modified_residue_name": "3-hydroxyphenylalanine",
+    "modification_type": "hydroxylation",
+    "modification_smiles": "C1=CC(=CC(=C1)O)C[C@@H](C(=O)O)N",
+    "pubchem_id": "6950578",
+    "chemspider_id": "5323512"
+  },
+  "PHE_TYR": {
+    "original_residue_name": "Phenylalanine",
+    "modified_residue_name": "tyrosine",
+    "modification_type": "hydroxylation",
+    "modification_smiles": "C1=CC(=CC=C1C[C@@H](C(=O)O)N)O",
+    "pubchem_id": "6057",
+    "chemspider_id": "5833"
+  },
+  "PRO_PH5": {
+    "original_residue_name": "Proline",
+    "modified_residue_name": "5-hydroxyproline (R)",
+    "modification_type": "hydroxylation",
+    "modification_smiles": "C1C[C@H](N[C@@H]1C(=O)O)O",
+    "pubchem_id": "6338400",
+    "chemspider_id": "32989511"
+  },
+  "PRO_P5H": {
+    "original_residue_name": "Proline",
+    "modified_residue_name": "5-hydroxyproline (S)",
+    "modification_type": "hydroxylation",
+    "modification_smiles": "C1CC(N[C@@H]1C(=O)O)O",
+    "pubchem_id": "14325405",
+    "chemspider_id": "25943482"
+  },
+  "PRO_PHH": {
+    "original_residue_name": "Proline",
+    "modified_residue_name": "3,4-dihydroxyproline",
+    "modification_type": "hydroxylation",
+    "modification_smiles": "C1C(C([C@H](N1)C(=O)O)O)O",
+    "pubchem_id": "6454515",
+    "chemspider_id": "4956829"
+  },
+  "PRO_HY2": {
+    "original_residue_name": "Proline",
+    "modified_residue_name": "4-hydroxyproline (R)",
+    "modification_type": "hydroxylation",
+    "modification_smiles": "C1[C@H](CN[C@@H]1C(=O)O)O",
+    "pubchem_id": "5810",
+    "chemspider_id": "5605"
+  },
+  "PRO_HYP": {
+    "original_residue_name": "Proline",
+    "modified_residue_name": "4-hydroxyproline (S)",
+    "modification_type": "hydroxylation",
+    "modification_smiles": "",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "PRO_PGA": {
+    "original_residue_name": "Proline",
+    "modified_residue_name": "3-hydroxyproline (S)",
+    "modification_type": "",
+    "modification_smiles": "",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "PRO_P3H": {
+    "original_residue_name": "Proline",
+    "modified_residue_name": "3-hydroxyproline (S)",
+    "modification_type": "hydroxylation",
+    "modification_smiles": "C1CN[C@@H](C1O)C(=O)O",
+    "pubchem_id": "150779",
+    "chemspider_id": "132893"
+  },
+  "PRO_GSA": {
+    "original_residue_name": "Proline",
+    "modified_residue_name": "glutamic semialdehyde",
+    "modification_type": "oxidation",
+    "modification_smiles": "C(C[C@@H](C(=O)O)N)C=O",
+    "pubchem_id": "193305",
+    "chemspider_id": "167744"
+  },
+  "PRO_PH3": {
+    "original_residue_name": "Proline",
+    "modified_residue_name": "3-hydroxyproline (R)",
+    "modification_type": "hydroxylation",
+    "modification_smiles": "",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "SER_SDH": {
+    "original_residue_name": "Serine",
+    "modified_residue_name": "dehydroalanine",
+    "modification_type": "dehydration",
+    "modification_smiles": "C=C(C(=O)O)N",
+    "pubchem_id": "123991",
+    "chemspider_id": "110510"
+  },
+  "SER_SOG": {
+    "original_residue_name": "Serine",
+    "modified_residue_name": "serine-O-acetylglucosamine",
+    "modification_type": "O-glycosylation",
+    "modification_smiles": "",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "SER_S1P": {
+    "original_residue_name": "Serine",
+    "modified_residue_name": "phosphoserine (-1)",
+    "modification_type": "phosphorylation",
+    "modification_smiles": "",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "SER_S2P": {
+    "original_residue_name": "Serine",
+    "modified_residue_name": "phosphoserine (-2)",
+    "modification_type": "phosphorylation",
+    "modification_smiles": "",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "THR_T2P": {
+    "original_residue_name": "Threonine",
+    "modified_residue_name": "phosphothreonine (-2)",
+    "modification_type": "phosphorylation",
+    "modification_smiles": "",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "THR_TOG": {
+    "original_residue_name": "Threonine",
+    "modified_residue_name": "threonine-O-acetylglucosamine",
+    "modification_type": "O-glycosylation",
+    "modification_smiles": "",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "THR_TOX": {
+    "original_residue_name": "Threonine",
+    "modified_residue_name": "2-amino-3-ketobutyric acid",
+    "modification_type": "389046",
+    "modification_smiles": "CC(=O)[C@@H](C(=O)O)N",
+    "pubchem_id": "440033",
+    "chemspider_id": ""
+  },
+  "THR_TDH": {
+    "original_residue_name": "Threonine",
+    "modified_residue_name": "2,3-didehydrobutyrine",
+    "modification_type": "21865514",
+    "modification_smiles": "CC=C(C(=O)O)N",
+    "pubchem_id": "3082167",
+    "chemspider_id": ""
+  },
+  "THR_T1P": {
+    "original_residue_name": "Threonine",
+    "modified_residue_name": "phosphothreonine (-1)",
+    "modification_type": "phosphorylation",
+    "modification_smiles": "",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "TRP_W6H": {
+    "original_residue_name": "Tryptophan",
+    "modified_residue_name": "6-hydroxytryptophan",
+    "modification_type": "hydroxylation",
+    "modification_smiles": "C1=CC2=C(C=C1O)NC=C2C[C@@H](C(=O)O)N",
+    "pubchem_id": "49867758",
+    "chemspider_id": "25058065"
+  },
+  "TRP_W4H": {
+    "original_residue_name": "Tryptophan",
+    "modified_residue_name": "4-hydroxytryptophan",
+    "modification_type": "hydroxylation",
+    "modification_smiles": "C1=CC2=C(C(=C1)O)C(=CN2)CC(C(=O)O)N",
+    "pubchem_id": "589768",
+    "chemspider_id": "512674"
+  },
+  "TRP_W7H": {
+    "original_residue_name": "Tryptophan",
+    "modified_residue_name": "7-hydroxytryptophan",
+    "modification_type": "hydroxylation",
+    "modification_smiles": "C1=CC2=C(C(=C1)O)NC=C2CC(C(=O)O)N",
+    "pubchem_id": "2763071",
+    "chemspider_id": "2043769"
+  },
+  "TRP_WBR": {
+    "original_residue_name": "Tryptophan",
+    "modified_residue_name": "6-bromotryptophan",
+    "modification_type": "bromination",
+    "modification_smiles": "C1=CC2=C(C=C1Br)NC=C2C[C@@H](C(=O)O)N",
+    "pubchem_id": "9856996",
+    "chemspider_id": "8032696"
+  },
+  "TRP_WKF": {
+    "original_residue_name": "Tryptophan",
+    "modified_residue_name": "formyl-kynurenine",
+    "modification_type": "oxidation",
+    "modification_smiles": "C1=CC=C(C(=C1)C(=O)CC(C(=O)O)N)NC=O",
+    "pubchem_id": "910",
+    "chemspider_id": "886"
+  },
+  "TRP_W5H": {
+    "original_residue_name": "Tryptophan",
+    "modified_residue_name": "5-hydroxytryptophan",
+    "modification_type": "hydroxylation",
+    "modification_smiles": "C1=CC2=C(C=C1O)C(=CN2)CC(C(=O)O)N",
+    "pubchem_id": "144",
+    "chemspider_id": "141"
+  },
+  "TRP_WNI": {
+    "original_residue_name": "Tryptophan",
+    "modified_residue_name": "6-nitrotryptophan",
+    "modification_type": "nitration",
+    "modification_smiles": "C1=CC2=C(C=C1[N+](=O)[O-])NC=C2C[C@@H](C(=O)O)N",
+    "pubchem_id": "3246256",
+    "chemspider_id": "2496980"
+  },
+  "TRP_WKY": {
+    "original_residue_name": "Tryptophan",
+    "modified_residue_name": "kynurenine",
+    "modification_type": "oxidation",
+    "modification_smiles": "C1=CC=C(C(=C1)C(=O)C[C@@H](C(=O)O)N)N",
+    "pubchem_id": "161166",
+    "chemspider_id": "141580"
+  },
+  "TRP_WKH": {
+    "original_residue_name": "Tryptophan",
+    "modified_residue_name": "3-hydroxykynurenine",
+    "modification_type": "oxidation",
+    "modification_smiles": "C1=CC(=C(C(=C1)O)N)C(=O)CC(C(=O)O)N",
+    "pubchem_id": "89",
+    "chemspider_id": "87"
+  },
+  "TRP_W2H": {
+    "original_residue_name": "Tryptophan",
+    "modified_residue_name": "2-hydroxytryptophan",
+    "modification_type": "hydroxylation",
+    "modification_smiles": "C1=CC=C2C(=C1)C(=C(N2)O)C[C@@H](C(=O)O)N",
+    "pubchem_id": "17754204",
+    "chemspider_id": "16744237"
+  },
+  "TYR_YNN": {
+    "original_residue_name": "Tyrosine",
+    "modified_residue_name": "nitrotyrosine (0) pre-revised",
+    "modification_type": "nitration",
+    "modification_smiles": "C1=CC(=C(C=C1C[C@@H](C(=O)O)N)[N+](=O)[O-])O",
+    "pubchem_id": "65124",
+    "chemspider_id": "58633"
+  },
+  "TYR_YCH": {
+    "original_residue_name": "Tyrosine",
+    "modified_residue_name": "chlorotyrosine",
+    "modification_type": "chlorination",
+    "modification_smiles": "C1=CC(=C(C=C1C[C@@H](C(=O)O)N)Cl)O",
+    "pubchem_id": "110992",
+    "chemspider_id": "99636"
+  },
+  "TYR_YNI": {
+    "original_residue_name": "Tyrosine",
+    "modified_residue_name": "nitrotyrosine (-1)",
+    "modification_type": "nitration",
+    "modification_smiles": "",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "TYR_YSU": {
+    "original_residue_name": "Tyrosine",
+    "modified_residue_name": "sulfotyrosine",
+    "modification_type": "sulfation",
+    "modification_smiles": "C1=CC(=CC=C1C[C@@H](C(=O)O)N)OS(=O)(=O)O",
+    "pubchem_id": "514186",
+    "chemspider_id": "448617"
+  },
+  "TYR_Y2P": {
+    "original_residue_name": "Tyrosine",
+    "modified_residue_name": "phosphotyrosine (-2)",
+    "modification_type": "phosphorylation",
+    "modification_smiles": "",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "TYR_Y1P": {
+    "original_residue_name": "Tyrosine",
+    "modified_residue_name": "phosphotyrosine (-1)",
+    "modification_type": "phosphorylation",
+    "modification_smiles": "",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "TYR_YNB": {
+    "original_residue_name": "Tyrosine",
+    "modified_residue_name": "nitrotyrosine (neutral) old",
+    "modification_type": "nitration",
+    "modification_smiles": "",
+    "pubchem_id": "",
+    "chemspider_id": ""
+  },
+  "TYR_HTY": {
+    "original_residue_name": "Tyrosine",
+    "modified_residue_name": "3,4-dihydroxyphenylalanine",
+    "modification_type": "hydroxylation",
+    "modification_smiles": "C1=CC(=C(C=C1C[C@@H](C(=O)O)N)O)O",
+    "pubchem_id": "6047",
+    "chemspider_id": "5824"
+  },
   "VAL_V3H": {
     "original_residue_name": "Valine",
-    "modified_residue_name": "3-Hydroxy-Valine",
+    "modified_residue_name": "3-hydroxyvaline",
     "modification_type": "hydroxylation",
-    "modification_smiles": "whatever",
-    "pubchem_id": "whatever",
-    "chemspider_id": "whatever"
+    "modification_smiles": "CC(C)([C@@H](C(=O)O)N)O",
+    "pubchem_id": "192763",
+    "chemspider_id": "167279"
   }
 }

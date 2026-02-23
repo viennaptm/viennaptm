@@ -20,6 +20,7 @@ class ViennaPTMFixtures(BaseModel):
 
     PTMS_LIBRARY_PATH: Path = None
     PTMS_PDBS_DIR_PATH: Path = None
+    PTMS_METADATA_PATH: Path = None
 
     PDB_ENDING: str = ".pdb"
 
@@ -31,7 +32,7 @@ class ViennaPTMFixtures(BaseModel):
         Resolve and attach default fixture paths.
 
         This validator populates internal path attributes for the
-        modification library, minimized PDB templates, and default
+        modification library, annotations file, minimized PDB templates, and default
         GROMACS energy minimization parameters.
 
         :return:
@@ -50,4 +51,8 @@ class ViennaPTMFixtures(BaseModel):
                                                                        "resources",
                                                                        "gromacs",
                                                                        "minim.mdp"))
+        self.PTMS_METADATA_PATH = attach_root_path(os.path.join("viennaptm",
+                                                                "resources",
+                                                                "metadata",
+                                                                "annotations.json"))
         return self
