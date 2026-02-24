@@ -8,6 +8,7 @@ build
 .vscode
 *.html
 .idea
+ptms_to_rst_table.temp_rst
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

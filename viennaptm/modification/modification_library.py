@@ -4,6 +4,7 @@ import os
 from pathlib import Path
 from typing import List, Tuple, Union, Dict, Optional
 
+import pandas as pd
 from Bio.PDB import PDBParser
 from Bio.PDB.Residue import Residue
 from pydantic import BaseModel, ConfigDict, Field, model_validator
@@ -105,7 +106,7 @@ class ModificationMetadata(BaseModel):
     original_residue_name: Optional[str] = None
     modified_residue_name: Optional[str] = None
     modification_type: Optional[str] = None
-    modification_smiles: Optional[str] = None
+    target_smiles: Optional[str] = None
     pubchem_id: Optional[str] = None
     chemspider_id: Optional[str] = None
 
@@ -241,6 +242,25 @@ class ModificationLibrary(BaseModel):
         logger.info(f"Modification library version: {self.metadata.date} (custom_library={self.metadata.custom_library})")
         logger.info(f"---> Comprised of {len(self.modifications)} modifications, indexed {len(self.target_templates)} PDB files.")
 
+    def _get_modification_metadata_df(self) -> pd.DataFrame:
+        modification_list = []
+        for i in range(len(self.modifications)):
+            modification_list.append([self.modifications[i].residue_original_abbreviation,
+                                      self.modifications[i].residue_modified_abbreviation,
+                                      self.modifications[i].metadata.modified_residue_name,
+                                      self.modifications[i].metadata.target_smiles,
+                                      self.modifications[i].metadata.pubchem_id,
+                                      self.modifications[i].metadata.chemspider_id])
+
+        df = pd.DataFrame(modification_list, columns=['original_abbreviation',
+                                                      'modified_abbreviation',
+                                                      'target_name',
+                                                      'target_smiles',
+                                                      'pubchem_id',
+                                                      'chemspider_id'])
+        return df
+
+
     def _load_metadata(self, metadata_path: str) -> Dict[str, ModificationMetadata]:
         # load modifications from JSON ("VAL_V3H")
         # with its metadata (residue name, modification type and smiles, PubChemID, ... )
@@ -259,7 +279,7 @@ class ModificationLibrary(BaseModel):
                 logger.warning(f"Metadata of modification {key} could not be added. "
                                f"Check for spelling mistakes or errors. JSON can only include:"
                                f"'original_residue_name', 'modified_residue_name', "
-                               f"'modification_type', 'modification_smiles', "
+                               f"'modification_type', 'target_smiles', "
                                f"'pubchem_id' and 'chemspider_id'. Exception reads: {e}")
                 continue
         return metadata_objects

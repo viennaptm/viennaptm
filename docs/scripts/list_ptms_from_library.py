@@ -2,7 +2,7 @@ import json
 
 from viennaptm.utils.fixtures import ViennaPTMFixtures
 
-library_path = ViennaPTMFixtures().LATEST_PTMS_LIBRARY_PATH
+library_path = ViennaPTMFixtures().PTMS_LIBRARY_PATH
 
 with open(library_path) as f:
     library_dict = json.load(f)
