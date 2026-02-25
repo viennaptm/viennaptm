@@ -2,6 +2,8 @@ import sys
 from typing import get_args, get_origin
 
 from pydantic import BaseModel
+
+from viennaptm.modification.modification_library import ModificationLibrary
 from viennaptm.utils.logger import get_package_version
 
 
@@ -178,4 +180,14 @@ def print_help_CLI(tool: str, argv: list[str], parameters_object):
         print("Options:")
         print_help(parameters_object)
         print(f"\nVersion: {get_package_version('viennaptm')}")
+        sys.exit(0)
+
+def print_list_ptms_CLI(destination: str):
+    if destination is not None:
+        library = ModificationLibrary()
+        df_modifications = library._get_modification_metadata_df()
+        if destination == "console":
+            print(df_modifications.to_string(index=False))
+        else:
+            df_modifications.to_csv(destination, index=False)
         sys.exit(0)

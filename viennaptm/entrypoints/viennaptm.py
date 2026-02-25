@@ -8,7 +8,7 @@ from viennaptm.dataclasses.annotatedstructure import AnnotatedStructure
 from viennaptm.dataclasses.parameters.modifier_parameters import ModifierParameters
 from viennaptm.gromacs.minimization_pipeline import execute_energy_minimization
 from viennaptm.modification.application.modifier import Modifier
-from viennaptm.utils.entrypoint_helper import collect_kwargs, expand_dotted_keys, print_help_CLI
+from viennaptm.utils.entrypoint_helper import collect_kwargs, expand_dotted_keys, print_help_CLI, print_list_ptms_CLI
 from viennaptm.utils.logger import instantiate_logging_CLI
 
 logger = logging.getLogger(__name__)
@@ -39,6 +39,10 @@ def main():
     raw_kwargs = collect_kwargs(sys.argv)
     raw_kwargs = expand_dotted_keys(raw_kwargs)
     cfg = ModifierParameters(**raw_kwargs)
+
+    # if --list or -list is set, this will print the list of all PTMs and
+    # immediately end the execution
+    print_list_ptms_CLI(cfg.ptm_list)
 
     # set up logging
     instantiate_logging_CLI(cfg=cfg, logger=logger)

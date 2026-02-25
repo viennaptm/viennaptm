@@ -71,6 +71,7 @@ class ModifierParameters(BaseModel):
     gromacs: Optional[GROMACSParameters] = Field(default_factory=GROMACSParameters, description="Gromacs parameters.")
     logger: Optional[str] = Field(default="console", description="Set logger to either console (default) or provide a file name.")
     debug: Optional[bool] = Field(default=False, description="If set to true, enable verbose debugging logging.")
+    ptm_list: Optional[str] = Field(default=None, description="List all PTMs if set to either \"console\" or a file path.")
 
     model_config = {
         "extra": "forbid"
