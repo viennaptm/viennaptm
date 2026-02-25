@@ -25,12 +25,6 @@ The ``help`` parameter shows the available options in detail.
 
     viennaptm --help
 
-Alternatively, you can append --help to any command:
-
-.. code-block:: bash
-
-   viennaptm --input tests/data/1vii.pdb --modify "A:50=V3H" --output testoutput.pdb --help
-
 
 Help message:
 
@@ -55,11 +49,19 @@ Help message:
       --logger
           [Optional, default=console]
           Set logger to either console (default) or provide a file name.
+      --ptm_list
+          [Optional, default=None]
+          List all PTMs if set to either "console" or a file path.
       --debug
           [Optional, default=False]
           If set to true, enable verbose debugging logging.
 
 
+Also, you can list all available post-translational modifications with their metadata using ``ptm_list``:
+
+.. code-block:: bash
+
+   viennaptm --input tests/data/1vii.pdb --ptm_list
 
 
 .. rubric:: CONFIG FILE

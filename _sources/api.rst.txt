@@ -12,7 +12,8 @@ file, annotated with modifications, and written back to disk.
 
 .. code-block:: python
 
-    # Instantiate an `AnnotatedStructure` from data stored in the RCSB PDB.
+    # Instantiate an `AnnotatedStructure` from data stored in the RCSB PDB
+    from viennaptm.dataclasses.annotatedstructure import AnnotatedStructure
     structure = AnnotatedStructure.from_rcsb("1vii")
 
     # Load an `AnnotatedStructure` from a local PDB file.
@@ -40,6 +41,7 @@ modification in the structure’s modification log.
 .. code-block:: python
 
     # Create an instance of the Modifier class
+    from viennaptm.modification.application.modifier import Modifier
     modifier = Modifier()
 
 
@@ -85,6 +87,7 @@ You can inspect side-chain changes resulting from modifications using the
 .. code-block:: python
 
     # Create a new Visualizer instance
+    from viennaptm.utils.visualizer import Visualizer
     visualizer = Visualizer(
         structure=structure,
         name="TestStructure"

@@ -129,10 +129,6 @@ viennaptm<span class="w"> </span>--input<span class="w"> </span>tests/data/1vii.
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>viennaptm<span class="w"> </span>--help
 </pre></div>
 </div>
-<p>Alternatively, you can append –help to any command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>viennaptm<span class="w"> </span>--input<span class="w"> </span>tests/data/1vii.pdb<span class="w"> </span>--modify<span class="w"> </span><span class="s2">&quot;A:50=V3H&quot;</span><span class="w"> </span>--output<span class="w"> </span>testoutput.pdb<span class="w"> </span>--help
-</pre></div>
-</div>
 <p>Help message:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Options:
 <span class="w">  </span>--config
@@ -153,9 +149,16 @@ viennaptm<span class="w"> </span>--input<span class="w"> </span>tests/data/1vii.
 <span class="w">  </span>--logger
 <span class="w">      </span><span class="o">[</span>Optional,<span class="w"> </span><span class="nv">default</span><span class="o">=</span>console<span class="o">]</span>
 <span class="w">      </span>Set<span class="w"> </span>logger<span class="w"> </span>to<span class="w"> </span>either<span class="w"> </span>console<span class="w"> </span><span class="o">(</span>default<span class="o">)</span><span class="w"> </span>or<span class="w"> </span>provide<span class="w"> </span>a<span class="w"> </span>file<span class="w"> </span>name.
+<span class="w">  </span>--ptm_list
+<span class="w">      </span><span class="o">[</span>Optional,<span class="w"> </span><span class="nv">default</span><span class="o">=</span>None<span class="o">]</span>
+<span class="w">      </span>List<span class="w"> </span>all<span class="w"> </span>PTMs<span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>to<span class="w"> </span>either<span class="w"> </span><span class="s2">&quot;console&quot;</span><span class="w"> </span>or<span class="w"> </span>a<span class="w"> </span>file<span class="w"> </span>path.
 <span class="w">  </span>--debug
 <span class="w">      </span><span class="o">[</span>Optional,<span class="w"> </span><span class="nv">default</span><span class="o">=</span>False<span class="o">]</span>
 <span class="w">      </span>If<span class="w"> </span><span class="nb">set</span><span class="w"> </span>to<span class="w"> </span>true,<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>verbose<span class="w"> </span>debugging<span class="w"> </span>logging.
+</pre></div>
+</div>
+<p>Also, you can list all available post-translational modifications with their metadata using <code class="docutils literal notranslate"><span class="pre">ptm_list</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>viennaptm<span class="w"> </span>--input<span class="w"> </span>tests/data/1vii.pdb<span class="w"> </span>--ptm_list
 </pre></div>
 </div>
 <p class="rubric">CONFIG FILE</p>

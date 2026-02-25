@@ -118,7 +118,8 @@
 residue-level modifications to a <code class="xref py py-class docutils literal notranslate"><span class="pre">Biopython</span> <span class="pre">PDB</span> <span class="pre">structure</span></code>.</p>
 <p>Structures can be loaded either from the RCSB PDB database or from a local PDB
 file, annotated with modifications, and written back to disk.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instantiate an `AnnotatedStructure` from data stored in the RCSB PDB.</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instantiate an `AnnotatedStructure` from data stored in the RCSB PDB</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">viennaptm.dataclasses.annotatedstructure</span><span class="w"> </span><span class="kn">import</span> <span class="n">AnnotatedStructure</span>
 <span class="n">structure</span> <span class="o">=</span> <span class="n">AnnotatedStructure</span><span class="o">.</span><span class="n">from_rcsb</span><span class="p">(</span><span class="s2">&quot;1vii&quot;</span><span class="p">)</span>
 
 <span class="c1"># Load an `AnnotatedStructure` from a local PDB file.</span>
@@ -144,6 +145,7 @@ residue within the structure, removes hydrogen atoms from the target residue,
 applies the requested modification using a template residue, and records the
 modification in the structure’s modification log.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an instance of the Modifier class</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">viennaptm.modification.application.modifier</span><span class="w"> </span><span class="kn">import</span> <span class="n">Modifier</span>
 <span class="n">modifier</span> <span class="o">=</span> <span class="n">Modifier</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -177,6 +179,7 @@ Note that only elements supported by the underlying
 <p>You can inspect side-chain changes resulting from modifications using the
 <code class="xref py py-class docutils literal notranslate"><span class="pre">Visualizer</span></code> class.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a new Visualizer instance</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">viennaptm.utils.visualizer</span><span class="w"> </span><span class="kn">import</span> <span class="n">Visualizer</span>
 <span class="n">visualizer</span> <span class="o">=</span> <span class="n">Visualizer</span><span class="p">(</span>
     <span class="n">structure</span><span class="o">=</span><span class="n">structure</span><span class="p">,</span>
     <span class="n">name</span><span class="o">=</span><span class="s2">&quot;TestStructure&quot;</span>
