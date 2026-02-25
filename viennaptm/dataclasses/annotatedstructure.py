@@ -87,7 +87,6 @@ class AnnotatedStructure(Structure):
 
         self.modification_log.loc[len(self.modification_log)] = [residue_number, chain_identifier,
                                                                  original_abbreviation, target_abbreviation]
-        ###TODO set application input to user input
 
     def get_log(self) -> pd.DataFrame:
         """

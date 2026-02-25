@@ -131,6 +131,8 @@ class Modifier(BaseModel):
                                      logger=logger,
                                      exception_type=ValueError)
 
+        # often hydrogens are modelled in and may cause problems depending on naming scheme,
+        # so instead remove them; hydrogens for a modified version of a residue are added later
         self.remove_hydrogens(residue)
 
         # fetch the desired application and load the respective template PDB file
