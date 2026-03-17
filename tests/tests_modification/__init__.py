@@ -1,1 +1,1 @@
-from tests.tests_modification.test_modification_general import *
+from tests.tests_modification.test_modification_pdb import *

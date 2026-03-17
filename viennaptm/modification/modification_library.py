@@ -400,7 +400,7 @@ class ModificationLibrary(BaseModel):
             for mod in self.modifications:
                 if mod.residue_original_abbreviation == original and mod.residue_modified_abbreviation == modified:
                     return mod
-        raise IndexError(f"Modification {index} not found in library.")
+        raise IndexError(f"Modification {index} not found in library, check residue identity and numbering.")
 
     def load_residue_from_pdb(self, target_abbreviation: str) -> Residue:
         """

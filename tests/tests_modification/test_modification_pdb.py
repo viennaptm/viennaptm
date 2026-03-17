@@ -11,7 +11,7 @@ from pathlib import Path
 logger = logging.getLogger(__name__)
 
 
-class Test_Modification_General(unittest.TestCase):
+class Test_Modification_PDB(unittest.TestCase):
 
     def setUp(self):
         self._struc_io = AnnotatedStructure("dd")
