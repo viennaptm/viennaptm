@@ -148,6 +148,7 @@ affiliation with derivative works without prior permission.
 - **Sophie Margreitter** - [GitHub](https://github.com/SMargreitter)
 - **Christian Margreitter** - [GitHub](https://github.com/CMargreitter)  
 - **Drazen Petrov** - [GitHub](https://github.com/drazen-petrov)
+- **Jan Haschka** - [GitHub](https://github.com/JHaschka)
 - **Bojan Žagrović** - [GitHub](https://github.com/bojanzagrovic)
 
 

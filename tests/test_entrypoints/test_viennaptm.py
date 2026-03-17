@@ -4,7 +4,7 @@ import unittest
 import shutil
 from pathlib import Path
 
-from tests.file_paths import UNITTEST_PATH_1VII_PDB, UNITTEST_JUNK_FOLDER
+from tests.file_paths import UNITTEST_PATH_1VII_PDB, UNITTEST_PATH_1VII_CIF, UNITTEST_JUNK_FOLDER
 from tests.helper_functions import get_aa_sequence_from_file
 from viennaptm.utils.paths import attach_root_path
 
@@ -22,6 +22,7 @@ class Test_ViennaPTM(unittest.TestCase):
 
     def setUp(self):
         self._1vii_PDB_path = attach_root_path(UNITTEST_PATH_1VII_PDB)
+        self._1vii_CIF_path = attach_root_path(UNITTEST_PATH_1VII_CIF)
 
     def tearDown(self):
         pass
@@ -61,7 +62,7 @@ class Test_ViennaPTM(unittest.TestCase):
         result = subprocess.run(
             [
                 "viennaptm",
-                "--input", str(self._1vii_PDB_path),
+                "--input", str(self._1vii_CIF_path),
                 "--modify", "A:50=V3H",
                 "--output", str(output_path)
             ],
@@ -80,9 +81,8 @@ class Test_ViennaPTM(unittest.TestCase):
                              "MET", "LEU", "SER", "ASP", "GLU", "ASP", "PHE",
                              "LYS", "ALA", "V3H", "PHE", "GLY", "MET", "THR",
                              "ARG", "SER", "ALA", "PHE", "ALA", "ASN", "LEU",
-                             "PRO", "LEU", "TRP", "LYS", "GLN", "GLN", "ASN",
-                             "LEU", "LYS", "LYS", "GLU", "LYS", "HIS", "CYS",
-                             "TYR"])
+                             "PRO", "LEU", "TRP", "LYS", "GLN", "GLN", "ASN", "LEU",
+                             "LYS", "LYS", "GLU", "LYS", "GLY", "LEU", "PHE"])
 
     def test_viennaptm_minimization_pdb(self):
         if shutil.which("gmx") is None:

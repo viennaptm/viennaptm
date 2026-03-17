@@ -9,6 +9,7 @@ from viennaptm.dataclasses.parameters.modifier_parameters import ModifierParamet
 from viennaptm.gromacs.minimization_pipeline import execute_energy_minimization
 from viennaptm.modification.application.modifier import Modifier
 from viennaptm.utils.entrypoint_helper import collect_kwargs, expand_dotted_keys, print_help_CLI, print_list_ptms_CLI
+from viennaptm.utils.error_handling import raise_with_logging_error
 from viennaptm.utils.logger import instantiate_logging_CLI
 
 logger = logging.getLogger(__name__)
@@ -49,7 +50,14 @@ def main():
 
     # load internal PDB file
     if isinstance(cfg.input, Path):
-        structure = AnnotatedStructure.from_pdb(path=cfg.input)
+        if cfg.input.suffix.upper() == ".PDB":
+            structure = AnnotatedStructure.from_pdb(path=cfg.input)
+        elif cfg.input.suffix.upper() == ".CIF":
+            structure = AnnotatedStructure.from_cif(path=cfg.input)
+        else:
+            raise_with_logging_error(f"Structure input file path {cfg.input} is does not end on either \".pdb\" or \".cif\" - abort.",
+                                     logger=logger,
+                                     exception_type=ValueError)
     else:
         structure = AnnotatedStructure.from_rcsb(identifier=cfg.input)
 
