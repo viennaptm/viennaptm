@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import Union
 
 from viennaptm.dataclasses.annotatedstructure import AnnotatedStructure
+from viennaptm.resources.ptm_parameters.get_ff_files import get_gmx_ff
 from viennaptm.gromacs.editconf import EditConf
 from viennaptm.gromacs.grompp import Grompp
 from viennaptm.gromacs.mdrun import Mdrun
@@ -128,6 +129,10 @@ def execute_energy_minimization(structure: AnnotatedStructure, workdir: Union[Pa
     conf_gro = workdir / "conf.gro"
     topol = workdir / "topol.top"
     minim_mdp = ViennaPTMFixtures().GROMACS_MINIM_MDP_DEFAULT
+    forcefield="gromos54a8" # HARDCODED FOR NOW!!! this should be parsed as an argument
+    # create sym links to FF parameters
+    get_gmx_ff(forcefield, destination_dir=workdir)
+    
 
     # execute PDB2GMX
     PDB2GMX(
@@ -135,7 +140,7 @@ def execute_energy_minimization(structure: AnnotatedStructure, workdir: Union[Pa
             input=input_path,
             output_gro=conf_gro,
             topology=topol,
-            forcefield="gromos54a7",
+            forcefield="gromos54a8",
             water="spc",
             ignore_h=True
         ),

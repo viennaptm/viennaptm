@@ -77,7 +77,6 @@ def main():
             if not len(modification[2]) == 3:
                 raise ValueError(f"Modification input needs to be a string of format 'A:50=V3H' "
                                  f"with the target residue abbreviation being a string of length 3.")
-
             # apply a modification
             structure = modifier.modify(structure = structure,
                                         chain_identifier=modification[0],
@@ -94,7 +93,9 @@ def main():
     # execute energy minimization, if enabled
     if cfg.gromacs.minimize:
         logger.info(f"Begin energy minimization ...")
-        structure = execute_energy_minimization(structure=structure)
+        #structure = execute_energy_minimization(structure=structure, clean_up=False, workdir='gmx_emin') # relative path is not working!
+        import os
+        structure = execute_energy_minimization(structure=structure, clean_up=False, workdir=os.path.join(os.getcwd(), 'gmx_emin'))
         logger.info(f"Completed energy minimization.")
 
     # write modified file
