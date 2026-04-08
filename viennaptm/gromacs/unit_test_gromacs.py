@@ -5,8 +5,6 @@ from viennaptm.resources.aa_pdbs import fd_AXA
 root_fd = os.path.join(os.getcwd(), 'test_gmx_emin')
 os.makedirs(root_fd,  exist_ok=True)
 
-#fd_AXA = '/home/dpetrov/poso/PTM/PDBs/AXA/'
-
 aa1_3 = {"R":"arg","H":"his","K":"lys","D":"asp","E":"glu",
        "S":"ser","T":"thr","N":"asn","Q":"gln","C":"cys",
          "G":"gly","P":"pro","A":"ala","V":"val","I":"ile",
