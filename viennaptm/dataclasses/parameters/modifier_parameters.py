@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from typing import Optional, Union, Dict, Any
+from typing import Optional, Union, Dict, Any, Literal
 
 import yaml
 from pydantic import BaseModel, model_validator, field_validator, Field
@@ -13,12 +13,15 @@ class GROMACSParameters(BaseModel):
     :param minimize: Whether to perform energy minimization of the
                      modified structure after applying the modification.
     :type minimize: bool
+    :param forcefield: Select the GROMOS force field for the minimization (default: 'gromos54a8').
+    :type forcefield: Literal['gromos45a3', 'gromos54a7', 'gromos54a8']
 
     :raises ValueError: If unknown or extra parameters are provided
                         (``extra = "forbid"``).
     """
 
     minimize: bool = Field(default=False, description="Energy minimize the modified structure.")
+    forcefield: Literal['gromos45a3', 'gromos54a7', 'gromos54a8'] = Field(default="gromos54a8")
 
     model_config = {
         "extra": "forbid"
