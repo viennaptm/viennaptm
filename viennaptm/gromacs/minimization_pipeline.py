@@ -84,7 +84,10 @@ def minimize_and_write_pdb(
     return minimized_pdb
 
 
-def execute_energy_minimization(structure: AnnotatedStructure, workdir: Union[Path, str] = None, clean_up: bool = True) -> AnnotatedStructure:
+def execute_energy_minimization(structure: AnnotatedStructure,
+                                forcefield: str = "gromos54a8",
+                                workdir: Union[Path, str] = None,
+                                clean_up: bool = True) -> AnnotatedStructure:
     """
     Perform GROMACS-based energy minimization on a structure.
 
@@ -129,7 +132,7 @@ def execute_energy_minimization(structure: AnnotatedStructure, workdir: Union[Pa
     conf_gro = workdir / "conf.gro"
     topol = workdir / "topol.top"
     minim_mdp = ViennaPTMFixtures().GROMACS_MINIM_MDP_DEFAULT
-    forcefield="gromos54a8" # HARDCODED FOR NOW!!! this should be parsed as an argument
+
     # create sym links to FF parameters
     get_gmx_ff(forcefield, destination_dir=workdir)
     
@@ -140,7 +143,7 @@ def execute_energy_minimization(structure: AnnotatedStructure, workdir: Union[Pa
             input=input_path,
             output_gro=conf_gro,
             topology=topol,
-            forcefield="gromos54a8",
+            forcefield=forcefield,
             water="spc",
             ignore_h=True
         ),

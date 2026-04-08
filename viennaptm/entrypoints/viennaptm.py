@@ -1,6 +1,7 @@
 import logging
 import re
 import sys
+import os
 
 from pathlib import Path
 
@@ -61,6 +62,7 @@ def main():
     else:
         structure = AnnotatedStructure.from_rcsb(identifier=cfg.input)
 
+
     # initialize modifier with most recent internal modification database
     modifier = Modifier()
     modlist = cfg.modify
@@ -93,9 +95,21 @@ def main():
     # execute energy minimization, if enabled
     if cfg.gromacs.minimize:
         logger.info(f"Begin energy minimization ...")
-        #structure = execute_energy_minimization(structure=structure, clean_up=False, workdir='gmx_emin') # relative path is not working!
-        import os
-        structure = execute_energy_minimization(structure=structure, clean_up=False, workdir=os.path.join(os.getcwd(), 'gmx_emin'))
+
+        # user can choose GROMOS force field (45A3, 54A7 or 54A8 (default))
+        if isinstance(cfg.force_field, str):
+            if cfg.force_field.upper() == "45A3":
+                structure = execute_energy_minimization(structure=structure, forcefield="gromos45a3", clean_up=False, workdir=os.path.join(os.getcwd(), 'gmx_emin'))
+            elif cfg.force_field.upper() == "54A7":
+                structure = execute_energy_minimization(structure=structure, forcefield="gromos54a7", clean_up=False, workdir=os.path.join(os.getcwd(), 'gmx_emin'))
+            elif cfg.force_field.upper() == "54A8":
+                structure = execute_energy_minimization(structure=structure, forcefield="gromos54a8", clean_up=False, workdir=os.path.join(os.getcwd(), 'gmx_emin'))
+            else:
+                raise_with_logging_error(f"Force field {cfg.force_field} is not recognized.", logger=logger, exception_type=ValueError)
+        else:
+            # default is 54A8
+            structure = execute_energy_minimization(structure=structure, forcefield="gromos54a8", clean_up=False, workdir=os.path.join(os.getcwd(), 'gmx_emin'))
+
         logger.info(f"Completed energy minimization.")
 
     # write modified file
