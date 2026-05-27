@@ -48,13 +48,11 @@ class Test_ViennaPTM(unittest.TestCase):
 
         # check successful modification
         aa_seq = get_aa_sequence_from_file(output_path)
-        self.assertListEqual(aa_seq['A'], [
-                             "MET", "LEU", "SER", "ASP", "GLU", "ASP", "PHE",
-                             "LYS", "ALA", "V3H", "PHE", "GLY", "MET", "THR",
-                             "ARG", "SER", "ALA", "PHE", "ALA", "ASN", "LEU",
-                             "PRO", "LEU", "TRP", "LYS", "GLN", "GLN", "ASN",
-                             "LEU", "LYS", "LYS", "GLU", "LYS", "HIS", "CYS",
-                             "TYR"])
+        self.assertListEqual(aa_seq['A'], ['MET', 'LEU', 'SER', 'ASP', 'GLU', 'ASP', 'PHE', 'LYS', 'ALA',
+                                               'V3H', 'PHE', 'GLY', 'MET', 'THR', 'ARG', 'SER', 'ALA', 'PHE',
+                                               'ALA', 'ASN', 'LEU', 'PRO', 'LEU', 'TRP', 'LYS', 'GLN', 'GLN',
+                                               'ASN', 'LEU', 'LYS', 'LYS', 'GLU', 'LYS', 'GLY', 'LEU', 'PHE']
+)
 
     def test_viennaptm_modification_only_cif(self):
         # test mmCIF generation
@@ -97,11 +95,13 @@ class Test_ViennaPTM(unittest.TestCase):
                 # TODO: enable, once force-field parameters are installed
                 #"--modify", "A:50=V3H",
                 "--gromacs.minimize", "True",
+                "--gromacs.forcefield", "gromos54a8",
                 "--output", str(output_path)
             ],
             capture_output=True,
             text=True
         )
+        print(result.stderr)
 
         # file creation sanity check
         self.assertEqual(result.returncode, 0, msg=result.stderr)

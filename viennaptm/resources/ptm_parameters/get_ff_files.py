@@ -18,5 +18,4 @@ def get_gmx_ff(ff='gromos54a8', destination_dir=None):
         if not os.path.exists(full_residuetypes_fname):
             os.symlink(os.path.join(fd_gmx, residuetypes_fname), full_residuetypes_fname)
         return
-    raise ValueError(f"Force field {ff} in file format {file_format} not supported.")
-
+    raise ValueError(f"Force field {ff} not supported.")
