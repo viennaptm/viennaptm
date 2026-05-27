@@ -1,5 +1,6 @@
 import logging
 import re
+import shutil
 import sys
 import os
 
@@ -94,13 +95,16 @@ def main():
 
     # execute energy minimization, if enabled
     if cfg.gromacs.minimize:
-        logger.info(f"Begin energy minimization ...")
+        if shutil.which("gmx") is None:
+            logger.warning("GROMACS not found - skipping energy minimization.")
+        else:
+            logger.info(f"Begin energy minimization ...")
 
-        # user can choose GROMOS force field (45A3, 54A7 or 54A8 (default))
-        structure = execute_energy_minimization(structure=structure,
-                                                forcefield=cfg.gromacs.forcefield,
-                                                clean_up=False)
-        logger.info(f"Completed energy minimization, using force field '{cfg.gromacs.forcefield}'.")
+            # user can choose GROMOS force field (45A3, 54A7 or 54A8 (default))
+            structure = execute_energy_minimization(structure=structure,
+                                                    forcefield=cfg.gromacs.forcefield,
+                                                    clean_up=False)
+            logger.info(f"Completed energy minimization, using force field '{cfg.gromacs.forcefield}'.")
 
     # write modified file
     if str(cfg.output).endswith(".pdb"):
