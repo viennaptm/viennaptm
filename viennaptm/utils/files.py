@@ -1,4 +1,23 @@
 import os
+from contextlib import suppress
+from importlib.resources import files
+from pathlib import Path
+
+
+def get_gromacs_parameters_dir() -> Path | None:
+    if env := os.environ.get("PTM_PARAMETERS_GROMACS"):
+        path = Path(env).expanduser().resolve()
+    else:
+        with suppress(ModuleNotFoundError):
+            path = Path(files("ptm_parameters") / "GROMACS")
+            if path.exists():
+                return path
+        return None
+
+    if path.exists():
+        return path
+
+    raise FileNotFoundError(f"GROMACS parameter directory not found: {path}")
 
 
 def file_exists(path, check_content: bool = False) -> bool:

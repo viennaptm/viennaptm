@@ -1,5 +1,6 @@
 import os
 import subprocess
+import importlib.util
 import unittest
 import shutil
 from pathlib import Path
@@ -7,6 +8,8 @@ from pathlib import Path
 from tests.file_paths import UNITTEST_PATH_1VII_PDB, UNITTEST_PATH_1VII_CIF, UNITTEST_JUNK_FOLDER
 from tests.helper_functions import get_aa_sequence_from_file
 from viennaptm.utils.paths import attach_root_path
+
+has_ptm_parameters = importlib.util.find_spec("ptm_parameters") is not None
 
 
 class Test_ViennaPTM(unittest.TestCase):
@@ -86,14 +89,38 @@ class Test_ViennaPTM(unittest.TestCase):
         if shutil.which("gmx") is None:
             raise unittest.SkipTest("GROMACS (gmx) not available.")
 
-        # test mmCIF generation
+        # test, whether the minimization pipeline runs for a canonical structure
         output_path = self._workdir / "minimization.pdb"
         result = subprocess.run(
             [
                 "viennaptm",
                 "--input", str(self._1vii_PDB_path),
-                # TODO: enable, once force-field parameters are installed
-                #"--modify", "A:50=V3H",
+                "--gromacs.minimize", "True",
+                "--gromacs.forcefield", "gromos54a8",
+                "--output", str(output_path)
+            ],
+            capture_output=True,
+            text=True
+        )
+        print(result.stderr)
+
+        # file creation sanity check
+        self.assertEqual(result.returncode, 0, msg=result.stderr)
+        self.assertTrue(output_path.exists())
+        self.assertGreater(output_path.stat().st_size, 27000)
+
+    @unittest.skipUnless(has_ptm_parameters, "ptm_parameters not installed - skipping.")
+    def test_viennaptm_minimization_ptms_pdb(self):
+        if shutil.which("gmx") is None:
+            raise unittest.SkipTest("GROMACS (gmx) not available.")
+
+        # test, whether the minimization runs for a modified structure
+        output_path = self._workdir / "minimization_modified.pdb"
+        result = subprocess.run(
+            [
+                "viennaptm",
+                "--input", str(self._1vii_PDB_path),
+                "--modify", "A:50=V3H",
                 "--gromacs.minimize", "True",
                 "--gromacs.forcefield", "gromos54a8",
                 "--output", str(output_path)

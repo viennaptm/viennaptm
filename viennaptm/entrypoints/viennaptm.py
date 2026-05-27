@@ -99,8 +99,7 @@ def main():
         # user can choose GROMOS force field (45A3, 54A7 or 54A8 (default))
         structure = execute_energy_minimization(structure=structure,
                                                 forcefield=cfg.gromacs.forcefield,
-                                                clean_up=False,
-                                                workdir=os.path.join(os.getcwd(), 'gmx_emin'))
+                                                clean_up=False)
         logger.info(f"Completed energy minimization, using force field '{cfg.gromacs.forcefield}'.")
 
     # write modified file

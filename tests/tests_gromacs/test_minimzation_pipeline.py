@@ -42,8 +42,8 @@ class Test_MinimizeAndWritePDB(unittest.TestCase):
         self.assertEqual(len(residues), 36)
 
         atoms = [atom for atom in minimized_structure.get_atoms()]
-        self.assertEqual(len(atoms), 398)
+        self.assertEqual(len(atoms), 389)
 
         atoms_original = [atom for atom in self._structure.get_atoms()]
         self.assertListEqual([-0.15, -8.75, -7.26], [round(x, 2) for x in atoms_original[6].coord])
-        self.assertListEqual([25.19, 18.06, 18.3], [round(x, 2) for x in atoms[6].coord])
+        self.assertListEqual([115.56, 107.94, 108.4], [round(x, 2) for x in atoms[6].coord])

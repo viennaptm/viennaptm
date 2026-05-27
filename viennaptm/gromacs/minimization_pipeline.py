@@ -5,7 +5,6 @@ from pathlib import Path
 from typing import Union
 
 from viennaptm.dataclasses.annotatedstructure import AnnotatedStructure
-from viennaptm.resources.ptm_parameters.get_ff_files import get_gmx_ff
 from viennaptm.gromacs.editconf import EditConf
 from viennaptm.gromacs.grompp import Grompp
 from viennaptm.gromacs.mdrun import Mdrun
@@ -85,7 +84,7 @@ def minimize_and_write_pdb(
 
 
 def execute_energy_minimization(structure: AnnotatedStructure,
-                                forcefield: str = "gromos54a8",
+                                forcefield: str = "gromos54a7",
                                 workdir: Union[Path, str] = None,
                                 clean_up: bool = True) -> AnnotatedStructure:
     """
@@ -134,8 +133,7 @@ def execute_energy_minimization(structure: AnnotatedStructure,
     minim_mdp = ViennaPTMFixtures().GROMACS_MINIM_MDP_DEFAULT
 
     # create sym links to FF parameters
-    get_gmx_ff(forcefield, destination_dir=workdir)
-    
+    #get_gmx_ff(forcefield, destination_dir=workdir)
 
     # execute PDB2GMX
     PDB2GMX(
