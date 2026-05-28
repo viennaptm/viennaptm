@@ -1,9 +1,13 @@
 import logging
+import os
+import subprocess
+
 from pydantic import Field, field_validator, BaseModel
 from typing import List, Optional
 from pathlib import Path
 
 from viennaptm.gromacs.gromacs_command import GromacsCommand, MPIConfig
+from viennaptm.utils.files import get_gromacs_parameters_dir
 
 logger = logging.getLogger(__name__)
 
@@ -137,6 +141,32 @@ class PDB2GMX(GromacsCommand):
             timeout=timeout,
             env=env
         )
+
+    def run(self) -> subprocess.CompletedProcess:
+        if self.env is None:
+            self.env = os.environ.copy()
+
+        old_gmxlib = self.env.get("GMXLIB")
+
+        try:
+            if gromacs_parameters_dir := get_gromacs_parameters_dir():
+                gmxlib = str(gromacs_parameters_dir)
+
+                self.env["GMXLIB"] = (
+                    os.pathsep.join([gmxlib, old_gmxlib])
+                    if old_gmxlib
+                    else gmxlib
+                )
+
+            return super().run()
+
+        finally:
+            # TODO: restore is necessary, since "env" currently lives in the parent class' attributes list
+            #       probably better to move it to the parameter level for "run()" in the future
+            if old_gmxlib is None:
+                self.env.pop("GMXLIB", None)
+            else:
+                self.env["GMXLIB"] = old_gmxlib
 
     def build_gromacs_cmd(self) -> List[str]:
         """
