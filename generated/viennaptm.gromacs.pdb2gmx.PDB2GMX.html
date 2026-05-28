@@ -169,6 +169,28 @@ topology file.</p>
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="viennaptm.gromacs.pdb2gmx.PDB2GMX.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">CompletedProcess</span></span></span><a class="headerlink" href="#viennaptm.gromacs.pdb2gmx.PDB2GMX.run" title="Link to this definition"></a></dt>
+<dd><p>Execute the GROMACS command.</p>
+<p>The command is executed synchronously. Standard output and
+error streams are captured and inspected for fatal errors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>RuntimeError</strong> – If execution times out or a fatal GROMACS error is detected.</p></li>
+<li><p><strong>FileNotFoundError</strong> – If expected output files are missing after execution.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Completed subprocess result.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>subprocess.CompletedProcess</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 <p class="rubric">Methods</p>
@@ -195,7 +217,7 @@ topology file.</p>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">post_run_checks</span></code>()</p></td>
 <td><p>Verify that expected output files were created.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">run</span></code>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#viennaptm.gromacs.pdb2gmx.PDB2GMX.run" title="viennaptm.gromacs.pdb2gmx.PDB2GMX.run"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run</span></code></a>()</p></td>
 <td><p>Execute the GROMACS command.</p></td>
 </tr>
 </tbody>
