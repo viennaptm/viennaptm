@@ -50,7 +50,8 @@ dependencies = [
     "pandas",
     "biopython>=1.8",
     "scipy",
-    "pyyaml"
+    "pyyaml",
+    "ptm-parameters>=0.1.0"
 ]
 
 [project.optional-dependencies]

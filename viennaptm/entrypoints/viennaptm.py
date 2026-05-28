@@ -1,6 +1,8 @@
 import logging
 import re
+import shutil
 import sys
+import os
 
 from pathlib import Path
 
@@ -61,6 +63,7 @@ def main():
     else:
         structure = AnnotatedStructure.from_rcsb(identifier=cfg.input)
 
+
     # initialize modifier with most recent internal modification database
     modifier = Modifier()
     modlist = cfg.modify
@@ -77,7 +80,6 @@ def main():
             if not len(modification[2]) == 3:
                 raise ValueError(f"Modification input needs to be a string of format 'A:50=V3H' "
                                  f"with the target residue abbreviation being a string of length 3.")
-
             # apply a modification
             structure = modifier.modify(structure = structure,
                                         chain_identifier=modification[0],
@@ -93,9 +95,16 @@ def main():
 
     # execute energy minimization, if enabled
     if cfg.gromacs.minimize:
-        logger.info(f"Begin energy minimization ...")
-        structure = execute_energy_minimization(structure=structure)
-        logger.info(f"Completed energy minimization.")
+        if shutil.which("gmx") is None:
+            logger.warning("GROMACS not found - skipping energy minimization.")
+        else:
+            logger.info(f"Begin energy minimization ...")
+
+            # user can choose GROMOS force field (45A3, 54A7 or 54A8 (default))
+            structure = execute_energy_minimization(structure=structure,
+                                                    forcefield=cfg.gromacs.forcefield,
+                                                    clean_up=False)
+            logger.info(f"Completed energy minimization, using force field '{cfg.gromacs.forcefield}'.")
 
     # write modified file
     if str(cfg.output).endswith(".pdb"):

@@ -48,7 +48,7 @@ class EditConf(GromacsCommand):
             "-f", str(self.input_gro),
             "-o", str(self.output_gro),
             "-c",
-            "-d", "1.0",
+            "-d", "10.0",
             "-bt", "cubic"
         ]
 
